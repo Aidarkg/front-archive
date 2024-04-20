@@ -1,4 +1,3 @@
-import React from 'react';
 import {NavbarList} from "../../utils/NavbarList.jsx";
 import {Link} from "react-router-dom";
 import s from "./Header.module.sass"

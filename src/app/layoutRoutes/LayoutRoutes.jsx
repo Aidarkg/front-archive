@@ -1,5 +1,4 @@
-import React from 'react';
-import {Route, Routes} from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import * as LayoutPages from "../../pages/index.js"
 const LayoutRoutes = () => {
     return (
