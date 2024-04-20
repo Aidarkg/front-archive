@@ -14,6 +14,4 @@ export const CustomInput = ({ label, value, onChange }) => {
     )
 }
 
-// хорошо попрактиковались 
-
 
