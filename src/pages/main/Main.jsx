@@ -1,9 +1,10 @@
-import React from 'react';
+import {Banner} from "./components/banner/Banner.jsx";
+import {MainBlock} from "./components/mainBlock/MainBlock.jsx";
 
 const Main = () => {
     return (
         <div>
-            <h2>Main</h2>
+            <MainBlock/>
         </div>
     );
 };
