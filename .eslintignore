@@ -1,0 +1,5 @@
+/node_modules
+/husky
+eslintrc.cjs
+vite.config.js
+eslint.config.js

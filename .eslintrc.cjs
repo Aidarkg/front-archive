@@ -35,22 +35,7 @@ module.exports = {
     'no-useless-computed-key': 'error',
     'no-whitespace-before-property': 'error',
     'react-hooks/exhaustive-deps': 0,
-    'import/no-duplicates': 'error',
-    'import/first': ['error', 'absolute-first'],
-    'import/order': [
-      'error',
-      {
-        groups: [
-          'builtin',
-          'external',
-          'internal',
-          'parent',
-          'sibling',
-          'index',
-          'object',
-        ],
-      },
-    ],
+    'react/prop-types': 'off',
     'react/jsx-no-target-blank': 'off',
     'react-refresh/only-export-components': [
       'warn',

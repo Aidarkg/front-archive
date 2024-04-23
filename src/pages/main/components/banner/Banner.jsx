@@ -5,7 +5,7 @@ export const Banner = () => {
       <div className={s.banner}>
          <div className={s.banner__inner}>
             <div className={s.banner__inner__img}>
-               <img src={gerd}  alt=""/>
+               <img src={gerd} alt=""/>
             </div>
             <div className={s.banner__inner__text}>
                <h2>Здание архива Кыргызской Республики </h2>
