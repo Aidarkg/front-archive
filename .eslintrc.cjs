@@ -14,7 +14,6 @@ module.exports = {
   rules: {
     "quotes": ["error", "double"],
     "jsx-quotes": ["error", "prefer-double"],
-    "indent": ["warn", 3],
     "max-len": ["error", {"code": 120}],
     "semi": ["warn", "always"],
     eqeqeq: ['error', 'always', { null: 'ignore' }],
@@ -32,25 +31,9 @@ module.exports = {
       'error',
       { ignoreEOLComments: true, exceptions: { PropertyAssignment: false } },
     ],
-    'no-useless-computed-key': 'error',
     'no-whitespace-before-property': 'error',
     'react-hooks/exhaustive-deps': 0,
-    'import/no-duplicates': 'error',
-    'import/first': ['error', 'absolute-first'],
-    'import/order': [
-      'error',
-      {
-        groups: [
-          'builtin',
-          'external',
-          'internal',
-          'parent',
-          'sibling',
-          'index',
-          'object',
-        ],
-      },
-    ],
+    'react/prop-types': 'off',
     'react/jsx-no-target-blank': 'off',
     'react-refresh/only-export-components': [
       'warn',
