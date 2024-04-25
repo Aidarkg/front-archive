@@ -1,11 +1,21 @@
-import { MainBlock } from "./components/mainBlock/MainBlock.jsx";
-import { CustomInput } from "../../components/customInput/CustomInput.jsx";
+import { Banner } from "./section/banner/Banner.jsx";
+import { ArchiveStatement } from "./section/archiveStatement/ArchiveStatement.jsx";
+import { Gallery } from "./section/gallery/Gallery.jsx";
+import { Codex } from "./section/codex/Codex.jsx";
+import { Management } from "./section/management/Management.jsx";
+import { Services } from "./section/services/Services.jsx";
+import { HelpSection } from "./section/helpSection/HelpSection.jsx";
 
 export const Main = () => {
    return (
       <div>
-         <MainBlock />
-         <CustomInput />
+         <Banner />
+         <ArchiveStatement />
+         <Gallery />
+         <Codex />
+         <Management />
+         <Services />
+         <HelpSection />
       </div>
    );
 };

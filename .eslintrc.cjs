@@ -14,7 +14,6 @@ module.exports = {
   rules: {
     "quotes": ["error", "double"],
     "jsx-quotes": ["error", "prefer-double"],
-    "indent": ["warn", 3],
     "max-len": ["error", {"code": 120}],
     "semi": ["warn", "always"],
     eqeqeq: ['error', 'always', { null: 'ignore' }],
@@ -32,7 +31,6 @@ module.exports = {
       'error',
       { ignoreEOLComments: true, exceptions: { PropertyAssignment: false } },
     ],
-    'no-useless-computed-key': 'error',
     'no-whitespace-before-property': 'error',
     'react-hooks/exhaustive-deps': 0,
     'react/prop-types': 'off',
