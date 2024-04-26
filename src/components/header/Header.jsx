@@ -22,9 +22,10 @@ export const Header = () => {
                </ul>
             </nav>
             <ul className={s.header__languages_list}>
-               <li>РУС</li>
-               <li>КЫР</li>
-               <li>ENG</li>
+               {/* Добавила lang атрибуты для улучшения SEO */}
+                  <li lang="ru">РУС</li>
+                  <li lang="ky">КЫР</li>
+                  <li lang="en">ENG</li>
             </ul>
             <input className={s.header__input} type="search" placeholder="Поиск по сайту" />
          </div>
