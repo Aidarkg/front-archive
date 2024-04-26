@@ -1,3 +1,5 @@
 export const Codex = () => {
-   return <div></div>;
+   return <div>
+      Codex
+   </div>;
 };
