@@ -49,3 +49,5 @@ export const Header = () => {
    </ul>
 </header>
 </section> */}
+
+//FIX ME нужно создать пересоздать переиспользуемый инпут 

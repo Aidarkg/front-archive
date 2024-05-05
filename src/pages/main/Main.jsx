@@ -8,7 +8,7 @@ import { HelpSection } from "./section/helpSection/HelpSection.jsx";
 
 export const Main = () => {
    return (
-      <div>
+      <section>
          <Banner />
          <ArchiveStatement />
          <Gallery />
@@ -16,8 +16,9 @@ export const Main = () => {
          <Management />
          <Services />
          <HelpSection />
-      </div>
+      </section>
    );
 };
 
 export default Main;
+// FIX ME исправить export и привести как все компоненты в единый стиль

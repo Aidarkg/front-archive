@@ -50,3 +50,4 @@ export const Gallery = () => {
         </div>
     </section>;
 };
+//FIX ME использовать useMemo
