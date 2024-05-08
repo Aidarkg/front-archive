@@ -1,6 +1,7 @@
-// import img from "./images/hero-bg@2x.png";
 import img1 from "./images/symbol.svg";
 import css from "./Banner.module.sass";
+import { DropRightBtn } from "./dropRightBtn/DropRightBtn";
+
 
 export const Banner = () => {
    return (
@@ -12,7 +13,7 @@ export const Banner = () => {
          </div>
          <p className={css.p}>С ДРУГОЙ СТОРОНЫ, СУЩЕСТВУЮЩАЯ ТЕОРИЯ ПОЗВОЛЯЕТ ОЦЕНИТЬ ЗНАЧЕНИЕ 
                <br/> УКРЕПЛЕНИЯ МОРАЛЬНЫХ ЦЕННОСТЕЙ.ВНЕЗАПНО, ДЕЙСТВИЯ ПРЕДСТАВИТЕЛЕЙ</p>
-         <button className={css.btnAskq}>ЗАДАТЬ ВОПРОС</button>  
+         <DropRightBtn />  
       </section>
    );
 };
