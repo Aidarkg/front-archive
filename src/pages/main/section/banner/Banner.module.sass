@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap')
+
 .banner 
     box-sizing: border-box
     background-image: url('./images/hero-bg@2x.png')
@@ -5,46 +7,65 @@
     background-position: center
     display: flex
     justify-content: center
-    align-items: center    
+    align-items: center  
+    flex-wrap: wrap  
     max-width: 1440px    
     height: 809px          
     margin: 0 auto
     p
         font-weight: 600
         font-size: 13px
-        line-height: 16.9px
-        letter-spacing: 3%
+        line-height: 17.9px
+        letter-spacing: 6%
         text-align: center
-        color: white
-
+        width: 664px
+        height: 34px
+        color: white      
+         
 .main
     display: wrap        
     flex-wrap: wrap      
     align-items: center    
     width: 674px
-    height: 284px
-    margin: 120px 300px 172px   
-    img1
-        display: flex
-        justify-content: center
-        width: 160px
-        height: 160px        
+    height: 380px
+    margin: 120px 400px            
     h1
          font-weight: 700
-         font-size: 30px
+         font-size: 30px         
+         font-family: "Merriweather", serif
+         font-style: normal
          line-height: 39px
-         align-items: center
+         text-align: center
+         margin: 50px auto         
          color: #FFFFFF
-    btnDetail
+.img1
+    display: block
+    margin-left: auto
+    margin-right: auto
+    width: 160px
+    height: 160px 
+.btnDetail
          width: 664px
-         height: 40px
-         padding-top: 30px
-         background-color: rgb(255, 255, 255) 
-         padding: 40px  
-         border-radius: 20px 
+         height: 40px         
+         margin-top: 2px
+         padding: 0 25px 
+         background-color: rgb(255, 255, 255)          
+         border-radius: 10px 
          &:hover 
-              background-color: rgb(247, 247, 247)     
-    
+              background-color: grey     
+.btnAskq
+       width: 180px
+       height: 40px       
+       margin-left: 1255px
+       margin-bottom: 500px
+       border-radius: 5px
+       position: static
+       float: right
+       font-weight: 600    
+       background-color: rgb(0, 62, 104)
+       color: white
+       &:hover
+            background-color: rgb(85, 147, 189)
          
 
 
