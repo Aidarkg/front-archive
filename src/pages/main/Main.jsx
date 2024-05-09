@@ -1,4 +1,4 @@
-import { Banner } from "./section/banner/Banner.jsx";
+import { Banner } from "../../components/banner/Banner.jsx";
 export const Main = () => {
    return (
       <section>
