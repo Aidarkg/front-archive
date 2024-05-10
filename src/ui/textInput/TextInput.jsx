@@ -1,13 +1,15 @@
 import React from "react";
 export const TextInput = React.forwardRef(({
     type,
-    placeholder
+    placeholder,
+    ...rest
  }, ref) => {
    return (
        <input
-           ref={ref}
            type={type}
            placeholder={placeholder}
+           ref={ref}
+           {...rest}
        />
    );
 });

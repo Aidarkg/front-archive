@@ -1,5 +1,4 @@
 import { QuestionForm } from "./questionForm/QuestionForm.jsx";
-
 export const Faq = () => {
    return (
       <div>
