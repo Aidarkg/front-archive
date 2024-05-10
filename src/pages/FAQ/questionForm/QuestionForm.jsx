@@ -10,7 +10,7 @@ export const QuestionForm = () => {
    } = useForm();
 
    const onSubmit = (data) => {
-      console.log(data);
+      console.error(data);
    };
 
    return (
