@@ -2,37 +2,36 @@ export const NavbarList = [
    {
       id: 1,
       caption: "Главная",
-      route: "/"
+      route: "/",
    },
    {
       id: 2,
       caption: "Об архиве",
-      route: "/aboutArchive"
+      route: "/aboutArchive",
    },
    {
       id: 3,
-      caption: "Прейскурант цен",
-      route: "/priceList"
+      caption: "Медиа-архив",
+      route: "/mediaArchive",
    },
    {
       id: 4,
-      caption: "Новости",
-      route: "/news"
+      caption: "НПА",
+      route: "/npa",
    },
    {
       id: 5,
-      caption: "Нормативная база",
-      route: "/normativeBase"
+      caption: "Услуги",
+      route: "/services",
    },
    {
       id: 6,
       caption: "FAQ",
-      route: "/faq"
+      route: "/faq",
    },
    {
       id: 7,
-      caption: "Адрес",
-      route: "/address"
+      caption: "Контакты",
+      route: "/contacts",
    },
-
 ];

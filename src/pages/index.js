@@ -1,9 +1,9 @@
-import { AboutArchive } from "./aboutArchive/AboutArchive.jsx";
 import { Faq } from "./FAQ/Faq.jsx";
 import { Main } from "./main/Main.jsx";
-import { PriceList } from "./priceList/PriceList.jsx";
-import { News } from "./news/News.jsx";
-import { NormativeBase } from "./normativeBase/NormativeBase.jsx";
-import { Address } from "./address/Address.jsx";
+import { MediaArchive } from "./mediaArchive/mediaArchive.jsx";
+import { Contacts } from "./contacts/Contacts.jsx";
+import { Npa } from "./npa/Npa.jsx";
+import { Services } from "./services/Services.jsx";
+import { AboutArchive } from "./aboutArchive/AboutArchive.jsx";
 
-export { Main, AboutArchive, PriceList, News, NormativeBase, Faq, Address };
+export { Main, Faq, MediaArchive, Contacts, Npa, AboutArchive, Services };

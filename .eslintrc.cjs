@@ -14,7 +14,6 @@ module.exports = {
   rules: {
     "quotes": ["error", "double"],
     "jsx-quotes": ["error", "prefer-double"],
-    "max-len": ["error", {"code": 120}],
     "semi": ["warn", "always"],
     eqeqeq: ['error', 'always', { null: 'ignore' }],
     'no-restricted-syntax': [
@@ -26,7 +25,6 @@ module.exports = {
     ],
     'no-var': 'error',
     'no-self-compare': 'error',
-    'no-eval': 'error',
     'no-multi-spaces': [
       'error',
       { ignoreEOLComments: true, exceptions: { PropertyAssignment: false } },

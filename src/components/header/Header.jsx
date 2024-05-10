@@ -14,40 +14,24 @@ export const Header = () => {
                <ul className={s.header__nav_list}>
                   {NavbarList.map(item => (
                      <li key={item.id}>
-                        <NavLink to={item.route}>
-                           {item.caption}
-                        </NavLink>
+                        <NavLink to={item.route}>{item.caption}</NavLink>
                      </li>
-                  )).slice(0, 5)}
+                  ))}
                </ul>
             </nav>
             <ul className={s.header__languages_list}>
-               {/* Добавила lang атрибуты для улучшения SEO */}
-                  <li lang="ru">РУС</li>
-                  <li lang="ky">КЫР</li>
-                  <li lang="en">ENG</li>
+               <li lang="ru">РУС</li>
+               <li lang="ky">КЫР</li>
+               <li lang="en">ENG</li>
             </ul>
-            <input className={s.header__input} type="search" placeholder="Поиск по сайту" />
+            <input
+               className={s.header__input}
+               type="search"
+               placeholder="Поиск по сайту"
+            />
          </div>
       </header>
    );
 };
 
-
-
-
-{/* <section className={s.container}>
-<header className={s.navbar}>
-   <ul>
-      <li>
-         {NavbarList.map(item => (
-            <Link to={item.route} key={item.id}>
-               {item.caption}
-            </Link>
-         ))}
-      </li>
-   </ul>
-</header>
-</section> */}
-
-//FIX ME нужно создать пересоздать переиспользуемый инпут 
+//FIX ME нужно создать пересоздать переиспользуемый инпут
