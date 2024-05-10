@@ -12,6 +12,7 @@ module.exports = {
   settings: { react: { version: '18.2' } },
   plugins: ['react-refresh'],
   rules: {
+    //
     "quotes": ["error", "double"],
     "jsx-quotes": ["error", "prefer-double"],
     "semi": ["warn", "always"],
@@ -24,12 +25,7 @@ module.exports = {
       },
     ],
     'no-var': 'error',
-    'no-self-compare': 'error',
-    'no-multi-spaces': [
-      'error',
-      { ignoreEOLComments: true, exceptions: { PropertyAssignment: false } },
-    ],
-    'no-whitespace-before-property': 'error',
+    'no-self-compare': 'error', //?
     'react-hooks/exhaustive-deps': 0,
     'react/prop-types': 'off',
     'react/jsx-no-target-blank': 'off',
