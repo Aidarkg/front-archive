@@ -1,7 +1,10 @@
+import { Accardion } from "../../ui/Accordion/Accordion";
+import { faqList } from "./scripts/AccardionMenu";
+
 export const Faq = () => {
    return (
-      <div>
-         <h2>FAQ</h2>
-      </div>
+      <section className="container">
+         <Accardion faqList={faqList} />
+      </section>
    );
 };
