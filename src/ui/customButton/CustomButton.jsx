@@ -10,6 +10,9 @@ export const CustomButton = ({ text, icon, to, onClick, actionType, buttonStyle,
         case "blue":
             buttonClassName = s.customButtonBlue;
             break;
+        case "lightBlue":
+            buttonClassName = s.customButtonLightBlue;
+            break;
         case "withBorder":
             buttonClassName = s.customButtonWithBorder;
             break;
