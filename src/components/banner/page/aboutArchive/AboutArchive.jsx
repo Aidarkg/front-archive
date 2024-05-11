@@ -1,8 +1,8 @@
 
 export const AboutArchive = () => {
   return (
-    <div>
+    <section>
        <h2>Об архиве</h2>
-    </div>
+    </section>
   );
 };
