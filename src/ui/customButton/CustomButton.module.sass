@@ -1,0 +1,34 @@
+.customButton
+    display: inline-flex
+    gap: 4px
+    border-radius: 4px
+    padding: 10px 16px
+    transition: background-color 0.3s ease
+
+    &Grey
+        background-color: var(--grey200)
+        color: var(--grey500)
+
+        &:hover
+            background-color: var(--grey100)
+
+    &LightBlue
+        background-color: var(--blue300)
+        color: var(--main)
+
+        &:hover
+            background-color: var(--blue200)
+    &Blue
+        background-color: var(--blue400)
+        color: var(--main)
+
+        &:hover
+            background-color: var(--blue200)
+
+    &WithBorder
+        border: 1.5px solid var(--blue300)
+        color: var(--blue300)
+        background-color: var(--main)
+
+        &:hover
+            background-color: var(--grey200)
