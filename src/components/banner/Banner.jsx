@@ -1,7 +1,7 @@
 import img1 from "./images/symbol.svg";
 import css from "./Banner.module.sass";
 import { DetailBtn } from "./detailBtn/DetailBtn";
-import img2 from "./images/question-line.svg";
+
 
 export const Banner = () => {
    return (
@@ -12,13 +12,7 @@ export const Banner = () => {
              <DetailBtn />
          </div>
          <p className={css.p}>С ДРУГОЙ СТОРОНЫ, СУЩЕСТВУЮЩАЯ ТЕОРИЯ ПОЗВОЛЯЕТ ОЦЕНИТЬ ЗНАЧЕНИЕ 
-               <br/> УКРЕПЛЕНИЯ МОРАЛЬНЫХ ЦЕННОСТЕЙ.ВНЕЗАПНО, ДЕЙСТВИЯ ПРЕДСТАВИТЕЛЕЙ</p>
-         <button 
-              className={css.btnAskq}
-              >
-              ЗАДАТЬ ВОПРОС
-              <img src={img2}/>
-         </button>           
+               <br/> УКРЕПЛЕНИЯ МОРАЛЬНЫХ ЦЕННОСТЕЙ.ВНЕЗАПНО, ДЕЙСТВИЯ ПРЕДСТАВИТЕЛЕЙ</p>                    
       </section>
    );
 };
