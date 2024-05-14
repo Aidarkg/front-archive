@@ -3,7 +3,7 @@ import s from "./CustomButton.module.sass";
 import { Typography } from "../../Typography/Typography.jsx";
 
 
-export const CustomButton = ({ text, icon, to, onClick, actionType, buttonStyle, type }) => {
+export const CustomButton = ({ text, icon, to, onClick, actionType, buttonStyle, type, style }) => {
     const ButtonComponent = actionType === "link" ? Link : "button";
     let buttonClassName;
     switch (buttonStyle) {
@@ -21,7 +21,7 @@ export const CustomButton = ({ text, icon, to, onClick, actionType, buttonStyle,
 
     }
     return (
-        <ButtonComponent to={to} onClick={onClick} type={type} className={`${s.customButton} ${buttonClassName}`}>
+        <ButtonComponent to={to} onClick={onClick} type={type} className={`${s.customButton} ${buttonClassName}`} style={style}>
             <Typography variant="h6"> {text}</Typography>
             {icon &&
                 <img src={icon} alt="icon"/>
