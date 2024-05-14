@@ -18,21 +18,27 @@ export const QuestionForm = () => {
          <Typography variant="h1" color="blue500">Задайте свой вопрос</Typography>
          <form onSubmit={handleSubmit(onSubmit)}>
             <div>
+               <label htmlFor="myInput">Номер телефона</label>
                <TextInput
+                   id="myInput"
                    type="number"
                    placeholder="+996"
                    {...register("number")}
                />
             </div>
             <div>
+               <label htmlFor="myInput">ФИО</label>
                <TextInput
+                   id="myInput"
                    type="text"
                    placeholder="Иванов Иван Иванович"
                    {...register("userName")}
                />
             </div>
             <div>
+               <label htmlFor="myInput">Почта</label>
                <TextInput
+                   id="myInput"
                    type="email"
                    placeholder="Введите почту"
                    {...register("email")}

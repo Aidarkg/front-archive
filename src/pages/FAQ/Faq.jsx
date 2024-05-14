@@ -1,9 +1,14 @@
 import { QuestionForm } from "./questionForm/QuestionForm.jsx";
+import { Accardion } from "../../ui/Accordion/Accordion";
+import { faqList } from "./scripts/AccardionMenu";
+import s from "./Faq.module.sass";
 export const Faq = () => {
    return (
-      <div>
-         <h2>FAQ</h2>
-         <QuestionForm />
-      </div>
+      <section className="container">
+        <div className={s.faq}>
+            <Accardion faqList={faqList} />
+            <QuestionForm />
+        </div>
+      </section>
    );
 };
