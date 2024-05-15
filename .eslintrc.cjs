@@ -12,8 +12,7 @@ module.exports = {
   settings: { react: { version: '18.2' } },
   plugins: ['react-refresh'],
   rules: {
-    //
-    "quotes": ["error", "double"],
+    // "quotes": ["error", "double"],
     "jsx-quotes": ["error", "prefer-double"],
     "semi": ["warn", "always"],
     eqeqeq: ['error', 'always', { null: 'ignore' }],

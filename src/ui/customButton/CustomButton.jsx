@@ -21,8 +21,8 @@ export const CustomButton = ({ text, icon, to, onClick, actionType, buttonStyle,
 
     }
     return (
-        <ButtonComponent to={to} onClick={onClick} type={type} className={`${s.customButton} ${buttonClassName}`}>
-            <Typography variant="h6"> {text}</Typography>
+        <ButtonComponent to={to} onClick={onClick} type={type} className={`${s.customButton} ${buttonClassName} `}>
+            <Typography variant="h6">{text}</Typography>
             {icon &&
                 <img src={icon} alt="icon"/>
             }
