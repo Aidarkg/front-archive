@@ -2,6 +2,7 @@ import { Banner } from "../../components/banner/Banner.jsx";
 import { faqList } from "../FAQ/scripts/AccardionMenu.jsx";
 import personFaq from "../../pages/FAQ/img/personFaq.svg";
 import { Accardion } from "../../ui/Accordion/Accordion.jsx";
+import {CustomButton} from "../../ui/customButton/CustomButton.jsx";
 
 export const Main = () => {
    const trimmedFaqList = [
