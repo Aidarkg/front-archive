@@ -1,24 +1,25 @@
 import s from "./CustomCard.module.sass";
-import dateIcon from "../icons/calendar.svg";
-import imageIcon from "../icons/image.svg";
 import {Typography} from "../../Typography/Typography.jsx";
+import {ImageIcon} from "../../assets/icons/ImageIcon.jsx";
+import {CalendarIcon} from "../../assets/icons/CalendarIcon.jsx";
 
-export const CustomCard = ({image, date, description, imageCount}) => {
+export const CustomCard = ({image, date, description, imageCount, isLargeCard, gridColumn, gridRow}) => {
     return (
-        <div className={s.customCard}>
+        <div className={`${s.customCard} ${isLargeCard ? s.largeCard : " "}`} style={{gridColumn, gridRow}}>
             <div>
-                <img className={s.customCardImage} src={image} alt="publication"/>
+                <img className={`${s.customCardImage} ${isLargeCard ? s.largeImage : " "}`}
+                     src={image} alt="publication"/>
             </div>
             <div className={s.customCardInfo}>
                 <div className={s.customCardExtraInfo}>
                     <div className={s.customCardExtraInfoDate}>
-                        <img src={dateIcon} alt="date icon"/>
+                        <CalendarIcon/>
                         <Typography
                             variant="extraSmallBody">{date}</Typography>
                     </div>
                     {imageCount && (
                         <div className={s.customCardExtraInfoImg}>
-                            <img src={imageIcon} alt="date icon"/>
+                            <ImageIcon/>
                             <Typography
                                 variant="extraSmallBody">{imageCount} фото</Typography>
                         </div>

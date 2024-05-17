@@ -10,6 +10,10 @@ const LayoutRoutes = () => {
          <Route path="/services" element={<LayoutPages.Services />} />
          <Route path="/faq" element={<LayoutPages.Faq />} />
          <Route path="/contacts" element={<LayoutPages.Contacts />} />
+         <Route path="/publications" element={<LayoutPages.Publications />} />
+         <Route path="/photo" element={<LayoutPages.Photo />} />
+         <Route path="/video" element={<LayoutPages.Video />} />
+
       </Routes>
    );
 };
