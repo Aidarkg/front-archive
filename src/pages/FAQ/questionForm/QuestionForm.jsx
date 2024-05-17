@@ -1,10 +1,10 @@
-import { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { Typography } from '../../../Typography/Typography.jsx';
-import { TextInput } from '../../../ui/textInput/TextInput.jsx';
-import { CustomButton } from '../../../ui/customButton/CustomButton.jsx';
-import s from './QuestionForm.module.sass';
-import { MessageTextarea } from '../messageTextarea/MessageTextarea.jsx';
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { Typography } from "../../../Typography/Typography.jsx";
+import { TextInput } from "../../../ui/textInput/TextInput.jsx";
+import { CustomButton } from "../../../ui/customButton/CustomButton.jsx";
+import s from "./QuestionForm.module.sass";
+import { MessageTextarea } from "../messageTextarea/MessageTextarea.jsx";
 
 export const QuestionForm = () => {
    const {
@@ -13,7 +13,7 @@ export const QuestionForm = () => {
       formState: { errors },
       reset,
    } = useForm({
-      mode: 'onBlur',
+      mode: "onBlur",
    });
 
    const [characterCount, setCharacterCount] = useState(0);
@@ -40,10 +40,10 @@ export const QuestionForm = () => {
                 <TextInput
                     id="phoneNumber"
                     type="text"
-                    {...register('number', {
+                    {...register("number", {
                        pattern: {
                           value: /^\+996\d{9}$/,
-                          message: 'Неправильный формат номера',
+                          message: "Неправильный формат номера",
                        },
                     })}
                     placeholder="+996"
@@ -58,8 +58,8 @@ export const QuestionForm = () => {
                 <TextInput
                     id="name"
                     type="text"
-                    {...register('username', {
-                       required: 'Это поле обязательное!'
+                    {...register("username", {
+                       required:"Это поле обязательное!"
                     })}
                     placeholder="Иванов Иван Иванович"
                 />
@@ -72,11 +72,11 @@ export const QuestionForm = () => {
                 <TextInput
                     id="email"
                     type="email"
-                    {...register('email', {
-                       required: 'Это поле обязательное!',
+                    {...register("email", {
+                       required: "Это поле обязательное!",
                        pattern: {
                           value:  /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu,
-                          message: 'Неправильный формат почты',
+                          message: "Неправильный формат почты",
                        },
                     })}
                     placeholder="Введите почту"
@@ -90,8 +90,8 @@ export const QuestionForm = () => {
                     maxLength="300"
                     id="text"
                     placeholder="Введите текст"
-                    register={register('text', {
-                       required: 'Это поле обязательное!',
+                    register={register("text", {
+                       required: "Это поле обязательное!",
                     })}
                     errors={errors.text}
                     label="Ваш вопрос"
@@ -102,8 +102,8 @@ export const QuestionForm = () => {
              <CustomButton
                  buttonStyle="blue"
                  type="submit"
-                 text={'ОТПРАВИТЬ ВОПРОС'}
-                 style={{ width: '91.24%' }}
+                 text={"ОТПРАВИТЬ ВОПРОС"}
+                 style={{ width: "100%" }}
              />
           </form>
        </section>
