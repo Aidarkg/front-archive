@@ -4,8 +4,6 @@ import personFaq from "../../pages/FAQ/img/personFaq.svg";
 import { Accardion } from "../../ui/Accordion/Accordion.jsx";
 import {MainGallery} from "./mainGallery/MainGallery.jsx";
 
-
-
 export const Main = () => {
    const trimmedFaqList = [
       faqList[0],

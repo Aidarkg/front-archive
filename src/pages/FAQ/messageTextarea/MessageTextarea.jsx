@@ -1,11 +1,21 @@
 import { Typography } from '../../../Typography/Typography.jsx';
 import s from "./MessageTextarea.module.sass";
 
-export const MessageTextarea = ({ id, placeholder, register, errors, label, characterCount, handleTextareaChange }) => {
+export const MessageTextarea = ({
+    id,
+    placeholder,
+    register,
+    errors,
+    label,
+    characterCount,
+    handleTextareaChange,
+    maxLength
+}) => {
     return (
         <div>
             <label htmlFor={id}>{label}</label>
             <textarea
+                maxLength={maxLength}
                 id={id}
                 placeholder={placeholder}
                 {...register}

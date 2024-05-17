@@ -1,7 +1,7 @@
 import {Typography} from "../../Typography/Typography.jsx";
 import s from "./Photo.module.sass";
 import akaev from "../../assets/images/akaev.png";
-import img from "../../assets/images/japarov.webp"
+import img from "../../assets/images/japarov.webp";
 import {ArchivePhoto} from "./archivePhoto/ArchivePhoto.jsx";
 import {CustomCard} from "../../ui/customCard/CustomCard.jsx";
 

@@ -1,4 +1,4 @@
-import s from "./PublicationBlock.module.sass"
+import s from "./PublicationBlock.module.sass";
 import {Typography} from "../../../Typography/Typography.jsx";
 import {CustomCard} from "../../../ui/customCard/CustomCard.jsx";
 import {CustomButton} from "../../../ui/customButton/CustomButton.jsx";

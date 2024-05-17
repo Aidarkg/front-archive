@@ -1,7 +1,7 @@
-import s from "./Video.module.sass"
+import s from "./Video.module.sass";
 import {Typography} from "../../Typography/Typography.jsx";
 import {CustomCard} from "../../ui/customCard/CustomCard.jsx";
-import img from "../../assets/images/japarov.webp"
+import img from "../../assets/images/japarov.webp";
 
 const videoContent = [
     {
