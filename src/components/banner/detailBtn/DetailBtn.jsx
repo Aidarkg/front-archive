@@ -9,6 +9,7 @@ export const DetailBtn = () => {
           <button className={css.btnDetail}>ПОДРОБНЕЕ ОБ АРХИВЕ
              <ArrowRight />
           </button>
+           <ArrowRight/>
        </Link>
     </section>
   );
