@@ -2,7 +2,6 @@ import img1 from "./images/symbol.svg";
 import css from "./Banner.module.sass";
 import { DetailBtn } from "./detailBtn/DetailBtn";
 
-
 export const Banner = () => {
    return (
       <section className={css.banner}>         
