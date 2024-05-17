@@ -1,19 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap')
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap')
+
+.main 
+    background-color: #f7f7f7
+    padding: 40px
+    h1
+      width: 214px
+      height: 52px
+      margin-left: 40px
+      font-weight: 700
+      font-size: 40px         
+      font-family: "Merriweather", serif 
 .contentContainer 
               display: flex
               flex-wrap: wrap
-              justify-content: space-between
-              background: D4D4D4
+              justify-content: center 
+              gap: 24px             
+              width: 1360px                
+              margin-top: 48px
+              margin-left: auto
+              margin-right: auto
+              
 .contentBlock
-           width: 1360px
+           display: grid
+           grid-template-columns: 50% 50%
+           justify-content: center        
            margin-bottom: 5px
            border: 1px solid
-           padding: 20px
-           text 
-               margin-bottom: 10px
-           image 
-               text-align: center  
-.image 
-      &img
-         max-width: 100%
-         height: auto
-      
+           border-radius: 16px
+           padding: 0px
+.left,.right
+    padding: 77px 32px
+.heading
+       width: 632px
+       height: 78px 
+       font-weight: 700
+       font-size: 30px
+       font-family: "Merriweather", serif
+.text 
+      margin: 16px auto 
+      width: 632px
+      height: 126px
+      font-weight: 400
+      font-size: 16px  
+      font-family: "Inter", sans-serif 
+      font-style: normal        
+      letter-spacing: 0px        
+      color: rgb(72, 72, 72)
+.image
+         width: 664px
+         height: 390px
+         float: right
+         border: 1px solid
+         border-radius: 0px 16px 16px 0px
+         
+.leftImage
+       float: left
+       width: 664px
+       height: 390px
+       border: 1px solid
+       border-radius: 16px 0px 0px 16px
