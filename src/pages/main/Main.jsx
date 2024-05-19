@@ -2,7 +2,8 @@ import { Banner } from "../../components/banner/Banner.jsx";
 import { faqList } from "../FAQ/scripts/AccardionMenu.jsx";
 import personFaq from "../../pages/FAQ/img/personFaq.svg";
 import { Accardion } from "../../ui/Accordion/Accordion.jsx";
-import {MainGallery} from "./mainGallery/MainGallery.jsx";
+import { MainGallery } from "./mainGallery/MainGallery.jsx";
+import { Organizations } from "./organizations/Organizations.jsx";
 
 export const Main = () => {
    const trimmedFaqList = [
@@ -15,11 +16,12 @@ export const Main = () => {
    return (
       <section>
          <Banner />
-          <MainGallery/>
-         <div className="container" style={{ display: "flex", gap: "148px"}}>
+         <MainGallery />
+         <div className="container" style={{ display: "flex", gap: "148px", alignItems: "center", marginBottom: "80px" }}>
             <Accardion faqList={trimmedFaqList} />
-            <img style={{marginTop: "80px",}} src={personFaq} alt="personFaq" />
+            <div><img src={personFaq} alt="personFaq" /></div>
          </div>
+         <Organizations />
       </section>
    );
 };
