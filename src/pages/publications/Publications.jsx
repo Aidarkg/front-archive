@@ -2,93 +2,102 @@ import s from "./Publications.module.sass";
 import {Typography} from "../../Typography/Typography.jsx";
 import {CustomCard} from "../../ui/customCard/CustomCard.jsx";
 import img from "../../assets/images/japarov.webp";
+import {useNavigate} from "react-router-dom";
 
 const publicationContent = [
     {
-        description: " йцукенгшщСадыр Жапаров выпустил приказ по созданию общегосударственной архивной уцыквеанпгшр",
+        id:1,
+        title: " йцукенгшщСадыр Жапаров выпустил приказ по созданию общегосударственной архивной уцыквеанпгшр",
         image: img,
         date: "12.09.2023",
     },
 
     {
-        description: "Садыр Жапаров выпустил приказ по созданию общегосударственной архивйцукенгйцукенгшш",
+        id:2,
+        title: "Садыр Жапаров выпустил приказ по созданию общегосударственной архивйцукенгйцукенгшш",
         image: img,
         date: "12.09.2023",
     },
     {
-        description: "Садыр Жапаров выпустил приказ по созданию общегосударственной архив...",
+        id:3,
+        title: "Садыр Жапаров выпустил приказ по созданию общегосударственной архив...",
         image: img,
         date: "12.09.2023",
     },
     {
-        description: "Садыр Жапаров выпустил приказ по созданию общегосударственной архив...",
+        id:4,
+        title: "Садыр Жапаров выпустил приказ по созданию общегосударственной архив...",
         image: img,
         date: "12.09.2023",
     },
     {
-        description: "Садыр Жапаров выпустил приказ по созданию общегосударственной архив...",
+        id:5,
+        title: "Садыр Жапаров выпустил приказ по созданию общегосударственной архив...",
         image: img,
         date: "12.09.2023",
     },
     {
-        description: "Садыр Жапаров выпустил приказ по созданию общегосударственной архив...",
+        id:6,
+        title: "Садыр Жапаров выпустил приказ по созданию общегосударственной архив...",
         image: img,
         date: "12.09.2023",
     },
     {
-        description: "Садыр Жапаров выпустил приказ по созданию общегосударственной архив...",
+        id:7,
+        title: "Садыр Жапаров выпустил приказ по созданию общегосударственной архив...",
         image: img,
         date: "12.09.2023",
     },
     {
-        description: "Садыр Жапаров выпустил приказ по созданию общегосударственной архив...",
+        id: 8,
+        title: "Садыр Жапаров выпустил приказ по созданию общегосударственной архив...",
         image: img,
         date: "12.09.2023",
     },
     {
-        description: "Садыр Жапаров выпустил приказ по созданию общегосударственной архив...",
+        id: 9,
+        title: "Садыр Жапаров выпустил приказ по созданию общегосударственной архив...",
         image: img,
         date: "12.09.2023",
     },
     {
-        description: "Садыр Жапаров выпустил приказ по созданию общегосударственной архив...",
+        id: 10,
+        title: "Садыр Жапаров выпустил приказ по созданию общегосударственной архив...",
         image: img,
         date: "12.09.2023",
     },
     {
-        description: "Садыр Жапаров выпустил приказ по созданию общегосударственной архив...",
+        id:11,
+        title: "Садыр Жапаров выпустил приказ по созданию общегосударственной архив...",
         image: img,
         date: "12.09.2023",
     },
     {
-        description: "Садыр Жапаров выпустил приказ по созданию общегосударственной архив...",
+        id: 12,
+        title: "Садыр Жапаров выпустил приказ по созданию общегосударственной архив...",
         image: img,
         date: "12.09.2023",
     },
-    {
-        description: "Садыр Жапаров выпустил приказ по созданию общегосударственной архив...",
-        image: img,
-        date: "12.09.2023",
-    },
-
 ];
 export const Publications = () => {
+    const navigate = useNavigate();
     return (
         <section>
             <div className="container">
                 <div className={s.Publications}>
                     <Typography variant="h1">Публикации</Typography>
                     <div className={s.PublicationsContent}>
-                        {publicationContent&& publicationContent.reverse().map((item, index) => (
+                        {publicationContent&& publicationContent.map((item, index) => (
                             <CustomCard
                                 key={index}
                                 image={item.image}
                                 date={item.date}
-                                description={item.description}
+                                description={item.title}
                                 imageCount={item.imageCount}
                                 isLargeCard={index === 0}
                                 gridColumn={index === 0 ? "span 2" : "auto"}
                                 gridRow={index === 0 ? "span 2" : "auto"}
+                                onClick={() => navigate(`/publications/${item.id}`)}
                             />
                         ))}
                     </div>

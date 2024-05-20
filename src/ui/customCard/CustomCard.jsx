@@ -3,9 +3,10 @@ import {Typography} from "../../Typography/Typography.jsx";
 import {ImageIcon} from "../../assets/icons/ImageIcon.jsx";
 import {CalendarIcon} from "../../assets/icons/CalendarIcon.jsx";
 
-export const CustomCard = ({image, date, description, imageCount, isLargeCard, gridColumn, gridRow}) => {
+export const CustomCard = ({onClick,image, date, description, imageCount, isLargeCard, gridColumn, gridRow,}) => {
+
     return (
-        <div className={`${s.customCard} ${isLargeCard ? s.largeCard : " "}`} style={{gridColumn, gridRow}}>
+        <div className={`${s.customCard} ${isLargeCard ? s.largeCard : " "}`} style={{gridColumn, gridRow}} onClick={onClick}>
             <div>
                 <img className={`${s.customCardImage} ${isLargeCard ? s.largeImage : " "}`}
                      src={image} alt="publication"/>
