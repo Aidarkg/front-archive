@@ -10,7 +10,7 @@ import { SearchSvg } from "../../ui/Svg/SearchSvg";
 
 import coat_of_arms from "./webp/symbol.webp";
 
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
@@ -18,6 +18,7 @@ export const Header = () => {
   const { t } = useTranslation();
   const [isInputVisible, setIsInputVisible] = useState(false);
   const [activeSubnav, setActiveSubnav] = useState(null);
+  const location = useLocation();
 
   const activeLink = ({ isActive }) => isActive ? styles.active : "";
 
@@ -42,21 +43,27 @@ export const Header = () => {
       <div className="container">
         <div className={styles.headerInner}>
           <div className={styles.headerLogo} >
-            <img src={coat_of_arms} alt="Coat of arms" />
-            <span className={styles.headerLogoTitle}>
+            <div>
+              <img src={coat_of_arms} alt="Coat of arms" />
+            </div>
+            <div className={styles.headerLogoTitle}>
               <Typography variant="h3" color="grey500">
                 {t("header&footer.logo.archivePresidentKR")}
               </Typography>
               <Typography variant="body" color="grey500">
                 {t("header&footer.logo.kyrgyzRepublic")}
               </Typography>
-            </span>
+            </div>
           </div>
           <div className={styles.rightHeader}>
             <nav className={styles.nav}>
               <ul className={styles.navList}>
                 <li
-                  className={styles.archiveList}
+                  className={`
+                      ${styles.archiveList} 
+                      ${location.pathname.includes("/aboutArchive") || location.pathname.includes("/management")
+                      ? styles.active : ""}
+                    `}
                   onClick={() => toggleSubnav("archive")}
                 >
                   <Typography className={styles.parentNav} variant="h6">
@@ -65,14 +72,14 @@ export const Header = () => {
                   <ArrowDownSvg />
                   <ul className={`${styles.subnav} ${activeSubnav === "archive" ? styles.open : ""}`}>
                     <li>
-                      <NavLink className={activeLink} to={"/aboutArchive"}>
+                      <NavLink to={"/aboutArchive"}>
                         <Typography variant="h6">
                           {t("header&footer.subnav.aboutArchive")}
                         </Typography>
                       </NavLink>
                     </li>
                     <li>
-                      <NavLink className={activeLink} to={"/management"}>
+                      <NavLink to={"/management"}>
                         <Typography variant="h6">
                           {t("header&footer.subnav.management")}
                         </Typography>
@@ -81,7 +88,11 @@ export const Header = () => {
                   </ul>
                 </li>
                 <li
-                  className={styles.mediaArchiveList}
+                  className={`
+                        ${styles.mediaArchiveList} 
+                        ${location.pathname.includes("/publications") || location.pathname.includes("/photo") || location.pathname.includes("/video")
+                        ? styles.active : ""}
+                      `}
                   onClick={() => toggleSubnav("mediaArchive")}
                 >
                   <Typography className={styles.parentNav} variant="h6">
@@ -97,14 +108,14 @@ export const Header = () => {
                       </NavLink>
                     </li>
                     <li>
-                      <NavLink className={activeLink} to={"/photo"}>
+                      <NavLink to={"/photo"}>
                         <Typography variant="h6">
                           {t("header&footer.subnav.photo")}
                         </Typography>
                       </NavLink>
                     </li>
                     <li>
-                      <NavLink className={activeLink} to={"/video"}>
+                      <NavLink to={"/video"}>
                         <Typography variant="h6">
                           {t("header&footer.subnav.video")}
                         </Typography>

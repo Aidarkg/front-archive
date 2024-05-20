@@ -9,6 +9,7 @@ export const HeaderSelect = () => {
 
     const changeLanguage = (lng) => {
         i18n.changeLanguage(lng);
+        toggleSelect(null);
     };
 
     const languages = [

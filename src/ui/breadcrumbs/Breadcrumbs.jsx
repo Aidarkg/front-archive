@@ -8,7 +8,7 @@ import { Typography } from "../../Typography/Typography";
 import { ArrowRightSvg } from "../Svg/ArrowRightSvg";
 
 
-export const Breadcrumbs = ({ currentPage, parentPageLink, currentPageId }) => {
+export const Breadcrumbs = ({ currentPage, parentPageLink, currentPageId, className }) => {
 
     const { t } = useTranslation();
 
@@ -65,7 +65,7 @@ export const Breadcrumbs = ({ currentPage, parentPageLink, currentPageId }) => {
         );
     }
 
-    return <ul className={styles.breadCrumbList}>{crumbs}</ul>;
+    return <ul className={`${styles.breadCrumbList} ${className}`}>{crumbs}</ul>;
 
 };
 
