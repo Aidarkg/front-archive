@@ -4,6 +4,7 @@ import personFaq from "../../pages/FAQ/img/personFaq.svg";
 import { Accardion } from "../../ui/Accordion/Accordion.jsx";
 import { MainGallery } from "./mainGallery/MainGallery.jsx";
 import { Organizations } from "./organizations/Organizations.jsx";
+import ContactSection from "../../components/contactSection/ContactSection.jsx";
 
 export const Main = () => {
    const trimmedFaqList = [
@@ -22,6 +23,7 @@ export const Main = () => {
             <div><img src={personFaq} alt="personFaq" /></div>
          </div>
          <Organizations />
+         <ContactSection/>
       </section>
    );
 };

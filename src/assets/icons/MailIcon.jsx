@@ -38,3 +38,5 @@ export const MailIcon = () => {
       </svg>
    );
 };
+
+export default MailIcon
