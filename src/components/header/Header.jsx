@@ -47,12 +47,14 @@ export const Header = () => {
               <img src={coat_of_arms} alt="Coat of arms" />
             </div>
             <div className={styles.headerLogoTitle}>
-              <Typography variant="h3" color="grey500">
-                {t("header&footer.logo.archivePresidentKR")}
-              </Typography>
-              <Typography variant="body" color="grey500">
-                {t("header&footer.logo.kyrgyzRepublic")}
-              </Typography>
+              <NavLink to={"/"}>
+                <Typography variant="h3" color="grey500">
+                  {t("header&footer.logo.archivePresidentKR")}
+                </Typography>
+                <Typography variant="body" color="grey500">
+                  {t("header&footer.logo.kyrgyzRepublic")}
+                </Typography>
+              </NavLink>
             </div>
           </div>
           <div className={styles.rightHeader}>
@@ -91,7 +93,7 @@ export const Header = () => {
                   className={`
                         ${styles.mediaArchiveList} 
                         ${location.pathname.includes("/publications") || location.pathname.includes("/photo") || location.pathname.includes("/video")
-                        ? styles.active : ""}
+                      ? styles.active : ""}
                       `}
                   onClick={() => toggleSubnav("mediaArchive")}
                 >
