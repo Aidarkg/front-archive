@@ -8,7 +8,7 @@ export const Accardion = ({ faqList = [] }) => {
 
    return (
       <section style={{ flexDirection: "column" }}>
-         <Typography className={css.nameFaq} variant="h2">
+         <Typography className={css.nameFaq} variant="h1" color="blue500">
             Вопросы и ответы
          </Typography>
          <ul className={css.accordion}>
