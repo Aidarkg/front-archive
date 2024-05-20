@@ -38,8 +38,9 @@ export const QuestionForm = () => {
              <div>
                 <label htmlFor="phoneNumber">Номер телефона</label>
                 <TextInput
+                    maxLength="13"
                     id="phoneNumber"
-                    type="text"
+                    type="tel"
                     {...register("number", {
                        pattern: {
                           value: /^\+996\d{9}$/,
@@ -49,7 +50,7 @@ export const QuestionForm = () => {
                     placeholder="+996"
                 />
                 {!errors?.number && <Typography className={s.note} variant="span"  color="grey500">необязательно</Typography>}
-                <Typography className={s.errors}>
+                <Typography className={s.errors} variant="span">
                    {errors?.number && errors.number.message}
                 </Typography>
              </div>
@@ -63,7 +64,7 @@ export const QuestionForm = () => {
                     })}
                     placeholder="Иванов Иван Иванович"
                 />
-                <Typography className={s.errors}>
+                <Typography className={s.errors} variant="span">
                    {errors?.username && errors.username.message}
                 </Typography>
              </div>
@@ -81,7 +82,7 @@ export const QuestionForm = () => {
                     })}
                     placeholder="Введите почту"
                 />
-                <Typography className={s.errors}>
+                <Typography className={s.errors} variant="span">
                    {errors?.email && errors.email.message}
                 </Typography>
              </div>
