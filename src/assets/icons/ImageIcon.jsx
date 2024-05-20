@@ -39,4 +39,4 @@ export const ImageIcon = () => {
    );
 };
 
-export default ImageIcon
+export default ImageIcon;

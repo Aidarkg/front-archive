@@ -40,4 +40,4 @@ export const FolderIcon = () => {
    );
 };
 
-export default FolderIcon
+export default FolderIcon;

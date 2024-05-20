@@ -39,4 +39,4 @@ export const PhoneStroke = () => {
    );
 };
 
-export default PhoneStroke
+export default PhoneStroke;

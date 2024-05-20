@@ -39,4 +39,4 @@ export const Facebook = () => {
    );
 };
 
-export default Facebook
+export default Facebook;

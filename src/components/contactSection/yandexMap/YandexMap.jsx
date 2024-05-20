@@ -9,8 +9,8 @@ const YandexMap = () => {
 
     useEffect(() => {
         if (mapRef.current && mapRef.current.events) {
-            mapRef.current.events.add("boundschange", (e) => {
-                const newCoords = e.originalEvent.newCenter;
+            mapRef.current.events.add("boundschange", () => {
+                // const newCoords = e.originalEvent.newCenter;
             });
         }
     }, []);
@@ -32,7 +32,7 @@ const YandexMap = () => {
                           iconLayout: 'default#image',
                           iconImageHref: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Yandex_Maps_icon.svg/2048px-Yandex_Maps_icon.svg.png",
                           iconImageSize: [30, 30],
-                          iconImageOffset: [-15, -15],  
+                          iconImageOffset: [-15, -15],
                           draggable: false
                         }}
                     />

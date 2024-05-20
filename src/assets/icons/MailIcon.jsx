@@ -39,4 +39,4 @@ export const MailIcon = () => {
    );
 };
 
-export default MailIcon
+export default MailIcon;

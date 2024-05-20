@@ -40,4 +40,4 @@ export const LocationIcon = () => {
    );
 };
 
-export default LocationIcon
+export default LocationIcon;
