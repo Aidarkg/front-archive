@@ -38,3 +38,5 @@ export const PhoneStroke = () => {
       </svg>
    );
 };
+
+export default PhoneStroke
