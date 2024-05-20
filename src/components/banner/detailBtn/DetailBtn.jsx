@@ -8,8 +8,7 @@ export const DetailBtn = () => {
        <Link to="/aboutArchive">
           <button className={css.btnDetail}>ПОДРОБНЕЕ ОБ АРХИВЕ
              <ArrowRight />
-          </button>
-           <ArrowRight/>
+          </button>           
        </Link>
     </section>
   );

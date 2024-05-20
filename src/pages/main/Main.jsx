@@ -3,6 +3,7 @@ import { faqList } from "../FAQ/scripts/AccardionMenu.jsx";
 import personFaq from "../../pages/FAQ/img/personFaq.svg";
 import { Accardion } from "../../ui/Accordion/Accordion.jsx";
 import {MainGallery} from "./mainGallery/MainGallery.jsx";
+import { AboutArchive } from "../aboutArchive/AboutArchive.jsx";
 
 export const Main = () => {
    const trimmedFaqList = [
@@ -15,6 +16,7 @@ export const Main = () => {
    return (
       <section>
          <Banner />
+          <AboutArchive />
           <MainGallery/>
          <div className="container" style={{ display: "flex", gap: "148px"}}>
             <Accardion faqList={trimmedFaqList} />
