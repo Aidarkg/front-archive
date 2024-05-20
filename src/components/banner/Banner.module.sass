@@ -3,15 +3,14 @@
 
 .banner 
     box-sizing: border-box
-    background-image: url('images/hero-bg@2x.png')
+    background-image: url('src/assets/images/hero-bg@2x.png')
     background-size: cover
     background-position: center
     display: flex
     justify-content: center
     align-items: center  
     flex-wrap: wrap
-    height: 100vh          
-    margin: 0 auto
+    height: 100vh
     border-radius: 5px
     p
         font-weight: 600
@@ -22,25 +21,23 @@
         text-align: center
         width: 664px
         height: 34px
-        color: rgb(255, 255, 255)    
-        margin-bottom: 15px
-         
+        color: var(--main)    
+          
 .main
     display: wrap        
-    flex-wrap: wrap      
-    align-items: center    
+    flex-direction: column      
+    justify-content: flex-start   
+    align-items: center 
     width: 674px
     height: 360px
-    margin: 120px 400px            
-    h1
-         font-weight: 700
-         font-size: 30px         
+    margin: 130px 400px 0px 400px            
+    h1                 
          font-family: "Merriweather", serif
          font-style: normal
-         line-height: 39px
+         line-height: 130%
          text-align: center
-         margin: 60px auto         
-         color: #FFFFFF
+         margin: 30px auto         
+         color: var(--main)
 .img1
     display: block
     margin-left: auto
@@ -50,23 +47,20 @@
     
 .btnDetail
          width: 664px
-         height: 40px         
-         margin-top: 2px
+         height: 40px
          display: flex
          align-items: center
          justify-content: center
          gap: 20px
          padding: 0 25px 
-         background-color: rgb(255, 255, 255)          
-         border-radius: 10px 
-         font-weight: 600
-         font-size: 13px
+         background-color: var(--main)          
+         border-radius: 10px          
          font-family: "Inter", sans-serif
          letter-spacing: 3%
          line-height: 17px
          transition: 1s
          &:hover 
-              background-color: rgb(200,200,200)     
+              background-color: var(--grey400)     
 
                 
         
