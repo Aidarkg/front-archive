@@ -51,7 +51,7 @@ export const Npa = () => {
    return (
       <section className={styles.regulations}>
          <div className="container">
-            <Breadcrumbs currentPage={t("regulationsPage.currentPage")} />
+            <Breadcrumbs className={styles.breadcrumbs} currentPage={t("regulationsPage.currentPage")} />
             <Typography className={styles.heading} variant="h1" color="blue500" >
                {t("regulationsPage.currentPage")}
             </Typography>
