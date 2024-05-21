@@ -86,8 +86,8 @@ export const Photo = () => {
                     <Typography variant="h1">Фото</Typography>
                     <div className={classes.photoArchive}>
                         {archiveImages&& archiveImages.map((image, index) => (
-                            <div className={classes.photoArchiveImage}>
-                                <img src={image.image} alt="img" key={index}/>
+                            <div className={classes.photoArchiveImage} key={index}>
+                                <img src={image.image} alt="img" />
                             </div>
                         ))}
                     </div>

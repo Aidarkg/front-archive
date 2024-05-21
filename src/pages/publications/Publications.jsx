@@ -88,17 +88,17 @@ export const Publications = () => {
                     <Typography variant="h1">Публикации</Typography>
                     <div className={classes.PublicationsContent}>
                         {publicationContent&& publicationContent.map((item, index) => (
-                            <CustomCard
-                                key={index}
-                                image={item.image}
-                                date={item.date}
-                                description={item.title}
-                                imageCount={item.imageCount}
-                                isLargeCard={index === 0}
-                                gridColumn={index === 0 ? "span 2" : "auto"}
-                                gridRow={index === 0 ? "span 2" : "auto"}
-                                onClick={() => navigate(`/publications/${item.id}`)}
-                            />
+                            <div className={classes.PublicationsContentCard}>
+                                <CustomCard
+                                    key={index}
+                                    image={item.image}
+                                    date={item.date}
+                                    description={item.title}
+                                    imageCount={item.imageCount}
+                                    isLargeCard={index === 0}
+                                    onClick={() => navigate(`/publications/${item.id}`)}
+                                />
+                            </div>
                         ))}
                     </div>
                 </div>
