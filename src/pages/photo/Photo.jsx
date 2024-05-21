@@ -1,8 +1,8 @@
 import {Typography} from "../../Typography/Typography.jsx";
-import s from "./Photo.module.sass";
+import classes from "./Photo.module.sass";
 import akaev from "../../assets/images/akaev.png";
 import img from "../../assets/images/japarov.webp";
-import {ArchivePhoto} from "./archivePhoto/ArchivePhoto.jsx";
+import {CustomPhoto} from "../../ui/customPhoto/CustomPhoto.jsx";
 import {CustomCard} from "../../ui/customCard/CustomCard.jsx";
 import {useNavigate} from "react-router-dom";
 
@@ -83,11 +83,11 @@ export const Photo = () => {
     return (
         <section>
             <div className="container">
-                <div className={s.photo}>
+                <div className={classes.photo}>
                     <Typography variant="h1">Фото</Typography>
-                    <div className={s.photoArchive}>
+                    <div className={classes.photoArchive}>
                         {archiveImages&& archiveImages.map((image, index) => (
-                            <ArchivePhoto
+                            <CustomPhoto
                                 key={index}
                                 image={image.image}
                                 isLarge={index === 2}
@@ -95,7 +95,7 @@ export const Photo = () => {
                             />
                         ))}
                     </div>
-                    <div className={s.photoContent}>
+                    <div className={classes.photoContent}>
                         {imageContent&& imageContent.map((item, index) => (
                             <CustomCard
                                 key={index}

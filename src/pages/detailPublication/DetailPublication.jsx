@@ -1,4 +1,4 @@
-import s from "./DetailPublication.module.sass";
+import classes from "./DetailPublication.module.sass";
 import {Typography} from "../../Typography/Typography.jsx";
 import {useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
@@ -9,19 +9,19 @@ export const DetailPublication = () => {
     const publicationContent = [
         {
             id: 1,
-            title: " йцукенгшщСадыр Жапаров выпустил приказ по созданию общегосударственной архивной уцыквеанпгшр",
+            title: " Садыр Жапаров выпустил приказ по созданию общегосударственной архивной службы",
             image: img,
             date: "12.09.2023",
-            description: "1 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur culpa delectus facilis, minima nesciunt officia perferendis rem saepe? Animi aperiam, doloribus eligendi excepturi fugit labore laboriosam modi possimus qui quod quos repellat tempore. Assumenda ducimus illo iure maiores numquam officiis qui tempora tempore voluptas voluptates. Cupiditate explicabo tenetur vel. Accusamus beatae commodi corporis cum ducimus, eius eos exercitationem iusto laborum nam, omnis perferendis provident, quibusdam recusandae rerum soluta vero? Blanditiis consectetur culpa deleniti, distinctio dolor ea esse fuga illo in mollitia natus, non omnis vel. Architecto, delectus, esse facilis illum ipsa modi mollitia nam odit officia quidem quo ratione, veritatis!"
+            description: "Архив Кыргызстана - это организация, ответственная за сбор, сохранение и предоставление доступа к историческим документам и архивным материалам, относящимся к истории и культуре Кыргызстана. Он играет важную роль в сохранении национального наследия и предоставлении доступа к историческим ресурсам для исследований, образования и общественности Архив Кыргызстана - это организация, ответственная за сбор, сохранение и предоставление доступа к историческим документам и архивным материалам, относящимся к истории и культуре Кыргызстана. Он играет важную роль в сохранении национального наследия и предоставлении доступа к историческим ресурсам для исследований, образования и общественности Архив Кыргызстана - это организация, ответственная за сбор, сохранение и предоставление доступа к историческим документам и архивным материалам, относящимся к истории и культуре Кыргызстана. Он играет важную роль в сохранении национального наследия и предоставлении доступа к историческим ресурсам для исследований, образования и общественности"
         },
 
         {
             id: 2,
-            title: "Садыр Жапаров выпустил приказ по созданию общегосударственной архивйцукенгйцукенгшш",
+            title: "Садыр Жапаров выпустил приказ по созданию общегосударственной архивной службы",
             image: img,
             date: "12.09.2023",
-            description: "\n" +
-                "              2      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur culpa delectus facilis, minima nesciunt officia perferendis rem saepe? Animi aperiam, doloribus eligendi excepturi fugit labore laboriosam modi possimus qui quod quos repellat tempore. Assumenda ducimus illo iure maiores numquam officiis qui tempora tempore voluptas voluptates. Cupiditate explicabo tenetur vel. Accusamus beatae commodi corporis cum ducimus, eius eos exercitationem iusto laborum nam, omnis perferendis provident, quibusdam recusandae rerum soluta vero? Blanditiis consectetur culpa deleniti, distinctio dolor ea esse fuga illo in mollitia natus, non omnis vel. Architecto, delectus, esse facilis illum ipsa modi mollitia nam odit officia quidem quo ratione, veritatis!"
+            description: "Архив Кыргызстана - это организация, ответственная за сбор, сохранение и предоставление доступа к историческим документам и архивным материалам, относящимся к истории и культуре Кыргызстана. Он играет важную роль в сохранении национального наследия и предоставлении доступа к историческим ресурсам для исследований, образования и общественности Архив Кыргызстана - это организация, ответственная за сбор, сохранение и предоставление доступа к историческим документам и архивным материалам, относящимся к истории и культуре Кыргызстана. Он играет важную роль в сохранении национального наследия и предоставлении доступа к историческим ресурсам для исследований, образования и общественности Архив Кыргызстана - это организация, ответственная за сбор, сохранение и предоставление доступа к историческим документам и архивным материалам, относящимся к истории и культуре Кыргызстана. Он играет важную роль в сохранении национального наследия и предоставлении доступа к историческим ресурсам для исследований, образования и общественности"
+
 
         },
         {
@@ -29,8 +29,7 @@ export const DetailPublication = () => {
             title: "Садыр Жапаров выпустил приказ по созданию общегосударственной архивной службы",
             image: img,
             date: "12.09.2023",
-            description: "\n" +
-                "              3      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur culpa delectus facilis, minima nesciunt officia perferendis rem saepe? Animi aperiam, doloribus eligendi excepturi fugit labore laboriosam modi possimus qui quod quos repellat tempore. Assumenda ducimus illo iure maiores numquam officiis qui tempora tempore voluptas voluptates. Cupiditate explicabo tenetur vel. Accusamus beatae commodi corporis cum ducimus, eius eos exercitationem iusto laborum nam, omnis perferendis provident, quibusdam recusandae rerum soluta vero? Blanditiis consectetur culpa deleniti, distinctio dolor ea esse fuga illo in mollitia natus, non omnis vel. Architecto, delectus, esse facilis illum ipsa modi mollitia nam odit officia quidem quo ratione, veritatis!"
+            description: "Архив Кыргызстана - это организация, ответственная за сбор, сохранение и предоставление доступа к историческим документам и архивным материалам, относящимся к истории и культуре Кыргызстана. Он играет важную роль в сохранении национального наследия и предоставлении доступа к историческим ресурсам для исследований, образования и общественности Архив Кыргызстана - это организация, ответственная за сбор, сохранение и предоставление доступа к историческим документам и архивным материалам, относящимся к истории и культуре Кыргызстана. Он играет важную роль в сохранении национального наследия и предоставлении доступа к историческим ресурсам для исследований, образования и общественности Архив Кыргызстана - это организация, ответственная за сбор, сохранение и предоставление доступа к историческим документам и архивным материалам, относящимся к истории и культуре Кыргызстана. Он играет важную роль в сохранении национального наследия и предоставлении доступа к историческим ресурсам для исследований, образования и общественности"
 
         },
         {
@@ -38,8 +37,7 @@ export const DetailPublication = () => {
             title: "Садыр Жапаров выпустил приказ по созданию общегосударственной архивной службы",
             image: img,
             date: "12.09.2023",
-            description: "\n" +
-                "              4      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur culpa delectus facilis, minima nesciunt officia perferendis rem saepe? Animi aperiam, doloribus eligendi excepturi fugit labore laboriosam modi possimus qui quod quos repellat tempore. Assumenda ducimus illo iure maiores numquam officiis qui tempora tempore voluptas voluptates. Cupiditate explicabo tenetur vel. Accusamus beatae commodi corporis cum ducimus, eius eos exercitationem iusto laborum nam, omnis perferendis provident, quibusdam recusandae rerum soluta vero? Blanditiis consectetur culpa deleniti, distinctio dolor ea esse fuga illo in mollitia natus, non omnis vel. Architecto, delectus, esse facilis illum ipsa modi mollitia nam odit officia quidem quo ratione, veritatis!"
+            description: "Архив Кыргызстана - это организация, ответственная за сбор, сохранение и предоставление доступа к историческим документам и архивным материалам, относящимся к истории и культуре Кыргызстана. Он играет важную роль в сохранении национального наследия и предоставлении доступа к историческим ресурсам для исследований, образования и общественности Архив Кыргызстана - это организация, ответственная за сбор, сохранение и предоставление доступа к историческим документам и архивным материалам, относящимся к истории и культуре Кыргызстана. Он играет важную роль в сохранении национального наследия и предоставлении доступа к историческим ресурсам для исследований, образования и общественности Архив Кыргызстана - это организация, ответственная за сбор, сохранение и предоставление доступа к историческим документам и архивным материалам, относящимся к истории и культуре Кыргызстана. Он играет важную роль в сохранении национального наследия и предоставлении доступа к историческим ресурсам для исследований, образования и общественности"
 
         },
         {
@@ -47,8 +45,7 @@ export const DetailPublication = () => {
             title: "Садыр Жапаров выпустил приказ по созданию общегосударственной архивной службы",
             image: img,
             date: "12.09.2023",
-            description: "\n" +
-                "                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur culpa delectus facilis, minima nesciunt officia perferendis rem saepe? Animi aperiam, doloribus eligendi excepturi fugit labore laboriosam modi possimus qui quod quos repellat tempore. Assumenda ducimus illo iure maiores numquam officiis qui tempora tempore voluptas voluptates. Cupiditate explicabo tenetur vel. Accusamus beatae commodi corporis cum ducimus, eius eos exercitationem iusto laborum nam, omnis perferendis provident, quibusdam recusandae rerum soluta vero? Blanditiis consectetur culpa deleniti, distinctio dolor ea esse fuga illo in mollitia natus, non omnis vel. Architecto, delectus, esse facilis illum ipsa modi mollitia nam odit officia quidem quo ratione, veritatis!"
+            description: "Архив Кыргызстана - это организация, ответственная за сбор, сохранение и предоставление доступа к историческим документам и архивным материалам, относящимся к истории и культуре Кыргызстана. Он играет важную роль в сохранении национального наследия и предоставлении доступа к историческим ресурсам для исследований, образования и общественности Архив Кыргызстана - это организация, ответственная за сбор, сохранение и предоставление доступа к историческим документам и архивным материалам, относящимся к истории и культуре Кыргызстана. Он играет важную роль в сохранении национального наследия и предоставлении доступа к историческим ресурсам для исследований, образования и общественности Архив Кыргызстана - это организация, ответственная за сбор, сохранение и предоставление доступа к историческим документам и архивным материалам, относящимся к истории и культуре Кыргызстана. Он играет важную роль в сохранении национального наследия и предоставлении доступа к историческим ресурсам для исследований, образования и общественности"
 
         },
         {
@@ -56,8 +53,7 @@ export const DetailPublication = () => {
             title: "Садыр Жапаров выпустил приказ по созданию общегосударственной архивной службы",
             image: img,
             date: "12.09.2023",
-            description: "\n" +
-                "                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur culpa delectus facilis, minima nesciunt officia perferendis rem saepe? Animi aperiam, doloribus eligendi excepturi fugit labore laboriosam modi possimus qui quod quos repellat tempore. Assumenda ducimus illo iure maiores numquam officiis qui tempora tempore voluptas voluptates. Cupiditate explicabo tenetur vel. Accusamus beatae commodi corporis cum ducimus, eius eos exercitationem iusto laborum nam, omnis perferendis provident, quibusdam recusandae rerum soluta vero? Blanditiis consectetur culpa deleniti, distinctio dolor ea esse fuga illo in mollitia natus, non omnis vel. Architecto, delectus, esse facilis illum ipsa modi mollitia nam odit officia quidem quo ratione, veritatis!"
+            description: "Архив Кыргызстана - это организация, ответственная за сбор, сохранение и предоставление доступа к историческим документам и архивным материалам, относящимся к истории и культуре Кыргызстана. Он играет важную роль в сохранении национального наследия и предоставлении доступа к историческим ресурсам для исследований, образования и общественности Архив Кыргызстана - это организация, ответственная за сбор, сохранение и предоставление доступа к историческим документам и архивным материалам, относящимся к истории и культуре Кыргызстана. Он играет важную роль в сохранении национального наследия и предоставлении доступа к историческим ресурсам для исследований, образования и общественности Архив Кыргызстана - это организация, ответственная за сбор, сохранение и предоставление доступа к историческим документам и архивным материалам, относящимся к истории и культуре Кыргызстана. Он играет важную роль в сохранении национального наследия и предоставлении доступа к историческим ресурсам для исследований, образования и общественности"
 
         },
         {
@@ -65,8 +61,7 @@ export const DetailPublication = () => {
             title: "Садыр Жапаров выпустил приказ по созданию общегосударственной архивной службы",
             image: img,
             date: "12.09.2023",
-            description: "\n" +
-                "                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur culpa delectus facilis, minima nesciunt officia perferendis rem saepe? Animi aperiam, doloribus eligendi excepturi fugit labore laboriosam modi possimus qui quod quos repellat tempore. Assumenda ducimus illo iure maiores numquam officiis qui tempora tempore voluptas voluptates. Cupiditate explicabo tenetur vel. Accusamus beatae commodi corporis cum ducimus, eius eos exercitationem iusto laborum nam, omnis perferendis provident, quibusdam recusandae rerum soluta vero? Blanditiis consectetur culpa deleniti, distinctio dolor ea esse fuga illo in mollitia natus, non omnis vel. Architecto, delectus, esse facilis illum ipsa modi mollitia nam odit officia quidem quo ratione, veritatis!"
+            description: "Архив Кыргызстана - это организация, ответственная за сбор, сохранение и предоставление доступа к историческим документам и архивным материалам, относящимся к истории и культуре Кыргызстана. Он играет важную роль в сохранении национального наследия и предоставлении доступа к историческим ресурсам для исследований, образования и общественности Архив Кыргызстана - это организация, ответственная за сбор, сохранение и предоставление доступа к историческим документам и архивным материалам, относящимся к истории и культуре Кыргызстана. Он играет важную роль в сохранении национального наследия и предоставлении доступа к историческим ресурсам для исследований, образования и общественности Архив Кыргызстана - это организация, ответственная за сбор, сохранение и предоставление доступа к историческим документам и архивным материалам, относящимся к истории и культуре Кыргызстана. Он играет важную роль в сохранении национального наследия и предоставлении доступа к историческим ресурсам для исследований, образования и общественности"
 
         },
         {
@@ -74,8 +69,7 @@ export const DetailPublication = () => {
             title: "Садыр Жапаров выпустил приказ по созданию общегосударственной архивной службы",
             image: img,
             date: "12.09.2023",
-            description: "\n" +
-                "                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur culpa delectus facilis, minima nesciunt officia perferendis rem saepe? Animi aperiam, doloribus eligendi excepturi fugit labore laboriosam modi possimus qui quod quos repellat tempore. Assumenda ducimus illo iure maiores numquam officiis qui tempora tempore voluptas voluptates. Cupiditate explicabo tenetur vel. Accusamus beatae commodi corporis cum ducimus, eius eos exercitationem iusto laborum nam, omnis perferendis provident, quibusdam recusandae rerum soluta vero? Blanditiis consectetur culpa deleniti, distinctio dolor ea esse fuga illo in mollitia natus, non omnis vel. Architecto, delectus, esse facilis illum ipsa modi mollitia nam odit officia quidem quo ratione, veritatis!"
+            description: "Архив Кыргызстана - это организация, ответственная за сбор, сохранение и предоставление доступа к историческим документам и архивным материалам, относящимся к истории и культуре Кыргызстана. Он играет важную роль в сохранении национального наследия и предоставлении доступа к историческим ресурсам для исследований, образования и общественности Архив Кыргызстана - это организация, ответственная за сбор, сохранение и предоставление доступа к историческим документам и архивным материалам, относящимся к истории и культуре Кыргызстана. Он играет важную роль в сохранении национального наследия и предоставлении доступа к историческим ресурсам для исследований, образования и общественности Архив Кыргызстана - это организация, ответственная за сбор, сохранение и предоставление доступа к историческим документам и архивным материалам, относящимся к истории и культуре Кыргызстана. Он играет важную роль в сохранении национального наследия и предоставлении доступа к историческим ресурсам для исследований, образования и общественности"
 
         },
         {
@@ -83,8 +77,7 @@ export const DetailPublication = () => {
             title: "Садыр Жапаров выпустил приказ по созданию общегосударственной архивной службы",
             image: img,
             date: "12.09.2023",
-            description: "\n" +
-                "                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur culpa delectus facilis, minima nesciunt officia perferendis rem saepe? Animi aperiam, doloribus eligendi excepturi fugit labore laboriosam modi possimus qui quod quos repellat tempore. Assumenda ducimus illo iure maiores numquam officiis qui tempora tempore voluptas voluptates. Cupiditate explicabo tenetur vel. Accusamus beatae commodi corporis cum ducimus, eius eos exercitationem iusto laborum nam, omnis perferendis provident, quibusdam recusandae rerum soluta vero? Blanditiis consectetur culpa deleniti, distinctio dolor ea esse fuga illo in mollitia natus, non omnis vel. Architecto, delectus, esse facilis illum ipsa modi mollitia nam odit officia quidem quo ratione, veritatis!"
+            description: "Архив Кыргызстана - это организация, ответственная за сбор, сохранение и предоставление доступа к историческим документам и архивным материалам, относящимся к истории и культуре Кыргызстана. Он играет важную роль в сохранении национального наследия и предоставлении доступа к историческим ресурсам для исследований, образования и общественности Архив Кыргызстана - это организация, ответственная за сбор, сохранение и предоставление доступа к историческим документам и архивным материалам, относящимся к истории и культуре Кыргызстана. Он играет важную роль в сохранении национального наследия и предоставлении доступа к историческим ресурсам для исследований, образования и общественности Архив Кыргызстана - это организация, ответственная за сбор, сохранение и предоставление доступа к историческим документам и архивным материалам, относящимся к истории и культуре Кыргызстана. Он играет важную роль в сохранении национального наследия и предоставлении доступа к историческим ресурсам для исследований, образования и общественности"
 
         },
         {
@@ -92,8 +85,7 @@ export const DetailPublication = () => {
             title: "Садыр Жапаров выпустил приказ по созданию общегосударственной архивной службы.",
             image: img,
             date: "12.09.2023",
-            description: "\n" +
-                "                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur culpa delectus facilis, minima nesciunt officia perferendis rem saepe? Animi aperiam, doloribus eligendi excepturi fugit labore laboriosam modi possimus qui quod quos repellat tempore. Assumenda ducimus illo iure maiores numquam officiis qui tempora tempore voluptas voluptates. Cupiditate explicabo tenetur vel. Accusamus beatae commodi corporis cum ducimus, eius eos exercitationem iusto laborum nam, omnis perferendis provident, quibusdam recusandae rerum soluta vero? Blanditiis consectetur culpa deleniti, distinctio dolor ea esse fuga illo in mollitia natus, non omnis vel. Architecto, delectus, esse facilis illum ipsa modi mollitia nam odit officia quidem quo ratione, veritatis!"
+            description: "Архив Кыргызстана - это организация, ответственная за сбор, сохранение и предоставление доступа к историческим документам и архивным материалам, относящимся к истории и культуре Кыргызстана. Он играет важную роль в сохранении национального наследия и предоставлении доступа к историческим ресурсам для исследований, образования и общественности Архив Кыргызстана - это организация, ответственная за сбор, сохранение и предоставление доступа к историческим документам и архивным материалам, относящимся к истории и культуре Кыргызстана. Он играет важную роль в сохранении национального наследия и предоставлении доступа к историческим ресурсам для исследований, образования и общественности Архив Кыргызстана - это организация, ответственная за сбор, сохранение и предоставление доступа к историческим документам и архивным материалам, относящимся к истории и культуре Кыргызстана. Он играет важную роль в сохранении национального наследия и предоставлении доступа к историческим ресурсам для исследований, образования и общественности"
 
         },
         {
@@ -101,8 +93,7 @@ export const DetailPublication = () => {
             title: "Садыр Жапаров выпустил приказ по созданию общегосударственной архивной службы",
             image: img,
             date: "12.09.2023",
-            description: "\n" +
-                "                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur culpa delectus facilis, minima nesciunt officia perferendis rem saepe? Animi aperiam, doloribus eligendi excepturi fugit labore laboriosam modi possimus qui quod quos repellat tempore. Assumenda ducimus illo iure maiores numquam officiis qui tempora tempore voluptas voluptates. Cupiditate explicabo tenetur vel. Accusamus beatae commodi corporis cum ducimus, eius eos exercitationem iusto laborum nam, omnis perferendis provident, quibusdam recusandae rerum soluta vero? Blanditiis consectetur culpa deleniti, distinctio dolor ea esse fuga illo in mollitia natus, non omnis vel. Architecto, delectus, esse facilis illum ipsa modi mollitia nam odit officia quidem quo ratione, veritatis!"
+            description: "Архив Кыргызстана - это организация, ответственная за сбор, сохранение и предоставление доступа к историческим документам и архивным материалам, относящимся к истории и культуре Кыргызстана. Он играет важную роль в сохранении национального наследия и предоставлении доступа к историческим ресурсам для исследований, образования и общественности Архив Кыргызстана - это организация, ответственная за сбор, сохранение и предоставление доступа к историческим документам и архивным материалам, относящимся к истории и культуре Кыргызстана. Он играет важную роль в сохранении национального наследия и предоставлении доступа к историческим ресурсам для исследований, образования и общественности Архив Кыргызстана - это организация, ответственная за сбор, сохранение и предоставление доступа к историческим документам и архивным материалам, относящимся к истории и культуре Кыргызстана. Он играет важную роль в сохранении национального наследия и предоставлении доступа к историческим ресурсам для исследований, образования и общественности"
 
         },
         {
@@ -110,8 +101,7 @@ export const DetailPublication = () => {
             title: "Садыр Жапаров выпустил приказ по созданию общегосударственной архивной службы",
             image: img,
             date: "12.09.2023",
-            description: "\n" +
-                "                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur culpa delectus facilis, minima nesciunt officia perferendis rem saepe? Animi aperiam, doloribus eligendi excepturi fugit labore laboriosam modi possimus qui quod quos repellat tempore. Assumenda ducimus illo iure maiores numquam officiis qui tempora tempore voluptas voluptates. Cupiditate explicabo tenetur vel. Accusamus beatae commodi corporis cum ducimus, eius eos exercitationem iusto laborum nam, omnis perferendis provident, quibusdam recusandae rerum soluta vero? Blanditiis consectetur culpa deleniti, distinctio dolor ea esse fuga illo in mollitia natus, non omnis vel. Architecto, delectus, esse facilis illum ipsa modi mollitia nam odit officia quidem quo ratione, veritatis!"
+            description: "Архив Кыргызстана - это организация, ответственная за сбор, сохранение и предоставление доступа к историческим документам и архивным материалам, относящимся к истории и культуре Кыргызстана. Он играет важную роль в сохранении национального наследия и предоставлении доступа к историческим ресурсам для исследований, образования и общественности Архив Кыргызстана - это организация, ответственная за сбор, сохранение и предоставление доступа к историческим документам и архивным материалам, относящимся к истории и культуре Кыргызстана. Он играет важную роль в сохранении национального наследия и предоставлении доступа к историческим ресурсам для исследований, образования и общественности Архив Кыргызстана - это организация, ответственная за сбор, сохранение и предоставление доступа к историческим документам и архивным материалам, относящимся к истории и культуре Кыргызстана. Он играет важную роль в сохранении национального наследия и предоставлении доступа к историческим ресурсам для исследований, образования и общественности"
 
         },
     ];
@@ -124,13 +114,15 @@ export const DetailPublication = () => {
         setPublication(pub);
     }, [id]);
     return (
-        <section className={s.detailPublication}>
+        <section className={classes.detailPublication}>
             <div className="container">
-                <div className={s.detailPublicationInner}>
+                <div className={classes.detailPublicationInner}>
                     <Typography variant="h1">Публикации</Typography>
-                    <div className={s.detailPublicationContent}>
-                        <Typography variant="h2">{publication.title}</Typography>
-                        <div className={s.detailPublicationContentInner}>
+                    <div className={classes.detailPublicationContent}>
+                        <div className={classes.detailPublicationTitle}>
+                            <Typography variant="h2">{publication.title}</Typography>
+                        </div>
+                        <div className={classes.detailPublicationContentInner}>
                             <Typography>{publication.description}</Typography>
                             <div>
                                 <img src={publication.image} alt={publication.title}/>

@@ -1,4 +1,4 @@
-import s from "./MainGallery.module.sass";
+import classes from "./MainGallery.module.sass";
 import {PublicationBlock} from "../publicationBlock/PublicationBlock.jsx";
 import img from "../../../assets/images/japarov.webp";
 
@@ -172,9 +172,9 @@ const sections = [
 
 export const MainGallery = () => {
     return (
-        <section className={s.gallery}>
+        <section className={classes.gallery}>
             <div className="container">
-                <div className={s.galleryInner}>
+                <div className={classes.galleryInner}>
                     {sections.map((section, index) => (
                         <PublicationBlock
                             key={index}

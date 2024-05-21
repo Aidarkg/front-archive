@@ -1,12 +1,11 @@
-import React from 'react';
 import {useParams} from "react-router-dom";
-
+import classes from "./DetailVideo.module.sass";
 export const DetailVideo = () => {
     const {id}=useParams();
     return (
-        <div style={{marginTop: 100}}>
+        <section className={classes.detailVideo}>
             <h1>{id} video</h1>
-        </div>
+        </section>
     );
 };
 

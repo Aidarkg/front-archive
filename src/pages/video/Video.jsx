@@ -1,4 +1,4 @@
-import s from "./Video.module.sass";
+import classes from "./Video.module.sass";
 import {Typography} from "../../Typography/Typography.jsx";
 import {CustomCard} from "../../ui/customCard/CustomCard.jsx";
 import img from "../../assets/images/japarov.webp";
@@ -45,11 +45,11 @@ const videoContent = [
 export const Video = () => {
     const navigate=useNavigate();
     return (
-        <section>
+        <section className={classes.video}>
             <div className="container">
-                <div className={s.video}>
+                <div className={classes.videoInner}>
                     <Typography variant="h1">Видео</Typography>
-                    <div className={s.videoContent}>
+                    <div className={classes.videoContent}>
                         {videoContent&& videoContent.map((item, index) => (
                             <CustomCard
                                 key={index}

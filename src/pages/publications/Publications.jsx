@@ -1,4 +1,4 @@
-import s from "./Publications.module.sass";
+import classes from "./Publications.module.sass";
 import {Typography} from "../../Typography/Typography.jsx";
 import {CustomCard} from "../../ui/customCard/CustomCard.jsx";
 import img from "../../assets/images/japarov.webp";
@@ -84,9 +84,9 @@ export const Publications = () => {
     return (
         <section>
             <div className="container">
-                <div className={s.Publications}>
+                <div className={classes.Publications}>
                     <Typography variant="h1">Публикации</Typography>
-                    <div className={s.PublicationsContent}>
+                    <div className={classes.PublicationsContent}>
                         {publicationContent&& publicationContent.map((item, index) => (
                             <CustomCard
                                 key={index}
