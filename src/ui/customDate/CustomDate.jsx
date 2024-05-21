@@ -1,5 +1,4 @@
-import React from 'react';
-import classes from "./CustomDate.module.sass"
+import classes from "./CustomDate.module.sass";
 import {CalendarIcon} from "../../assets/icons/CalendarIcon.jsx";
 import {Typography} from "../../Typography/Typography.jsx";
 

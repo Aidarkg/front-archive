@@ -35,10 +35,10 @@
         visibility: hidden
         opacity: 0
 
-    .optionList.open
-        opacity: 1
-        visibility: visible
-        transform: rotateX(0deg)
+        &.open
+            opacity: 1
+            visibility: visible
+            transform: rotateX(0deg)
 
         .languageOption
             padding: 12px 16px
@@ -48,13 +48,13 @@
             font-weight: 600
             cursor: pointer
 
-        .languageOption:first-child
+        :first-child
             border-top-left-radius: 8px
             border-top-right-radius: 8px
 
-        .languageOption:last-child
+        :last-child
             border-bottom-left-radius: 8px
             border-bottom-right-radius: 8px
 
-        .languageOption:hover
+        :hover
             background-color: var(--blue500)

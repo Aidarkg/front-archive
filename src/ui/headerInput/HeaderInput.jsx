@@ -1,4 +1,4 @@
-import styles from "./HeaderInput.module.sass";
+import classes from "./HeaderInput.module.sass";
 import { CloseSvg } from "../Svg/CloseSvg";
 import { useState } from "react";
 
@@ -30,9 +30,9 @@ export const HeaderInput = (props) => {
     };
 
     return (
-        <div className={styles.inputWrapper}>
+        <div className={classes.inputWrapper}>
             <input
-                className={styles.headerInput}
+                className={classes.headerInput}
                 type={type}
                 value={inputValue}
                 onChange={handleValueChange}
@@ -40,7 +40,7 @@ export const HeaderInput = (props) => {
                 onFocus={handleFocus}
                 placeholder={focused ? "" : placeholder}
             />
-            <button className={styles.closeButton} onClick={onClose}>
+            <button className={classes.closeButton} onClick={onClose}>
                 <CloseSvg />
             </button>
         </div>
