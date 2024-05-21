@@ -103,7 +103,6 @@ export const QuestionForm = () => {
                  buttonStyle="blue"
                  type="submit"
                  text={"ОТПРАВИТЬ ВОПРОС"}
-                 style={{ width: "100%" }}
              />
           </form>
        </section>
