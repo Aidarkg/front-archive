@@ -1,4 +1,4 @@
-import styles from "./Header.module.sass";
+import classes from "./Header.module.sass";
 import { Typography } from "../../Typography/Typography";
 
 import { HeaderSelect } from "../../ui/headerSelect/HeaderSelect";
@@ -20,7 +20,7 @@ export const Header = () => {
   const [activeSubnav, setActiveSubnav] = useState(null);
   const location = useLocation();
 
-  const activeLink = ({ isActive }) => isActive ? styles.active : "";
+  const activeLink = ({ isActive }) => isActive ? classes.active : "";
 
   const toggleInputVisibility = () => {
     setIsInputVisible(!isInputVisible);
@@ -39,14 +39,14 @@ export const Header = () => {
   };
 
   return (
-    <header className={styles.header}>
+    <header className={classes.header}>
       <div className="container">
-        <div className={styles.headerInner}>
-          <div className={styles.headerLogo} >
+        <div className={classes.headerInner}>
+          <div className={classes.headerLogo} >
             <div>
               <img src={coat_of_arms} alt="Coat of arms" />
             </div>
-            <div className={styles.headerLogoTitle}>
+            <div className={classes.headerLogoTitle}>
               <NavLink to={"/"}>
                 <Typography variant="h3" color="grey500">
                   {t("header&footer.logo.archivePresidentKR")}
@@ -57,22 +57,22 @@ export const Header = () => {
               </NavLink>
             </div>
           </div>
-          <div className={styles.rightHeader}>
-            <nav className={styles.nav}>
-              <ul className={styles.navList}>
+          <div className={classes.rightHeader}>
+            <nav className={classes.nav}>
+              <ul className={classes.navList}>
                 <li
                   className={`
-                      ${styles.archiveList} 
+                      ${classes.archiveList} 
                       ${location.pathname.includes("/aboutArchive") || location.pathname.includes("/management")
-                      ? styles.active : ""}
+                      ? classes.active : ""}
                     `}
                   onClick={() => toggleSubnav("archive")}
                 >
-                  <Typography className={styles.parentNav} variant="h6">
+                  <Typography className={classes.parentNav} variant="h6">
                     {t("header&footer.nav.archive")}
                   </Typography>
                   <ArrowDownSvg />
-                  <ul className={`${styles.subnav} ${activeSubnav === "archive" ? styles.open : ""}`}>
+                  <ul className={`${classes.subnav} ${activeSubnav === "archive" ? classes.open : ""}`}>
                     <li>
                       <NavLink to={"/aboutArchive"}>
                         <Typography variant="h6">
@@ -91,17 +91,17 @@ export const Header = () => {
                 </li>
                 <li
                   className={`
-                        ${styles.mediaArchiveList} 
+                        ${classes.mediaArchiveList} 
                         ${location.pathname.includes("/publications") || location.pathname.includes("/photo") || location.pathname.includes("/video")
-                      ? styles.active : ""}
+                      ? classes.active : ""}
                       `}
                   onClick={() => toggleSubnav("mediaArchive")}
                 >
-                  <Typography className={styles.parentNav} variant="h6">
+                  <Typography className={classes.parentNav} variant="h6">
                     {t("header&footer.nav.mediaArchive")}
                   </Typography>
                   <ArrowDownSvg />
-                  <ul className={`${styles.subnav} ${activeSubnav === "mediaArchive" ? styles.open : ""}`}>
+                  <ul className={`${classes.subnav} ${activeSubnav === "mediaArchive" ? classes.open : ""}`}>
                     <li>
                       <NavLink to={"/publications"}>
                         <Typography variant="h6">
@@ -156,10 +156,10 @@ export const Header = () => {
               </ul>
             </nav>
             <HeaderSelect />
-            <button className={styles.eyeIcon}>
+            <button className={classes.eyeIcon}>
               <AccessibilitySvg />
             </button>
-            <button className={styles.searchBtn} onClick={toggleInputVisibility}>
+            <button className={classes.searchBtn} onClick={toggleInputVisibility}>
               <SearchSvg />
             </button>
             {isInputVisible &&
