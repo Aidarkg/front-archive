@@ -5,7 +5,7 @@ import { Accardion } from "../../ui/Accordion/Accordion.jsx";
 import {MainGallery} from "./mainGallery/MainGallery.jsx";
 import { AboutArchive } from "../aboutArchive/AboutArchive.jsx";
 import { Organizations } from "./organizations/Organizations.jsx";
-import ContactSection from "../../../components/contactSection/ContactSection.jsx";
+import ContactSection from "../../components/contactSection/ContactSection.jsx";
 
 export const Main = () => {
    const trimmedFaqList = [
