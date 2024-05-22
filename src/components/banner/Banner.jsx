@@ -1,6 +1,7 @@
 import img1 from "./images/symbol.svg";
 import classes from "./Banner.module.sass";
 import { DetailBtn } from "./detailBtn/DetailBtn";
+import { Typography } from "../../Typography/Typography";
 
 
 export const Banner = () => {
