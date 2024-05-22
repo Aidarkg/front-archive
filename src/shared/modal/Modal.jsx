@@ -1,9 +1,11 @@
 import classes from "./Modal.module.sass";
 import {QuestionForm} from "../../pages/FAQ/questionForm/QuestionForm.jsx";
-export const Modal = () => {
+export const Modal = ({ active, setActive }) => {
+
+
     return (
-        <div className={classes.modal}>
-            <div className={classes.modalContent}>
+        <div className={`${classes.modal} ${active ? classes.active : ''}`} onClick={() => setActive(false)}>
+            <div className={`${classes.modalContent} ${active ? classes.active : ''}`} onClick={e => e.stopPropagation()}>
                 <div>
                     <QuestionForm/>
                 </div>
