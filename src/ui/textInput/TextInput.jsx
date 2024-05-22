@@ -1,5 +1,5 @@
 import React from "react";
-import s from "./TextInput.module.sass";
+import classes from "./TextInput.module.sass";
 export const TextInput = React.forwardRef(({
     type,
     placeholder,
@@ -14,7 +14,7 @@ export const TextInput = React.forwardRef(({
       <div>
           <label htmlFor={htmlFor}>{signature}</label>
           <input
-              className={s.textInput}
+              className={classes.textInput}
               type={type}
               placeholder={placeholder}
               ref={ref}
