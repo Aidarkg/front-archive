@@ -20,5 +20,4 @@ const LayoutRoutes = () => {
       </Routes>
    );
 };
-
 export default LayoutRoutes;

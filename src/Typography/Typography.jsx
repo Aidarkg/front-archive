@@ -1,4 +1,4 @@
-import styles from "./Typography.module.sass";
+import classes from "./Typography.module.sass";
 
 export const Typography = (props) => {
     const {
@@ -26,9 +26,9 @@ export const Typography = (props) => {
     };
 
     const classNamedGenerated = [
-        styles[variant],
-        styles[weight],
-        styles[color],
+        classes[variant],
+        classes[weight],
+        classes[color],
         className,
     ]
         .join(" ")

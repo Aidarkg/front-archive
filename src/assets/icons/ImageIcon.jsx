@@ -38,3 +38,5 @@ export const ImageIcon = () => {
       </svg>
    );
 };
+
+export default ImageIcon;
