@@ -3,6 +3,8 @@ import classes from "./Banner.module.sass";
 import { DetailBtn } from "./detailBtn/DetailBtn";
 import { Typography } from "../../Typography/Typography";
 
+
+
 export const Banner = () => {
    return (
       <section className={classes.banner}>
