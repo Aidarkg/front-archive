@@ -88,9 +88,9 @@ export const Publications = () => {
                     <Typography variant="h1">Публикации</Typography>
                     <div className={classes.PublicationsContent}>
                         {publicationContent&& publicationContent.map((item, index) => (
-                            <div className={classes.PublicationsContentCard}>
+                            <div className={classes.PublicationsContentCard}
+                                 key={index}>
                                 <CustomCard
-                                    key={index}
                                     image={item.image}
                                     date={item.date}
                                     description={item.title}
