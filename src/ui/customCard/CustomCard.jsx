@@ -3,10 +3,10 @@ import {Typography} from "../../Typography/Typography.jsx";
 import {CustomDate} from "../customDate/CustomDate.jsx";
 import {ImageCount} from "../imageCount/ImageCount.jsx";
 
-export const CustomCard = ({onClick, image, date, description, imageCount, isLargeCard, gridColumn, gridRow,}) => {
+export const CustomCard = ({onClick, image, date, description, imageCount, isLargeCard}) => {
 
     return (
-        <div className={`${s.customCard} ${isLargeCard ? s.largeCard : " "}`} style={{gridColumn, gridRow}}
+        <div className={`${s.customCard} ${isLargeCard ? s.largeCard : " "}`}
              onClick={onClick}>
             <div>
                 <img className={`${s.customCardImage} ${isLargeCard ? s.largeImage : " "}`}
