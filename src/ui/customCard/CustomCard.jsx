@@ -1,28 +1,24 @@
 import s from "./CustomCard.module.sass";
 import {Typography} from "../../Typography/Typography.jsx";
-import {ImageIcon} from "../../assets/icons/ImageIcon.jsx";
-import {CalendarIcon} from "../../assets/icons/CalendarIcon.jsx";
+import {CustomDate} from "../customDate/CustomDate.jsx";
+import {ImageCount} from "../imageCount/ImageCount.jsx";
 
-export const CustomCard = ({image, date, description, imageCount, isLargeCard, gridColumn, gridRow}) => {
+export const CustomCard = ({onClick, image, date, description, imageCount, isLargeCard, gridColumn, gridRow,}) => {
+
     return (
-        <div className={`${s.customCard} ${isLargeCard ? s.largeCard : " "}`} style={{gridColumn, gridRow}}>
+        <div className={`${s.customCard} ${isLargeCard ? s.largeCard : " "}`} style={{gridColumn, gridRow}}
+             onClick={onClick}>
             <div>
                 <img className={`${s.customCardImage} ${isLargeCard ? s.largeImage : " "}`}
                      src={image} alt="publication"/>
             </div>
             <div className={s.customCardInfo}>
                 <div className={s.customCardExtraInfo}>
-                    <div className={s.customCardExtraInfoDate}>
-                        <CalendarIcon/>
-                        <Typography
-                            variant="extraSmallBody">{date}</Typography>
-                    </div>
+                    {date &&
+                        <CustomDate date={date}/>
+                    }
                     {imageCount && (
-                        <div className={s.customCardExtraInfoImg}>
-                            <ImageIcon/>
-                            <Typography
-                                variant="extraSmallBody">{imageCount} фото</Typography>
-                        </div>
+                        <ImageCount imageCount={imageCount}/>
                     )}
                 </div>
                 <Typography

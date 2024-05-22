@@ -1,20 +1,20 @@
 import { Link } from "react-router-dom";
-import s from "./CustomButton.module.sass";
+import classes from "./CustomButton.module.sass";
 import { Typography } from "../../Typography/Typography.jsx";
 
 const buttonStyles = {
-    blue: s.customButtonBlue,
-    lightBlue: s.customButtonLightBlue,
-    withBorder: s.customButtonWithBorder
+    blue: classes.customButtonBlue,
+    lightBlue: classes.customButtonLightBlue,
+    withBorder: classes.customButtonWithBorder
 };
 
-export const CustomButton = ({ text, icon, to, onClick, actionType, buttonStyle, type, style}) => {
+export const CustomButton = ({ text, icon, to, onClick, actionType, buttonStyle, type, style, disabled}) => {
     const ButtonComponent = actionType === "link" ? Link : "button";
-    const buttonClassName = buttonStyles[buttonStyle] || s.customButtonGrey;
-    const typeProps = actionType === "link" ? { to } : { onClick, type };
+    const buttonClassName = buttonStyles[buttonStyle] || classes.customButtonGrey;
+    const typeProps = actionType === "link" ? { to } : { onClick, type, disabled};
 
     return (
-        <ButtonComponent {...typeProps} className={`${s.customButton} ${buttonClassName}`} style={style}>
+        <ButtonComponent {...typeProps} className={`${classes.customButton} ${buttonClassName}`} style={style} >
             <Typography variant="h6">{text.toUpperCase()}</Typography>
             {icon && icon}
         </ButtonComponent>
