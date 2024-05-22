@@ -1,7 +1,7 @@
 import { ContentBlocks } from "../../aboutArchive/contentBlocks/ContentBlocks";
 import img from "../../../assets/images/about-pic.png";
 import classes from "./MainAboutArchive.module.sass";
-import { Btn } from "./btn/Btn";
+
 
 const blocks = [
    {
@@ -22,14 +22,12 @@ const blocks = [
    },
 ];
 
-
 export const MainAboutArchive = () => {
    return (
       <section>
          <div className={classes.container}>
             <div className={classes.contBtn}>
-               <ContentBlocks showTitle={false} blocks={blocks.slice(0, 1)} />
-               <Btn/>
+               <ContentBlocks showTitle={false} blocks={blocks.slice(0, 1)} showButton={true} />               
             </div>
          </div>
       </section>
