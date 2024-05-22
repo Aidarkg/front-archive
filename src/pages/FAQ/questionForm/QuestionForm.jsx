@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Typography } from "../../../Typography/Typography.jsx";
 import { TextInput } from "../../../ui/textInput/TextInput.jsx";
-import { CustomButton } from "../../../ui/customButton/CustomButton.jsx";
+// import { CustomButton } from "../../../ui/customButton/CustomButton.jsx";
 import classes from "./QuestionForm.module.sass";
 import { MessageTextarea } from "../messageTextarea/MessageTextarea.jsx";
 import { regexForm } from "../regexForm/regexForm.jsx";
@@ -117,13 +117,20 @@ export const QuestionForm = () => {
                 />
              </div>
              <p>{isValid && "Successful"}</p>
-             <CustomButton
+             {/*<CustomButton*/}
+             {/*    disabled={!isValid}*/}
+             {/*    buttonStyle="blue"*/}
+             {/*    type="submit"*/}
+             {/*    text={"ОТПРАВИТЬ ВОПРОС"}*/}
+             {/*    className={`${!isValid ? classes.disabledBtn : ''}`}*/}
+             {/*/>*/}
+             <button
+                 className={`${!isValid ? classes.disabledBtn : classes.enabledBtn}`}
                  disabled={!isValid}
-                 buttonStyle="blue"
                  type="submit"
-                 text={"ОТПРАВИТЬ ВОПРОС"}
-                 className={`${!isValid ? classes.disabledBtn : ''}`}
-             />
+             >
+                ОТПРАВИТЬ ВОПРОС
+             </button>
           </form>
        </section>
    );

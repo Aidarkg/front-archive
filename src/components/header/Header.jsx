@@ -162,7 +162,7 @@ export const Header = () => {
             <button className={classes.searchBtn} onClick={toggleInputVisibility}>
               <SearchSvg />
             </button>
-            <div className={styles.inputWrapper}>
+            <div className={classes.inputWrapper}>
               {isInputVisible &&
                 <HeaderInput
                   onClose={closeInput}
