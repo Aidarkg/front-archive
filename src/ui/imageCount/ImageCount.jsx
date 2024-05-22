@@ -1,4 +1,3 @@
-import React from 'react';
 import classes from "./ImageCount.module.sass";
 import {ImageIcon} from "../../assets/icons/ImageIcon.jsx";
 import {Typography} from "../../Typography/Typography.jsx";

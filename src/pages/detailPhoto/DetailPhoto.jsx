@@ -4,7 +4,6 @@ import img from "../../assets/images/japarov.webp";
 import picture from "../../assets/images/pic.png";
 import {Typography} from "../../Typography/Typography.jsx";
 import {useEffect, useState} from "react";
-import {CustomPhoto} from "../../ui/customPhoto/CustomPhoto.jsx";
 import {CustomDate} from "../../ui/customDate/CustomDate.jsx";
 import {ImageCount} from "../../ui/imageCount/ImageCount.jsx";
 
