@@ -1,87 +1,66 @@
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap')
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap')
 
-.banner
+.banner 
     box-sizing: border-box
-    background-image: url('images/hero-bg@2x.png')
+    background-image: url('src/assets/images/hero-bg@2x.png')
     background-size: cover
     background-position: center
     display: flex
     justify-content: center
-    align-items: center
+    align-items: center  
     flex-wrap: wrap
     height: 100vh
-    margin: 0 auto
     border-radius: 5px
     p
         font-weight: 600
         font-size: 13px
-        line-height: 17.9px
-        letter-spacing: 6%
+        font-family: "Inter", sans-serif
+        line-height: 17px
+        letter-spacing: 3%
         text-align: center
         width: 664px
         height: 34px
-        color: white
-
+        color: var(--main)    
+          
 .main
-    display: wrap
-    flex-wrap: wrap
-    align-items: center
+    display: wrap        
+    flex-direction: column      
+    justify-content: flex-start   
+    align-items: center 
     width: 674px
     height: 360px
-    margin: 130px 400px 0 400px
-    //h1
-    //margin: 120px 400px
-    h1
-         font-weight: 700
-         font-size: 30px
+    margin: 130px 400px 0px 400px            
+    h1                 
          font-family: "Merriweather", serif
          font-style: normal
-         line-height: 39px
+         line-height: 130%
          text-align: center
-         margin: 60px auto
-         color: #FFFFFF
+         margin: 30px auto         
+         color: var(--main)
 .img1
     display: block
     margin-left: auto
     margin-right: auto
     width: 160px
-    height: 160px
-
+    height: 160px 
+    
 .btnDetail
          width: 664px
          height: 40px
-         margin-top: 2px
          display: flex
          align-items: center
          justify-content: center
          gap: 20px
-         padding: 0 25px
-         background-color: rgb(255, 255, 255)
-         border-radius: 10px
-         font-weight: 600
-         font-size: 13px
-         letter-spacing: -2px
+         padding: 0 25px 
+         background-color: var(--main)          
+         border-radius: 10px          
+         font-family: "Inter", sans-serif
+         letter-spacing: 3%
+         line-height: 17px
          transition: 1s
-         &:hover
-              background-color: grey
-.btnAskq
-       width: 500px
-       height: 40px
-       margin-left: 1220px
-       margin-bottom: 500px
-       border-radius: 5px
-       display: flex
-       justify-content: center
-       align-items: center
-       position: static
-       float: right
-       gap: 10px
-       font-weight: 600
-       font-size: 13px
-       letter-spacing: -2px
-       background-color: rgb(0, 62, 104)
-       color: white
-       &:hover
-            background-color: rgb(85, 147, 189)
+         &:hover 
+              background-color: var(--grey400)     
+
                 
         
