@@ -1,17 +1,20 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Typography } from "../../../Typography/Typography.jsx";
 import { TextInput } from "../../../ui/textInput/TextInput.jsx";
 import { CustomButton } from "../../../ui/customButton/CustomButton.jsx";
-import s from "./QuestionForm.module.sass";
+import classes from "./QuestionForm.module.sass";
 import { MessageTextarea } from "../messageTextarea/MessageTextarea.jsx";
+import { regexForm } from "../regexForm/regexForm.jsx";
 
 export const QuestionForm = () => {
    const {
       register,
       handleSubmit,
-      formState: { errors },
+      formState: { errors, isValid, isSubmitSuccessful },
+      trigger,
       reset,
+      clearErrors
    } = useForm({
       mode: "onBlur",
    });
@@ -21,6 +24,7 @@ export const QuestionForm = () => {
    const onSubmit = (data) => {
       console.error(data);
       reset();
+      clearErrors();
       setCharacterCount(0);
    };
 
@@ -29,28 +33,46 @@ export const QuestionForm = () => {
       setCharacterCount(inputValue.length);
    };
 
+   const formValidate = (value) => {
+      return {
+         required: "Это поле обязательное!",
+         pattern: {
+            value: value,
+            message: "Неправильный формат почты!",
+         },
+      };
+   };
+
+   useEffect(() => {
+      if (isSubmitSuccessful) {
+         trigger();
+      }
+   }, [isSubmitSuccessful, trigger]);
+
    return (
-       <section className={s.faq}>
-          <Typography variant="h1" color="blue500">
-             Задайте свой вопрос
-          </Typography>
-          <form className={s.faqForm} onSubmit={handleSubmit(onSubmit)}>
+       <section className={classes.faq}>
+          <form className={classes.faqForm} onSubmit={handleSubmit(onSubmit)}>
              <div>
                 <label htmlFor="phoneNumber">Номер телефона</label>
                 <TextInput
+                    maxLength="13"
                     id="phoneNumber"
-                    type="text"
-                    {...register("number", {
+                    type="tel"
+                    {...register("tel", {
                        pattern: {
                           value: /^\+996\d{9}$/,
-                          message: "Неправильный формат номера",
+                          message: "Неправильный формат номера!",
                        },
                     })}
                     placeholder="+996"
                 />
-                {!errors?.number && <Typography className={s.note} variant="span"  color="grey500">необязательно</Typography>}
-                <Typography className={s.errors}>
-                   {errors?.number && errors.number.message}
+                {!errors?.tel && (
+                    <Typography className={classes.note} variant="span" color="grey500">
+                       необязательно
+                    </Typography>
+                )}
+                <Typography className={classes.errors} variant="span">
+                   {errors?.tel && errors.tel.message}
                 </Typography>
              </div>
              <div>
@@ -59,11 +81,11 @@ export const QuestionForm = () => {
                     id="name"
                     type="text"
                     {...register("username", {
-                       required:"Это поле обязательное!"
+                       required: "Это поле обязательное!",
                     })}
                     placeholder="Иванов Иван Иванович"
                 />
-                <Typography className={s.errors}>
+                <Typography className={classes.errors} variant="span">
                    {errors?.username && errors.username.message}
                 </Typography>
              </div>
@@ -72,16 +94,11 @@ export const QuestionForm = () => {
                 <TextInput
                     id="email"
                     type="email"
-                    {...register("email", {
-                       required: "Это поле обязательное!",
-                       pattern: {
-                          value:  /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu,
-                          message: "Неправильный формат почты",
-                       },
-                    })}
+                    errors={errors.email}
+                    {...register("email", formValidate(regexForm.email))}
                     placeholder="Введите почту"
                 />
-                <Typography className={s.errors}>
+                <Typography className={classes.errors} variant="span">
                    {errors?.email && errors.email.message}
                 </Typography>
              </div>
@@ -99,10 +116,13 @@ export const QuestionForm = () => {
                     handleTextareaChange={handleTextareaChange}
                 />
              </div>
+             <p>{isValid && "Successful"}</p>
              <CustomButton
+                 disabled={!isValid}
                  buttonStyle="blue"
                  type="submit"
                  text={"ОТПРАВИТЬ ВОПРОС"}
+                 className={`${!isValid ? classes.disabledBtn : ''}`}
              />
           </form>
        </section>

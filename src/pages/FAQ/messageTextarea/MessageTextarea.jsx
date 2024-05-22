@@ -9,7 +9,8 @@ export const MessageTextarea = ({
     label,
     characterCount,
     handleTextareaChange,
-    maxLength
+    maxLength,
+    ...rest
 }) => {
     return (
         <div>
@@ -20,6 +21,7 @@ export const MessageTextarea = ({
                 placeholder={placeholder}
                 {...register}
                 onChange={handleTextareaChange}
+                {...rest}
             />
             <Typography className={s.counter} variant="span"  color="grey500">
                 {`${characterCount}/300`}
@@ -30,3 +32,4 @@ export const MessageTextarea = ({
         </div>
     );
 };
+
