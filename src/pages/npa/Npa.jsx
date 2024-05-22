@@ -1,4 +1,4 @@
-import styles from "./Npa.module.sass";
+import classes from "./Npa.module.sass";
 
 import { useTranslation } from "react-i18next";
 
@@ -49,31 +49,31 @@ export const Npa = () => {
    const { t } = useTranslation();
 
    return (
-      <section className={styles.regulations}>
+      <section className={classes.regulations}>
          <div className="container">
-            <Breadcrumbs className={styles.breadcrumbs} currentPage={t("regulationsPage.currentPage")} />
-            <Typography className={styles.heading} variant="h1" color="blue500" >
+            <Breadcrumbs className={classes.breadcrumbs} currentPage={t("regulationsPage.currentPage")} />
+            <Typography className={classes.heading} variant="h1" color="blue500" >
                {t("regulationsPage.currentPage")}
             </Typography>
-            <div className={styles.table}>
-               <ul className={styles.headings}>
-                  <li className={styles.headingDate} >
+            <div className={classes.table}>
+               <ul className={classes.headings}>
+                  <li className={classes.headingDate} >
                      <Typography variant="h6" color="grey500">
                         {t("regulationsPage.tableHeadings.date")}
                      </Typography>
                   </li>
-                  <li className={styles.headingNumberDoc}>
+                  <li className={classes.headingNumberDoc}>
                      <Typography variant="h6" color="grey500">
                         {t("regulationsPage.tableHeadings.documentNumber")}
                      </Typography>
                   </li>
-                  <li className={styles.headingName}>
+                  <li className={classes.headingName}>
                      <Typography variant="h6" color="grey500">
                         {t("regulationsPage.tableHeadings.name")}
                      </Typography>
                   </li>
                </ul>
-               <ul className={styles.documentsContainer}>
+               <ul className={classes.documentsContainer}>
                   {regulationsDocs?.map((doc, index) => (
                      <RegulationsDoc
                         key={index}
