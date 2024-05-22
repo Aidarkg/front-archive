@@ -1,4 +1,4 @@
-import styles from "./Header.module.sass";
+import classes from "./Header.module.sass";
 import { Typography } from "../../Typography/Typography";
 
 import { HeaderSelect } from "../../ui/headerSelect/HeaderSelect";
@@ -10,7 +10,7 @@ import { SearchSvg } from "../../ui/Svg/SearchSvg";
 
 import coat_of_arms from "./webp/symbol.webp";
 
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
@@ -18,8 +18,9 @@ export const Header = () => {
   const { t } = useTranslation();
   const [isInputVisible, setIsInputVisible] = useState(false);
   const [activeSubnav, setActiveSubnav] = useState(null);
+  const location = useLocation();
 
-  const activeLink = ({ isActive }) => isActive ? styles.active : "";
+  const activeLink = ({ isActive }) => isActive ? classes.active : "";
 
   const toggleInputVisibility = () => {
     setIsInputVisible(!isInputVisible);
@@ -38,41 +39,49 @@ export const Header = () => {
   };
 
   return (
-    <header className={styles.header}>
+    <header className={classes.header}>
       <div className="container">
-        <div className={styles.headerInner}>
-          <div className={styles.headerLogo} >
-            <img src={coat_of_arms} alt="Coat of arms" />
-            <span className={styles.headerLogoTitle}>
-              <Typography variant="h3" color="grey500">
-                {t("header&footer.logo.archivePresidentKR")}
-              </Typography>
-              <Typography variant="body" color="grey500">
-                {t("header&footer.logo.kyrgyzRepublic")}
-              </Typography>
-            </span>
+        <div className={classes.headerInner}>
+          <div className={classes.headerLogo} >
+            <div>
+              <img src={coat_of_arms} alt="Coat of arms" />
+            </div>
+            <div className={classes.headerLogoTitle}>
+              <NavLink to={"/"}>
+                <Typography variant="h3" color="grey500">
+                  {t("header&footer.logo.archivePresidentKR")}
+                </Typography>
+                <Typography variant="body" color="grey500">
+                  {t("header&footer.logo.kyrgyzRepublic")}
+                </Typography>
+              </NavLink>
+            </div>
           </div>
-          <div className={styles.rightHeader}>
-            <nav className={styles.nav}>
-              <ul className={styles.navList}>
+          <div className={classes.rightHeader}>
+            <nav className={classes.nav}>
+              <ul className={classes.navList}>
                 <li
-                  className={styles.archiveList}
+                  className={`
+                      ${classes.archiveList} 
+                      ${location.pathname.includes("/aboutArchive") || location.pathname.includes("/management")
+                      ? classes.active : ""}
+                    `}
                   onClick={() => toggleSubnav("archive")}
                 >
-                  <Typography className={styles.parentNav} variant="h6">
+                  <Typography className={classes.parentNav} variant="h6">
                     {t("header&footer.nav.archive")}
                   </Typography>
                   <ArrowDownSvg />
-                  <ul className={`${styles.subnav} ${activeSubnav === "archive" ? styles.open : ""}`}>
+                  <ul className={`${classes.subnav} ${activeSubnav === "archive" ? classes.open : ""}`}>
                     <li>
-                      <NavLink className={activeLink} to={"/aboutArchive"}>
+                      <NavLink to={"/aboutArchive"}>
                         <Typography variant="h6">
                           {t("header&footer.subnav.aboutArchive")}
                         </Typography>
                       </NavLink>
                     </li>
                     <li>
-                      <NavLink className={activeLink} to={"/management"}>
+                      <NavLink to={"/management"}>
                         <Typography variant="h6">
                           {t("header&footer.subnav.management")}
                         </Typography>
@@ -81,14 +90,18 @@ export const Header = () => {
                   </ul>
                 </li>
                 <li
-                  className={styles.mediaArchiveList}
+                  className={`
+                        ${classes.mediaArchiveList} 
+                        ${location.pathname.includes("/publications") || location.pathname.includes("/photo") || location.pathname.includes("/video")
+                      ? classes.active : ""}
+                      `}
                   onClick={() => toggleSubnav("mediaArchive")}
                 >
-                  <Typography className={styles.parentNav} variant="h6">
+                  <Typography className={classes.parentNav} variant="h6">
                     {t("header&footer.nav.mediaArchive")}
                   </Typography>
                   <ArrowDownSvg />
-                  <ul className={`${styles.subnav} ${activeSubnav === "mediaArchive" ? styles.open : ""}`}>
+                  <ul className={`${classes.subnav} ${activeSubnav === "mediaArchive" ? classes.open : ""}`}>
                     <li>
                       <NavLink to={"/publications"}>
                         <Typography variant="h6">
@@ -97,14 +110,14 @@ export const Header = () => {
                       </NavLink>
                     </li>
                     <li>
-                      <NavLink className={activeLink} to={"/photo"}>
+                      <NavLink to={"/photo"}>
                         <Typography variant="h6">
                           {t("header&footer.subnav.photo")}
                         </Typography>
                       </NavLink>
                     </li>
                     <li>
-                      <NavLink className={activeLink} to={"/video"}>
+                      <NavLink to={"/video"}>
                         <Typography variant="h6">
                           {t("header&footer.subnav.video")}
                         </Typography>
@@ -143,10 +156,10 @@ export const Header = () => {
               </ul>
             </nav>
             <HeaderSelect />
-            <button className={styles.eyeIcon}>
+            <button className={classes.eyeIcon}>
               <AccessibilitySvg />
             </button>
-            <button className={styles.searchBtn} onClick={toggleInputVisibility}>
+            <button className={classes.searchBtn} onClick={toggleInputVisibility}>
               <SearchSvg />
             </button>
             <div className={classes.inputWrapper}>
