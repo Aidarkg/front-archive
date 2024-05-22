@@ -1,14 +1,14 @@
 import { Link } from "react-router-dom";
-import { ArrowRight } from "../../../assets/icons/ArrowRight";
-import { Typography } from "../../../Typography/Typography";
-import classes from "../detailBtn/DetailBtn.module.sass";
+import { Typography } from "../../../../Typography/Typography";
+import { ArrowRight } from "../../../../assets/icons/ArrowRight";
+import classes from "./Btn.module.sass";
 
-export const DetailBtn = () => {
+export const Btn = () => {
   return (
     <section className="detail">
        <Link to="/aboutArchive">
        <button className={classes.btn}>
-          <Typography className={classes.btnDetail} variant="h6" weight="bold">
+          <Typography className={classes.btnDetail} variant="h6" >
              ПОДРОБНЕЕ ОБ АРХИВЕ
                  <ArrowRight />
           </Typography>           
@@ -17,3 +17,4 @@ export const DetailBtn = () => {
     </section>
   );
 };
+

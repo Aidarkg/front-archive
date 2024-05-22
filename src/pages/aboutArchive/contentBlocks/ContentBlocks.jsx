@@ -1,53 +1,49 @@
 import { Typography } from "../../../Typography/Typography";
-import css from "./ContentBlocks.module.sass";
+import { Btn } from "../../main/mainAboutArchive/btn/Btn";
+import classes from "./ContentBlocks.module.sass";
 
-export const ContentBlocks = ({ blocks }) => {
+export const ContentBlocks = ({ blocks, showTitle = true, showButton = false }) => {
    return (
-      <section className={css.main}>         
-         <Typography className={css.h1} variant="h1" color="blue500">
-            Об архиве
-         </Typography>
-         <div className={css.contentContainer}>
-            {blocks.map((block, index) => (
-               <div key={index} className={css.contentBlock}>
-                  {(index === 0 || index % 3 === 0) && (
-                     <>
-                        <div className={css.left}>
-                           <h2 className={css.heading}>{block.heading}</h2>
-                           <p className={css.text}>{block.text}</p>
-                           {/* <Typography className={css.text} variant="p">
-                               {block.text}
-                           </Typography> */}
-                        </div>
-                        <div>
-                           <img className={css.image} src={block.image} alt="Image" />
-                        </div>
-                     </>
-                  )}
-                  {(index === 1 || index % 3 === 1) && (
-                     <>
-                        <div>
-                           <img className={css.leftImage} src={block.image} />
-                        </div>
-                        <div className={css.right}>
-                           <h2 className={css.heading}>{block.heading}</h2>
-                           <p className={css.text}>{block.text}</p>
-                        </div>
-                     </>
-                  )}
-                  {(index === 2 || index % 3 === 2) && (
-                     <>
-                        <div className={css.left}>
-                           <h2 className={css.heading}>{block.heading}</h2>
-                           <p className={css.text}>{block.text}</p>
-                        </div>
-                        <div>
-                           <img className={css.image} src={block.image} alt="Image" />
-                        </div>
-                     </>
-                  )}
-               </div>
-            ))}
+      <section className={classes.main}>
+         <div className={classes.container}>
+         {showTitle && (
+            <Typography className={classes.h1} variant="h1" color="blue500">
+                Об архиве
+            </Typography>
+         )}
+            <div className={classes.contentInner}>
+               {blocks.map((block, index) => (
+                  <div
+                     key={index}
+                     className={`${classes.contentBlock} ${index % 2 !== 0 ? classes.left : " "}`}
+                  >
+                     <div className={classes.contentBlockText}>
+                        <Typography className={classes.heading} variant="h2">
+                           {block.heading}
+                        </Typography>
+                        <Typography className={classes.text} variant="p">
+                           {block.text}
+                        </Typography>
+                        {showButton && index === 0 && (
+                           <div className={classes.buttonContainer}>
+                               <Btn />
+                           </div>
+                        )}
+                     </div>
+                     <div className={index % 2 !== 0 ? "left" : "right"}>
+                        <img
+                           className={
+                              index % 2 !== 0
+                                 ? classes.leftImage
+                                 : classes.image
+                           }
+                           src={block.image}
+                           alt="Image"
+                        />
+                     </div>
+                  </div>
+               ))}
+            </div>
          </div>
       </section>
    );
