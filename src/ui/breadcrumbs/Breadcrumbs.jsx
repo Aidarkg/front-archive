@@ -1,4 +1,4 @@
-import styles from "./Breadcrumbs.module.sass";
+import classes from "./Breadcrumbs.module.sass";
 
 import { NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
@@ -34,7 +34,7 @@ export const Breadcrumbs = ({ currentPage, parentPageLink, currentPageId, classN
         crumbs.push(
             <li key="currentLink">
                 <NavLink to={parentPageLink}>
-                    <Typography className={styles.breadCrumbTitle} variant="h6" color="blue300" >
+                    <Typography className={classes.breadCrumbTitle} variant="h6" color="blue300" >
                         {currentPage}
                     </Typography>
                 </NavLink>
@@ -49,7 +49,7 @@ export const Breadcrumbs = ({ currentPage, parentPageLink, currentPageId, classN
 
         crumbs.push(
             <li key="currentTitle">
-                <Typography className={styles.breadCrumbTitle} variant="h6" color="blue500" >
+                <Typography className={classes.breadCrumbTitle} variant="h6" color="blue500" >
                     {currentPageId}
                 </Typography>
             </li>
@@ -58,14 +58,14 @@ export const Breadcrumbs = ({ currentPage, parentPageLink, currentPageId, classN
     } else if (currentPage) {
         crumbs.push(
             <li key="currentTitle">
-                <Typography className={styles.breadCrumbTitle} variant="h6" color="blue500" >
+                <Typography className={classes.breadCrumbTitle} variant="h6" color="blue500" >
                     {currentPage}
                 </Typography>
             </li>
         );
     }
 
-    return <ul className={`${styles.breadCrumbList} ${className}`}>{crumbs}</ul>;
+    return <ul className={`${classes.breadCrumbList} ${className}`}>{crumbs}</ul>;
 
 };
 

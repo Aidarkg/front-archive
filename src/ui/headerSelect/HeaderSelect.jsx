@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import styles from "./HeaderSelect.module.sass";
+import classes from "./HeaderSelect.module.sass";
 import { useState } from "react";
 import { ArrowDownSvg } from "../Svg/ArrowDownSvg";
 
@@ -27,22 +27,22 @@ export const HeaderSelect = () => {
     };
 
     return (
-        <div className={styles.headerSelect}>
+        <div className={classes.headerSelect}>
             <button
                 type="button"
-                className={styles.selectedOption}
+                className={classes.selectedOption}
                 onClick={toggleSelect}
             >
                 {languages.find((lang) => lang.code === i18n.language)?.label}
-                <ArrowDownSvg className={styles.ArrowDownSvg} />
+                <ArrowDownSvg className={classes.ArrowDownSvg} />
             </button>
-            <ul className={`${styles.optionList} ${activeList ? styles.open : ""}`}>
+            <ul className={`${classes.optionList} ${activeList ? classes.open : ""}`}>
                 {languages
                     ?.filter((lang) => lang.code !== i18n.language)
                     ?.map((lang) => (
                         <li
                             key={lang.code}
-                            className={styles.languageOption}
+                            className={classes.languageOption}
                             onClick={() => changeLanguage(lang.code)}
                         >
                             {lang.label}
