@@ -1,127 +1,59 @@
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap')
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap')
 
-.main
-    background-color: #f7f7f7
-    padding: 40px
-
-    h1
-        width: 214px
-        height: 52px
-        margin-left: 40px
-        font-weight: 700
-        font-size: 40px
-        font-family: "Merriweather", serif
-
-.contentContainer
-    display: flex
-    flex-wrap: wrap
-    justify-content: center
-    gap: 24px
-    width: 1360px
-    margin-top: 48px
-    margin-left: auto
-    margin-right: auto
-
-.contentBlock
-    display: grid
-    grid-template-columns: 50% 50%
-    justify-content: center
-    margin-bottom: 5px
-    border: 1px solid
-    border-radius: 16px
-    padding: 0px
-
-.left, .right
-    padding: 77px 32px
-
-.heading
-    width: 632px
-    height: 78px
-    font-weight: 700
-    font-size: 30px
-    font-family: "Merriweather", serif
-
-.text
-    margin: 16px auto
-    width: 632px
-    height: 126px
-    font-weight: 400
-    font-size: 16px
-    font-family: "Inter", sans-serif
-    font-style: normal
-    letter-spacing: 0px
-    color: rgb(72, 72, 72)
-
-.image
-    width: 664px
-    height: 390px
-    float: right
-    border: 1px solid
-    border-radius: 0px 16px 16px 0px
-
-.leftImage
-    float: left
-    width: 664px
-    height: 390px
-    border: 1px solid
-    border-radius: 16px 0px 0px 16px
-
-.main
+.main 
     background-color: var(--grey100)
     padding: 40px
-    margin-top: 90px
+    margin-top: 88px    
     h1
       width: 214px
       height: 52px
-      margin-left: 40px
-      font-family: "Merriweather", serif
-.contentContainer
-              display: flex
-              flex-wrap: wrap
-              justify-content: center
-              gap: 24px
-              width: 1360px
-              margin-left: auto
-              margin-right: auto
-
+      margin-left: 40px               
+      font-family: "Merriweather", serif 
+.container
+        width: 1360px
+        margin-left: auto
+        margin-right: auto
+.contentInner
+    display: flex
+    flex-direction: column
+    gap: 24px
+              
 .contentBlock
-           display: grid
-           grid-template-columns: 50% 50%
-           justify-content: center
-           margin-bottom: 5px
-           border: none
-           border-radius: 16px
-           padding: 0px
-           background-color: var(--main)
-.left,.right
-    padding: 69px 32px
-
+    display: flex
+    background-color: var(--main)
+    border-radius: 16px           
+    height: 374px
+    &Text
+       display: flex
+       flex-direction: column
+       gap: 16px
+       padding: 77px 32px
 .heading
        width: 632px
        height: 78px
        font-weight: 700
        font-size: 30px
-       font-family: "Merriweather", serif
-.text
-      margin: 16px auto
-      width: 632px
-      height: 126px
-      font-weight: 400
-      font-size: 16px
-      font-family: "Inter", sans-serif
-      font-style: normal
-      letter-spacing: 0px
-      color: var(--grey500)
+       font-family: "Merriweather", serif  
 
-.image
+.text
+    width: 632px
+    height: 126px
+    font-family: "Inter", sans-serif 
+    color: var(--grey500)
+
+.left
+    flex-direction: row-reverse
+.image 
+         width: 664px
          height: 374px
          float: right
          border: none
          border-radius: 0px 16px 16px 0px
-
-.leftImage
+         
+.leftImage  
+       float: left     
        width: 664px
-       height: 390px
+       height: 374px
        border: none
        border-radius: 16px 0px 0px 16px
