@@ -5,12 +5,12 @@ import classes from "./ContentBlocks.module.sass";
 export const ContentBlocks = ({ blocks, showTitle = true, showButton = false }) => {
    return (
       <section className={classes.main}>
+         <div className={classes.container}>
          {showTitle && (
             <Typography className={classes.h1} variant="h1" color="blue500">
                 Об архиве
             </Typography>
          )}
-         <div className={classes.container}>
             <div className={classes.contentInner}>
                {blocks.map((block, index) => (
                   <div
