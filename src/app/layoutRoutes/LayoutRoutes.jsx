@@ -1,6 +1,7 @@
 import {Route, Routes, useLocation} from "react-router-dom";
 import * as LayoutPages from "../../pages/index.js";
-import {ModalPage} from "../../shared/modalPage/ModalPage.jsx";
+import {ModalPage} from "../../modules/modalPage/ModalPage.jsx";
+
 
 const LayoutRoutes = () => {
       const location =  useLocation();

@@ -4,8 +4,8 @@ import { useTranslation } from "react-i18next";
 
 import { Typography } from "../../Typography/Typography";
 
-import { RegulationsDoc } from "../../ui/regulationsDoc/RegulationsDoc";
-import { Breadcrumbs } from "../../ui/breadcrumbs/Breadcrumbs";
+import { RegulationsDoc } from "../../UI/regulationsDoc/RegulationsDoc";
+import { Breadcrumbs } from "../../UI/breadcrumbs/Breadcrumbs";
 
 const regulationsDocs = [
    {

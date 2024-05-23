@@ -1,6 +1,6 @@
 import classes from "./Video.module.sass";
 import {Typography} from "../../Typography/Typography.jsx";
-import {CustomCard} from "../../ui/customCard/CustomCard.jsx";
+import {CustomCard} from "../../UI/customCard/CustomCard.jsx";
 import img from "../../assets/images/japarov.webp";
 import {useNavigate} from "react-router-dom";
 

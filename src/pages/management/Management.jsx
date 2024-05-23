@@ -1,4 +1,4 @@
-import {Breadcrumbs} from "../../ui/breadcrumbs/Breadcrumbs.jsx";
+import {Breadcrumbs} from "../../UI/breadcrumbs/Breadcrumbs.jsx";
 import {Typography} from "../../Typography/Typography.jsx";
 import classes from "./Managment.module.sass";
 

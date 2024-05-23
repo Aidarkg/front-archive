@@ -1,11 +1,10 @@
-import { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
-import { Typography } from "../../../Typography/Typography.jsx";
-import { TextInput } from "../../../ui/textInput/TextInput.jsx";
-// import { CustomButton } from "../../../ui/customButton/CustomButton.jsx";
+import {useForm} from "react-hook-form";
+import {useEffect, useState} from "react";
 import classes from "./QuestionForm.module.sass";
-import { MessageTextarea } from "../messageTextarea/MessageTextarea.jsx";
-import { regexForm } from "../regexForm/regexForm.jsx";
+import {TextInput} from "../../../UI/textInput/TextInput.jsx";
+import {Typography} from "../../../Typography/Typography.jsx";
+import {MessageTextarea} from "../messageTextarea/MessageTextarea.jsx";
+import {regexForm} from "../regexForm/regexForm.jsx";
 
 export const QuestionForm = () => {
    const {

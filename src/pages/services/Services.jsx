@@ -1,4 +1,4 @@
-import {Breadcrumbs} from "../../ui/breadcrumbs/Breadcrumbs.jsx";
+import {Breadcrumbs} from "../../UI/breadcrumbs/Breadcrumbs.jsx";
 
 export const Services = () => {
    return (

@@ -1,12 +1,12 @@
 import classes from "./Header.module.sass";
-import { Typography } from "../../Typography/Typography";
+import { Typography } from "../../Typography/Typography.jsx";
 
-import { HeaderSelect } from "../../ui/headerSelect/HeaderSelect";
-import { HeaderInput } from "../../ui/headerInput/HeaderInput";
+import {HeaderSelect} from "../../UI/headerSelect/HeaderSelect.jsx";
+import { HeaderInput } from "../../UI/headerInput/HeaderInput.jsx";
 
-import { ArrowDownSvg } from "../../ui/Svg/ArrowDownSvg";
-import { AccessibilitySvg } from "../../ui/Svg/AccessibilitySvg";
-import { SearchSvg } from "../../ui/Svg/SearchSvg";
+import { ArrowDownSvg } from "../../UI/Svg/ArrowDownSvg.jsx";
+import { AccessibilitySvg } from "../../UI/Svg/AccessibilitySvg.jsx";
+import { SearchSvg } from "../../UI/Svg/SearchSvg.jsx";
 
 import coat_of_arms from "./webp/symbol.webp";
 

@@ -1,5 +1,5 @@
 import classes from "./Modal.module.sass";
-import {QuestionForm} from "../../pages/FAQ/questionForm/QuestionForm.jsx";
+import {QuestionForm} from "../../../pages/FAQ/questionForm/QuestionForm.jsx";
 export const Modal = ({ active, setActive }) => {
 
 

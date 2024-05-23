@@ -1,8 +1,9 @@
-import {Modal} from "../modal/Modal.jsx";
+import {CustomButton} from "../../UI/customButton/CustomButton.jsx";
 import {useState} from "react";
-import classes from "./ModalPage.module.sass";
-import {CustomButton} from "../../ui/customButton/CustomButton.jsx";
 import {QuestionLine} from "../../assets/icons/QuestionLine.jsx";
+import {Modal} from "./modal/Modal.jsx";
+import classes from "./ModalPage.module.sass";
+
 export const ModalPage = () => {
     const [ modalActive, setModalActive ] = useState(false);
     return (

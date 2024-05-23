@@ -1,9 +1,9 @@
 import { QuestionForm } from "./questionForm/QuestionForm.jsx";
-import { Accardion } from "../../ui/Accordion/Accordion";
+import { Accardion } from "../../UI/Accordion/Accordion";
 import { faqList } from "./scripts/AccardionMenu";
 import classes from "./Faq.module.sass";
 import {Typography} from "../../Typography/Typography.jsx";
-import {Breadcrumbs} from "../../ui/breadcrumbs/Breadcrumbs.jsx";
+import {Breadcrumbs} from "../../UI/breadcrumbs/Breadcrumbs.jsx";
 
 export const Faq = () => {
    return (
