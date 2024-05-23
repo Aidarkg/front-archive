@@ -20,4 +20,3 @@ export const CustomButton = ({ text, icon, to, onClick, actionType, buttonStyle,
         </ButtonComponent>
     );
 };
-

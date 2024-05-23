@@ -107,7 +107,7 @@ export const QuestionForm = () => {
                     maxLength="300"
                     id="text"
                     placeholder="Введите текст"
-                    register={register("text", {
+                    {...register("text", {
                        required: "Это поле обязательное!",
                     })}
                     errors={errors.text}
