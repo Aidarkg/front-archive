@@ -1,5 +1,5 @@
 import { ContentBlocks } from "./contentBlocks/ContentBlocks";
-import img from "./images/about-pic.png";
+import img from "../../assets/images/about-pic.png";
 
 export const AboutArchive = () => {
    

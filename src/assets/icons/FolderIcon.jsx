@@ -39,3 +39,5 @@ export const FolderIcon = () => {
       </svg>
    );
 };
+
+export default FolderIcon;

@@ -38,3 +38,5 @@ export const Facebook = () => {
       </svg>
    );
 };
+
+export default Facebook;

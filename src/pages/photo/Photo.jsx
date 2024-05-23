@@ -1,9 +1,9 @@
 import {Typography} from "../../Typography/Typography.jsx";
-import s from "./Photo.module.sass";
+import classes from "./Photo.module.sass";
 import akaev from "../../assets/images/akaev.png";
 import img from "../../assets/images/japarov.webp";
-import {ArchivePhoto} from "./archivePhoto/ArchivePhoto.jsx";
 import {CustomCard} from "../../ui/customCard/CustomCard.jsx";
+import {useNavigate} from "react-router-dom";
 
 const archiveImages = [
     { image: akaev },
@@ -14,78 +14,92 @@ const archiveImages = [
 ];
 const imageContent = [
     {
-        description: "Садыр Жапаров выпустил приказ по созданию общегосударственной архивйцукенгйцукенгшш",
+        id:1,
+        title: "Садыр Жапаров выпустил приказ по созданию общегосударственной архивйцукенгйцукенгшш",
         image: img,
         date: "12.09.2023",
         imageCount: 10
     },
     {
-        description: "Садыр Жапаров выпустил приказ по созданию общегосударственной архив...",
+        id:2,
+        title: "Садыр Жапаров выпустил приказ по созданию общегосударственной архивйцукенгйцукенгшш",
         image: img,
         date: "12.09.2023",
         imageCount: 10
     },
     {
-        description: "Садыр Жапаров выпустил приказ по созданию общегосударственной архив...",
+        id:3,
+        title: "Садыр Жапаров выпустил приказ по созданию общегосударственной архивйцукенгйцукенгшш",
         image: img,
         date: "12.09.2023",
         imageCount: 10
     },
     {
-        description: "Садыр Жапаров выпустил приказ по созданию общегосударственной архив...",
+        id:4,
+        title: "Садыр Жапаров выпустил приказ по созданию общегосударственной архивйцукенгйцукенгшш",
         image: img,
         date: "12.09.2023",
         imageCount: 10
     },
     {
-        description: "Садыр Жапаров выпустил приказ по созданию общегосударственной архив...",
+        id:5,
+        title: "Садыр Жапаров выпустил приказ по созданию общегосударственной архивйцукенгйцукенгшш",
         image: img,
         date: "12.09.2023",
         imageCount: 10
     },
     {
-        description: "Садыр Жапаров выпустил приказ по созданию общегосударственной архив...",
+        id:6,
+        title: "Садыр Жапаров выпустил приказ по созданию общегосударственной архивйцукенгйцукенгшш",
         image: img,
         date: "12.09.2023",
         imageCount: 10
     },
     {
-        description: "Садыр Жапаров выпустил приказ по созданию общегосударственной архив...",
+        id:7,
+        title: "Садыр Жапаров выпустил приказ по созданию общегосударственной архивйцукенгйцукенгшш",
         image: img,
         date: "12.09.2023",
         imageCount: 10
     },
     {
-        description: " йцукенгшщзх Бабанов бабанов бабанов бабанов бабанлвчсмишщозлхйцукенгшщдльтим",
+        id:8,
+        title: "Садыр Жапаров выпустил приказ по созданию общегосударственной архивйцукенгйцукенгшш",
+        image: img,
+        date: "12.09.2023",
+        imageCount: 10
+    },
+    {
+        id:9,
+        title: "Садыр Жапаров выпустил приказ по созданию общегосударственной архивйцукенгйцукенгшш",
         image: img,
         date: "12.09.2023",
         imageCount: 10
     },
 ];
 export const Photo = () => {
+    const navigate=useNavigate();
     return (
         <section>
             <div className="container">
-                <div className={s.photo}>
+                <div className={classes.photo}>
                     <Typography variant="h1">Фото</Typography>
-                    <div className={s.photoArchive}>
-                        {archiveImages.map((image, index) => (
-                            <ArchivePhoto
-                                key={index}
-                                image={image.image}
-                                isLarge={index === 2}
-                                style={getStyleForIndex(index)}
-                            />
+                    <div className={classes.photoArchive}>
+                        {archiveImages&& archiveImages.map((image, index) => (
+                            <div className={classes.photoArchiveImage} key={index}>
+                                <img src={image.image} alt="img" />
+                            </div>
                         ))}
                     </div>
-                    <div className={s.photoContent}>
-                        {imageContent.reverse().map((item, index) => (
+                    <div className={classes.photoContent}>
+                        {imageContent&& imageContent.map((item, index) => (
                             <CustomCard
                                 key={index}
                                 image={item.image}
                                 date={item.date}
-                                description={item.description}
+                                description={item.title}
                                 imageCount={item.imageCount}
+                                onClick={() => navigate(`/photo/${item.id}`)}
                             />
                         ))}
                     </div>
@@ -95,19 +109,3 @@ export const Photo = () => {
     );
 };
 
-const getStyleForIndex = (index) => {
-    switch (index) {
-        case 0:
-            return { gridColumn: "1 / 2", gridRow: "1 / 2" };
-        case 1:
-            return { gridColumn: "1 / 2", gridRow: "2 / 3" };
-        case 2:
-            return { gridColumn: "2 / 4", gridRow: "1 / 3" };
-        case 3:
-            return { gridColumn: "4 / 5", gridRow: "1 / 2" };
-        case 4:
-            return { gridColumn: "4 / 5", gridRow: "2 / 3" };
-        default:
-            return {};
-    }
-};

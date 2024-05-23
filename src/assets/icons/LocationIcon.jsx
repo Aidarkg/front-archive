@@ -39,3 +39,5 @@ export const LocationIcon = () => {
       </svg>
    );
 };
+
+export default LocationIcon;

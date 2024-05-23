@@ -1,7 +1,12 @@
+import {Breadcrumbs} from "../../ui/breadcrumbs/Breadcrumbs.jsx";
+
 export const Services = () => {
    return (
-      <div>
-         <h2>Services</h2>
-      </div>
+      <section>
+          <div className="container">
+              <Breadcrumbs currentPage={"услуги"}/>
+
+          </div>
+      </section>
    );
 };
