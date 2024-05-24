@@ -25,7 +25,7 @@ export const Management = () => {
                 </Typography>
                 <ul>
                     {data.map((item) => (
-                        <li key={item.id}>{item.position}</li>
+                        <li key={item.id}>{item.name}</li>
                     ))}
                 </ul>
             </div>
