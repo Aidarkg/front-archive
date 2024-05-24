@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import { Typography } from "../../Typography/Typography";
 
 import { RegulationsDoc } from "../../UI/regulationsDoc/RegulationsDoc";
-import { Breadcrumbs } from "../../UI/breadcrumbs/Breadcrumbs";
+import { Breadcrumbs } from "../../modules/breadcrumbs/Breadcrumbs";
 
 const regulationsDocs = [
    {

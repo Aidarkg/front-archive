@@ -7,7 +7,7 @@ export const Accardion = ({ faqList = [] }) => {
    const [openId, setId] = useState(null);
 
    return (
-      <section style={{ flexDirection: "column" }}>
+      <section>
          <Typography className={css.nameFaq} variant="h1" color="blue500">
             Вопросы и ответы
          </Typography>

@@ -2,7 +2,7 @@ import css from "./SwiperOrganization.module.sass";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
-import { Navigation } from "swiper/modules";
+import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import { OrganizationLogo1 } from "../../../../assets/logos/OrganizationLogo1";
 import { OrganizationLogo2 } from "../../../../assets/logos/OrganizationLogo2";
 import { OrganizationLogo3 } from "../../../../assets/logos/OrganizationLogo3";
@@ -12,45 +12,77 @@ import { OrganizationLogo6 } from "../../../../assets/logos/OrganizationLogo6";
 import { Typography } from "../../../../Typography/Typography";
 
 const menuImgSwiper = [
-   { img: <OrganizationLogo1 />, name: "Жогорку Кенеш Кыргызской Республики" },
+   {
+      img: <OrganizationLogo1 />,
+      name: "Жогорку Кенеш Кыргызской Республики",
+      aHrefOrganization: "https://kenesh.kg/",
+   },
    {
       img: <OrganizationLogo2 />,
       name: "Кабинет Министров Кыргызской Республики",
+      aHrefOrganization: "https://www.gov.kg/ru",
    },
-   { img: <OrganizationLogo3 />, name: "Государственное учреждение «Түндүк»" },
-   { img: <OrganizationLogo4 />, name: "ГУОБДД МВД Кыргызской Республики" },
-   { img: <OrganizationLogo5 />, name: "МВД Кыргызской Республики" },
+   {
+      img: <OrganizationLogo3 />,
+      name: "Государственное учреждение «Түндүк»",
+      aHrefOrganization: "https://tunduk.gov.kg/ru",
+   },
+   {
+      img: <OrganizationLogo4 />,
+      name: "ГУОБДД МВД Кыргызской Республики",
+      aHrefOrganization: "https://www.guobdd.kg/",
+   },
+   {
+      img: <OrganizationLogo5 />,
+      name: "МВД Кыргызской Республики",
+      aHrefOrganization: "https://mvd.gov.kg/rus",
+   },
    {
       img: <OrganizationLogo6 />,
       name: "Администрация Президента Кыргызской Республики",
+      aHrefOrganization: "https://president.kg/",
    },
 ];
 
-export const SwiperOrganizations = ({ setSwiperInstance }) => {
+export const SwiperOrganizations = () => {
    return (
       <>
          <Swiper
-            modules={[Navigation]}
+            modules={[Autoplay, Pagination, Navigation]}
             slidesPerView={3}
+            centeredSlides={true}
+            speed={2500}
+            loop={true}
+            allowTouchMove={false}
+            autoplay={{
+               delay: 0,
+               disableOnInteraction: false,
+               waitForTransition: true,
+            }}
             spaceBetween={10}
             className={css.mySwiper}
-            onSwiper={(swiper) => setSwiperInstance(swiper)}
          >
-            <div>
-               {menuImgSwiper.map((Organition, idx) => {
-                  return (
-                     <SwiperSlide key={idx} className={css.mapOrganization}>
-                        {Organition.img}
+            {menuImgSwiper.map((Organization, idx) => {
+               return (
+                  <SwiperSlide key={idx}>
+                     <a style={{color: "black"}}
+                        href={Organization.aHrefOrganization}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                     >
+                        <div className={css.mapOrganization}>
+                           {Organization.img}
+                        </div>
                         <Typography
                            className={css.nameOrganizations}
                            variant="h3"
                         >
-                           {Organition.name}
+                           {Organization.name}
                         </Typography>
-                     </SwiperSlide>
-                  );
-               })}
-            </div>
+                     </a>
+                  </SwiperSlide>
+               );
+            })}
          </Swiper>
       </>
    );
