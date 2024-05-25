@@ -34,7 +34,7 @@
 // };
 //
 import { forwardRef } from "react";
-import { Typography } from "../../../Typography/Typography.jsx";
+import { Typography } from "../../Typography/Typography.jsx";
 import s from "./MessageTextarea.module.sass";
 
 export const MessageTextarea = forwardRef(({

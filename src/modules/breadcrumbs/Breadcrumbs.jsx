@@ -3,9 +3,9 @@ import classes from "./Breadcrumbs.module.sass";
 import { NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-import { Typography } from "../../Typography/Typography";
+import { Typography } from "../../Typography/Typography.jsx";
 
-import { ArrowRightSvg } from "../Svg/ArrowRightSvg";
+import { ArrowRightSvg } from "../../UI/Svg/ArrowRightSvg.jsx";
 
 
 export const Breadcrumbs = ({ currentPage, parentPageLink, currentPageId, className }) => {
