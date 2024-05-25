@@ -2,7 +2,6 @@ import {Route, Routes} from "react-router-dom";
 import * as LayoutPages from "../../pages/index.js";
 import {Layout} from "../Layout/Layout.jsx";
 
-
 const LayoutRoutes = () => {
    return (
       <>
