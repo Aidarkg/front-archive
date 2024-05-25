@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "https://jsonplaceholder.typicode.com/users";
+const API_URL = "https://aidarzh.pythonanywhere.com/ru/api/v1/management/";
 
 export const fetchData = async () => {
     const response = await axios.get(API_URL);

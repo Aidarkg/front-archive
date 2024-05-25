@@ -15,7 +15,7 @@ export const Management = () => {
     if (error) {
         return <div>Error: {error.message}</div>;
     }
-
+    const dataArray = Object.values(data);
     return (
         <section className={classes.management}>
             <div className="container">
@@ -24,7 +24,7 @@ export const Management = () => {
                     Руководство
                 </Typography>
                 <ul>
-                    {data.map((item) => (
+                    {dataArray.map((item) => (
                         <li key={item.id}>{item.name}</li>
                     ))}
                 </ul>
