@@ -1,11 +1,11 @@
-import {useParams} from "react-router-dom";
+import {ImageCount} from "../../UI/imageCount/ImageCount.jsx";
+import {CustomDate} from "../../UI/customDate/CustomDate.jsx";
+import {Typography} from "../../Typography/Typography.jsx";
 import classes from "./DetailPhoto.module.sass";
+import {useParams} from "react-router-dom";
 import img from "../../assets/images/japarov.webp";
 import picture from "../../assets/images/pic.png";
-import {Typography} from "../../Typography/Typography.jsx";
 import {useEffect, useState} from "react";
-import {CustomDate} from "../../ui/customDate/CustomDate.jsx";
-import {ImageCount} from "../../ui/imageCount/ImageCount.jsx";
 
 const imageContent = [
     {
