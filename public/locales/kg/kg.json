@@ -48,7 +48,9 @@
           "button": "Толук видео галерея"
       },
       "accordion": {},
-      "organization": {},
+      "organization": {
+        "title": "Уюмдар"
+      },
       "contacts": {
           "heading": "Кыргызстан Республикасы, Бишкек ш.",
           "address": {
@@ -77,7 +79,6 @@
       }
   },
   "servicePage": {
-      "heading": "Кызматтар",
       "button": "баа тизмесин жүктөп алуу",
       "cards": {}
   },
