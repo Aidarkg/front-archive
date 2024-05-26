@@ -4,6 +4,7 @@ import { faqList } from "./scripts/AccardionMenu";
 import classes from "./Faq.module.sass";
 import {Typography} from "../../Typography/Typography.jsx";
 import {Breadcrumbs} from "../../modules/breadcrumbs/Breadcrumbs.jsx";
+// import {ManagementMore} from "../managementMore/ManagementMore.jsx";
 
 export const Faq = () => {
    return (

@@ -8,9 +8,9 @@ export const useData = create(set => ({
         set({ loading: true });
         try {
             const data = await fetchData();
-            set({ data, loading: false });
+            set({ data });
         } catch (error) {
-            set({ error, loading: false });
+            set({ error });
         } finally {
             set({ loading: false });
         }
