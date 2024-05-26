@@ -2,36 +2,31 @@ import { useTranslation } from "react-i18next";
 import classes from "./HeaderSelect.module.sass";
 import { useState } from "react";
 import { ArrowDownSvg } from "../Svg/ArrowDownSvg";
+import { useRegulationsStore } from "../../pages/npa/store/useRegulationsStore";
 
 export const HeaderSelect = () => {
     const { i18n } = useTranslation();
     const [activeList, setActiveList] = useState(null);
+    const { setLanguage } = useRegulationsStore();
 
     const changeLanguage = (lng) => {
         i18n.changeLanguage(lng);
-        toggleSelect(null);
+        setLanguage(lng);
+        setActiveList(null);
     };
 
     const languages = [
         { code: "ru", label: "РУС" },
-        { code: "kg", label: "КЫР" },
+        { code: "ky", label: "КЫР" },
         { code: "en", label: "ENG" },
     ];
-
-    const toggleSelect = (menu) => {
-        if (activeList) {
-            setActiveList(null);
-        } else {
-            setActiveList(menu);
-        }
-    };
 
     return (
         <div className={classes.headerSelect}>
             <button
                 type="button"
                 className={classes.selectedOption}
-                onClick={toggleSelect}
+                onClick={() => setActiveList((prev) => !prev)}
             >
                 {languages.find((lang) => lang.code === i18n.language)?.label}
                 <ArrowDownSvg className={classes.ArrowDownSvg} />
