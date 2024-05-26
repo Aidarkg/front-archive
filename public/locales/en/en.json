@@ -1,140 +1,141 @@
 {
-  "main": "Main",
-  "modalButton": "Ask a question",
-  "header&footer": {
+   "main": "Main",
+   "modalButton": "Ask a question",
+   "header&footer": {
       "logo": {
-          "archivePresidentKR": "ARCHIVE OF THE PRESIDENT",
-          "kyrgyzRepublic": "KYRGYZ REPUBLIC"
+         "archivePresidentKR": "ARCHIVE OF THE PRESIDENT",
+         "kyrgyzRepublic": "KYRGYZ REPUBLIC"
       },
       "nav": {
-          "archive": "Archive",
-          "mediaArchive": "Media-archive",
-          "regulations": "Regulations",
-          "services": "Services",
-          "q&a": "Questions and answers",
-          "contacts": "Contacts"
+         "archive": "Archive",
+         "mediaArchive": "Media-archive",
+         "regulations": "Regulations",
+         "services": "Services",
+         "q&a": "Questions and answers",
+         "contacts": "Contacts"
       },
       "subnav": {
-          "aboutArchive": "About Archive",
-          "management": "Management",
-          "publications": "Publications",
-          "photo": "Photo",
-          "video": "video"
+         "aboutArchive": "About Archive",
+         "management": "Management",
+         "publications": "Publications",
+         "photo": "Photo",
+         "video": "video"
       },
       "search": "Site search",
       "attendanceCounter": "Attendance counter"
-  },
-  "mainPage": {
+   },
+   "mainPage": {
       "hero": {
-          "heading": "ARCHIVE OF THE PRESIDENT OF THE KYRGYZ REPUBLIC",
-          "subheading": "On the other hand, the existing theory allows us to evaluate the importance of strengthening moral values. Suddenly, the actions of representatives",
-          "button": "more about the archive"
+         "heading": "ARCHIVE OF THE PRESIDENT OF THE KYRGYZ REPUBLIC",
+         "subheading": "On the other hand, the existing theory allows us to evaluate the importance of strengthening moral values. Suddenly, the actions of representatives",
+         "button": "more about the archive"
       },
       "about": {
-          "title": "Regulations on the archive of the Ministry of Justice of the Kyrgyz Republic",
-          "subtitle": "The Kyrgyz Archive is the organization responsible for collecting, preserving and making available historical documents and archival materials relating to the history and culture of Kyrgyzstan. It plays an important role in preserving the national heritage and providing access to historical resources for research, education and the public",
-          "button": "more about the archive"
+         "title": "Regulations on the archive of the Ministry of Justice of the Kyrgyz Republic",
+         "subtitle": "The Kyrgyz Archive is the organization responsible for collecting, preserving and making available historical documents and archival materials relating to the history and culture of Kyrgyzstan. It plays an important role in preserving the national heritage and providing access to historical resources for research, education and the public",
+         "button": "more about the archive"
       },
       "publications": {
-          "title": "Publications",
-          "button": "All publications"
+         "title": "Publications",
+         "button": "All publications"
       },
       "photoGallery": {
-          "title": "Photo gallery",
-          "button": "Entire photo gallery"
+         "title": "Photo gallery",
+         "button": "Entire photo gallery"
       },
       "videoGallery": {
-          "title": "Video gallery",
-          "button": "Entire video gallery"
+         "title": "Video gallery",
+         "button": "Entire video gallery"
       },
       "accordion": {},
       "organization": {},
       "contacts": {
-          "heading": "Kyrgyz Republic, c. Bishkek",
-          "address": {
-              "address": "Address",
-              "street": "477 Frunze St."
-          },
-          "telephone": "Telephone",
-          "index": "Index",
-          "fax": "Fax",
-          "email": "E-mail",
-          "archiveService": "Archive service"
+         "heading": "Kyrgyz Republic, c. Bishkek",
+         "address": {
+            "address": "Address",
+            "street": "477 Frunze St."
+         },
+         "telephone": "Telephone",
+         "index": "Index",
+         "fax": "Fax",
+         "email": "E-mail",
+         "archiveService": "Archive service"
       }
-  },
-  "aboutArchivePage": {
+   },
+   "aboutArchivePage": {
       "section1": {
-          "heading": "Regulations on the archive of the Ministry of Justice of the Kyrgyz Republic",
-          "description": "The Kyrgyz Archive is the organization responsible for collecting, preserving and providing access to historical documents and archival materials related to the history and culture of Kyrgyzstan. It plays an important role in preserving the nation's heritage and providing access to historical resources for research, education and the public"
+         "heading": "Regulations on the archive of the Ministry of Justice of the Kyrgyz Republic",
+         "description": "The Kyrgyz Archive is the organization responsible for collecting, preserving and providing access to historical documents and archival materials related to the history and culture of Kyrgyzstan. It plays an important role in preserving the nation's heritage and providing access to historical resources for research, education and the public"
       },
       "section2": {
-          "heading": "In the provinces, no one is afraid of children's loud laughter!",
-          "description": "It should be noted that the current structure of the organization presupposes independent ways of implementing existing financial and administrative conditions! In our quest to improve the user experience, we miss that the supporters of totalitarianism in science, initiated exclusively synthetically, are verified in a timely manner. We are forced to start from the fact that a high-tech concept of social structure ensures the relevance of the development model."
+         "heading": "In the provinces, no one is afraid of children's loud laughter!",
+         "description": "It should be noted that the current structure of the organization presupposes independent ways of implementing existing financial and administrative conditions! In our quest to improve the user experience, we miss that the supporters of totalitarianism in science, initiated exclusively synthetically, are verified in a timely manner. We are forced to start from the fact that a high-tech concept of social structure ensures the relevance of the development model."
       },
       "section3": {
-          "heading": "Constant quantitative growth has not become a limiting factor",
-          "description": "Considering key behavioral scenarios, modern development methodology speaks to the possibilities of appropriate activation conditions. There is a controversial point of view that goes something like this: the key features of the project structure have been objectively reviewed by the relevant authorities! For the modern world, the cohesion of a team of professionals is an interesting experiment in testing the distribution of internal reserves and resources."
+         "heading": "Constant quantitative growth has not become a limiting factor",
+         "description": "Considering key behavioral scenarios, modern development methodology speaks to the possibilities of appropriate activation conditions. There is a controversial point of view that goes something like this: the key features of the project structure have been objectively reviewed by the relevant authorities! For the modern world, the cohesion of a team of professionals is an interesting experiment in testing the distribution of internal reserves and resources."
       }
-  },
-  "servicePage": {
+   },
+   "servicePage": {
+      "heading": "Services",
       "button": "download price list",
       "cards": {}
-  },
-  "regulationsPage": {
+   },
+   "regulationsPage": {
       "currentPage": "Regulations",
       "tableHeadings": {
-          "date": "Date",
-          "documentNumber": "Document number",
-          "name": "Name"
+         "date": "Date",
+         "documentNumber": "Document number",
+         "name": "Name"
       },
       "btnDownload": "Download",
       "btnOpen": "Open",
       "cards": {}
-  },
-  "q&aPage": {
+   },
+   "q&aPage": {
       "accordion": {},
       "heading": "Ask your question",
       "form": {
-          "phoneNumber": "Phone number",
-          "notNecessary": "Not necessary",
-          "fullName": "Full Name",
-          "mail": "Mail",
-          "yourQuestion": "Your question",
-          "button": "Submit a question"
+         "phoneNumber": "Phone number",
+         "notNecessary": "Not necessary",
+         "fullName": "Full Name",
+         "mail": "Mail",
+         "yourQuestion": "Your question",
+         "button": "Submit a question"
       }
-  },
-  "contactsPage": {
+   },
+   "contactsPage": {
       "headings": {
-          "mainHeading": "Contact Information",
-          "midHeading": "Anti-corruption cases",
-          "bottomHeading": "Call center"
+         "mainHeading": "Contact Information",
+         "midHeading": "Anti-corruption cases",
+         "bottomHeading": "Call center"
       },
       "sections": {
-          "duringWeekdays": "During weekdays",
-          "generalInformation": {
-              "generalInformation": "General information",
-              "location": "Location",
-              "exactLocation": "Kyrgyz Republic, Bishkek, st. Frunze, 477.",
-              "phoneNumber": "Phone number",
-              "email": "E-mail"
-          },
-          "schedule": {
-              "schedule": "Schedule",
-              "workingHours": "from 8:30 to 17:30",
-              "break": "break",
-              "saturdayAndSunday": "Saturday and sunday",
-              "dayOff": "Day off"
-          },
-          "receptionOfCitizens": {
-              "receptionOfCitizens": "Reception of citizens",
-              "workingHours": "from 8:30 to 17:00"
-          },
-          "readingRoom": {
-              "readingRoom": "Reading room",
-              "workingHours": "from 8:30 to 16:30"
-          }
+         "duringWeekdays": "During weekdays",
+         "generalInformation": {
+            "generalInformation": "General information",
+            "location": "Location",
+            "exactLocation": "Kyrgyz Republic, Bishkek, st. Frunze, 477.",
+            "phoneNumber": "Phone number",
+            "email": "E-mail"
+         },
+         "schedule": {
+            "schedule": "Schedule",
+            "workingHours": "from 8:30 to 17:30",
+            "break": "break",
+            "saturdayAndSunday": "Saturday and sunday",
+            "dayOff": "Day off"
+         },
+         "receptionOfCitizens": {
+            "receptionOfCitizens": "Reception of citizens",
+            "workingHours": "from 8:30 to 17:00"
+         },
+         "readingRoom": {
+            "readingRoom": "Reading room",
+            "workingHours": "from 8:30 to 16:30"
+         }
       },
       "number": "Number"
-  }
+   },
+   "faq": "Задайте свой вопрос"
 }
-
