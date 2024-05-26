@@ -1,5 +1,7 @@
 import { ContentBlocks } from "./contentBlocks/ContentBlocks";
 import img from "../../assets/images/about-pic.png";
+import { Breadcrumbs } from "../../modules/breadcrumbs/Breadcrumbs";
+import classes from "../aboutArchive/AboutArchive.module.sass";
 
 export const AboutArchive = () => {
    
@@ -23,7 +25,8 @@ export const AboutArchive = () => {
 
    return (
       <section>        
-        <div>
+        <div className={classes.container}>
+          <Breadcrumbs className={classes.bread} currentPage={"ОБ АРХИВЕ"} />
            <ContentBlocks blocks={blocks}/>
         </div>
      </section>
