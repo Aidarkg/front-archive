@@ -8,7 +8,7 @@ import { t } from "i18next";
 
 export const Faq = () => {
    return (
-      <section>
+      <section className="container">
          <Breadcrumbs currentPage={"вопросы и ответы"} />
          <div className={classes.faq}>
             <div>
