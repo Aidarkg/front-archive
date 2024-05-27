@@ -6,20 +6,22 @@ import {useParams} from "react-router-dom";
 import {useEffect} from "react";
 import {usePhotos} from "../photo/api/PhotosStore.js";
 import {Breadcrumbs} from "../../modules/breadcrumbs/Breadcrumbs.jsx";
+import {Loader} from "../../UI/loader/Loader.jsx";
 
 
 
 export const DetailPhoto = () => {
 
     const {id} = useParams();
-    const {images, getImages}=usePhotos(state => ({
-        images: state.images,
-        getImages: state.getImages
-    }));
+    const {images, getImages, title, loading}=usePhotos();
 
     useEffect(() => {
         getImages(id);
     }, [id]);
+    if (loading) {
+        return <Loader/>;
+    }
+
     return (
         <section className={classes.detailPhoto}>
            <div className="container">
@@ -27,10 +29,10 @@ export const DetailPhoto = () => {
                <div className={classes.detailPhotoInner}>
                    <div className={classes.detailPhotoHead}>
                        <div className={classes.detailPhotoHeadInfo}>
-                           <CustomDate date={images.date} isWhite={true}/>
+                           {/*/!*<CustomDate date={date} isWhite={true}/>*!/ // FIX ME*/}
                            <ImageCount imageCount={images.length} isWhite={true}/>
                        </div>
-                       <Typography variant="h2">{images.title}</Typography>
+                       <Typography variant="h2">{title}</Typography>
                    </div>
                    <div className={classes.detailPhotoImages}>
                        {

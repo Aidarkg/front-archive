@@ -9,9 +9,10 @@ export const usePublications = create(set => ({
     error: null,
     getPublications: async () => {
         try {
-            const response=await axios.get(`${BASE_URL}/news/?page=2`);
+            const response=await axios.get(`${BASE_URL}/news`);
             const data= await response.data;
             const results=data.results;
+            console.log(results)
             set({publications: results});
         } catch (error) {
             console.error('Failed fetch error', error);

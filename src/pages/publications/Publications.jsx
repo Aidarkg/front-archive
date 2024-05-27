@@ -11,10 +11,7 @@ export const Publications = () => {
 
     const navigate = useNavigate();
 
-    const {publications, getPublications} = usePublications(state => ({
-        publications: state.publications,
-        getPublications: state.getPublications,
-    }));
+    const {publications, getPublications} = usePublications();
 
     useEffect(() => {
         getPublications();
@@ -27,7 +24,7 @@ export const Publications = () => {
                 <div className={classes.Publications}>
                     <Typography variant="h1">Публикации</Typography>
                     <div className={classes.PublicationsContent}>
-                        {publications && publications.map((item, index) => (
+                        {publications && publications?.map((item, index) => (
                             <div className={classes.PublicationsContentCard}
                                  key={item.id}>
                                 <CustomCard

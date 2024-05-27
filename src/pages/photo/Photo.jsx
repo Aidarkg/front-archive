@@ -6,6 +6,7 @@ import {useNavigate} from "react-router-dom";
 import {usePhotos} from "./api/PhotosStore.js";
 import {useEffect} from "react";
 import {Breadcrumbs} from "../../modules/breadcrumbs/Breadcrumbs.jsx";
+import {Loader} from "../../UI/loader/Loader.jsx";
 
 const archiveImages = [
     {image: akaev},
@@ -17,13 +18,11 @@ const archiveImages = [
 
 
 export const Photo = () => {
-    const {photosContent, getPhotosContent} = usePhotos(state => ({
-        photosContent: state.photosContent,
-        getPhotosContent: state.getPhotosContent
-    }));
+    const {photosContent, getPhotosContent, loading} = usePhotos();
     useEffect(() => {
         getPhotosContent();
     }, []);
+
 
     const navigate = useNavigate();
 

@@ -8,10 +8,7 @@ import {Breadcrumbs} from "../../modules/breadcrumbs/Breadcrumbs.jsx";
 
 export const Video = () => {
 
-    const {videoContent, getVideoContent} = useVideo(state => ({
-        videoContent: state.videoContent,
-        getVideoContent: state.getVideoContent
-    }));
+    const {videoContent, getVideoContent} = useVideo();
 
     useEffect(() => {
         getVideoContent();
@@ -36,5 +33,5 @@ export const Video = () => {
                 </div>
             </div>
         </section>
-    )
+    );
 };

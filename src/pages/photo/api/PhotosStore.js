@@ -7,7 +7,10 @@ export const usePhotos = create(set => ({
     photosContent: [],
     images: [],
     error: null,
+    title: '',
+    loading: false,
     getPhotosContent: async () => {
+        set({loading: true});
         try {
             const response=await axios.get(`${BASE_URL}/photos`);
             const data=response.data;
@@ -15,6 +18,8 @@ export const usePhotos = create(set => ({
             set({photosContent: results});
         } catch (error) {
             console.error(error.message);
+        } finally {
+            set({loading: false});
         }
     },
     getImages: async (id)=> {
@@ -22,7 +27,9 @@ export const usePhotos = create(set => ({
             const response=await axios.get(`${BASE_URL}/photos/${id}`);
             const data= await response.data;
             const photos=data.photo;
-            set({images: photos});
+            const title=data.title;
+            console.log(data)
+            set({images: photos, title: title});
         } catch (error) {
             console.error(error, 'error');
         }

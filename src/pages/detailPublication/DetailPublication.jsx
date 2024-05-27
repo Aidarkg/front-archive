@@ -28,8 +28,8 @@ export const DetailPublication = () => {
                             <Typography variant="h2">{publication.title}</Typography>
                         </div>
                         <div className={classes.detailPublicationContentInner}>
-                            <Typography>{publication.description}</Typography>
-                            <div>
+                            <Typography className={classes.detailPublicationDescr}>{publication.description}</Typography>
+                            <div className={classes.detailPublicationImage}>
                                 <img src={publication.image} alt={publication.title}/>
                             </div>
                         </div>

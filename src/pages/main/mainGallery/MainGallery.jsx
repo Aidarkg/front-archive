@@ -7,18 +7,9 @@ import {useVideo} from "../../video/api/VideoStore.js";
 
 export const MainGallery = () => {
 
-    const {publications, getPublications} = usePublications(state => ({
-        publications: state.publications,
-        getPublications: state.getPublications
-    }));
-    const {photosContent, getPhotosContent} = usePhotos(state => ({
-        photosContent: state.photosContent,
-        getPhotosContent: state.getPhotosContent
-    }));
-    const {videoContent, getVideoContent} = useVideo(state => ({
-        videoContent: state.videoContent,
-        getVideoContent: state.getVideoContent
-    }));
+    const {publications, getPublications} = usePublications();
+    const {photosContent, getPhotosContent} = usePhotos();
+    const {videoContent, getVideoContent} = useVideo();
     const getFirstFourItems = (array) => array.slice(0, 4);
     const sections = [
         {
