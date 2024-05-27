@@ -38,3 +38,5 @@ export const TeamIcon = () => {
       </svg>
    );
 };
+
+export default TeamIcon;

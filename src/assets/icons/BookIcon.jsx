@@ -38,3 +38,5 @@ export const BookIcon = () => {
       </svg>
    );
 };
+
+export default BookIcon;

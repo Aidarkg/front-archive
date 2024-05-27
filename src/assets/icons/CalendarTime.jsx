@@ -38,3 +38,5 @@ export const CalendarTime = () => {
       </svg>
    );
 };
+
+export default CalendarTime;

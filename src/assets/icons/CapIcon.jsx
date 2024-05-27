@@ -38,3 +38,5 @@ export const CapIcon = () => {
       </svg>
    );
 };
+
+export default CapIcon;
