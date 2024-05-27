@@ -48,7 +48,9 @@
          "button": "Entire video gallery"
       },
       "accordion": {},
-      "organization": {},
+      "organization": {
+         "title": "Organizations"
+      },
       "contacts": {
          "heading": "Kyrgyz Republic, c. Bishkek",
          "address": {
@@ -77,7 +79,6 @@
       }
    },
    "servicePage": {
-      "heading": "Services",
       "button": "download price list",
       "cards": {}
    },

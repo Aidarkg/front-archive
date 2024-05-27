@@ -1,9 +1,9 @@
 import { Typography } from "../../Typography/Typography.jsx";
 import { Breadcrumbs } from "../../modules/breadcrumbs/Breadcrumbs.jsx";
 import classes from "./Services.module.sass";
-import { t } from "i18next";
 import { CustomButton } from "../../UI/customButton/CustomButton.jsx";
 import { DownloadIcon } from "../../assets/icons/DownloadIcon.jsx";
+import { useTranslation } from "react-i18next";
 
 const titleCard = [
    {
@@ -12,13 +12,13 @@ const titleCard = [
    },
 ];
 
-// Создаем массив из 8 элементов на основе titleCard
 const repeatedTitleCard = Array(9).fill(titleCard[0]).map((item, index) => ({
    ...item,
    id: item.id + '-' + index,
 }));
 
 export const Services = () => {
+   const {t} = useTranslation();
    return (
       <section>
          <div className="container">
@@ -28,12 +28,12 @@ export const Services = () => {
                variant="h1"
                color="blue500"
             >
-               {t("servicePage.heading")}
+               {t("header&footer.nav.services")}
             </Typography>
             <CustomButton
                buttonStyle="blue"
                type="submit"
-               text={"скачать прейскурант"}
+               text={t("servicePage.button")}
                className={classes.downloadPreiList}
                icon={<DownloadIcon />}
             />
