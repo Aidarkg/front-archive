@@ -23,14 +23,14 @@ const ContactCard = ({ title, items }) => (
       {items.map((item, index) => (
         <div key={index} className={styles.item}>
           <p className={styles.label}>
-              {item.label === "Местоположение" && <LocationIcon className={styles.icon} />}
-              {item.label === "Номер телефона" && <PhoneStroke className={styles.icon} />}
-              {item.label === "Электронная почта" && <MailIcon className={styles.icon} />}
-              {item.label === "В будние дни" && <CalendarIcon className={styles.icon} />}
-              {item.label === "Суббота и воскресенье" && <CalendarIcon className={styles.icon} />}
-              {item.label === "Перерыв" && <RestaurantIcon className={styles.icon} />}
-              {item.label === "Номер" && <PhoneStroke className={styles.icon} />}
-              {item.label}
+            {item.label === "Местоположение" && <LocationIcon className={styles.icon} />}
+            {item.label === "Номер телефона" && <PhoneStroke className={styles.icon} />}
+            {item.label === "Электронная почта" && <MailIcon className={styles.icon} />}
+            {item.label === "В будние дни" && <CalendarIcon className={styles.icon} />}
+            {item.label === "Суббота и воскресенье" && <CalendarIcon className={styles.icon} />}
+            {item.label === "Перерыв" && <RestaurantIcon className={styles.icon} />}
+            {item.label === "Номер" && <PhoneStroke className={styles.icon} />}
+            {item.label}
           </p>
           <p className={item.value === "Выходной" ? styles.value_weekend : styles.value}>{item.value}</p>
         </div>
@@ -105,10 +105,9 @@ export const Contacts = () => {
   return (
     <div className={styles.contactsPage}>
       <Breadcrumbs currentPage={"Контакты"} />
-      <ul className={styles.breadcrumbs}></ul>
       <h1>Контактная информация</h1>
       <ContactSection title="Архив" cards={archiveCards} />
-      <div className={styles.breadcrumbs}>
+      <div className={styles.breadcrumbsContainer}>
         <ContactSection title="Антикоррупционные дела" cards={anticorruptionCards} />
         <ContactSection title="Колл-центр" cards={callCenterCards} />
       </div>
