@@ -1,10 +1,13 @@
+import classes from "./ManagementMore.module.sass";
+import {Typography} from "../../Typography/Typography.jsx";
+
+import {Container} from "../../components/container/Container.jsx";
+import { Loader } from "../../components/loader/Loader.jsx";
+
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { Loader } from "../../components/loader/Loader.jsx";
 import {useDataMore} from "./store/store.jsx";
-import {Container} from "../../components/container/Container.jsx";
-import {Typography} from "../../Typography/Typography.jsx";
-import classes from "./ManagementMore.module.sass";
+
 import {CalendarBlue} from "../../assets/icons/CalendarBlue.jsx";
 import {CapIconBlue} from "../../assets/icons/CapIconBlue.jsx";
 import {CalendarIcon} from "../../assets/icons/CalendarIcon.jsx";
@@ -96,7 +99,7 @@ export const ManagementMore = () => {
                                 <div className={classes.border} key={index}>
                                     <Typography className={classes.managementIconBlack} variant="body" color="black">
                                         <CalendarIcon/>
-                                        {`${work.start_year}-${work.end_year} гг`}
+                                        {`${work.year} гг`}
                                     </Typography>
                                     <Typography className={classes.managementIconBlack} variant="body" color="black">
                                         <LocationIcon/>
@@ -109,6 +112,7 @@ export const ManagementMore = () => {
                                 </div>
                             ))}
                         </div>
+
                     </div>
                 </div>
             )}
