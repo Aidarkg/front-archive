@@ -3,101 +3,41 @@ import {CustomDate} from "../../UI/customDate/CustomDate.jsx";
 import {Typography} from "../../Typography/Typography.jsx";
 import classes from "./DetailPhoto.module.sass";
 import {useParams} from "react-router-dom";
-import img from "../../assets/images/japarov.webp";
-import picture from "../../assets/images/pic.png";
 import {useEffect, useState} from "react";
+import {usePhotos} from "../photo/api/PhotosStore.js";
+import {Breadcrumbs} from "../../modules/breadcrumbs/Breadcrumbs.jsx";
 
-const imageContent = [
-    {
-        id:1,
-        title: "Садыр Жапаров выпустил приказ по созданию общегосударственной архивной cлужбы",
-        images: [img, picture, picture, picture, picture, picture, picture, picture, picture, picture, picture, picture, picture, picture, picture, picture, picture, picture, picture,  ],
-        date: "12.09.2023",
-        imageCount: 10
-    },
-    {
-        id:2,
-        title: "Садыр Жапаров выпустил приказ по созданию общегосударственной архивной cлужбы",
-        images: [img, picture, picture, picture, picture, picture, picture, picture, picture, picture, picture, picture, picture, picture, picture, picture, picture, picture, picture,  ],
-        date: "12.09.2023",
-        imageCount: 10
-    },
-    {
-        id:3,
-        title: "Садыр Жапаров выпустил приказ по созданию общегосударственной архивной cлужбы",
-        images: [img, picture, picture, picture, picture, picture, picture, picture, picture, picture, picture, picture, picture, picture, picture, picture, picture, picture, picture,  ],
-        date: "12.09.2023",
-        imageCount: 10
-    },
-    {
-        id:4,
-        title: "Садыр Жапаров выпустил приказ по созданию общегосударственной архивной cлужбы",
-        images: [img, picture, picture, picture, picture, picture, picture, picture, picture, picture, picture, picture, picture, picture, picture, picture, picture, picture, picture,  ],
-        date: "12.09.2023",
-        imageCount: 10
-    },
-    {
-        id:5,
-        title: "Садыр Жапаров выпустил приказ по созданию общегосударственной архивной cлужбы",
-        images: [img, picture, picture, picture, picture, picture, picture, picture, picture, picture, picture, picture, picture, picture, picture, picture, picture, picture, picture,  ],
-        date: "12.09.2023",
-        imageCount: 10
-    },
-    {
-        id:6,
-        title: "Садыр Жапаров выпустил приказ по созданию общегосударственной архивной cлужбы",
-        images: [img, picture, picture, picture, picture, picture, picture, picture, picture, picture, picture, picture, picture, picture, picture, picture, picture, picture, picture,  ],
-        date: "12.09.2023",
-        imageCount: 10
-    },
-    {
-        id:7,
-        title: "Садыр Жапаров выпустил приказ по созданию общегосударственной архивной cлужбы",
-        images: [img, picture, picture, picture, picture, picture, picture, picture, picture, picture, picture, picture, picture, picture, picture, picture, picture, picture, picture,  ],
-        date: "12.09.2023",
-        imageCount: 10
-    },
-    {
-        id:8,
-        title: "Садыр Жапаров выпустил приказ по созданию общегосударственной архивной cлужбы",
-        images: [img, picture, picture, picture, picture, picture, picture, picture, picture, picture, picture, picture, picture, picture, picture, picture, picture, picture, picture,  ],
-        date: "12.09.2023",
-        imageCount: 10
-    },
-    {
-        id:9,
-        title: "Садыр Жапаров выпустил приказ по созданию общегосударственной архивной cлужбы",
-        images: [img, picture, picture, picture, picture, picture, picture, picture, picture, picture, picture, picture, picture, picture, picture, picture, picture, picture, picture,  ],
-        date: "12.09.2023",
-        imageCount: 10
-    },
-];
+
 
 export const DetailPhoto = () => {
 
     const {id} = useParams();
-    const [photos, setPhotos] = useState('');
+    const {images, getImages}=usePhotos(state => ({
+        images: state.images,
+        getImages: state.getImages
+    }));
+    const photosContent=usePhotos(state => state.photosContent)
 
     useEffect(() => {
-        const photo = imageContent.find(item => item.id === parseInt(id));
-        setPhotos(photo);
+        getImages(id);
     }, [id]);
     return (
         <section className={classes.detailPhoto}>
            <div className="container">
+               <Breadcrumbs currentPage={"фото"} parentPageLink={"/photo"}/>
                <div className={classes.detailPhotoInner}>
                    <div className={classes.detailPhotoHead}>
                        <div className={classes.detailPhotoHeadInfo}>
-                           <CustomDate date={photos.date} isWhite={true}/>
-                           <ImageCount imageCount={photos.imageCount} isWhite={true}/>
+                           <CustomDate date={images.date} isWhite={true}/>
+                           <ImageCount imageCount={images.length} isWhite={true}/>
                        </div>
-                       <Typography variant="h2">{photos.title}</Typography>
+                       <Typography variant="h2">{images.title}</Typography>
                    </div>
                    <div className={classes.detailPhotoImages}>
                        {
-                           photos?.images?.map((item, index)=>(
+                           images?.map((item, index)=>(
                                <div className={classes.imageWrapper} key={index}>
-                                   <img src={item} alt="img"/>
+                                   <img src={item.photo} alt="img"/>
                                </div>
                            ))
                        }

@@ -12,20 +12,18 @@ export const usePublications = create(set => ({
             const response=await axios.get(`${BASE_URL}/news/?page=2`);
             const data= await response.data;
             const results=data.results;
-            console.log(data.results);
             set({publications: results});
         } catch (error) {
-            console.warn('Failed fetch error', error);
+            console.error('Failed fetch error', error);
         }
     },
     getPublicationFromId: async (id)=>{
         try {
             const response=await axios.get(`${BASE_URL}/news/${id}`);
             const data= await response.data;
-            console.log(data)
             set({detailPublicationInfo: data});
         } catch (error) {
-            console.log(error.message);
+            console.error(error.message);
         }
     }
 }));
