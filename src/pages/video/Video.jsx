@@ -23,7 +23,7 @@ export const Video = () => {
                 <div className={classes.videoInner}>
                     <Typography variant="h1">Видео</Typography>
                     <div className={classes.videoContent}>
-                        {videoContent && videoContent.map((item, index) => (
+                        {videoContent && videoContent.map((item) => (
                             <CustomCard
                                 key={item.id}
                                 image={item.video}
