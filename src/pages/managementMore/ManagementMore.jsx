@@ -1,25 +1,29 @@
-import {useData} from "../management/store/Store.jsx";
-import {useEffect} from "react";
+
+import { useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { Loader } from "../../components/loader/Loader.jsx";
+import {useDataMore} from "./store/store.jsx";
 
 export const ManagementMore = () => {
-    const { data, loading, error, getData } = useData();
+    const { id } = useParams();
+    const { data, loading, error, getData } = useDataMore();
+    // console.log(data, "kkkkkkkkkkkkkkkkkk");
 
     useEffect(() => {
-        getData();
-    }, [getData]);
+        getData(id);
+    }, [id, getData]);
     if (loading) {
-        return <div>Loading...</div>;
+        return <Loader />;
     }
     if (error) {
-        return <div>Error: {error.message}</div>;
+        return <div>Error: {error}</div>;
     }
-
     return(
         <div>
             {
-                // Array.isArray(data) && // Проверяем, что data является массивом
-                data.results &&  data?.results.map((item, index) => <li key={index}>{item.position}</li>)
+                data
             }
+            <h1>Testing{id}</h1>
         </div>
     );
 };

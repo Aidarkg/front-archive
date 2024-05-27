@@ -3,46 +3,57 @@ import { Typography } from "../../Typography/Typography.jsx";
 import classes from "./Managment.module.sass";
 import { useEffect } from "react";
 import { useData } from "./store/Store.jsx";
-import {Loader} from "../../components/loader/Loader.jsx";
-import {Container} from "../../components/container/Container.jsx";
+import { Loader } from "../../components/loader/Loader.jsx";
+import { Container } from "../../components/container/Container.jsx";
+import { useNavigate } from "react-router-dom";  // Import useNavigate
 
 export const Management = () => {
     const { data, loading, error, getData } = useData();
+    const navigate = useNavigate();  // Initialize useNavigate hook
+
     useEffect(() => {
         getData();
     }, [getData]);
+
     if (loading) {
-        return <Loader/>;
+        return <Loader />;
     }
+
     if (error) {
         return <div>Error: {error.message}</div>;
     }
 
+    // Function to handle card click
+    const handleCardClick = (id) => {
+        navigate(`/managementMore/${id}`);
+    };
+
     return (
         <section>
-           <Container>
+            <Container>
                 <Breadcrumbs currentPage={"услуги"} />
                 <Typography className={classes.heading} variant="h1" color="blue500">
                     Руководство
                 </Typography>
                 <div className={classes.management}>
-                    {
-                        data.results &&  data?.results.map((item) =>(
-                            <div className={classes.managementCard} key={item.id}>
-                                <div>
-                                    <img src={item.image} alt="" />
-                                </div>
-                                <div className={classes.managementCardContent}>
-                                    <Typography variant="h6">{item.full_name}</Typography>
-                                    <Typography variant="smallBody" color="grey500">{item.position}</Typography>
-                                    <Typography variant="extraSmallBody" color="grey400" >с 2017 по 2024</Typography>
-                                </div>
+                    {data.results && data.results.map((item) => (
+                        <div
+                            className={classes.managementCard}
+                            key={item.id}
+                            onClick={() => handleCardClick(item.id)}  // Add onClick event
+                        >
+                            <div>
+                                <img src={item.image} alt={item.full_name} />
                             </div>
-                            )
-                        )
-                    }
+                            <div className={classes.managementCardContent}>
+                                <Typography variant="h6">{item.full_name}</Typography>
+                                <Typography variant="smallBody" color="grey500">{item.position}</Typography>
+                                <Typography variant="extraSmallBody" color="grey400">с 2017 по 2024</Typography>
+                            </div>
+                        </div>
+                    ))}
                 </div>
-           </Container>
+            </Container>
         </section>
     );
 };
