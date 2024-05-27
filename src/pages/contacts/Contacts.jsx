@@ -10,7 +10,6 @@ import CalendarTime from "../../assets/icons/CalendarTime";
 import RestaurantIcon from "../../assets/icons/RestaurantIcon";
 import BookIcon from "../../assets/icons/BookIcon";
 
-
 const ContactCard = ({ title, items }) => (
   <div className={styles.card}>
     <h3 className={styles.card_title}>
@@ -108,15 +107,8 @@ export const Contacts = () => {
       <Breadcrumbs currentPage={"Контакты"} />
       <ul className={styles.breadcrumbs}></ul>
       <h1>Контактная информация</h1>
-
-      <ContactSection className title="Архив" cards={archiveCards} />
-      <div style={{
-        display: 'flex',
-        flexDirection: 'column',
-        gap: 40,
-        maxWidth: '50%',
-        marginTop: 40
-      }}>
+      <ContactSection title="Архив" cards={archiveCards} />
+      <div className={styles.breadcrumbs}>
         <ContactSection title="Антикоррупционные дела" cards={anticorruptionCards} />
         <ContactSection title="Колл-центр" cards={callCenterCards} />
       </div>
