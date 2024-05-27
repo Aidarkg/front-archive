@@ -38,3 +38,5 @@ export const RestaurantIcon = () => {
       </svg>
    );
 };
+
+export default RestaurantIcon;

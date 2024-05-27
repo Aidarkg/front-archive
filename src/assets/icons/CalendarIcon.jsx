@@ -38,3 +38,5 @@ export const CalendarIcon = () => {
       </svg>
    );
 };
+
+export default CalendarIcon;
