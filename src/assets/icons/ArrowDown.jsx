@@ -1,6 +1,7 @@
-export const ArrowDown = () => {
+export const ArrowDown = ({ className }) => {
    return (
       <svg
+         className={className}
          width="24.000000"
          height="24.000000"
          viewBox="0 0 24 24"
@@ -12,7 +13,7 @@ export const ArrowDown = () => {
             <clipPath id="clip574_612">
                <rect
                   id="arrow-down"
-                  rx="-0.500000"
+                  rx="0"
                   width="23.000000"
                   height="23.000000"
                   transform="translate(0.500000 0.500000)"
@@ -23,7 +24,7 @@ export const ArrowDown = () => {
          </defs>
          <rect
             id="arrow-down"
-            rx="-0.500000"
+            rx="0"
             width="23.000000"
             height="23.000000"
             transform="translate(0.500000 0.500000)"

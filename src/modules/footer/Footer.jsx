@@ -1,5 +1,5 @@
 import classes from "./Footer.module.sass";
-import coat_of_arms from "../header/webp/symbol.webp";
+// import coat_of_arms from "../header/webp/symbol.webp";
 import {NavLink} from "react-router-dom";
 import {Typography} from "../../Typography/Typography.jsx";
 import { useTranslation } from "react-i18next";
@@ -11,7 +11,7 @@ export const Footer = () => {
                <div className={classes.footerContent}>
                    <div className={classes.footerLogo} >
                        <div>
-                           <img src={coat_of_arms} alt="Coat of arms" />
+                           {/*<img src={coat_of_arms} alt="Coat of arms" />*/}
                        </div>
                        <div className={classes.footerLogoText}>
                            <NavLink to={"/"}>

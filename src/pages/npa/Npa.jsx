@@ -2,55 +2,29 @@ import classes from "./Npa.module.sass";
 
 import { useTranslation } from "react-i18next";
 
+import { useEffect } from "react";
+
+import { useRegulationsStore } from "./store/useRegulationsStore";
+
 import { Typography } from "../../Typography/Typography";
 
 import { RegulationsDoc } from "../../UI/regulationsDoc/RegulationsDoc";
-import { Breadcrumbs } from "../../UI/breadcrumbs/Breadcrumbs";
 
-const regulationsDocs = [
-   {
-       date: "26.04.2024",
-       documentNumber: "234",
-       name: "Закон о содействии занятости населения"
-   },
-   {
-       date: "26.04.2024",
-       documentNumber: "234",
-       name: "Закон о содействии занятости населения"
-   },
-   {
-       date: "26.04.2024",
-       documentNumber: "234",
-       name: "Закон о содействии занятости населения"
-   },
-   {
-       date: "26.04.2024",
-       documentNumber: "234",
-       name: "Закон о содействии занятости населения"
-   },
-   {
-       date: "26.04.2024",
-       documentNumber: "234",
-       name: "Закон о содействии занятости населения"
-   },
-   {
-       date: "26.04.2024",
-       documentNumber: "234",
-       name: "Закон о содействии занятости населения"
-   }, 
-   {
-       date: "26.04.2024",
-       documentNumber: "234",
-       name: "Закон о содействии занятости населения"
-   }, 
-];
+import { Container } from "../../components/container/Container";
+
+import { Breadcrumbs } from "../../modules/breadcrumbs/Breadcrumbs";
 
 export const Npa = () => {
    const { t } = useTranslation();
+   const { regulationsList, fetchRegulations, language } = useRegulationsStore();
+
+   useEffect(() => {
+      fetchRegulations();
+   }, [fetchRegulations, language]);
 
    return (
       <section className={classes.regulations}>
-         <div className="container">
+         <Container>
             <Breadcrumbs className={classes.breadcrumbs} currentPage={t("regulationsPage.currentPage")} />
             <Typography className={classes.heading} variant="h1" color="blue500" >
                {t("regulationsPage.currentPage")}
@@ -74,17 +48,18 @@ export const Npa = () => {
                   </li>
                </ul>
                <ul className={classes.documentsContainer}>
-                  {regulationsDocs?.map((doc, index) => (
+                  {regulationsList?.slice(0, 7)?.map((doc) => (
                      <RegulationsDoc
-                        key={index}
-                        date={doc.date}
-                        documentNumber={doc.documentNumber}
-                        name={doc.name}
+                        key={doc.id}
+                        date="26.04.2024"
+                        documentNumber="№234"
+                        name={doc.title}
+                        linkOpen={doc.pdf_file}
                      />
                   ))}
                </ul>
             </div>
-         </div>
+         </Container>
       </section>
    );
 };
