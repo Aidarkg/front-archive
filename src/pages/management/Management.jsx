@@ -5,25 +5,22 @@ import { useEffect } from "react";
 import { useData } from "./store/Store.jsx";
 import { Loader } from "../../components/loader/Loader.jsx";
 import { Container } from "../../components/container/Container.jsx";
-import { useNavigate } from "react-router-dom";  // Import useNavigate
+import { useNavigate } from "react-router-dom";
 
 export const Management = () => {
     const { data, loading, error, getData } = useData();
-    const navigate = useNavigate();  // Initialize useNavigate hook
+    const navigate = useNavigate();
 
     useEffect(() => {
         getData();
     }, [getData]);
-
     if (loading) {
         return <Loader />;
     }
-
     if (error) {
         return <div>Error: {error.message}</div>;
     }
 
-    // Function to handle card click
     const handleCardClick = (id) => {
         navigate(`/managementMore/${id}`);
     };
@@ -31,12 +28,12 @@ export const Management = () => {
     return (
         <section>
             <Container>
-                <Breadcrumbs currentPage={"услуги"} />
+                <Breadcrumbs currentPage={"руководство"} />
                 <Typography className={classes.heading} variant="h1" color="blue500">
                     Руководство
                 </Typography>
                 <div className={classes.management}>
-                    {data.results && data.results.map((item) => (
+                    {data?.results && data?.results.map((item) => (
                         <div
                             className={classes.managementCard}
                             key={item.id}
