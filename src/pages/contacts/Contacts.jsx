@@ -1,4 +1,5 @@
 import styles from "./Contacts.module.sass";
+import { Breadcrumbs } from "../../modules/breadcrumbs/Breadcrumbs.jsx";
 import CapIcon from "../../assets/icons/CapIcon";
 import PhoneStroke from "../../assets/icons/PhoneStroke";
 import LocationIcon from "../../assets/icons/LocationIcon";
@@ -9,32 +10,33 @@ import CalendarTime from "../../assets/icons/CalendarTime";
 import RestaurantIcon from "../../assets/icons/RestaurantIcon";
 import BookIcon from "../../assets/icons/BookIcon";
 
+
 const ContactCard = ({ title, items }) => (
   <div className={styles.card}>
-    <h3>
+    <h3 className={styles.card_title}>
       {title === "Общая информация" && <CapIcon className={styles.icon} />}
       {title === "График работы" && <CalendarTime className={styles.icon} />}
       {title === "Прием граждан" && <TeamIcon className={styles.icon} />}
       {title === "Читальный зал" && <BookIcon className={styles.icon} />}
       {title}
     </h3>
-    {items.map((item, index) => (
-      <div key={index} className={styles.item}>
-        <p className={styles.label}>
-          <strong>
-            {item.label === "Местоположение" && <LocationIcon className={styles.icon} />}
-            {item.label === "Номер телефона" && <PhoneStroke className={styles.icon} />}
-            {item.label === "Электронная почта" && <MailIcon className={styles.icon} />}
-            {item.label === "В будние дни" && <CalendarIcon className={styles.icon} />}
-            {item.label === "Суббота и воскресенье" && <CalendarIcon className={styles.icon} />}
-            {item.label === "Перерыв" && <RestaurantIcon className={styles.icon} />}
-            {item.label === "Номер" && <PhoneStroke className={styles.icon} />}
-            {item.label}
-          </strong>
-        </p>
-        <p className={item.value === "Выходной" ? styles.value_weekend : styles.value}>{item.value}</p>
-      </div>
-    ))}
+    <div className={styles.card_contact_wrapper}>
+      {items.map((item, index) => (
+        <div key={index} className={styles.item}>
+          <p className={styles.label}>
+              {item.label === "Местоположение" && <LocationIcon className={styles.icon} />}
+              {item.label === "Номер телефона" && <PhoneStroke className={styles.icon} />}
+              {item.label === "Электронная почта" && <MailIcon className={styles.icon} />}
+              {item.label === "В будние дни" && <CalendarIcon className={styles.icon} />}
+              {item.label === "Суббота и воскресенье" && <CalendarIcon className={styles.icon} />}
+              {item.label === "Перерыв" && <RestaurantIcon className={styles.icon} />}
+              {item.label === "Номер" && <PhoneStroke className={styles.icon} />}
+              {item.label}
+          </p>
+          <p className={item.value === "Выходной" ? styles.value_weekend : styles.value}>{item.value}</p>
+        </div>
+      ))}
+    </div>
   </div>
 );
 
@@ -96,7 +98,6 @@ export const Contacts = () => {
     {
       title: "Общая информация",
       items: [
-        { label: "Местоположение", value: "Кыргызская Республика, г. Бишкек, ул. Фрунзе, 477." },
         { label: "Номер", value: "0312 15 74 85" },
       ],
     },
@@ -104,12 +105,21 @@ export const Contacts = () => {
 
   return (
     <div className={styles.contactsPage}>
+      <Breadcrumbs currentPage={"Контакты"} />
       <ul className={styles.breadcrumbs}></ul>
       <h1>Контактная информация</h1>
 
-      <ContactSection title="Архив" cards={archiveCards} />
-      <ContactSection title="Антикоррупционные дела" cards={anticorruptionCards} />
-      <ContactSection title="Колл-центр" cards={callCenterCards} />
+      <ContactSection className title="Архив" cards={archiveCards} />
+      <div style={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 40,
+        maxWidth: '50%',
+        marginTop: 40
+      }}>
+        <ContactSection title="Антикоррупционные дела" cards={anticorruptionCards} />
+        <ContactSection title="Колл-центр" cards={callCenterCards} />
+      </div>
     </div>
   );
 };
