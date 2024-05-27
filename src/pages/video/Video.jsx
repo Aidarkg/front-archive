@@ -36,5 +36,5 @@ export const Video = () => {
                 </div>
             </div>
         </section>
-    );
+    )
 };

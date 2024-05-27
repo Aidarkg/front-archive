@@ -16,7 +16,7 @@ i18n
          ru: {
             translation: ruTranslations,
          },
-         kg: {
+         ky: {
             translation: kgTranslations,
          },
          en: {
