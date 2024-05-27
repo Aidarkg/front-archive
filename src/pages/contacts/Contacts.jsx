@@ -9,6 +9,7 @@ import TeamIcon from "../../assets/icons/TeamIcon";
 import CalendarTime from "../../assets/icons/CalendarTime";
 import RestaurantIcon from "../../assets/icons/RestaurantIcon";
 import BookIcon from "../../assets/icons/BookIcon";
+import {Container} from "../../components/container/Container.jsx";
 
 const ContactCard = ({ title, items }) => (
   <div className={styles.card}>
@@ -103,14 +104,16 @@ export const Contacts = () => {
   ];
 
   return (
-    <div className={styles.contactsPage}>
+    <Container>
       <Breadcrumbs currentPage={"Контакты"} />
-      <h1>Контактная информация</h1>
-      <ContactSection title="Архив" cards={archiveCards} />
-      <div className={styles.breadcrumbsContainer}>
-        <ContactSection title="Антикоррупционные дела" cards={anticorruptionCards} />
-        <ContactSection title="Колл-центр" cards={callCenterCards} />
+      <div className={styles.contactsPage}>
+        <h1>Контактная информация</h1>
+        <ContactSection title="Архив" cards={archiveCards} />
+        <div className={styles.breadcrumbsContainer}>
+          <ContactSection title="Антикоррупционные дела" cards={anticorruptionCards} />
+          <ContactSection title="Колл-центр" cards={callCenterCards} />
+        </div>
       </div>
-    </div>
+    </Container>
   );
 };
