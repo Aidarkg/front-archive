@@ -3,7 +3,7 @@ import {Typography} from "../../Typography/Typography.jsx";
 import {CustomDate} from "../customDate/CustomDate.jsx";
 import {ImageCount} from "../imageCount/ImageCount.jsx";
 
-export const CustomCard = ({onClick, image, date, description, imageCount, isLargeCard}) => {
+export const CustomCard = ({onClick, image, date, title, imageCount, isLargeCard}) => {
 
     const formatDate = (dateString) => {
         const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
@@ -28,7 +28,7 @@ export const CustomCard = ({onClick, image, date, description, imageCount, isLar
                     )}
                 </div>
                 <Typography
-                    variant="smallBody" truncate={68}>{description}</Typography>
+                    variant="smallBody" truncate={68}>{title}</Typography>
             </div>
         </div>
     );

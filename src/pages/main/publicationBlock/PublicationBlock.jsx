@@ -13,12 +13,12 @@ export const PublicationBlock = ({ title, contentArray, path, linkText, type }) 
             <div className={classes.publicationBlockContent}>
                 {contentArray.map((item, index) => (
                     <CustomCard
-                        key={index}
-                        image={item.image}
-                        description={item.description}
-                        imageCount={item.imageCount}
-                        date={item.date}
-                        onClick={()=>navigate(`/${type}/${item.id}`)}
+                        key={item.id}
+                        image={item.picture || item.image}
+                        title={item.title}
+                        imageCount={item.count_photo}
+                        date={item.public_date}
+                        onClick={()=>navigate(type&&`/${type}/${item.id}`)}
                     />
                 ))}
             </div>

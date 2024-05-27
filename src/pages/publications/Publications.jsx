@@ -33,8 +33,7 @@ export const Publications = () => {
                                 <CustomCard
                                     image={item.image}
                                     date={item.public_date}
-                                    description={item.description}
-
+                                    title={item.title}
                                     isLargeCard={index === 0}
                                     onClick={() => navigate(`/publications/${item.id}`)}
                                 />

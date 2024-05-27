@@ -1,176 +1,52 @@
 import classes from "./MainGallery.module.sass";
 import {PublicationBlock} from "../publicationBlock/PublicationBlock.jsx";
-import img from "../../../assets/images/japarov.webp";
-
-const publicationContent = [
-    {   id: "1",
-        description: " publicationContent " +
-            "1Садыр Жапаров выпустил приказ по созданию общегосударственной архивйцукенгйцукенгшш",
-        image: img,
-        date: "12.09.2023"
-    },
-    {   id: 2,
-        description: "2publicationContent Садыр Жапаров выпустил приказ по созданию общегосударственной архив...",
-        image: img,
-        date: "12.09.2023"
-    },
-    {
-        description: " publicationContent Садыр Жапаров выпустил приказ по созданию общегосударственной архив...",
-        image: img,
-        date: "12.09.2023"
-    },
-    {
-        description: " publicationContent Садыр Жапаров выпустил приказ по созданию общегосударственной архив...",
-        image: img,
-        date: "12.09.2023"
-    },
-    {
-        description: "Садыр Жапаров выпустил приказ по созданию общегосударственной архив...",
-        image: img,
-        date: "12.09.2023"
-    },
-    {
-        description: "Садыр Жапаров выпустил приказ по созданию общегосударственной архив...",
-        image: img,
-        date: "12.09.2023"
-    },
-    {
-        description: "Садыр Жапаров выпустил приказ по созданию общегосударственной архив...",
-        image: img,
-        date: "12.09.2023"
-    },
-    {
-        description: " йцукенгшщзх Бабанов бабанов бабанов бабанов бабанлвчсмишщозлхйцукенгшщдльтим",
-        image: img,
-        date: "12.09.2023"
-    },
-];
-const imageContent = [
-    {   id:1,
-        description: " 123456Садыр Жапаров выпустил приказ по созданию общегосударственной архивйцукенгйцукенгшш",
-        image: img,
-        date: "12.09.2023",
-        imageCount: 10,
-    },
-    {   id: 2,
-        description: "Садыр Жапаров выпустил приказ по созданию общегосударственной архив...",
-        image: img,
-        date: "12.09.2023",
-        imageCount: 10
-    },
-    {   id:3,
-        description: "Садыр Жапаров выпустил приказ по созданию общегосударственной архив...",
-        image: img,
-        date: "12.09.2023",
-        imageCount: 10
-    },
-    {   id: 4,
-        description: "Садыр Жапаров выпустил приказ по созданию общегосударственной архив...",
-        image: img,
-        date: "12.09.2023",
-        imageCount: 10
-    },
-    {   id:5,
-        description: "Садыр Жапаров выпустил приказ по созданию общегосударственной архив...",
-        image: img,
-        date: "12.09.2023",
-        imageCount: 10
-    },
-    {   id: 6,
-        description: "Садыр Жапаров выпустил приказ по созданию общегосударственной архив...",
-        image: img,
-        date: "12.09.2023",
-        imageCount: 10
-    },
-    {   id: 7,
-        description: "Садыр Жапаров выпустил приказ по созданию общегосударственной архив...",
-        image: img,
-        date: "12.09.2023",
-        imageCount: 10
-    },
-    {   id: 8,
-        description: " йцукенгшщзх Бабанов бабанов бабанов бабанов бабанлвчсмишщозлхйцукенгшщдльтим",
-        image: img,
-        date: "12.09.2023",
-        imageCount: 10
-    },
-];
-const videoContent = [
-    {   id: 1,
-        description: " 123456Садыр Жапаров выпустил приказ по созданию общегосударственной архивйцукенгйцукенгшш",
-        image: img,
-        date: "12.09.2023",
-        imageCount: 10
-    },
-    {   id: 2,
-        description: "Садыр Жапаров выпустил приказ по созданию общегосударственной архив...",
-        image: img,
-        date: "12.09.2023",
-        imageCount: 10
-    },
-    {   id: 3,
-        description: "Садыр Жапаров выпустил приказ по созданию общегосударственной архив...",
-        image: img,
-        date: "12.09.2023",
-        imageCount: 10
-    },
-    {   id: 4,
-        description: "Садыр Жапаров выпустил приказ по созданию общегосударственной архив...",
-        image: img,
-        date: "12.09.2023",
-        imageCount: 10
-    },
-    {   id: 5,
-        description: "Садыр Жапаров выпустил приказ по созданию общегосударственной архив...",
-        image: img,
-        date: "12.09.2023",
-        imageCount: 10
-    },
-    {   id: 6,
-        description: "Садыр Жапаров выпустил приказ по созданию общегосударственной архив...",
-        image: img,
-        date: "12.09.2023",
-        imageCount: 10
-    },
-    {   id: 7,
-        description: "Садыр Жапаров выпустил приказ по созданию общегосударственной архив...",
-        image: img,
-        date: "12.09.2023",
-        imageCount: 10
-    },
-    {   id: 8,
-        description: " йцукенгшщзх Бабанов бабанов бабанов бабанов бабанлвчсмишщозлхйцукенгшщдльтим",
-        image: img,
-        date: "12.09.2023",
-        imageCount: 10
-    },
-];
-const getFirstFourItems = (array) => array.slice(0, 4);
-const sections = [
-    {
-        title: "Публикации",
-        content: getFirstFourItems(publicationContent),
-        path: "/publications",
-        linkText: "Все публикации",
-        type: "publications"
-    },
-    {
-        title: "Фотогалерея",
-        content: getFirstFourItems(imageContent),
-        path: "/photo",
-        linkText: "Все фотографии",
-        type: "photo"
-    },
-    {
-        title: "Видеогалерея",
-        content: getFirstFourItems(videoContent),
-        path: "/video",
-        linkText: "Все видео",
-        type: "video"
-    }
-];
+import {usePublications} from "../../publications/api/PublicationsStore.js";
+import {useEffect} from "react";
+import {usePhotos} from "../../photo/api/PhotosStore.js";
+import {useVideo} from "../../video/api/VideoStore.js";
 
 export const MainGallery = () => {
+
+    const {publications, getPublications}=usePublications(state => ({
+        publications: state.publications,
+        getPublications: state.getPublications
+    }));
+    const {photosContent, getPhotosContent}=usePhotos(state => ({
+        photosContent: state.photosContent,
+        getPhotosContent: state.getPhotosContent
+    }))
+    const {videoContent, getVideoContent}=useVideo(state => ({
+        videoContent: state.videoContent,
+        getVideoContent: state.getVideoContent
+    }))
+    const getFirstFourItems = (array) => array.slice(0, 4);
+    const sections = [
+        {
+            title: "Публикации",
+            content: getFirstFourItems(publications),
+            path: "/publications",
+            linkText: "Все публикации",
+            type: "publications"
+        },
+        {
+            title: "Фотогалерея",
+            content: getFirstFourItems(photosContent),
+            path: "/photo",
+            linkText: "Все фотографии",
+            type: "photo"
+        },
+        {
+            title: "Видеогалерея",
+            content: getFirstFourItems(videoContent),
+            path: "/video",
+            linkText: "Все видео",
+        }
+    ];
+    useEffect(() => {
+        getPublications();
+        getPhotosContent();
+        getVideoContent();
+    }, []);
     return (
         <section className={classes.gallery}>
             <div className="container">

@@ -22,7 +22,6 @@ export const usePhotos = create(set => ({
             const response=await axios.get(`${BASE_URL}/photos/${id}`);
             const data= await response.data;
             const photos=data.photo;
-            console.log(photos);
             set({images: photos});
         } catch (error) {
             console.error(error, 'error');

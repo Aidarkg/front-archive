@@ -1,63 +1,35 @@
 import classes from "./Video.module.sass";
 import {Typography} from "../../Typography/Typography.jsx";
 import {CustomCard} from "../../UI/customCard/CustomCard.jsx";
-import img from "../../assets/images/japarov.webp";
-import {useNavigate} from "react-router-dom";
+import {useVideo} from "./api/VideoStore.js";
+import {useEffect} from "react";
+import {Breadcrumbs} from "../../modules/breadcrumbs/Breadcrumbs.jsx";
 
-const videoContent = [
-    {   id: 1,
-        title: "Садыр Жапаров выпустил приказ по созданию общегосударственной архивйцукенгйцукенгшш",
-        video: img,
-        date: "12.09.2023",
-        imageCount: 23
-    },
-    {   id: 2,
-        title: "Садыр Жапаров выпустил приказ по созданию общегосударственной архив...",
-        video: img,
-        date: "12.09.2023",
-        imageCount: 23
-    },
-    {   id:3,
-        title: "Садыр Жапаров выпустил приказ по созданию общегосударственной архив...",
-        video: img,
-        date: "12.09.2023",
-        imageCount: 23
-    },
-    {   id: 4,
-        title: "Садыр Жапаров выпустил приказ по созданию общегосударственной архив...",
-        video: img,
-        date: "12.09.2023",
-        imageCount: 23
-    },
-    {   id: 5,
-        title: "Садыр Жапаров выпустил приказ по созданию общегосударственной архив...",
-        video: img,
-        date: "12.09.2023",
-        imageCount: 23
-    },
-    {   id: 6,
-        title: "Садыр Жапаров выпустил приказ по созданию общегосударственной архив...",
-        video: img,
-        date: "12.09.2023",
-        imageCount: 23
-    },
-];
+
 export const Video = () => {
-    const navigate=useNavigate();
+
+    const {videoContent, getVideoContent} = useVideo(state => ({
+        videoContent: state.videoContent,
+        getVideoContent: state.getVideoContent
+    }));
+
+    useEffect(() => {
+        getVideoContent();
+    }, []);
     return (
         <section className={classes.video}>
             <div className="container">
+                <Breadcrumbs currentPage={"Видео"}/>
                 <div className={classes.videoInner}>
                     <Typography variant="h1">Видео</Typography>
                     <div className={classes.videoContent}>
-                        {videoContent&& videoContent.map((item, index) => (
+                        {videoContent && videoContent.map((item, index) => (
                             <CustomCard
-                                key={index}
+                                key={item.id}
                                 image={item.video}
-                                date={item.date}
-                                description={item.title}
-                                imageCount={item.imageCount}
-                                onClick={()=>navigate(`/video/${item.id}`)}
+                                date={item.public_date}
+                                title={item.title}
+                                //FIX ME  onClick={() => navigate(`/video/${item.id}`)}
                             />
                         ))}
                     </div>

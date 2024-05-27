@@ -1,7 +1,6 @@
 import {Typography} from "../../Typography/Typography.jsx";
 import classes from "./Photo.module.sass";
 import akaev from "../../assets/images/akaev.png";
-import img from "../../assets/images/japarov.webp";
 import {CustomCard} from "../../UI/customCard/CustomCard.jsx";
 import {useNavigate} from "react-router-dom";
 import {usePhotos} from "./api/PhotosStore.js";
@@ -22,7 +21,6 @@ export const Photo = () => {
         photosContent: state.photosContent,
         getPhotosContent: state.getPhotosContent
     }));
-    const images=usePhotos(state => state.images);
     useEffect(() => {
         getPhotosContent();
     }, []);
@@ -48,7 +46,7 @@ export const Photo = () => {
                                 key={item.id}
                                 date={item.public_date}
                                 image={item.picture}
-                                description={item.title}
+                                title={item.title}
                                 imageCount={item.count_photo}
                                 onClick={() => navigate(`/photo/${item.id}`)}
                             />

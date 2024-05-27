@@ -3,7 +3,7 @@ import {CustomDate} from "../../UI/customDate/CustomDate.jsx";
 import {Typography} from "../../Typography/Typography.jsx";
 import classes from "./DetailPhoto.module.sass";
 import {useParams} from "react-router-dom";
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 import {usePhotos} from "../photo/api/PhotosStore.js";
 import {Breadcrumbs} from "../../modules/breadcrumbs/Breadcrumbs.jsx";
 
@@ -16,7 +16,6 @@ export const DetailPhoto = () => {
         images: state.images,
         getImages: state.getImages
     }));
-    const photosContent=usePhotos(state => state.photosContent)
 
     useEffect(() => {
         getImages(id);
