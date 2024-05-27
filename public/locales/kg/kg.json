@@ -48,7 +48,9 @@
           "button": "Толук видео галерея"
       },
       "accordion": {},
-      "organization": {},
+      "organization": {
+        "title": "Уюмдар"
+      },
       "contacts": {
           "heading": "Кыргызстан Республикасы, Бишкек ш.",
           "address": {

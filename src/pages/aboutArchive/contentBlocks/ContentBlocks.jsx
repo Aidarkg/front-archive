@@ -2,11 +2,8 @@ import { Typography } from "../../../Typography/Typography";
 import { Btn } from "../../main/mainAboutArchive/btn/Btn";
 import classes from "./ContentBlocks.module.sass";
 
-export const ContentBlocks = ({
-   blocks,
-   showTitle = true,
-   showButton = false,
-}) => {
+
+export const ContentBlocks = ({ blocks, showTitle = true, showButton = false }) => {   
    return (
       <section className={classes.main}>
          <div className={classes.container}>
