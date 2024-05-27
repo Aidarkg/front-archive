@@ -1,12 +1,12 @@
 import {ImageCount} from "../../UI/imageCount/ImageCount.jsx";
-import {CustomDate} from "../../UI/customDate/CustomDate.jsx";
+// import {CustomDate} from "../../UI/customDate/CustomDate.jsx";
 import {Typography} from "../../Typography/Typography.jsx";
 import classes from "./DetailPhoto.module.sass";
 import {useParams} from "react-router-dom";
 import {useEffect} from "react";
 import {usePhotos} from "../photo/api/PhotosStore.js";
 import {Breadcrumbs} from "../../modules/breadcrumbs/Breadcrumbs.jsx";
-import {Loader} from "../../UI/loader/Loader.jsx";
+import {Loader} from "../../components/loader/Loader.jsx";
 
 
 

@@ -6,7 +6,7 @@ import {useNavigate} from "react-router-dom";
 import {usePhotos} from "./api/PhotosStore.js";
 import {useEffect} from "react";
 import {Breadcrumbs} from "../../modules/breadcrumbs/Breadcrumbs.jsx";
-import {Loader} from "../../UI/loader/Loader.jsx";
+// import {Loader} from "../../components/loader/Loader.jsx";
 
 const archiveImages = [
     {image: akaev},
