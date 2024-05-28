@@ -59,13 +59,39 @@ export const SwiperOrganizations = () => {
                disableOnInteraction: false,
                waitForTransition: true,
             }}
-            spaceBetween={10}
+            breakpoints={{
+               320: {
+                  slidesPerView: 1,
+               },
+               360: {
+                   slidesPerView: 1,
+                   spaceBetween: 16
+               },
+               680: {   
+                  slidesPerView: 2,
+                  spaceBetween: 50
+               },
+               800: {
+                  slidesPerView: 2,
+                  spaceBetween: 50
+               },
+               1024: {
+                  slidesPerView: 2,
+                  spaceBetween: 50
+               },
+               1380: {
+                   slidesPerView: 3.2,
+                   spaceBetween: 50
+               },
+           }}
+            spaceBetween={50}
             className={css.mySwiper}
          >
             {menuImgSwiper.map((Organization, idx) => {
                return (
                   <SwiperSlide key={idx}>
-                     <a style={{color: "black"}}
+                     <a
+                        style={{ color: "black" }}
                         href={Organization.aHrefOrganization}
                         target="_blank"
                         rel="noopener noreferrer"
