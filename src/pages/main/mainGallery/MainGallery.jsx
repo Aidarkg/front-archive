@@ -33,7 +33,7 @@ export const MainGallery = () => {
             title: t("mainPage.videoGallery.title"),
             content: getFirstFourItems(videoContent),
             path: "/video",
-            linkText: t("mainPage.videoGallery.title"),
+            linkText: t("mainPage.videoGallery.button"),
         }
     ];
     useEffect(() => {
