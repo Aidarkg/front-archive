@@ -117,11 +117,7 @@ export const Footer = () => {
                                 Счётчик посещений
                             </Typography>
                             <Typography variant="h6" color="main">
-                                {inView && data?.counter !== undefined ? (
-                                    <CountUp end={data?.counter} duration={2} />
-                                ) : (
-                                    'N/A'
-                                )}
+                                <CountUp start={0} end={data?.counter || 0} duration={2} />
                             </Typography>
                         </button>
                     </div>
