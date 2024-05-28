@@ -71,7 +71,7 @@ export const Header = () => {
                            className={`
                               ${classes.archiveList} 
                               ${location.pathname.includes("/aboutArchive") || location.pathname.includes("/management")
-                                 ? classes.active : ""}
+                              ? classes.active : ""}
                            `}
                            onClick={() => toggleSubnav("archive")}
                         >

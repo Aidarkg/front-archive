@@ -13,10 +13,21 @@
         padding: 12px 0
         max-height: 88px
 
+        @media (max-width: 800px)
+            padding: 12px 0
+            max-height: 65px
+
+        @media (max-width: 480px)
+            padding: 10.5px 0
+            max-height: 56px
+
         .headerLogo
             display: flex
             align-items: center
             gap: 16px
+
+            @media (max-width: 800px)
+                gap: 8px
 
             .headerLogoTitle
                 display: flex
@@ -27,6 +38,9 @@
             align-items: center
             gap: 16px
             position: relative
+
+            @media (max-width: 400px)
+                gap: 8px
 
             .navList
                 display: flex
@@ -173,45 +187,16 @@
                                     text-transform: uppercase
 
                 @media (max-width: 800px)
-                    .header
-                        .headerInner
-                            display: flex
-                            justify-content: space-between
-                            align-items: center
-                            padding: 12px 0
-                            max-height: 65px
-
-                            .headerLogo
-                                display: flex
-                                align-items: center
-                                gap: 8px
-
-                                .headerLogoTitle
-                                    display: flex
-                                    flex-direction: column
-
-                @media (max-width: 680px)
                     .headerSelect
                         display: none
 
-                        .languageList
-                            display: block
+                    .languageList
+                        display: block
 
                 @media (min-width: 681px)
                     .languageList
                         display: none
 
                 @media (max-width: 480px)
-                    .header
-                        .headerInner
-                            padding: 10.5px 0
-                            max-height: 56px
-
-                            .rightHeader
-                                display: flex
-                                align-items: center
-                                gap: 8px
-                                position: relative
-
                     .eyeIcon
                         display: none
