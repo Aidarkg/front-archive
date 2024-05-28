@@ -4,38 +4,41 @@ import {useParams} from "react-router-dom";
 import {useEffect} from "react";
 import {usePublications} from "../publications/api/PublicationsStore.js";
 import {Breadcrumbs} from "../../modules/breadcrumbs/Breadcrumbs.jsx";
+import {Container} from "../../components/container/Container.jsx";
+import {Loader} from "../../components/loader/Loader.jsx";
+import {useTranslation} from "react-i18next";
 
 export const DetailPublication = () => {
 
     const {id} = useParams();
-
-    const {publication, getPublicationFromId} = usePublications(state => ({
-        publication: state.detailPublicationInfo,
-        getPublicationFromId: state.getPublicationFromId
-    }));
+    const {detailPublicationInfo, getPublicationFromId, loading} = usePublications();
+    const {t} = useTranslation();
 
     useEffect(() => {
         getPublicationFromId(id);
     }, [id]);
+
     return (
         <section className={classes.detailPublication}>
-            <div className="container">
-                <Breadcrumbs currentPage={"публикации"} parentPageLink={"/publications"}/>
+            <Container>
+                <Breadcrumbs currentPage={t("mainPage.publications.title")} parentPageLink={"/publications"}/>
                 <div className={classes.detailPublicationInner}>
-                    <Typography variant="h1">Публикации</Typography>
+                    {loading && <Loader/>}
+                    <Typography variant="h1">{t("mainPage.publications.title")}</Typography>
                     <div className={classes.detailPublicationContent}>
                         <div className={classes.detailPublicationTitle}>
-                            <Typography variant="h2">{publication.title}</Typography>
+                            <Typography variant="h2">{detailPublicationInfo?.title}</Typography>
                         </div>
                         <div className={classes.detailPublicationContentInner}>
-                            <Typography className={classes.detailPublicationDescr}>{publication.description}</Typography>
+                            <Typography
+                                className={classes.detailPublicationDescr}>{detailPublicationInfo?.description}</Typography>
                             <div className={classes.detailPublicationImage}>
-                                <img src={publication.image} alt={publication.title}/>
+                                <img src={detailPublicationInfo?.image} alt={detailPublicationInfo?.title}/>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </Container>
         </section>
     );
 };
