@@ -19,15 +19,13 @@ export const DetailPhoto = () => {
         getImages(id);
     }, [id]);
 
-    if (loading) {
-        return <Loader/>;
-    }
 
     return (
         <section className={classes.detailPhoto}>
            <Container>
                <Breadcrumbs currentPage={t("mainPage.photoGallery.title")} parentPageLink={"/photo"}/>
                <div className={classes.detailPhotoInner}>
+                   {loading&& <Loader/>}
                    <div className={classes.detailPhotoHead}>
                        <div className={classes.detailPhotoHeadInfo}>
                            {/*<CustomDate date={date} isWhite={true}/>*/}

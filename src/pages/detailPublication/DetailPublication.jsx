@@ -12,29 +12,28 @@ export const DetailPublication = () => {
 
     const {id} = useParams();
     const {detailPublicationInfo, getPublicationFromId, loading} = usePublications();
-    const {t}=useTranslation();
+    const {t} = useTranslation();
 
     useEffect(() => {
         getPublicationFromId(id);
     }, [id]);
 
-    if (loading) {
-        return <Loader/>
-    }
     return (
         <section className={classes.detailPublication}>
             <Container>
                 <Breadcrumbs currentPage={t("mainPage.publications.title")} parentPageLink={"/publications"}/>
                 <div className={classes.detailPublicationInner}>
+                    {loading && <Loader/>}
                     <Typography variant="h1">{t("mainPage.publications.title")}</Typography>
                     <div className={classes.detailPublicationContent}>
                         <div className={classes.detailPublicationTitle}>
-                            <Typography variant="h2">{detailPublicationInfo.title}</Typography>
+                            <Typography variant="h2">{detailPublicationInfo?.title}</Typography>
                         </div>
                         <div className={classes.detailPublicationContentInner}>
-                            <Typography className={classes.detailPublicationDescr}>{detailPublicationInfo.description}</Typography>
+                            <Typography
+                                className={classes.detailPublicationDescr}>{detailPublicationInfo?.description}</Typography>
                             <div className={classes.detailPublicationImage}>
-                                <img src={detailPublicationInfo.image} alt={detailPublicationInfo.title}/>
+                                <img src={detailPublicationInfo?.image} alt={detailPublicationInfo?.title}/>
                             </div>
                         </div>
                     </div>

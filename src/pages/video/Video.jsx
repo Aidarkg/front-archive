@@ -7,27 +7,31 @@ import {Breadcrumbs} from "../../modules/breadcrumbs/Breadcrumbs.jsx";
 import {Container} from "../../components/container/Container.jsx";
 import {Loader} from "../../components/loader/Loader.jsx";
 import {useTranslation} from "react-i18next";
+import {CustomButton} from "../../UI/customButton/CustomButton.jsx";
 
 
 export const Video = () => {
 
-    const {videoContent, getVideoContent, loading} = useVideo();
+    const {videoContent, getVideoContent, loading, loadMoreVideoContent, nextPage} = useVideo();
     const {t}=useTranslation();
 
     useEffect(() => {
         getVideoContent();
     }, []);
-    if (loading) {
-        return <Loader/>
+
+    const getMoreVideos=()=>{
+        loadMoreVideoContent(nextPage);
     }
+
     return (
         <section className={classes.video}>
             <Container>
                 <Breadcrumbs currentPage={t("mainPage.videoGallery.title")}/>
                 <div className={classes.videoInner}>
+                    {loading&& <Loader/>}
                     <Typography variant="h1">{t("mainPage.videoGallery.title")}</Typography>
                     <div className={classes.videoContent}>
-                        {videoContent && videoContent.map((item) => (
+                        {videoContent && videoContent?.map((item) => (
                             <CustomCard
                                 key={item.id}
                                 video={item.video}
@@ -36,6 +40,10 @@ export const Video = () => {
                             />
                         ))}
                     </div>
+                    {loading && <Loader />}
+                    {nextPage && (
+                        <CustomButton onClick={getMoreVideos} text={"еще"} />
+                    )}
                 </div>
             </Container>
         </section>
