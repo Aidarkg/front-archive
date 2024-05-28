@@ -2,8 +2,10 @@ import { QuestionForm } from "../../UI/questionForm/QuestionForm.jsx";
 import { Accardion } from "../../UI/Accordion/Accordion";
 import { faqList } from "./scripts/AccardionMenu";
 import classes from "./Faq.module.sass";
-import { Typography } from "../../Typography/Typography.jsx";
-import { Breadcrumbs } from "../../modules/breadcrumbs/Breadcrumbs.jsx";
+
+import {Typography} from "../../Typography/Typography.jsx";
+import {Breadcrumbs} from "../../modules/breadcrumbs/Breadcrumbs.jsx";
+
 import { t } from "i18next";
 import {Container} from "../../components/container/Container.jsx";
 

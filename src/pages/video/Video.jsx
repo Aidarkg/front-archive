@@ -23,7 +23,7 @@ export const Video = () => {
                         {videoContent && videoContent.map((item) => (
                             <CustomCard
                                 key={item.id}
-                                image={item.video}
+                                video={item.video}
                                 date={item.public_date}
                                 title={item.title}
                                 //FIX ME  onClick={() => navigate(`/video/${item.id}`)}
