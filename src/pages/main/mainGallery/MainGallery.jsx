@@ -4,6 +4,7 @@ import {usePublications} from "../../publications/api/PublicationsStore.js";
 import {useEffect} from "react";
 import {usePhotos} from "../../photo/api/PhotosStore.js";
 import {useVideo} from "../../video/api/VideoStore.js";
+import {Container} from "../../../components/container/Container.jsx";
 
 export const MainGallery = () => {
 
@@ -40,7 +41,7 @@ export const MainGallery = () => {
     }, []);
     return (
         <section className={classes.gallery}>
-            <div className="container">
+            <Container>
                 <div className={classes.galleryInner}>
                     {sections.map((section, index) => (
                         <PublicationBlock
@@ -53,7 +54,7 @@ export const MainGallery = () => {
                         />
                     ))}
                 </div>
-            </div>
+            </Container>
         </section>
     );
 };

@@ -6,6 +6,8 @@ import {useNavigate} from "react-router-dom";
 import {usePhotos} from "./api/PhotosStore.js";
 import {useEffect} from "react";
 import {Breadcrumbs} from "../../modules/breadcrumbs/Breadcrumbs.jsx";
+import {Container} from "../../components/container/Container.jsx";
+import {Loader} from "../../components/loader/Loader.jsx";
 
 const archiveImages = [
     {image: akaev},
@@ -22,12 +24,11 @@ export const Photo = () => {
         getPhotosContent();
     }, []);
 
-
     const navigate = useNavigate();
 
     return (
         <section>
-            <div className="container">
+            <Container>
                 <Breadcrumbs currentPage={"Фото"}/>
                 <div className={classes.photo}>
                     <Typography variant="h1">Фото</Typography>
@@ -51,7 +52,7 @@ export const Photo = () => {
                         ))}
                     </div>
                 </div>
-            </div>
+            </Container>
         </section>
     );
 };

@@ -4,18 +4,23 @@ import {CustomCard} from "../../UI/customCard/CustomCard.jsx";
 import {useVideo} from "./api/VideoStore.js";
 import {useEffect} from "react";
 import {Breadcrumbs} from "../../modules/breadcrumbs/Breadcrumbs.jsx";
+import {Container} from "../../components/container/Container.jsx";
+import {Loader} from "../../components/loader/Loader.jsx";
 
 
 export const Video = () => {
 
-    const {videoContent, getVideoContent} = useVideo();
+    const {videoContent, getVideoContent, loading} = useVideo();
 
     useEffect(() => {
         getVideoContent();
     }, []);
+    if (loading) {
+        return <Loader/>
+    }
     return (
         <section className={classes.video}>
-            <div className="container">
+            <Container>
                 <Breadcrumbs currentPage={"Видео"}/>
                 <div className={classes.videoInner}>
                     <Typography variant="h1">Видео</Typography>
@@ -31,7 +36,7 @@ export const Video = () => {
                         ))}
                     </div>
                 </div>
-            </div>
+            </Container>
         </section>
     );
 };

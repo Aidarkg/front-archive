@@ -5,21 +5,27 @@ import {useNavigate} from "react-router-dom";
 import {useEffect} from "react";
 import {usePublications} from "./api/PublicationsStore.js";
 import {Breadcrumbs} from "../../modules/breadcrumbs/Breadcrumbs.jsx";
+import {Container} from "../../components/container/Container.jsx";
+import {Loader} from "../../components/loader/Loader.jsx";
 
 
 export const Publications = () => {
 
     const navigate = useNavigate();
 
-    const {publications, getPublications} = usePublications();
+    const {publications, getPublications, loading} = usePublications();
 
     useEffect(() => {
         getPublications();
     }, []);
 
+    if (loading) {
+        return <Loader/>
+    }
+
     return (
         <section>
-            <div className="container">
+            <Container>
                 <Breadcrumbs currentPage={"Публикации"}/>
                 <div className={classes.Publications}>
                     <Typography variant="h1">Публикации</Typography>
@@ -38,7 +44,7 @@ export const Publications = () => {
                         ))}
                     </div>
                 </div>
-            </div>
+            </Container>
         </section>
     );
 };

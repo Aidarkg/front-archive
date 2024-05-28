@@ -7,6 +7,7 @@ import {useEffect} from "react";
 import {usePhotos} from "../photo/api/PhotosStore.js";
 import {Breadcrumbs} from "../../modules/breadcrumbs/Breadcrumbs.jsx";
 import {Loader} from "../../components/loader/Loader.jsx";
+import {Container} from "../../components/container/Container.jsx";
 
 export const DetailPhoto = () => {
 
@@ -16,13 +17,14 @@ export const DetailPhoto = () => {
     useEffect(() => {
         getImages(id);
     }, [id]);
+
     if (loading) {
         return <Loader/>;
     }
 
     return (
         <section className={classes.detailPhoto}>
-           <div className="container">
+           <Container>
                <Breadcrumbs currentPage={"фото"} parentPageLink={"/photo"}/>
                <div className={classes.detailPhotoInner}>
                    <div className={classes.detailPhotoHead}>
@@ -43,7 +45,7 @@ export const DetailPhoto = () => {
                        }
                    </div>
                </div>
-           </div>
+           </Container>
         </section>
     );
 };

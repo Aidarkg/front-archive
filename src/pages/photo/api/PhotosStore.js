@@ -23,6 +23,7 @@ export const usePhotos = create(set => ({
         }
     },
     getImages: async (id)=> {
+        set ({loading: true});
         try {
             const response=await axios.get(`${BASE_URL}/photos/${id}`);
             const data= await response.data;
@@ -31,6 +32,8 @@ export const usePhotos = create(set => ({
             set({images: photos, title: title});
         } catch (error) {
             console.error(error, 'error');
+        } finally {
+            set ({loading: false});
         }
     }
 }));
