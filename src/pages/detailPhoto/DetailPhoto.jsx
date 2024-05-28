@@ -1,5 +1,4 @@
 import {ImageCount} from "../../UI/imageCount/ImageCount.jsx";
-import {CustomDate} from "../../UI/customDate/CustomDate.jsx";
 import {Typography} from "../../Typography/Typography.jsx";
 import classes from "./DetailPhoto.module.sass";
 import {useParams} from "react-router-dom";
@@ -29,7 +28,8 @@ export const DetailPhoto = () => {
                <div className={classes.detailPhotoInner}>
                    <div className={classes.detailPhotoHead}>
                        <div className={classes.detailPhotoHeadInfo}>
-                           {/*/!*<CustomDate date={date} isWhite={true}/>*!/ // FIX ME*/}
+                           {/*<CustomDate date={date} isWhite={true}/>*/}
+                           {/*//FIX ME*/}
                            <ImageCount imageCount={images.length} isWhite={true}/>
                        </div>
                        <Typography variant="h2">{title}</Typography>

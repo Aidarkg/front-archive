@@ -28,7 +28,6 @@ export const usePhotos = create(set => ({
             const data= await response.data;
             const photos=data.photo;
             const title=data.title;
-            console.log(data)
             set({images: photos, title: title});
         } catch (error) {
             console.error(error, 'error');

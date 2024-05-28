@@ -12,7 +12,6 @@ export const usePublications = create(set => ({
             const response=await axios.get(`${BASE_URL}/news`);
             const data= await response.data;
             const results=data.results;
-            console.log(results)
             set({publications: results});
         } catch (error) {
             console.error('Failed fetch error', error);
