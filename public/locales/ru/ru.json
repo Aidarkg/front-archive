@@ -48,7 +48,9 @@
          "button": "Вся видеогалерея"
       },
       "accordion": {},
-      "organization": {},
+      "organization": {
+         "title": "Организации"
+      },
       "contacts": {
          "heading": "Кыргызская Республика, г. Бишкек",
          "address": {
@@ -77,7 +79,6 @@
       }
    },
    "servicePage": {
-      "heading": "Услуги",
       "button": "скачать прейскурант цен",
       "cards": {}
    },

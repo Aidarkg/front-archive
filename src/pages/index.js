@@ -12,6 +12,7 @@ import { DetailPublication } from "./detailPublication/DetailPublication.jsx";
 import {DetailPhoto} from "./detailPhoto/DetailPhoto.jsx";
 import {DetailVideo} from "./detailVideo/DetailVideo.jsx";
 import {Management} from "./management/Management.jsx";
+import {ManagementMore} from "./managementMore/ManagementMore.jsx";
 
 export {
     Main,
@@ -27,5 +28,6 @@ export {
     DetailPublication,
     DetailPhoto,
     DetailVideo,
-    Management
+    Management,
+    ManagementMore
 };

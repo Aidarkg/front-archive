@@ -5,20 +5,20 @@ import {CustomButton} from "../../../UI/customButton/CustomButton.jsx";
 import {ArrowRight} from "../../../assets/icons/ArrowRight.jsx";
 import {useNavigate} from "react-router-dom";
 
-export const PublicationBlock = ({ title, contentArray, path, linkText, type }) => {
-    const navigate=useNavigate();
+export const PublicationBlock = ({title, contentArray, path, linkText, type}) => {
+    const navigate = useNavigate();
     return (
         <div className={classes.publicationBlock}>
             <Typography variant="h2">{title}</Typography>
             <div className={classes.publicationBlockContent}>
-                {contentArray.map((item, index) => (
+                {contentArray.map((item) => (
                     <CustomCard
-                        key={index}
-                        image={item.image}
-                        description={item.description}
-                        imageCount={item.imageCount}
-                        date={item.date}
-                        onClick={()=>navigate(`/${type}/${item.id}`)}
+                        key={item.id}
+                        image={item.picture || item.image}
+                        title={item.title}
+                        imageCount={item.count_photo}
+                        date={item.public_date}
+                        onClick={() => navigate(type && `/${type}/${item.id}`)}
                     />
                 ))}
             </div>
