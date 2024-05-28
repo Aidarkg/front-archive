@@ -110,7 +110,7 @@ export const Footer = () => {
                     </nav>
                     <div className={classes.copyright}>
                         <Typography className={classes.copyright} variant="body" color="grey300">
-                            © 2024 {t("header&footer.logo.archivePresidentKR")}  {t("header&footer.logo.kyrgyzRepublic")} //FIX ME
+                            © 2024 {t("header&footer.logo.archivePresidentKR")}  {t("header&footer.logo.kyrgyzRepublic")}
                         </Typography>
                         <button className={classes.counterBtn} ref={ref}>
                             <Typography color="grey100" variant="smallBody">
