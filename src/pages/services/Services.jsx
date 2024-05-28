@@ -1,5 +1,6 @@
+import {Breadcrumbs} from "../../modules/breadcrumbs/Breadcrumbs.jsx";
+
 import { Typography } from "../../Typography/Typography.jsx";
-import { Breadcrumbs } from "../../modules/breadcrumbs/Breadcrumbs.jsx";
 import classes from "./Services.module.sass";
 import { CustomButton } from "../../UI/customButton/CustomButton.jsx";
 import { DownloadIcon } from "../../assets/icons/DownloadIcon.jsx";
@@ -16,6 +17,7 @@ const repeatedTitleCard = Array(9).fill(titleCard[0]).map((item, index) => ({
    ...item,
    id: item.id + '-' + index,
 }));
+
 
 export const Services = () => {
    const {t} = useTranslation();

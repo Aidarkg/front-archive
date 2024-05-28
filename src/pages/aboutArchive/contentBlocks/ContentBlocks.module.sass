@@ -1,43 +1,92 @@
 
 .main 
     background-color: var(--grey100)
-    padding: 40px      
+    margin-top: 30px     
     h1
-      width: 214px
+      width: 350px
       height: 52px                   
       font-family: "Merriweather", serif 
       margin-bottom: 48px
-.container
-        width: 1360px
-        margin-left: auto
-        margin-right: auto        
+      
+    @media (max-width: 768px)
+         
+         .main
+              margin-top: 20px
+              h1
+              width: 182px
+              height: 44px
+
+    @media (max-width: 360px)
+        margin-top: 10px
+        h1
+            width: 180px
+            height: auto            
+            margin-bottom: 30px
+
 .contentInner
     display: flex
     flex-direction: column
     gap: 24px
-              
+
+@media (max-width: 768px)
+
+    .contentInner
+                gap: 16px
+
+@media (max-width: 360px)
+
+    .contentInner
+                gap: 12px
+
 .contentBlock
     display: flex
     background-color: var(--main)
-    border-radius: 16px           
+    border-radius: 16px         
     height: 374px
     &Text
        display: flex
        flex-direction: column
-       gap: 16px
-       padding: 77px 32px
+       gap: 35px
+       padding: 41px 32px
+
+@media (max-width: 768px)
+
+    .contentBlock
+                width: 688px
+                height: 590px
+                display: flex
+                flex-direction: column
+                &Text
+                    padding: 16px
+
+@media (max-width: 360px) 
+
+    .contentBlock
+                &Text
+                     padding: 12px
 .heading
        width: 632px
-       height: 78px
-       font-weight: 700
-       font-size: 30px
+       height: 78px       
        font-family: "Merriweather", serif  
+
+@media (max-width: 768px)
+
+    .heading
+           width: 100%
+           height: auto
 
 .text
     width: 632px
     height: 126px
     font-family: "Inter", sans-serif 
     color: var(--grey500)
+
+@media (max-width: 768px)
+
+    .text
+        width: 100%
+        height: auto
+
 
 .left
     flex-direction: row-reverse
@@ -47,10 +96,24 @@
          float: right
          border: none
          border-radius: 0px 16px 16px 0px
-         
-.leftImage  
-       float: left     
-       width: 664px
-       height: 374px
-       border: none
-       border-radius: 16px 0px 0px 16px
+.leftImage 
+         width: 664px
+         height: 374px
+         float: left
+         border: none
+         border-radius: 16px 0px 0px 16px
+
+@media (max-width: 768px)
+
+    .contentBlock
+               flex-direction: column
+
+    .contentBlockText, .heading, .text
+               width: 100%
+
+    .image, .leftImage
+         width: 100%
+         height: auto
+         float: none
+         order: -1    
+         border-radius: 16px 16px 0 0

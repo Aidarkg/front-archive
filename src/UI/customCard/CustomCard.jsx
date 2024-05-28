@@ -3,7 +3,13 @@ import {Typography} from "../../Typography/Typography.jsx";
 import {CustomDate} from "../customDate/CustomDate.jsx";
 import {ImageCount} from "../imageCount/ImageCount.jsx";
 
-export const CustomCard = ({onClick, image, date, description, imageCount, isLargeCard}) => {
+export const CustomCard = ({onClick, image, date, title, imageCount, isLargeCard}) => {
+
+    const formatDate = (dateString) => {
+        const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
+        const date = new Date(dateString);
+        return date.toLocaleDateString('ru-RU', options);
+    };
 
     return (
         <div className={`${s.customCard} ${isLargeCard ? s.largeCard : " "}`}
@@ -15,14 +21,14 @@ export const CustomCard = ({onClick, image, date, description, imageCount, isLar
             <div className={s.customCardInfo}>
                 <div className={s.customCardExtraInfo}>
                     {date &&
-                        <CustomDate date={date}/>
+                        <CustomDate date={formatDate(date)}/>
                     }
                     {imageCount && (
                         <ImageCount imageCount={imageCount}/>
                     )}
                 </div>
                 <Typography
-                    variant="smallBody" truncate={68}>{description}</Typography>
+                    variant="smallBody" truncate={68}>{title}</Typography>
             </div>
         </div>
     );

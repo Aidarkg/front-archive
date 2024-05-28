@@ -1,34 +1,36 @@
 import { ContentBlocks } from "../../aboutArchive/contentBlocks/ContentBlocks";
 import img from "../../../assets/images/about-pic.png";
-import classes from "./MainAboutArchive.module.sass";
+import { Container } from "../../../components/container/Container";
+import classes from "../mainAboutArchive/MainAboutArchive.module.sass";
+import { useTranslation } from "react-i18next";
 
-
-const blocks = [
-   {
-      heading: "Положение об архиве Министерства юстиции Кыргызской Республики",
-      text: "Архив Кыргызстана - это организация, ответственная за сбор, сохранение и предоставление доступа к историческим документам и архивным материалам, относящимся к истории и культуре Кыргызстана. Он играет важную роль в сохранении национального наследия и предоставлении доступа к историческим ресурсам для исследований, образования и общественности",
-      image: img,      
-   },
-   {
-      image: img,
-      heading: "В провинции никого не пугает детский заливистый смех!",
-      text: "Следует отметить, что сложившаяся структура организации предполагает независимые способы реализации существующих финансовых и административных условий! В своём стремлении улучшить пользовательский опыт мы упускаем, что сторонники тоталитаризма в науке, инициированные исключительно синтетически, своевременно верифицированы. Мы вынуждены отталкиваться от того, что высокотехнологичная концепция общественного уклада обеспечивает актуальность модели развития.",
-   },
-   {
-      heading:"Постоянный количественный рост не стал ограничивающим фактором ",
-      text: "Учитывая ключевые сценарии поведения, современная методология разработки говорит о возможностях соответствующих условий активизации. Имеется спорная точка зрения, гласящая примерно следующее: ключевые особенности структуры проекта объективно рассмотрены соответствующими инстанциями! Для современного мира сплочённость команды профессионалов представляет собой интересный эксперимент проверки распределения внутренних резервов и ресурсов.",
-      image: img,
-   },
-];
 
 export const MainAboutArchive = () => {
+   const { t } = useTranslation();
+
+   const blocks = [
+      { 
+         heading: t("aboutArchivePage.section1.heading"), 
+         text: t("aboutArchivePage.section1.description"), 
+         image: img
+       },
+       { 
+         image: img,
+         heading: t("aboutArchivePage.section2.heading"), 
+         text: t("aboutArchivePage.section2.description")
+       },
+       { 
+         heading: t("aboutArchivePage.section3.heading"), 
+         text: t("aboutArchivePage.section3.description"), 
+         image: img
+       },
+   ];
+   
    return (
-      <section>
-         <div className={classes.container}>
-            <div>
-               <ContentBlocks showTitle={false} blocks={blocks.slice(0, 1)} showButton={true} />               
-            </div>
-         </div>
+      <section className={classes.section}>
+         <Container>            
+               <ContentBlocks showTitle={false} blocks={blocks.slice(0, 1)} showButton={true} />    
+         </Container>
       </section>
    );
 };
