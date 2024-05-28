@@ -8,12 +8,13 @@ import {usePhotos} from "../photo/api/PhotosStore.js";
 import {Breadcrumbs} from "../../modules/breadcrumbs/Breadcrumbs.jsx";
 import {Loader} from "../../components/loader/Loader.jsx";
 import {Container} from "../../components/container/Container.jsx";
+import {useTranslation} from "react-i18next";
 
 export const DetailPhoto = () => {
 
     const {id} = useParams();
     const {images, getImages, title, loading}=usePhotos();
-
+    const {t}=useTranslation();
     useEffect(() => {
         getImages(id);
     }, [id]);
@@ -25,7 +26,7 @@ export const DetailPhoto = () => {
     return (
         <section className={classes.detailPhoto}>
            <Container>
-               <Breadcrumbs currentPage={"фото"} parentPageLink={"/photo"}/>
+               <Breadcrumbs currentPage={t("mainPage.photoGallery.title")} parentPageLink={"/photo"}/>
                <div className={classes.detailPhotoInner}>
                    <div className={classes.detailPhotoHead}>
                        <div className={classes.detailPhotoHeadInfo}>

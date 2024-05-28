@@ -5,33 +5,35 @@ import {useEffect} from "react";
 import {usePhotos} from "../../photo/api/PhotosStore.js";
 import {useVideo} from "../../video/api/VideoStore.js";
 import {Container} from "../../../components/container/Container.jsx";
+import {useTranslation} from "react-i18next";
 
 export const MainGallery = () => {
 
     const {publications, getPublications} = usePublications();
     const {photosContent, getPhotosContent} = usePhotos();
     const {videoContent, getVideoContent} = useVideo();
+    const {t}=useTranslation();
     const getFirstFourItems = (array) => array.slice(0, 4);
     const sections = [
         {
-            title: "Публикации",
+            title: t("mainPage.publications.title"),
             content: getFirstFourItems(publications),
             path: "/publications",
-            linkText: "Все публикации",
+            linkText: t("mainPage.publications.button"),
             type: "publications"
         },
         {
-            title: "Фотогалерея",
+            title: t("mainPage.photoGallery.title"),
             content: getFirstFourItems(photosContent),
             path: "/photo",
-            linkText: "Все фотографии",
+            linkText: t("mainPage.photoGallery.button"),
             type: "photo"
         },
         {
-            title: "Видеогалерея",
+            title: t("mainPage.videoGallery.title"),
             content: getFirstFourItems(videoContent),
             path: "/video",
-            linkText: "Все видео",
+            linkText: t("mainPage.videoGallery.title"),
         }
     ];
     useEffect(() => {

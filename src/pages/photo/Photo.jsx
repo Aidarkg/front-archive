@@ -8,6 +8,7 @@ import {useEffect} from "react";
 import {Breadcrumbs} from "../../modules/breadcrumbs/Breadcrumbs.jsx";
 import {Container} from "../../components/container/Container.jsx";
 import {Loader} from "../../components/loader/Loader.jsx";
+import {useTranslation} from "react-i18next";
 
 const archiveImages = [
     {image: akaev},
@@ -25,13 +26,13 @@ export const Photo = () => {
     }, []);
 
     const navigate = useNavigate();
-
+    const {t}=useTranslation();
     return (
         <section>
             <Container>
-                <Breadcrumbs currentPage={"Фото"}/>
+                <Breadcrumbs currentPage={t("mainPage.photoGallery.title")}/>
                 <div className={classes.photo}>
-                    <Typography variant="h1">Фото</Typography>
+                    <Typography variant="h1">{t("mainPage.photoGallery.title")}</Typography>
                     <div className={classes.photoArchive}>
                         {archiveImages && archiveImages.map((image, index) => (
                             <div className={classes.photoArchiveImage} key={index}>

@@ -6,11 +6,13 @@ import {usePublications} from "../publications/api/PublicationsStore.js";
 import {Breadcrumbs} from "../../modules/breadcrumbs/Breadcrumbs.jsx";
 import {Container} from "../../components/container/Container.jsx";
 import {Loader} from "../../components/loader/Loader.jsx";
+import {useTranslation} from "react-i18next";
 
 export const DetailPublication = () => {
 
     const {id} = useParams();
     const {detailPublicationInfo, getPublicationFromId, loading} = usePublications();
+    const {t}=useTranslation();
 
     useEffect(() => {
         getPublicationFromId(id);
@@ -22,9 +24,9 @@ export const DetailPublication = () => {
     return (
         <section className={classes.detailPublication}>
             <Container>
-                <Breadcrumbs currentPage={"публикации"} parentPageLink={"/publications"}/>
+                <Breadcrumbs currentPage={t("mainPage.publications.title")} parentPageLink={"/publications"}/>
                 <div className={classes.detailPublicationInner}>
-                    <Typography variant="h1">Публикации</Typography>
+                    <Typography variant="h1">{t("mainPage.publications.title")}</Typography>
                     <div className={classes.detailPublicationContent}>
                         <div className={classes.detailPublicationTitle}>
                             <Typography variant="h2">{detailPublicationInfo.title}</Typography>

@@ -7,12 +7,13 @@ import {usePublications} from "./api/PublicationsStore.js";
 import {Breadcrumbs} from "../../modules/breadcrumbs/Breadcrumbs.jsx";
 import {Container} from "../../components/container/Container.jsx";
 import {Loader} from "../../components/loader/Loader.jsx";
+import {useTranslation} from "react-i18next";
 
 
 export const Publications = () => {
 
     const navigate = useNavigate();
-
+    const {t} =useTranslation();
     const {publications, getPublications, loading} = usePublications();
 
     useEffect(() => {
@@ -26,9 +27,9 @@ export const Publications = () => {
     return (
         <section>
             <Container>
-                <Breadcrumbs currentPage={"Публикации"}/>
+                <Breadcrumbs currentPage={t("mainPage.publications.title")}/>
                 <div className={classes.Publications}>
-                    <Typography variant="h1">Публикации</Typography>
+                    <Typography variant="h1">{t("mainPage.publications.title")}</Typography>
                     <div className={classes.PublicationsContent}>
                         {publications && publications?.map((item, index) => (
                             <div className={classes.PublicationsContentCard}
