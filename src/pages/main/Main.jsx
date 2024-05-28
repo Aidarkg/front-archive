@@ -25,7 +25,7 @@ export const Main = () => {
             <div><img src={personFaq} alt="personFaq" /></div>
          </div>
          <Organizations />
-         <ContactSection/>
+         <ContactSection/> 
       </section>
    );
 };
