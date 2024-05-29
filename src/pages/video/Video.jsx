@@ -34,7 +34,7 @@ export const Video = () => {
                         {videoContent && videoContent?.map((item, index) => (
                             <div className={classes.videoContentCard}>
                                 <CustomCard
-                                    key={item.id}
+                                    key={item.id || index}
                                     video={item.video}
                                     date={item.public_date}
                                     title={item.title}

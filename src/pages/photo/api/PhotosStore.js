@@ -16,7 +16,7 @@ export const usePhotos = create((set) => ({
             const response = await axios.get(`${BASE_URL}/photos`);
             const data = response.data;
             set({
-                photosContent: data.results,
+                photosContent: response.data.results,
                 nextPage: data.next,
             });
         } catch (error) {

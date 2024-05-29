@@ -13,6 +13,7 @@ export const useVideo = create(set => ({
         try {
             const response = await axios.get(`${BASE_URL}/video`);
             const data = response.data;
+            console.log(data)
             set({videoContent: data.results, nextPage: data.next});
         } catch (error) {
             console.error(error.message);
