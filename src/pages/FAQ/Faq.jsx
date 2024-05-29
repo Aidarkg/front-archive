@@ -6,10 +6,11 @@ import classes from "./Faq.module.sass";
 import {Typography} from "../../Typography/Typography.jsx";
 import {Breadcrumbs} from "../../modules/breadcrumbs/Breadcrumbs.jsx";
 
-import { t } from "i18next";
 import {Container} from "../../components/container/Container.jsx";
+import { useTranslation } from "react-i18next";
 
 export const Faq = () => {
+    const {t} = useTranslation();
    return (
       <section>
           <Container>
@@ -24,7 +25,7 @@ export const Faq = () => {
                           variant="h1"
                           color="blue500"
                       >
-                          {t("faq")}
+                          {t("q&aPage.heading")}
                       </Typography>
                       <QuestionForm />
                   </div>
