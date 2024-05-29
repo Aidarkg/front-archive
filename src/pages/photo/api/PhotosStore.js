@@ -8,7 +8,7 @@ export const usePhotos = create((set) => ({
     nextPage: null,
     images: [],
     error: null,
-    title: '',
+    photoData: [],
     loading: false,
     getPhotosContent: async () => {
         set({loading: true});
@@ -49,7 +49,7 @@ export const usePhotos = create((set) => ({
         try {
             const response = await axios.get(`${BASE_URL}/photos/${id}`);
             const data = await response.data;
-            set({images: data.photo, title: data.title, error: null});
+            set({images: data.photo, photoData: data});
         } catch (error) {
             console.error(error.message);
             set({error: error.message});
