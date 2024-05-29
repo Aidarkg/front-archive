@@ -28,7 +28,7 @@ export const AboutArchive = () => {
    return (
       <section>        
         <Container>
-          <Breadcrumbs currentPage={t("header&footer.subnav.aboutArchive")} />
+          <Breadcrumbs  currentPage={t("header&footer.subnav.aboutArchive")} />
            <ContentBlocks blocks={blocks}/>
         </Container>
      </section>

@@ -114,7 +114,7 @@ export const Footer = () => {
                         </Typography>
                         <button className={classes.counterBtn} ref={ref}>
                             <Typography color="grey100" variant="smallBody">
-                                Счётчик посещений
+                                {t("header&footer.attendanceCounter")}
                             </Typography>
                             <Typography variant="h6" color="main">
                                 <CountUp start={0} end={data?.counter || 0} duration={2} />
