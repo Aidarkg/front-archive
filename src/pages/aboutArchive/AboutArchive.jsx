@@ -1,7 +1,6 @@
 import { ContentBlocks } from "./contentBlocks/ContentBlocks";
 import img from "../../assets/images/about-pic.png";
 import { Breadcrumbs } from "../../modules/breadcrumbs/Breadcrumbs";
-import classes from "../aboutArchive/AboutArchive.module.sass";
 import { Container } from "../../components/container/Container";
 import { useTranslation } from "react-i18next";
 
@@ -29,7 +28,7 @@ export const AboutArchive = () => {
    return (
       <section>        
         <Container>
-          <Breadcrumbs className={classes.bread} currentPage={t("header&footer.subnav.aboutArchive")} />
+          <Breadcrumbs currentPage={t("header&footer.subnav.aboutArchive")} />
            <ContentBlocks blocks={blocks}/>
         </Container>
      </section>

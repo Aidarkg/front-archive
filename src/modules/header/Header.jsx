@@ -194,8 +194,8 @@ export const Header = () => {
                   <button className={classes.dropdownBtn} onClick={toggleDropdown}>
                      {isDropMenuOpen ? <CrossIcon /> : <MenuSvg />}
                   </button>
-                  {isDropMenuOpen && (
-                     <nav className={classes.nav}>
+                  <nav className={classes.responsiveNav}>
+                     {isDropMenuOpen && (
                         <ul className={`${classes.dropdownMenu} ${isDropMenuOpen ? classes.open : ""}`}>
                            <li
                               className={`${classes.accordionItem} ${activeSubnav === "archive" ? classes.active : ""}`}
@@ -294,8 +294,8 @@ export const Header = () => {
                               <LanguageList />
                            </div>
                         </ul>
-                     </nav>
-                  )}
+                     )}
+                  </nav>
                </div>
             </div>
          </Container>

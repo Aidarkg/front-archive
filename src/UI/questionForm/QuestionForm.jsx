@@ -124,6 +124,7 @@ export const QuestionForm = () => {
              </div>
              <div>
                <textarea
+                   maxLength={300}
                    id="text"
                    placeholder="Введите текст"
                    {...register("question_text", {
