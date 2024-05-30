@@ -34,6 +34,7 @@ export const MainGallery = () => {
             content: getFirstFourItems(videoContent),
             path: "/video",
             linkText: t("mainPage.videoGallery.button"),
+            type: "video"
         }
     ];
     useEffect(() => {

@@ -23,12 +23,12 @@ export const PublicationBlock = ({title, contentArray, path, linkText, type}) =>
                     />
                 ))}
             </div>
-            <CustomButton
+            {type&& <CustomButton
                 text={linkText}
                 actionType="link"
                 to={path}
                 icon={<ArrowRight/>}
-            />
+            />}
         </div>
     );
 };
