@@ -54,6 +54,7 @@ export const MainGallery = () => {
                             path={section.path}
                             linkText={section.linkText}
                             type={section.type}
+                            haveBtn={true}
                         />
                     ))}
                 </div>
