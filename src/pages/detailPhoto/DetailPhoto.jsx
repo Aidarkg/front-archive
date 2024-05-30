@@ -1,5 +1,5 @@
 import {ImageCount} from "../../UI/imageCount/ImageCount.jsx";
-// import {CustomDate} from "../../UI/customDate/CustomDate.jsx";
+import {CustomDate} from "../../UI/customDate/CustomDate.jsx";
 import {Typography} from "../../Typography/Typography.jsx";
 import classes from "./DetailPhoto.module.sass";
 import {useParams} from "react-router-dom";
@@ -13,12 +13,11 @@ import {useTranslation} from "react-i18next";
 export const DetailPhoto = () => {
 
     const {id} = useParams();
-    const {images, getImages, title, loading}=usePhotos();
+    const {images, getImages, photoData, loading}=usePhotos();
     const {t}=useTranslation();
     useEffect(() => {
         getImages(id);
     }, [id]);
-
 
     return (
         <section className={classes.detailPhoto}>
@@ -28,11 +27,10 @@ export const DetailPhoto = () => {
                    {loading&& <Loader/>}
                    <div className={classes.detailPhotoHead}>
                        <div className={classes.detailPhotoHeadInfo}>
-                           {/*<CustomDate date={date} isWhite={true}/>*/}
-                           {/*//FIX ME*/}
+                           <CustomDate date={photoData.public_date} isWhite={true}/>
                            <ImageCount imageCount={images.length} isWhite={true}/>
                        </div>
-                       <Typography variant="h2">{title}</Typography>
+                       <Typography variant="h2">{photoData.title}</Typography>
                    </div>
                    <div className={classes.detailPhotoImages}>
                        {

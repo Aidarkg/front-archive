@@ -14,7 +14,7 @@ export const Faq = () => {
    return (
       <section>
           <Container>
-              <Breadcrumbs currentPage={"вопросы и ответы"} />
+              <Breadcrumbs currentPage={t("header&footer.nav.q&a")} />
               <div className={classes.faq}>
                   <div>
                       <Accardion faqList={faqList} />

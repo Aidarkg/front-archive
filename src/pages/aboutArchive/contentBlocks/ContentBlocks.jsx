@@ -55,18 +55,21 @@
 //       </section>
 //    );
 // };
+import { useTranslation } from "react-i18next";
 import { Typography } from "../../../Typography/Typography";
 import { Btn } from "../../main/mainAboutArchive/btn/Btn";
 import classes from "./ContentBlocks.module.sass";
 
 
 export const ContentBlocks = ({ blocks, showTitle = true, showButton = false }) => {
+    const { t } = useTranslation();
+
     return (
         <section className={classes.main}>
             <div className={classes.container}>
                 {showTitle && (
                     <Typography className={classes.h1} variant="h1" color="blue500">
-                        Об архиве
+                        {t("header&footer.subnav.aboutArchive")}
                     </Typography>
                 )}
                 <div className={classes.contentInner}>
