@@ -11,7 +11,6 @@ const LayoutRoutes = () => {
                <Route path="aboutArchive" element={<LayoutPages.AboutArchive />}/>
                <Route path="management" element={<LayoutPages.Management />} />
                <Route path="managementMore/:id" element={<LayoutPages.ManagementMore />} />
-               <Route path="mediaArchive" element={<LayoutPages.MediaArchive />}/>
                <Route path="npa" element={<LayoutPages.Npa />} />
                <Route path="services" element={<LayoutPages.Services />} />
                <Route path="faq" element={<LayoutPages.Faq />} />

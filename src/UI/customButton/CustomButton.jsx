@@ -8,7 +8,8 @@ const buttonStyles = {
     withBorder: s.customButtonWithBorder
 };
 
-export const CustomButton = ({ text, icon, to, onClick, actionType, buttonStyle, type, style, disabled, className }) => {
+export const CustomButton = (props) => {
+    const  { text, icon, to, onClick, actionType, buttonStyle, type, style, disabled, className } = props;
     const ButtonComponent = actionType === "link" ? Link : "button";
     const buttonClassName = `${s.customButton} ${buttonStyles[buttonStyle] || s.customButtonGrey} ${className}`;
     const typeProps = actionType === "link" ? { to } : { onClick, type, disabled };
