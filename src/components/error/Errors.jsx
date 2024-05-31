@@ -1,8 +1,11 @@
-import notFoundImage from '../../assets/images/404 Page Not Found 1 (1) 1.png';
 import classes from "./Errors.module.sass";
+
+import notFoundImage from '../../assets/images/404 Page Not Found 1 (1) 1.png';
 import {Container} from "../container/Container.jsx";
 import {Typography} from "../../Typography/Typography.jsx";
 import {CustomButton} from "../../UI/customButton/CustomButton.jsx";
+import {PATH} from "../../app/Routes/index.js";
+import {ArrowLeft} from "../../assets/icons/ArrowLeft.jsx";
 export const Errors = () => {
     return (
         <section>
@@ -14,13 +17,22 @@ export const Errors = () => {
                     <Typography variant="h1" color="blue500">
                         Страница не найдена
                     </Typography>
-                    <div>
-                        <CustomButton text={"на главную"} >
+                    <div className={classes.errorButtons}>
+                        <CustomButton
+                            className={classes.btn}
+                            text={"на главную"}
+                            actionType="link"
+                            to={PATH.main}
+                            buttonStyle={"blue"}
+                        />
+                        <CustomButton
+                            icon={<ArrowLeft/>}
+                            className={classes.btn}
+                            text={"назад"}
+                            actionType="link"
+                            to={-1}
+                        />
 
-                        </CustomButton>
-                        <CustomButton text={"назад"}>
-
-                        </CustomButton>
                     </div>
                 </div>
             </Container>

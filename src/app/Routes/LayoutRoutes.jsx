@@ -23,6 +23,7 @@ const LayoutRoutes = () => {
                <Route path={PATH.video} element={<LayoutPages.Video />} />
                <Route path={PATH.detailVideo} element={<LayoutPages.DetailVideo />} />
                <Route path={PATH.search} element={<LayoutPages.SearchResults />} />
+               <Route path={PATH.notFound} element={<LayoutPages.Errors />} />
             </Route>
          </Routes>
       </>
