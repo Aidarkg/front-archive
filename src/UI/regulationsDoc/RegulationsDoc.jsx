@@ -34,16 +34,22 @@ export const RegulationsDoc = ({ date, documentNumber, name, linkOpen, linkDownl
                         className={classes.btn}
                         actionType="link"
                         to={linkOpen}
+                        target="_blank"
+                        rel="noopener noreferrer"
                     />
                 )}
-                <CustomButton
-                    text={t("regulationsPage.btnDownload")}
-                    icon={<DownloadDocRegulationsSvg />}
-                    buttonStyle="Grey"
-                    className={classes.btn}
-                    actionType="link"
-                    to={linkDownload}
-                />
+                {linkDownload && (
+                    <CustomButton
+                        text={t("regulationsPage.btnDownload")}
+                        icon={<DownloadDocRegulationsSvg />}
+                        buttonStyle="Grey"
+                        className={classes.btn}
+                        actionType="link"
+                        to={linkDownload}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    />
+                )}
             </div>
         </li>
     );
