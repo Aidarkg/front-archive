@@ -18,11 +18,11 @@ export const CustomCard = ({ onClick, image, video, date, title, imageCount, isL
         <div className={`${classes.customCard} ${isLargeCard ? classes.largeCard : ""}`} onClick={onClick}>
             <div className={`${isLargeCard ? classes.largeImage : classes.customCardImage}`}>
                 {image && <img src={image} alt="publication" />}
-                {video&& video.includes("youtube.com") || video.includes("youtu.be") ? (
+                {video? video.includes("youtube.com") || video.includes("youtu.be") ? (
                     <ReactPlayer url={video} controls={true}  />
                 ) : (
                     <video src={video} controls ref={videoRef} onClick={handleVideoClick}/>
-                )}
+                ): ""}
             </div>
             <div className={classes.customCardInfo}>
                 <div className={classes.customCardExtraInfo}>
