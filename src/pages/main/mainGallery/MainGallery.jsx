@@ -34,6 +34,7 @@ export const MainGallery = () => {
             content: getFirstFourItems(videoContent),
             path: "/video",
             linkText: t("mainPage.videoGallery.button"),
+            type: "video"
         }
     ];
     useEffect(() => {
@@ -53,6 +54,7 @@ export const MainGallery = () => {
                             path={section.path}
                             linkText={section.linkText}
                             type={section.type}
+                            haveBtn={true}
                         />
                     ))}
                 </div>
