@@ -15,11 +15,10 @@ export const Errors = () => {
                         Страница не найдена
                     </Typography>
                     <div>
-                        <CustomButton
-                            buttonStyle=""
-                            text="на главную"
-                        />
-                        <CustomButton>
+                        <CustomButton text={"на главную"} >
+
+                        </CustomButton>
+                        <CustomButton text={"назад"}>
 
                         </CustomButton>
                     </div>
