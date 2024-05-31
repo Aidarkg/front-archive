@@ -67,6 +67,21 @@ export const QuestionForm = () => {
    };
    const { t } = useTranslation();
 
+   useEffect(() => {
+      if (isSubmitSuccessful) {
+         trigger();
+         toast.success("Вопрос успешно отправлен", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+         });
+      }
+   }, [isSubmitSuccessful, trigger]);
+
    return (
       <section className={classes.faq}>
          <ToastContainer />
