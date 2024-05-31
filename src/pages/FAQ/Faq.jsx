@@ -7,6 +7,7 @@ import {Breadcrumbs} from "../../modules/breadcrumbs/Breadcrumbs.jsx";
 
 import {Container} from "../../components/container/Container.jsx";
 import { useTranslation } from "react-i18next";
+import {Errors} from "../../components/error/Errors.jsx";
 
 export const Faq = () => {
     const {t} = useTranslation();
@@ -30,6 +31,7 @@ export const Faq = () => {
                   </div>
               </div>
           </Container>
+          <Errors/>
       </section>
    );
 };
