@@ -28,7 +28,7 @@ export const AccordionItem = ({ faqItem, onClick, isOpen }) => {
                handleRotate();
             }}
          >
-            <Typography className={`${classes.textFaq} ${isOpen ? classes.fullText : ""}`} variant="h5">{faqItem.questionName}</Typography>
+            <Typography className={`${classes.textFaq} ${isOpen ? classes.fullText : ""}`} variant="h5">{faqItem.question}</Typography>
             <img
                className={classes.accordion_arrow}
                src={arrow}
@@ -45,7 +45,7 @@ export const AccordionItem = ({ faqItem, onClick, isOpen }) => {
             className={`${classes.accordion_collapse} ${isOpen ? classes.open : ""}`}
          >
             <div className={classes.accordion_body}>
-               {faqItem.questionDescription}
+               {faqItem.answer}
             </div>
          </div>
       </li>

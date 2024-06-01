@@ -1,9 +1,9 @@
-import img1 from "./images/symbol.svg";
 import classes from "./Banner.module.sass";
 import { DetailBtn } from "./detailBtn/DetailBtn";
 import { Typography } from "../../Typography/Typography";
 import { Container } from "../../components/container/Container";
 import { useTranslation } from "react-i18next";
+import {CoatOfArms} from "../../assets/icons/CoatOfArms.jsx";
 
 export const Banner = () => {
    const { t } = useTranslation();
@@ -12,7 +12,9 @@ export const Banner = () => {
       <section className={classes.banner}>
          <Container>
             <div className={classes.main}>
-               <img className={classes.img1} src={img1} alt="symbol" />
+              <div className={classes.img1}>
+                 <CoatOfArms/>
+              </div>
                <Typography className={classes.h1} variant="h1">
                   {t("mainPage.hero.heading")}
                </Typography>

@@ -12,7 +12,7 @@ import { Breadcrumbs } from "../../modules/breadcrumbs/Breadcrumbs.jsx";
 import {useTranslation} from "react-i18next";
 export const Management = () => {
     const { t } = useTranslation();
-    const { data, loading, error, getData } = useData();
+    const { data, getData } = useData();
     const navigate = useNavigate();
 
     const handleCardClick = (id) => {
@@ -22,12 +22,7 @@ export const Management = () => {
     useEffect(() => {
         getData();
     }, [getData]);
-    if (loading) {
-        return <Loader />;
-    }
-    if (error) {
-        return <div>Error: {error.message}</div>;
-    }
+
 
     return (
         <section>

@@ -1,6 +1,12 @@
 import classes from "./HeaderInput.module.sass";
+
+import { useDeferredValue, useEffect, useState } from "react";
+
 import { CloseSvg } from "../Svg/CloseSvg";
-import { useState } from "react";
+
+import { useSearchStore } from "../../pages/searchResults/store/useSearchStore";
+
+import { useNavigate } from "react-router-dom";
 
 export const HeaderInput = (props) => {
     const {
@@ -12,20 +18,56 @@ export const HeaderInput = (props) => {
     } = props;
 
     const [inputValue, setInputValue] = useState(value || "");
+    const defferedInputValue = useDeferredValue(inputValue);
     const [focused, setFocused] = useState(false);
+    const [showDropdown, setShowdropDown] = useState(false);
+    const navigate = useNavigate();
+
+    const { searchResults, fetchResults, clearResults, language } = useSearchStore();
+
+    useEffect(() => {
+        if (defferedInputValue.trim() !== "") {
+            fetchResults(defferedInputValue);
+            setShowdropDown(!showDropdown);
+        } else {
+            setShowdropDown(showDropdown);
+            clearResults();
+        }
+    }, [defferedInputValue, fetchResults, language]);
 
     const handleFocus = () => {
         setFocused(!focused);
+        if (inputValue.trim() !== "") {
+            setShowdropDown(!showDropdown);
+        }
     };
 
     const handleBlur = () => {
-        setFocused(!focused);
+        setFocused(focused);
+        setTimeout(() => setShowdropDown(showDropdown), 200);
     };
 
     const handleValueChange = (e) => {
-        setInputValue(e.target.value);
+        const newValue = e.target.value;
+        setInputValue(newValue);
         if (onChange) {
-            onChange(e.target.value);
+            onChange(newValue);
+        }
+    };
+
+    const handleResultClick = (result) => {
+        setInputValue(result.title);
+        setShowdropDown(showDropdown);
+        clearResults();
+        if (onChange) {
+            onChange(result.title);
+        }
+    };
+
+    const handleKeyDown = (e) => {
+        if (e.key === "Enter") {
+            navigate(`search?query=${encodeURIComponent(inputValue)}`);
+            setShowdropDown(showDropdown);
         }
     };
 
@@ -38,11 +80,27 @@ export const HeaderInput = (props) => {
                 onChange={handleValueChange}
                 onBlur={handleBlur}
                 onFocus={handleFocus}
+                onKeyDown={handleKeyDown}
                 placeholder={focused ? "" : placeholder}
             />
-            <button className={classes.closeButton} onClick={onClose}>
-                <CloseSvg />
-            </button>
+            {inputValue === "" && (
+                <button className={classes.closeButton} onClick={onClose}>
+                    <CloseSvg />
+                </button>
+            )}
+            {showDropdown && (
+                <ul className={classes.dropdown}>
+                    {searchResults?.map((result) => (
+                        <li
+                            key={result.id}
+                            className={classes.dropdownItem}
+                            onMouseDown={() => handleResultClick(result)}
+                        >
+                            {result.title}
+                        </li>
+                    ))}
+                </ul>
+            )}
         </div>
     );
 };

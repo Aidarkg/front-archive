@@ -1,12 +1,12 @@
-import {Route, Routes} from "react-router-dom";
-import LayoutRoutes from "./app/Routes/LayoutRoutes.jsx";
+import {Route} from "react-router-dom";
+import {Router}from "./app/Router/Router.jsx";
 
 function App() {
    return (
       <>
-         <Routes>
-            <Route path="*" element={<LayoutRoutes />} />
-         </Routes>
+         <Router>
+             <Route path="*" element={<Router />} />
+         </Router>
       </>
    );
 }
