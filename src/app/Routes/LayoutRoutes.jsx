@@ -1,30 +1,31 @@
 import { Route, Routes } from "react-router-dom";
 import * as LayoutPages from "../../pages/index.js";
 import { Layout } from "../Layout/Layout.jsx";
+import {PATH} from "./index.js";
 
 const LayoutRoutes = () => {
    return (
       <>
          <Routes>
-            <Route path="/" element={<Layout />}>
+            <Route path={PATH.main} element={<Layout />}>
                <Route index element={<LayoutPages.Main />} />
-               <Route path="aboutArchive" element={<LayoutPages.AboutArchive />}/>
-               <Route path="management" element={<LayoutPages.Management />} />
-               <Route path="managementMore/:id" element={<LayoutPages.ManagementMore />} />
-               <Route path="mediaArchive" element={<LayoutPages.MediaArchive />}/>
-               <Route path="npa" element={<LayoutPages.Npa />} />
-               <Route path="services" element={<LayoutPages.Services />} />
-               <Route path="faq" element={<LayoutPages.Faq />} />
-               <Route path="contacts" element={<LayoutPages.Contacts />} />
-               <Route path="publications" element={<LayoutPages.Publications />}/>
-               <Route path="publications/:id" element={<LayoutPages.DetailPublication />}/>
-               <Route path="photo" element={<LayoutPages.Photo />} />
-               <Route path="photo/:id" element={<LayoutPages.DetailPhoto />} />
-               <Route path="video" element={<LayoutPages.Video />} />
-               <Route path="video/:id" element={<LayoutPages.DetailVideo />} />
+               <Route path={PATH.aboutArchive} element={<LayoutPages.AboutArchive />}/>
+               <Route path={PATH.management} element={<LayoutPages.Management />} />
+               <Route path={PATH.managementMore} element={<LayoutPages.ManagementMore />} />
+               <Route path={PATH.npa} element={<LayoutPages.Npa />} />
+               <Route path={PATH.services} element={<LayoutPages.Services />} />
+               <Route path={PATH.faq} element={<LayoutPages.Faq />} />
+               <Route path={PATH.contacts} element={<LayoutPages.Contacts />} />
+               <Route path={PATH.publications} element={<LayoutPages.Publications />}/>
+               <Route path={PATH.detailPublication} element={<LayoutPages.DetailPublication />}/>
+               <Route path={PATH.photo} element={<LayoutPages.Photo />} />
+               <Route path={PATH.detailPhoto} element={<LayoutPages.DetailPhoto />} />
+               <Route path={PATH.video} element={<LayoutPages.Video />} />
+               <Route path={PATH.detailVideo} element={<LayoutPages.DetailVideo />} />
+               <Route path={PATH.search} element={<LayoutPages.SearchResults />} />
+               <Route path={PATH.notFound} element={<LayoutPages.Errors />} />
             </Route>
          </Routes>
-         {/* /FIX ME  Замапить, и задать в новом формате роуты*/}
       </>
    );
 };
