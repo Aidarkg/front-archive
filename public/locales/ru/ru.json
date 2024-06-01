@@ -37,7 +37,8 @@
       },
       "publications": {
          "title": "Публикации",
-         "button": "Все публикации"
+         "button": "Все публикации",
+         "loadMore": "Еще"
       },
       "photoGallery": {
          "title": "Фотогалерея",
