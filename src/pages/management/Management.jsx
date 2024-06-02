@@ -9,9 +9,9 @@ import { useData } from "./store/Store.jsx";
 import { useNavigate } from "react-router-dom";
 
 import { Breadcrumbs } from "../../modules/breadcrumbs/Breadcrumbs.jsx";
-
+import {useTranslation} from "react-i18next";
 export const Management = () => {
-
+    const { t } = useTranslation();
     const { data, loading, error, getData } = useData();
     const navigate = useNavigate();
 

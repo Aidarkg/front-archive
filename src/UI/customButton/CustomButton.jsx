@@ -1,20 +1,21 @@
 import { Link } from "react-router-dom";
-import s from "./CustomButton.module.sass";
+import classes from "./CustomButton.module.sass";
 import { Typography } from "../../Typography/Typography.jsx";
 
 const buttonStyles = {
-    blue: s.customButtonBlue,
-    lightBlue: s.customButtonLightBlue,
-    withBorder: s.customButtonWithBorder
+    blue: classes.customButtonBlue,
+    lightBlue: classes.customButtonLightBlue,
+    withBorder: classes.customButtonWithBorder
 };
 
-export const CustomButton = ({ text, icon, to, onClick, actionType, buttonStyle, type, style, disabled, className }) => {
+export const CustomButton = ({ text, icon, to, onClick, actionType, buttonStyle, type, style, disabled, className, target, rel}) => {
     const ButtonComponent = actionType === "link" ? Link : "button";
-    const buttonClassName = `${s.customButton} ${buttonStyles[buttonStyle] || s.customButtonGrey} ${className}`;
-    const typeProps = actionType === "link" ? { to } : { onClick, type, disabled };
+    const buttonClassName = `${classes.customButton} ${buttonStyles[buttonStyle] || classes.customButtonGrey} ${className}`;
+    const typeProps = actionType === "link" ? { to, target, rel } : { onClick, type, disabled };
+
 
     return (
-        <ButtonComponent disabled={disabled} {...typeProps} className={`${s.customButton} ${buttonClassName}`} style={style}>
+        <ButtonComponent disabled={disabled} {...typeProps} className={`${classes.customButton} ${buttonClassName}`} style={style}>
             <Typography variant="h6">{text.toUpperCase()}</Typography>
             {icon && icon}
         </ButtonComponent>

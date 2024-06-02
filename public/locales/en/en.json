@@ -37,7 +37,8 @@
       },
       "publications": {
          "title": "Publications",
-         "button": "All publications"
+         "button": "All publications",
+         "loadMore": "More"
       },
       "photoGallery": {
          "title": "Photo gallery",

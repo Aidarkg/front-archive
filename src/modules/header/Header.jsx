@@ -1,4 +1,7 @@
 import classes from "./Header.module.sass";
+
+import { PATH } from "../../app/Routes/index.js";
+
 import { Typography } from "../../Typography/Typography.jsx";
 
 import { Container } from "../../components/container/Container.jsx";
@@ -19,8 +22,9 @@ import { CrossIcon } from "../../assets/icons/CrossIcon";
 import { ArrowDown } from "../../assets/icons/ArrowDown";
 
 import { NavLink, useLocation } from "react-router-dom";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { HeaderLogoMobile } from "../../assets/logos/headerLogos/HeaderLogoMobile.jsx";
 
 export const Header = () => {
    const { t } = useTranslation();
@@ -31,10 +35,13 @@ export const Header = () => {
 
    const location = useLocation();
 
+   const archiveRef = useRef(null);
+   const mediaArchiveRef = useRef(null);
+
    const activeLink = ({ isActive }) => (isActive ? classes.active : "");
 
    const toggleInputVisibility = () => {
-      setIsInputVisible(!isInputVisible);
+      setIsInputVisible((prev) => !prev);
    };
 
    const closeInput = () => {
@@ -42,17 +49,22 @@ export const Header = () => {
    };
 
    const toggleSubnav = (menu) => {
-      if (activeSubnav) {
-         setActiveSubnav(null);
-      } else {
-         setActiveSubnav(menu);
-      }
+      setActiveSubnav((prev) => prev === menu ? null : menu);
    };
 
    const toggleDropdown = () => {
-      setIsDropMenuOpen(!isDropMenuOpen);
+      setIsDropMenuOpen((prev) => !prev);
    };
 
+   const isArchiveActive = () => {
+      const archivePages = [PATH.aboutArchive, PATH.management];
+      return archivePages.some((page) => location.pathname.includes(page));
+   };
+
+   const isMediaArchiveActive = () => {
+      const archivePages = [PATH.publications, PATH.photo, PATH.video];
+      return archivePages.some((page) => location.pathname.includes(page));
+   };
 
    return (
       <header className={classes.header}>
@@ -70,10 +82,10 @@ export const Header = () => {
                         <li
                            className={`
                               ${classes.archiveList} 
-                              ${location.pathname.includes("/aboutArchive") || location.pathname.includes("/management")
-                              ? classes.active : ""}
+                              ${isArchiveActive() ? classes.active : ""}
                            `}
                            onClick={() => toggleSubnav("archive")}
+                           ref={archiveRef}
                         >
                            <Typography
                               className={classes.parentNav}
@@ -86,14 +98,14 @@ export const Header = () => {
                               className={`${classes.subnav} ${activeSubnav === "archive" ? classes.open : ""}`}
                            >
                               <li>
-                                 <NavLink to={"/aboutArchive"}>
+                                 <NavLink to={PATH.aboutArchive}>
                                     <Typography variant="h6">
                                        {t("header&footer.subnav.aboutArchive")}
                                     </Typography>
                                  </NavLink>
                               </li>
                               <li>
-                                 <NavLink to={"/management"}>
+                                 <NavLink to={PATH.management}>
                                     <Typography variant="h6">
                                        {t("header&footer.subnav.management")}
                                     </Typography>
@@ -104,10 +116,10 @@ export const Header = () => {
                         <li
                            className={`
                                  ${classes.mediaArchiveList} 
-                                 ${location.pathname.includes("/publications") || location.pathname.includes("/photo") || location.pathname.includes("/video")
-                                 ? classes.active : ""}
+                                 ${isMediaArchiveActive() ? classes.active : ""}
                               `}
                            onClick={() => toggleSubnav("mediaArchive")}
+                           ref={mediaArchiveRef}
                         >
                            <Typography
                               className={classes.parentNav}
@@ -120,21 +132,21 @@ export const Header = () => {
                               className={`${classes.subnav} ${activeSubnav === "mediaArchive" ? classes.open : ""}`}
                            >
                               <li>
-                                 <NavLink to={"/publications"}>
+                                 <NavLink to={PATH.publications}>
                                     <Typography variant="h6">
                                        {t("header&footer.subnav.publications")}
                                     </Typography>
                                  </NavLink>
                               </li>
                               <li>
-                                 <NavLink to={"/photo"}>
+                                 <NavLink to={PATH.photo}>
                                     <Typography variant="h6">
                                        {t("header&footer.subnav.photo")}
                                     </Typography>
                                  </NavLink>
                               </li>
                               <li>
-                                 <NavLink to={"/video"}>
+                                 <NavLink to={PATH.video}>
                                     <Typography variant="h6">
                                        {t("header&footer.subnav.video")}
                                     </Typography>
@@ -143,28 +155,28 @@ export const Header = () => {
                            </ul>
                         </li>
                         <li>
-                           <NavLink className={activeLink} to={"/npa"}>
+                           <NavLink className={activeLink} to={PATH.npa}>
                               <Typography variant="h6">
                                  {t("header&footer.nav.regulations")}
                               </Typography>
                            </NavLink>
                         </li>
                         <li>
-                           <NavLink className={activeLink} to={"/services"}>
+                           <NavLink className={activeLink} to={PATH.services}>
                               <Typography variant="h6">
                                  {t("header&footer.nav.services")}
                               </Typography>
                            </NavLink>
                         </li>
                         <li>
-                           <NavLink className={activeLink} to={"/faq"}>
+                           <NavLink className={activeLink} to={PATH.faq}>
                               <Typography variant="h6">
                                  {t("header&footer.nav.q&a")}
                               </Typography>
                            </NavLink>
                         </li>
                         <li>
-                           <NavLink className={activeLink} to={"/contacts"}>
+                           <NavLink className={activeLink} to={PATH.contacts}>
                               <Typography variant="h6">
                                  {t("header&footer.nav.contacts")}
                               </Typography>
@@ -192,110 +204,133 @@ export const Header = () => {
                      />
                   )}
                   <button className={classes.dropdownBtn} onClick={toggleDropdown}>
-                     {isDropMenuOpen ? <CrossIcon /> : <MenuSvg />}
+                     <MenuSvg />
                   </button>
-                  <nav className={classes.responsiveNav}>
-                     {isDropMenuOpen && (
-                        <ul className={`${classes.dropdownMenu} ${isDropMenuOpen ? classes.open : ""}`}>
-                           <li
-                              className={`${classes.accordionItem} ${activeSubnav === "archive" ? classes.active : ""}`}
-                              onClick={() => toggleSubnav("archive")}
-                           >
-                              <Typography className={classes.parentNav} variant="h6">
-                                 {t("header&footer.nav.archive")}
-                              </Typography>
-                              {activeSubnav === "archive"
-                                 ? <ArrowDown className={classes.ArrowUpSvg} />
-                                 : <ArrowDown className={classes.ArrowDownSvg} />}
-                           </li>
-                           {activeSubnav === "archive" && (
-                              <ul className={`${classes.subnav} ${activeSubnav === "archive" ? classes.open : ""}`}>
-                                 <li className={classes.subnavItem}>
-                                    <NavLink to={"/aboutArchive"}>
-                                       <Typography variant="smallBody" color="black">
-                                          {t("header&footer.subnav.aboutArchive")}
-                                       </Typography>
-                                    </NavLink>
-                                 </li>
-                                 <li className={classes.subnavItem}>
-                                    <NavLink to={"/management"}>
-                                       <Typography variant="smallBody" color="black">
-                                          {t("header&footer.subnav.management")}
-                                       </Typography>
-                                    </NavLink>
-                                 </li>
-                              </ul>
-                           )}
-                           <li
-                              className={`${classes.accordionItem} ${activeSubnav === "mediaArchive" ? classes.active : ""}`}
-                              onClick={() => toggleSubnav("mediaArchive")}
-                           >
-                              <Typography className={classes.parentNav} variant="h6">
-                                 {t("header&footer.nav.mediaArchive")}
-                              </Typography>
-                              {activeSubnav === "mediaArchive"
-                                 ? <ArrowDown className={classes.ArrowUpSvg} />
-                                 : <ArrowDown className={classes.ArrowDownSvg} />}
-                           </li>
-                           {activeSubnav === "mediaArchive" && (
-                              <ul className={`${classes.subnav} ${activeSubnav === "mediaArchive" ? classes.open : ""}`}>
-                                 <li className={classes.subnavItem}>
-                                    <NavLink to={"/publications"}>
-                                       <Typography variant="smallBody" color="black">
-                                          {t("header&footer.subnav.publications")}
-                                       </Typography>
-                                    </NavLink>
-                                 </li>
-                                 <li className={classes.subnavItem}>
-                                    <NavLink to={"/photo"}>
-                                       <Typography variant="smallBody" color="black">
-                                          {t("header&footer.subnav.photo")}
-                                       </Typography>
-                                    </NavLink>
-                                 </li>
-                                 <li className={classes.subnavItem}>
-                                    <NavLink to={"/video"}>
-                                       <Typography variant="smallBody" color="black">
-                                          {t("header&footer.subnav.video")}
-                                       </Typography>
-                                    </NavLink>
-                                 </li>
-                              </ul>
-                           )}
-                           <li>
-                              <NavLink className={activeLink} to={"/npa"}>
-                                 <Typography variant="h6" color="black">
-                                    {t("header&footer.nav.regulations")}
+                  {isDropMenuOpen && (
+                     <div className={`${classes.headerInnerResponsive} ${isDropMenuOpen ? classes.open : ""}`}>
+                        <div className={classes.responsiveHigh}>
+                           <div className={classes.headerLogoResponsive}>
+                              <HeaderLogoMobile />
+                              <div className={classes.headerLogoTitleResponsive}>
+                                 <Typography className={classes.headerLogoTitleH5} variant="h5" color="grey500">
+                                    {t("header&footer.logo.archivePresidentKR")}
                                  </Typography>
-                              </NavLink>
-                           </li>
-                           <li>
-                              <NavLink className={activeLink} to={"/services"}>
-                                 <Typography variant="h6" color="black">
-                                    {t("header&footer.nav.services")}
+                                 <Typography className={classes.headerLogoExtraSmallBody} variant="extraSmallBody" color="grey500">
+                                    {t("header&footer.logo.kyrgyzRepublic")}
                                  </Typography>
-                              </NavLink>
-                           </li>
-                           <li>
-                              <NavLink className={activeLink} to={"/faq"}>
-                                 <Typography variant="h6" color="black">
-                                    {t("header&footer.nav.q&a")}
-                                 </Typography>
-                              </NavLink>
-                           </li>
-                           <li>
-                              <NavLink className={activeLink} to={"/contacts"}>
-                                 <Typography variant="h6" color="black">
-                                    {t("header&footer.nav.contacts")}
-                                 </Typography>
-                              </NavLink>
-                           </li>
-                           <div className={classes.languageList}>
-                              <LanguageList />
+                              </div>
                            </div>
-                        </ul>
-                     )}
-                  </nav>
+                           <div className={classes.responsiveIcons}>
+                              <button className={classes.eyeIcon}>
+                                 <AccessibilitySvg />
+                              </button>
+                              <button className={classes.crossIcon} onClick={toggleDropdown}>
+                                 <CrossIcon />
+                              </button>
+                           </div>
+                        </div>
+                        <nav className={classes.responsiveNav}>
+                           <ul className={classes.responsiveList}>
+                              <li
+                                 className={`${classes.accordionItem} ${activeSubnav === "archive" ? classes.active : ""}`}
+                                 onClick={() => toggleSubnav("archive")}
+                              >
+                                 <Typography className={classes.parentNav} variant="h6">
+                                    {t("header&footer.nav.archive")}
+                                 </Typography>
+                                 {activeSubnav === "archive"
+                                    ? <ArrowDown className={classes.ArrowUpSvg} />
+                                    : <ArrowDown className={classes.ArrowDownSvg} />}
+                              </li>
+                              {activeSubnav === "archive" && (
+                                 <ul className={`${classes.subnav} ${activeSubnav === "archive" ? classes.open : ""}`}>
+                                    <li className={classes.subnavItem}>
+                                       <NavLink to={PATH.aboutArchive}>
+                                          <Typography variant="smallBody" color="black">
+                                             {t("header&footer.subnav.aboutArchive")}
+                                          </Typography>
+                                       </NavLink>
+                                    </li>
+                                    <li className={classes.subnavItem}>
+                                       <NavLink to={PATH.management}>
+                                          <Typography variant="smallBody" color="black">
+                                             {t("header&footer.subnav.management")}
+                                          </Typography>
+                                       </NavLink>
+                                    </li>
+                                 </ul>
+                              )}
+                              <li
+                                 className={`${classes.accordionItem} ${activeSubnav === "mediaArchive" ? classes.active : ""}`}
+                                 onClick={() => toggleSubnav("mediaArchive")}
+                              >
+                                 <Typography className={classes.parentNav} variant="h6">
+                                    {t("header&footer.nav.mediaArchive")}
+                                 </Typography>
+                                 {activeSubnav === "mediaArchive"
+                                    ? <ArrowDown className={classes.ArrowUpSvg} />
+                                    : <ArrowDown className={classes.ArrowDownSvg} />}
+                              </li>
+                              {activeSubnav === "mediaArchive" && (
+                                 <ul className={`${classes.subnav} ${activeSubnav === "mediaArchive" ? classes.open : ""}`}>
+                                    <li className={classes.subnavItem}>
+                                       <NavLink to={PATH.publications}>
+                                          <Typography variant="smallBody" color="black">
+                                             {t("header&footer.subnav.publications")}
+                                          </Typography>
+                                       </NavLink>
+                                    </li>
+                                    <li className={classes.subnavItem}>
+                                       <NavLink to={PATH.photo}>
+                                          <Typography variant="smallBody" color="black">
+                                             {t("header&footer.subnav.photo")}
+                                          </Typography>
+                                       </NavLink>
+                                    </li>
+                                    <li className={classes.subnavItem}>
+                                       <NavLink to={PATH.video}>
+                                          <Typography variant="smallBody" color="black">
+                                             {t("header&footer.subnav.video")}
+                                          </Typography>
+                                       </NavLink>
+                                    </li>
+                                 </ul>
+                              )}
+                              <li>
+                                 <NavLink to={PATH.npa}>
+                                    <Typography variant="h6" color="black">
+                                       {t("header&footer.nav.regulations")}
+                                    </Typography>
+                                 </NavLink>
+                              </li>
+                              <li>
+                                 <NavLink to={PATH.services}>
+                                    <Typography variant="h6" color="black">
+                                       {t("header&footer.nav.services")}
+                                    </Typography>
+                                 </NavLink>
+                              </li>
+                              <li>
+                                 <NavLink to={PATH.services}>
+                                    <Typography variant="h6" color="black">
+                                       {t("header&footer.nav.q&a")}
+                                    </Typography>
+                                 </NavLink>
+                              </li>
+                              <li>
+                                 <NavLink to={PATH.contacts}>
+                                    <Typography variant="h6" color="black">
+                                       {t("header&footer.nav.contacts")}
+                                    </Typography>
+                                 </NavLink>
+                              </li>
+                              <div className={classes.languageList}>
+                                 <LanguageList />
+                              </div>
+                           </ul>
+                        </nav>
+                     </div>
+                  )}
                </div>
             </div>
          </Container>

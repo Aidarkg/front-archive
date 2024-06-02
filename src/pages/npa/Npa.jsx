@@ -11,12 +11,13 @@ import { Typography } from "../../Typography/Typography";
 import { RegulationsDoc } from "../../UI/regulationsDoc/RegulationsDoc";
 
 import { Container } from "../../components/container/Container";
+import { Loader } from "../../components/loader/Loader";
 
 import { Breadcrumbs } from "../../modules/breadcrumbs/Breadcrumbs";
 
 export const Npa = () => {
    const { t } = useTranslation();
-   const { regulationsList, fetchRegulations, language } = useRegulationsStore();
+   const { regulationsList, fetchRegulations, language, loading } = useRegulationsStore();
 
    useEffect(() => {
       fetchRegulations();
@@ -48,13 +49,15 @@ export const Npa = () => {
                   </li>
                </ul>
                <ul className={classes.documentsContainer}>
-                  {regulationsList?.slice(0, 7)?.map((doc) => (
+                  {loading && <Loader />}
+                  {regulationsList?.map((doc) => (
                      <RegulationsDoc
                         key={doc.id}
-                        date="26.04.2024"
-                        documentNumber="№234"
+                        date={doc.date_file}
+                        documentNumber={doc.document_number}
                         name={doc.title}
                         linkOpen={doc.pdf_file}
+                        linkDownload={doc.pdf_file}
                      />
                   ))}
                </ul>

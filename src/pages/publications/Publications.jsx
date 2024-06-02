@@ -9,18 +9,20 @@ import { Container } from "../../components/container/Container.jsx";
 import { Loader } from "../../components/loader/Loader.jsx";
 import { useTranslation } from "react-i18next";
 import { CustomButton } from "../../UI/customButton/CustomButton.jsx";
+import {useLanguageStore} from "../../utils/languageStore/UseLanguageStore.js";
 
 export const Publications = () => {
     const navigate = useNavigate();
     const { t } = useTranslation();
     const { publications, getPublications, loading, loadMorePublications, nextPage } = usePublications();
+    const { language } = useLanguageStore();
 
     useEffect(() => {
         getPublications();
-    }, []);
+    }, [language]);
 
     const getMorePublications = () => {
-        loadMorePublications(nextPage);
+        loadMorePublications();
     };
 
     return (
@@ -30,7 +32,7 @@ export const Publications = () => {
                 <div className={classes.Publications}>
                     <Typography variant="h1">{t("mainPage.publications.title")}</Typography>
                     <div className={classes.PublicationsContent}>
-                        {publications && publications?.map((item, index) => (
+                        {publications && publications.map((item, index) => (
                             <div className={classes.PublicationsContentCard} key={item.id}>
                                 <CustomCard
                                     image={item.image}
@@ -44,7 +46,7 @@ export const Publications = () => {
                     </div>
                     {loading && <Loader />}
                     {nextPage && (
-                        <CustomButton onClick={getMorePublications} text={"Еще"} />
+                        <CustomButton onClick={getMorePublications} text={t("mainPage.publications.loadMore")} />
                     )}
                 </div>
             </Container>

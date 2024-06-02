@@ -22,7 +22,7 @@
           "video": "Видео"
       },
       "search": "Сайт издөө",
-      "attendanceCounter": "хит эсептегич"
+      "attendanceCounter": "Хит эсептегич"
   },
   "mainPage": {
       "hero": {
@@ -37,7 +37,8 @@
       },
       "publications": {
           "title": "Басылмалар",
-          "button": "Бардык басылмалар"
+          "button": "Бардык басылмалар",
+          "loadMore": "Дагы"
       },
       "photoGallery": {
           "title": "Сүрөт галерея",

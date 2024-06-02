@@ -5,9 +5,11 @@ import {useState} from "react";
 import {QuestionLine} from "../../assets/icons/QuestionLine.jsx";
 import {Modal} from "./modal/Modal.jsx";
 import {Container} from "../../components/container/Container.jsx";
+import {useTranslation} from "react-i18next";
 
 export const ModalPage = () => {
     const [ modalActive, setModalActive ] = useState(false);
+    const { t } = useTranslation();
     return (
         <div>
             <Container>
@@ -15,7 +17,7 @@ export const ModalPage = () => {
                     <CustomButton
                         buttonStyle="blue"
                         type="submit"
-                        text={"ЗАДАТЬ ВОПРОС"}
+                        text={t("q&aPage.heading")}
                         className={classes.openBtn}
                         onClick={() => setModalActive(true)}
                         icon={<QuestionLine/>}

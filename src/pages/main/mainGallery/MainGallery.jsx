@@ -6,6 +6,7 @@ import {usePhotos} from "../../photo/api/PhotosStore.js";
 import {useVideo} from "../../video/api/VideoStore.js";
 import {Container} from "../../../components/container/Container.jsx";
 import {useTranslation} from "react-i18next";
+import {useLanguageStore} from "../../../utils/languageStore/UseLanguageStore.js";
 
 export const MainGallery = () => {
 
@@ -13,6 +14,7 @@ export const MainGallery = () => {
     const {photosContent, getPhotosContent} = usePhotos();
     const {videoContent, getVideoContent} = useVideo();
     const {t}=useTranslation();
+    const {language}=useLanguageStore();
     const getFirstFourItems = (array) => array.slice(0, 4);
     const sections = [
         {
@@ -34,13 +36,14 @@ export const MainGallery = () => {
             content: getFirstFourItems(videoContent),
             path: "/video",
             linkText: t("mainPage.videoGallery.button"),
+            type: "video"
         }
     ];
     useEffect(() => {
         getPublications();
         getPhotosContent();
         getVideoContent();
-    }, []);
+    }, [language]);
     return (
         <section className={classes.gallery}>
             <Container>
@@ -53,6 +56,7 @@ export const MainGallery = () => {
                             path={section.path}
                             linkText={section.linkText}
                             type={section.type}
+                            haveBtn={true}
                         />
                     ))}
                 </div>
