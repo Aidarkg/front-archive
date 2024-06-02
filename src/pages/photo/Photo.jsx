@@ -10,6 +10,7 @@ import { Container } from "../../components/container/Container.jsx";
 import { Loader } from "../../components/loader/Loader.jsx";
 import { useTranslation } from "react-i18next";
 import { CustomButton } from "../../UI/customButton/CustomButton.jsx";
+import {useLanguageStore} from "../../utils/languageStore/UseLanguageStore.js";
 
 const archiveImages = [
     { image: akaev },
@@ -21,9 +22,11 @@ const archiveImages = [
 
 export const Photo = () => {
     const { photosContent, getPhotosContent, loading, loadMorePhotosContent, nextPage } = usePhotos();
+    const { language } = useLanguageStore();
+
     useEffect(() => {
         getPhotosContent();
-    }, []);
+    }, [language]);
 
     const navigate = useNavigate();
     const { t } = useTranslation();

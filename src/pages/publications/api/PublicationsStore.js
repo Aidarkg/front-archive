@@ -1,23 +1,21 @@
 import { create } from "zustand";
 import axios from "axios";
 import {useRegulationsStore} from "../../npa/store/useRegulationsStore.js";
+import {useLanguageStore} from "../../../utils/languageStore/UseLanguageStore.js";
 
 export const usePublications = create((set, get) => ({
     publications: [],
     nextPage: null,
     error: null,
     loading: false,
-    language: "ru",
-
-    setLanguage: (lang) => set({ language: lang }),
 
     getPublications: async () => {
         set({ loading: true, error: null });
         try {
-            const { language } = useRegulationsStore.getState();
+            const { language } = useLanguageStore.getState();
             const response = await axios.get(`https://aidarzh.pythonanywhere.com/${language}/api/v1/news`);
             const data = response.data;
-            set({ publications: data.results, nextPage: data.next });
+            set({ publications: data.results, nextPage: data.next});
         } catch (error) {
             console.error('Failed fetch error', error);
             set({ error: error.message });
