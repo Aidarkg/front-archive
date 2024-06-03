@@ -37,7 +37,8 @@
       },
       "publications": {
           "title": "Басылмалар",
-          "button": "Бардык басылмалар"
+          "button": "Бардык басылмалар",
+          "loadMore": "Дагы"
       },
       "photoGallery": {
           "title": "Сүрөт галерея",

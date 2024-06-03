@@ -3,15 +3,18 @@ import classes from "./HeaderSelect.module.sass";
 import { useState } from "react";
 import { ArrowDownSvg } from "../Svg/ArrowDownSvg";
 import { useRegulationsStore } from "../../pages/npa/store/useRegulationsStore";
+import {useLanguageStore} from "../../utils/languageStore/UseLanguageStore.js";
 
 export const HeaderSelect = () => {
     const { i18n } = useTranslation();
     const [activeList, setActiveList] = useState(null);
     const { setLanguage } = useRegulationsStore();
+    const {setChangeLanguage}=useLanguageStore();
 
     const changeLanguage = (lng) => {
         i18n.changeLanguage(lng);
         setLanguage(lng);
+        setChangeLanguage(lng);
         setActiveList(null);
     };
 
