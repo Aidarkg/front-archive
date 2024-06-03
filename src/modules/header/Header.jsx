@@ -88,9 +88,9 @@ export const Header = () => {
          });
       };
 
-      loadScript("https://lidrekon.ru/slep/js/jquery.js").then(() => {
-         return loadScript("https://lidrekon.ru/slep/js/uhpv-full.min.js");
-      });
+      // loadScript("https://lidrekon.ru/slep/js/jquery.js").then(() => {
+      //    return loadScript("https://lidrekon.ru/slep/js/uhpv-full.min.js");
+      // });
 
       const observer = new MutationObserver(() => {
          if (document.querySelector('#special')) {
