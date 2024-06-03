@@ -17,7 +17,7 @@ export const Footer = () => {
         getData();
     }, [getData]);
 
-    const { ref, inView } = useInView({
+    const { ref } = useInView({
         triggerOnce: true,
         threshold: 0.1,
     });
@@ -110,18 +110,14 @@ export const Footer = () => {
                     </nav>
                     <div className={classes.copyright}>
                         <Typography className={classes.copyright} variant="body" color="grey300">
-                            © 2024 {t("header&footer.logo.archivePresidentKR")}  {t("header&footer.logo.kyrgyzRepublic")} //FIX ME
+                            © 2024 {t("header&footer.logo.archivePresidentKR")}  {t("header&footer.logo.kyrgyzRepublic")}
                         </Typography>
                         <button className={classes.counterBtn} ref={ref}>
                             <Typography color="grey100" variant="smallBody">
-                                Счётчик посещений
+                                {t("header&footer.attendanceCounter")}
                             </Typography>
                             <Typography variant="h6" color="main">
-                                {inView && data?.counter !== undefined ? (
-                                    <CountUp end={data?.counter} duration={2} />
-                                ) : (
-                                    'N/A'
-                                )}
+                                <CountUp start={0} end={data?.counter || 0} duration={2} />
                             </Typography>
                         </button>
                     </div>

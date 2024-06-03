@@ -13,10 +13,21 @@
         padding: 12px 0
         max-height: 88px
 
+        @media (max-width: 800px)
+            padding: 12px 0
+            max-height: 65px
+
+        @media (max-width: 480px)
+            padding: 10.5px 0
+            max-height: 56px
+
         .headerLogo
             display: flex
             align-items: center
             gap: 16px
+
+            @media (max-width: 800px)
+                gap: 8px
 
             .headerLogoTitle
                 display: flex
@@ -28,7 +39,11 @@
             gap: 16px
             position: relative
 
+            @media (max-width: 400px)
+                gap: 8px
+
             .navList
+                white-space: nowrap
                 display: flex
                 align-items: center
                 gap: 24px
@@ -36,6 +51,9 @@
                 position: relative
                 margin-right: 16px
                 cursor: pointer
+
+                @media (max-width: 1280px)
+                    display: none
 
                 a
                     color: var(--black)
@@ -88,7 +106,7 @@
                             border-bottom-left-radius: 8px
                             border-bottom-right-radius: 8px
 
-            .eyeIcon, .searchBtn
+            .eyeIcon, .searchBtn, .crossIcon
                 border-radius: 4px
                 padding: 10px
                 background-color: var(--grey100)
@@ -96,11 +114,15 @@
                 align-items: center
                 cursor: pointer
                 border: none
+                
+            @media ( max-width: 480px )
+                .eyeIcon
+                    display: none
 
             .dropdownBtn
                 display: none
 
-            .dropdownMenu
+            .headerInnerResponsive
                 display: none
 
             @media (max-width: 1280px)
@@ -114,104 +136,114 @@
                     border: none
                     position: relative
 
-                .navList
+                .headerInnerResponsive
                     display: none
+                    flex-direction: column
+                    align-items: center
+                    gap: 24px
+                    position: absolute
+                    z-index: 20
+                    width: 360px
+                    height: 800px
+                    padding: 10px 16px 0
+                    top: -12px
+                    right: -18px
+                    background-color: var(--main)
+                    opacity: 0
+                    visibility: hidden
+                    transform: translateX(100%)
+                    transition: all 0.5s ease 0s
 
-                .nav
-                    .dropdownMenu
-                        display: none
-                        flex-direction: column
-                        gap: 8px
-                        position: absolute
-                        text-transform: uppercase
-                        top: 100px
-                        right: 0
-                        border-radius: 10px
-                        background-color: var(--main)
-                        width: 360px
-                        height: 800px
-                        padding: 24px 16px 0
+                    &.open
+                        display: flex
+                        opacity: 1
+                        visibility: visible
+                        transform: translateX(0)
 
-                        &.open
+                    .responsiveHigh
+                        display: flex
+                        align-items: center
+                        gap: 25px
+                        width: 328px
+
+                        .headerLogoResponsive
                             display: flex
+                            gap: 8px
 
-                        li
-                            padding: 14px 16px
-                            background-color: var(--grey100)
-                            position: relative
-                            border-radius: 4px
-                            border: none
+                            .headerLogoTitleResponsive
+                                max-height: 35px
 
-                            &:active
-                                background-color: var(--grey200)
+                                .headerLogoTitleH5
+                                    font-size: 15px
 
-                            .ArrowUpSvg, .ArrowDownSvg
-                                position: absolute
-                                top: 12px
-                                right: 15px
+                                .headerLogoExtraSmallBody
+                                    font-size: 12px
+                                    font-weight: 400
+                                    line-height: 16.9px
+                                    white-space: nowrap
 
-                            .ArrowDownSvg
-                                transition: transform 0.3s ease
+                        .responsiveIcons
+                            display: flex
+                            gap: 8px
 
-                            .ArrowUpSvg
-                                transform: rotateX(180deg) translateY(0.1rem)
-                                transition: transform 0.3s ease
+                            .eyeIcon
+                                display: flex
 
-                        .subnav
+                    .responsiveNav
+                        width: 328px
+
+                        .responsiveList
                             display: flex
                             flex-direction: column
-                            gap: 4px
+                            gap: 8px
+                            position: absolute
+                            text-transform: uppercase
+                            width: 91.1%
 
-                            .subnavItem
-                                padding: 14px 16px
+                            li
+                                padding: 16px 8px 16px 16px
+                                background-color: var(--grey100)
+                                position: relative
                                 border-radius: 4px
-                                background-color: var(--main)
-                                border: 1px solid var(--grey200)
-                                text-transform: lowercase
+                                border: none
 
-                                .subnavItem p::first-letter
-                                    text-transform: uppercase
+                                &:active
+                                    background-color: var(--grey200)
 
-                @media (max-width: 800px)
-                    .header
-                        .headerInner
-                            display: flex
-                            justify-content: space-between
-                            align-items: center
-                            padding: 12px 0
-                            max-height: 65px
+                                .ArrowUpSvg, .ArrowDownSvg
+                                    position: absolute
+                                    top: 12px
+                                    right: 15px
 
-                            .headerLogo
+                                .ArrowDownSvg
+                                    transition: transform 0.3s ease
+
+                                .ArrowUpSvg
+                                    transform: rotateX(180deg) translateY(0.1rem)
+                                    transition: transform 0.3s ease
+
+                            .subnav
                                 display: flex
-                                align-items: center
-                                gap: 8px
+                                flex-direction: column
+                                gap: 4px
 
-                                .headerLogoTitle
-                                    display: flex
-                                    flex-direction: column
+                                .subnavItem
+                                    padding: 14px 16px
+                                    border-radius: 4px
+                                    background-color: var(--main)
+                                    border: 1px solid var(--grey200)
+                                    text-transform: lowercase
+
+                                    p::first-letter
+                                        text-transform: uppercase
 
                 @media (max-width: 680px)
                     .headerSelect
                         display: none
 
-                        .languageList
-                            display: block
+                    .languageList
+                        display: block
 
                 @media (min-width: 681px)
                     .languageList
-                        display: none
-
-                @media (max-width: 480px)
-                    .header
-                        .headerInner
-                            padding: 10.5px 0
-                            max-height: 56px
-
-                            .rightHeader
-                                display: flex
-                                align-items: center
-                                gap: 8px
-                                position: relative
-
-                    .eyeIcon
                         display: none

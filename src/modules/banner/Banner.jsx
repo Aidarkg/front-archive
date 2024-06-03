@@ -1,25 +1,29 @@
-import img1 from "./images/symbol.svg";
 import classes from "./Banner.module.sass";
 import { DetailBtn } from "./detailBtn/DetailBtn";
 import { Typography } from "../../Typography/Typography";
+import { Container } from "../../components/container/Container";
+import { useTranslation } from "react-i18next";
+import {CoatOfArms} from "../../assets/icons/CoatOfArms.jsx";
 
 export const Banner = () => {
+   const { t } = useTranslation();
+
    return (
       <section className={classes.banner}>
-         <div className={classes.container}>
+         <Container>
             <div className={classes.main}>
-               <img className={classes.img1} src={img1} alt="symbol" />
+              <div className={classes.img1}>
+                 <CoatOfArms/>
+              </div>
                <Typography className={classes.h1} variant="h1">
-                  АРХИВ ПРЕЗИДЕНТА КЫРГЫЗСКОЙ РЕСПУБЛИКИ
+                  {t("mainPage.hero.heading")}
                </Typography>
                <DetailBtn />
             </div>
             <Typography className={classes.p} variant="p">
-               С ДРУГОЙ СТОРОНЫ, СУЩЕСТВУЮЩАЯ ТЕОРИЯ ПОЗВОЛЯЕТ ОЦЕНИТЬ ЗНАЧЕНИЕ
-                УКРЕПЛЕНИЯ МОРАЛЬНЫХ ЦЕННОСТЕЙ.ВНЕЗАПНО, ДЕЙСТВИЯ
-               ПРЕДСТАВИТЕЛЕЙ
+               {t("mainPage.hero.subheading")}
             </Typography>
-         </div>
+         </Container>
       </section>
    );
 };

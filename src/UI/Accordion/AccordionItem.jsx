@@ -1,27 +1,36 @@
-import { useRef, useState } from "react";
-import css from "./Accordion.module.sass";
+import { useRef, useState, useEffect } from "react";
+import classes from "./Accordion.module.sass";
 import arrow from "../../pages/FAQ/img/arrow.svg";
+import { Typography } from "../../Typography/Typography";
 
 export const AccordionItem = ({ faqItem, onClick, isOpen }) => {
    const itemRef = useRef(null);
    const [isRotated, setIsRotated] = useState(false);
 
    const handleRotate = () => {
-      setIsRotated(prev => !prev);
+      setIsRotated((prev) => !prev);
    };
 
+   useEffect(() => {
+      if (isOpen) {
+         itemRef.current.style.maxHeight = `${itemRef.current.scrollHeight}px`;
+      } else {
+         itemRef.current.style.maxHeight = "0px";
+      }
+   }, [isOpen]);
+
    return (
-      <li className={css.accordion_item}>
+      <li className={classes.accordion_item}>
          <button
-            className={`${css.accordion_header} ${isOpen ? css.opena : ""}`}
+            className={`${classes.accordion_header} ${isOpen ? classes.opena : ""}`}
             onClick={() => {
                onClick();
                handleRotate();
             }}
          >
-            {faqItem.questionName}
+            <Typography className={`${classes.textFaq} ${isOpen ? classes.fullText : ""}`} variant="h5">{faqItem.question}</Typography>
             <img
-               className={css.accordion_arrow}
+               className={classes.accordion_arrow}
                src={arrow}
                alt="arrow"
                style={{
@@ -32,15 +41,11 @@ export const AccordionItem = ({ faqItem, onClick, isOpen }) => {
             />
          </button>
          <div
-            className={`${css.accordion_collapse} ${isOpen ? css.open : ""}`}
-            style={
-               isOpen
-                  ? { height: itemRef.current.scrollHeight }
-                  : { height: "0px" }
-            }
+            ref={itemRef}
+            className={`${classes.accordion_collapse} ${isOpen ? classes.open : ""}`}
          >
-            <div className={css.accordion_body} ref={itemRef}>
-               {faqItem.questionDescription}
+            <div className={classes.accordion_body}>
+               {faqItem.answer}
             </div>
          </div>
       </li>

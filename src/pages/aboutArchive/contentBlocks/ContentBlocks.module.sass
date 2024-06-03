@@ -1,56 +1,121 @@
 
-.main 
-    background-color: var(--grey100)
-    padding: 40px      
-    h1
-      width: 214px
-      height: 52px                   
-      font-family: "Merriweather", serif 
-      margin-bottom: 48px
+.main
+  background-color: var(--grey100)
+  padding: 40px 0
+  h1
+    width: 350px
+    height: 52px
+    font-family: "Merriweather", serif
+    margin-bottom: 48px
+@media (max-width: 768px)
+
+    .main
+        margin-top: 30px
+        h10
+        width: 182px
+        height: 44px
+@media (max-width: 360px)
+        
+     .main   
+        margin-top: 10px
+        h1
+          width: 180px
+          height: auto
+          margin-bottom: 30px
 .container
-        width: 1360px
-        margin-left: auto
-        margin-right: auto        
+  width: 1360px
+  margin-left: auto
+  margin-right: auto
 .contentInner
+  display: flex
+  flex-direction: column
+  gap: 24px
+@media (max-width: 768px)
+
+    .contentInner
+            display: flex
+            justify-content: center
+            gap: 24px
+            
+@media (max-width: 360px)
+
+    .contentInner
+              gap: 12px
+.contentBlock
+  display: flex
+  background-color: var(--main)
+  border-radius: 16px
+  height: 374px
+  &Text
     display: flex
     flex-direction: column
-    gap: 24px
-              
-.contentBlock
-    display: flex
-    background-color: var(--main)
-    border-radius: 16px           
-    height: 374px
-    &Text
-       display: flex
-       flex-direction: column
-       gap: 16px
-       padding: 77px 32px
+    gap: 16px
+    padding: 77px 32px
+@media (max-width: 768px)
+
+    .contentBlock
+            width: 688px
+            height: 590px
+            display: flex
+            flex-direction: column
+            justify-content: center
+            &Text
+                padding: 0px
+                margin-bottom: 5px
+
+@media (max-width: 360px)
+
+    .contentBlock
+            &Text
+                padding: 12px
+
 .heading
-       width: 632px
-       height: 78px
-       font-weight: 700
-       font-size: 30px
-       font-family: "Merriweather", serif  
+  width: 632px
+  height: 78px  
+  font-family: "Merriweather", serif
+@media (max-width: 768px)
+
+    .heading
+          width: 100%
+          height: auto
 
 .text
-    width: 632px
-    height: 126px
-    font-family: "Inter", sans-serif 
-    color: var(--grey500)
+  width: 632px
+  height: 126px
+  font-family: "Inter", sans-serif
+  color: var(--grey500)
+  padding: 20px 0
+@media (max-width: 768px)
 
+    .text
+        width: 100%
+        height: auto
 .left
-    flex-direction: row-reverse
-.image 
-         width: 664px
-         height: 374px
-         float: right
-         border: none
-         border-radius: 0px 16px 16px 0px
-         
-.leftImage  
-       float: left     
-       width: 664px
-       height: 374px
-       border: none
-       border-radius: 16px 0px 0px 16px
+  flex-direction: row-reverse
+.image
+  width: 664px
+  height: 374px
+  float: right
+  border: none
+  border-radius: 0px 16px 16px 0px
+
+.leftImage
+  float: left
+  width: 664px
+  height: 374px
+  border: none
+  border-radius: 16px 0px 0px 16px
+@media (max-width: 768px)
+
+    .contentBlock
+              flex-direction: column
+
+    .contentBlockText, .heading, .text
+              width: 100%
+
+    .image, .leftImage
+        width: 688px
+        height: auto
+        float: none
+        //order: -1
+        border-radius: 16px 16px 0 0

@@ -1,6 +1,5 @@
 import { Faq } from "./FAQ/Faq.jsx";
 import { Main } from "./main/Main.jsx";
-import { MediaArchive } from "./mediaArchive/mediaArchive.jsx";
 import { Contacts } from "./contacts/Contacts.jsx";
 import { Npa } from "./npa/Npa.jsx";
 import { Services } from "./services/Services.jsx";
@@ -13,11 +12,13 @@ import {DetailPhoto} from "./detailPhoto/DetailPhoto.jsx";
 import {DetailVideo} from "./detailVideo/DetailVideo.jsx";
 import {Management} from "./management/Management.jsx";
 import {ManagementMore} from "./managementMore/ManagementMore.jsx";
+import {SearchResults} from "./searchResults/SearchResults.jsx";
+import {Errors} from "../components/error/Errors.jsx";
 
 export {
+    Errors,
     Main,
     Faq,
-    MediaArchive,
     Contacts,
     Npa,
     AboutArchive,
@@ -29,5 +30,6 @@ export {
     DetailPhoto,
     DetailVideo,
     Management,
-    ManagementMore
+    ManagementMore,
+    SearchResults
 };

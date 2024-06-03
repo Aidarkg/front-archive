@@ -5,7 +5,7 @@ import {CustomButton} from "../../../UI/customButton/CustomButton.jsx";
 import {ArrowRight} from "../../../assets/icons/ArrowRight.jsx";
 import {useNavigate} from "react-router-dom";
 
-export const PublicationBlock = ({title, contentArray, path, linkText, type}) => {
+export const PublicationBlock = ({title, contentArray, path, linkText, type, haveBtn}) => {
     const navigate = useNavigate();
     return (
         <div className={classes.publicationBlock}>
@@ -15,6 +15,7 @@ export const PublicationBlock = ({title, contentArray, path, linkText, type}) =>
                     <CustomCard
                         key={item.id}
                         image={item.picture || item.image}
+                        video={item.video}
                         title={item.title}
                         imageCount={item.count_photo}
                         date={item.public_date}
@@ -22,12 +23,12 @@ export const PublicationBlock = ({title, contentArray, path, linkText, type}) =>
                     />
                 ))}
             </div>
-            <CustomButton
+            {haveBtn&& <CustomButton
                 text={linkText}
                 actionType="link"
                 to={path}
                 icon={<ArrowRight/>}
-            />
+            />}
         </div>
     );
 };

@@ -1,5 +1,5 @@
 import {ImageCount} from "../../UI/imageCount/ImageCount.jsx";
-// import {CustomDate} from "../../UI/customDate/CustomDate.jsx";
+import {CustomDate} from "../../UI/customDate/CustomDate.jsx";
 import {Typography} from "../../Typography/Typography.jsx";
 import classes from "./DetailPhoto.module.sass";
 import {useParams} from "react-router-dom";
@@ -7,32 +7,30 @@ import {useEffect} from "react";
 import {usePhotos} from "../photo/api/PhotosStore.js";
 import {Breadcrumbs} from "../../modules/breadcrumbs/Breadcrumbs.jsx";
 import {Loader} from "../../components/loader/Loader.jsx";
-
-
+import {Container} from "../../components/container/Container.jsx";
+import {useTranslation} from "react-i18next";
 
 export const DetailPhoto = () => {
 
     const {id} = useParams();
-    const {images, getImages, title, loading}=usePhotos();
-
+    const {images, getImages, photoData, loading}=usePhotos();
+    const {t}=useTranslation();
     useEffect(() => {
         getImages(id);
     }, [id]);
-    if (loading) {
-        return <Loader/>;
-    }
 
     return (
         <section className={classes.detailPhoto}>
-           <div className="container">
-               <Breadcrumbs currentPage={"фото"} parentPageLink={"/photo"}/>
+           <Container>
+               <Breadcrumbs currentPage={t("mainPage.photoGallery.title")} parentPageLink={"/photo"}/>
                <div className={classes.detailPhotoInner}>
+                   {loading&& <Loader/>}
                    <div className={classes.detailPhotoHead}>
                        <div className={classes.detailPhotoHeadInfo}>
-                           {/*/!*<CustomDate date={date} isWhite={true}/>*!/ // FIX ME*/}
+                           <CustomDate date={photoData.public_date} isWhite={true}/>
                            <ImageCount imageCount={images.length} isWhite={true}/>
                        </div>
-                       <Typography variant="h2">{title}</Typography>
+                       <Typography variant="h2">{photoData.title}</Typography>
                    </div>
                    <div className={classes.detailPhotoImages}>
                        {
@@ -44,7 +42,7 @@ export const DetailPhoto = () => {
                        }
                    </div>
                </div>
-           </div>
+           </Container>
         </section>
     );
 };
