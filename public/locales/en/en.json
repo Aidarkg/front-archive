@@ -37,11 +37,13 @@
       },
       "publications": {
          "title": "Publications",
-         "button": "All publications"
+         "button": "All publications",
+         "loadMore": "More"
       },
       "photoGallery": {
          "title": "Photo gallery",
-         "button": "Entire photo gallery"
+         "button": "Entire photo gallery",
+         "photo": "photo"
       },
       "videoGallery": {
          "title": "Video gallery",
@@ -138,5 +140,5 @@
       },
       "number": "Number"
    },
-   "faq": "Задайте свой вопрос"
+   "searchPage": "Search"
 }

@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import classes from "./CustomCard.module.sass";
 import { Typography } from "../../Typography/Typography.jsx";
 import { CustomDate } from "../customDate/CustomDate.jsx";

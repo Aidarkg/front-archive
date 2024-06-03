@@ -1,0 +1,20 @@
+<svg width="40.000000" height="40.000000" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<desc>
+			Created with Pixso.
+	</desc>
+	<defs>
+		<clipPath id="clip66_2833">
+			<rect id="eye" width="20.000000" height="20.000000" transform="translate(10.000000 10.000000)" fill="white" fill-opacity="0"/>
+		</clipPath>
+		<clipPath id="clip66_2834">
+			<rect id="eye" rx="8.000000" width="40.000000" height="40.000000" fill="white" fill-opacity="0"/>
+		</clipPath>
+	</defs>
+	<rect id="eye" rx="8.000000" width="40.000000" height="40.000000" fill="#F7F7F7" fill-opacity="1.000000"/>
+	<g clip-path="url(#clip66_2834)">
+		<rect id="eye" width="20.000000" height="20.000000" transform="translate(10.000000 10.000000)" fill="#FFFFFF" fill-opacity="0"/>
+		<g clip-path="url(#clip66_2833)">
+			<path id="Vector" d="M20 12.5C24.49 12.5 28.23 15.73 29.01 20C28.23 24.26 24.49 27.5 20 27.5C15.5 27.5 11.76 24.26 10.98 20C11.76 15.73 15.5 12.5 20 12.5ZM20 25.83C23.52 25.83 26.55 23.37 27.31 20C26.55 16.62 23.52 14.16 20 14.16C16.47 14.16 13.44 16.62 12.68 20C13.44 23.37 16.47 25.83 20 25.83ZM20 23.75C17.92 23.75 16.25 22.07 16.25 20C16.25 17.92 17.92 16.25 20 16.25C22.07 16.25 23.75 17.92 23.75 20C23.75 22.07 22.07 23.75 20 23.75ZM20 22.08C21.15 22.08 22.08 21.15 22.08 20C22.08 18.84 21.15 17.91 20 17.91C18.84 17.91 17.91 18.84 17.91 20C17.91 21.15 18.84 22.08 20 22.08Z" fill="#031F44" fill-opacity="1.000000" fill-rule="nonzero"/>
+		</g>
+	</g>
+</svg>

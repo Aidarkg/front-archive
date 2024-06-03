@@ -1,23 +1,21 @@
 import { create } from "zustand";
 import axios from "axios";
+import {useRegulationsStore} from "../../npa/store/useRegulationsStore.js";
+import {useLanguageStore} from "../../../utils/languageStore/UseLanguageStore.js";
 
-const BASE_URL = "https://aidarzh.pythonanywhere.com/api/v1";
-
-export const usePublications = create((set) => ({
+export const usePublications = create((set, get) => ({
     publications: [],
     nextPage: null,
     error: null,
     loading: false,
+
     getPublications: async () => {
-        set({ loading: true });
+        set({ loading: true, error: null });
         try {
-            const response = await axios.get(`${BASE_URL}/news`);
+            const { language } = useLanguageStore.getState();
+            const response = await axios.get(`https://aidarzh.pythonanywhere.com/${language}/api/v1/news`);
             const data = response.data;
-            set({
-                publications: data.results,
-                nextPage: data.next,
-                error: null,
-            });
+            set({ publications: data.results, nextPage: data.next});
         } catch (error) {
             console.error('Failed fetch error', error);
             set({ error: error.message });
@@ -25,16 +23,17 @@ export const usePublications = create((set) => ({
             set({ loading: false });
         }
     },
-    loadMorePublications: async (nextPage) => {
+
+    loadMorePublications: async () => {
+        const { nextPage } = get();
         if (!nextPage) return;
-        set({ loading: true });
+        set({ loading: true, error: null });
         try {
             const response = await axios.get(nextPage);
             const data = response.data;
             set((state) => ({
                 publications: [...state.publications, ...data.results],
                 nextPage: data.next,
-                error: null,
             }));
         } catch (error) {
             console.error(error.message);
@@ -43,12 +42,14 @@ export const usePublications = create((set) => ({
             set({ loading: false });
         }
     },
+
     getPublicationFromId: async (id) => {
-        set({ loading: true });
+        set({ loading: true, error: null });
         try {
-            const response = await axios.get(`${BASE_URL}/news/${id}`);
+            const { language } = useRegulationsStore.getState();
+            const response = await axios.get(`https://aidarzh.pythonanywhere.com/${language}/api/v1/news/${id}`);
             const data = response.data;
-            set({ detailPublicationInfo: data, error: null });
+            set({ detailPublicationInfo: data });
         } catch (error) {
             console.error(error.message);
             set({ error: error.message });
