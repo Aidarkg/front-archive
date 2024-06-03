@@ -12,7 +12,7 @@ export const  Layout = () => {
             <Header/>
                 {isLoading ? <Loader /> : <Outlet />}
             {location.pathname !== "/faq" && <ModalPage />}
-            {/*<Footer/>*/}
+            <Footer/>
         </>
     );
 };
