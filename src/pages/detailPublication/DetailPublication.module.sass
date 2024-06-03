@@ -2,8 +2,16 @@
     margin-top: 88px
     &Inner
         padding-top: 48px
+        @media (max-width: 1024px)
+            padding-top: 30px
+        @media (max-width: 425px)
+            padding-top: 20px
     &Content
         margin: 48px 0 0
+        @media (max-width: 1024px)
+            margin: 35px 0 0
+        @media (max-width: 425px)
+            margin: 20px 0 0
     &ContentInner
         padding: 40px 0 0
         display: flex
@@ -11,10 +19,13 @@
         align-items: start
         gap: 32px
         @media (max-width: 1024px)
-            flex-direction: column
+            flex-direction: column-reverse
             justify-content: center
             gap: 35px
             padding: 30px 0 0
+        @media (max-width: 425px)
+            padding: 20px 0 0
+            gap: 20px
     &Title
         width: 900px
         @media (max-width: 1024px)
