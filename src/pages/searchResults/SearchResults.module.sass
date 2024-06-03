@@ -1,0 +1,38 @@
+.SearchResults
+    margin-top: 100px
+
+    .breadcrumbs
+        margin-bottom: 40px
+
+    .heading
+        margin-bottom: 48px
+
+    .inputWrapper
+        display: inline-block
+        position: relative
+        margin-bottom: 48px
+
+        .searchInput
+            width: 664px
+            padding: 17px 50px 17px 18px
+            border-radius: 8px
+            border: none
+            outline: none
+            text-indent: 10px
+
+        .searchBtn
+            position: absolute
+            top: 50%
+            right: 16px
+            transform: translateY(-50%)
+            background: none
+            border: none
+            cursor: pointer
+
+        [type="search"]::-webkit-search-cancel-button
+            display: none
+
+    .resultsContainer
+        display: flex
+        gap: 48px
+        flex-direction: column
