@@ -106,15 +106,22 @@
                             border-bottom-left-radius: 8px
                             border-bottom-right-radius: 8px
 
-            .eyeIcon, .searchBtn, .crossIcon
+            .searchBtn, .crossIcon
                 border-radius: 4px
-                padding: 10px
+                padding: 11px
                 background-color: var(--grey100)
                 display: flex
                 align-items: center
                 cursor: pointer
                 border: none
-                
+
+            .eyeIcon
+                border-radius: 4px
+                max-height: 40px
+
+            .searchBtn
+                position: relative
+
             @media ( max-width: 480px )
                 .eyeIcon
                     display: none
