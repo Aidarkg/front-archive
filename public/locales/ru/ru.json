@@ -42,7 +42,8 @@
       },
       "photoGallery": {
          "title": "Фотогалерея",
-         "button": "Вся фотогалерея"
+         "button": "Вся фотогалерея",
+         "photo": "фото"
       },
       "videoGallery": {
          "title": "Видеогалерея",

@@ -42,7 +42,8 @@
       },
       "photoGallery": {
          "title": "Photo gallery",
-         "button": "Entire photo gallery"
+         "button": "Entire photo gallery",
+         "photo": "photo"
       },
       "videoGallery": {
          "title": "Video gallery",
