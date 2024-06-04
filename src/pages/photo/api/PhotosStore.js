@@ -1,7 +1,8 @@
 import {create} from "zustand";
 import axios from "axios";
+import {useLanguageStore} from "../../../utils/languageStore/UseLanguageStore.js";
 
-const BASE_URL = "https://aidarzh.pythonanywhere.com/api/v1";
+// const BASE_URL = "https://aidarzh.pythonanywhere.com/api/v1"; FIXME
 
 export const usePhotos = create((set) => ({
     photosContent: [],
@@ -13,7 +14,8 @@ export const usePhotos = create((set) => ({
     getPhotosContent: async () => {
         set({loading: true});
         try {
-            const response = await axios.get(`${BASE_URL}/photos`);
+            const { language } = useLanguageStore.getState();
+            const response = await axios.get(`https://aidarzh.pythonanywhere.com/${language}/api/v1/photos`);
             const data = response.data;
             set({
                 photosContent: response.data.results,
@@ -47,7 +49,8 @@ export const usePhotos = create((set) => ({
     getImages: async (id) => {
         set({loading: true});
         try {
-            const response = await axios.get(`${BASE_URL}/photos/${id}`);
+            const { language } = useLanguageStore.getState();
+            const response = await axios.get(`https://aidarzh.pythonanywhere.com/${language}/api/v1/photos/${id}`);
             const data = await response.data;
             set({images: data.photo, photoData: data});
         } catch (error) {

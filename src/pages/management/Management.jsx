@@ -2,7 +2,6 @@ import classes from "./Managment.module.sass";
 import { Typography } from "../../Typography/Typography.jsx";
 
 import { Container } from "../../components/container/Container.jsx";
-import { Loader } from "../../components/loader/Loader.jsx";
 
 import { useEffect } from "react";
 import { useData } from "./store/Store.jsx";

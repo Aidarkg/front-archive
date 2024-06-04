@@ -3,6 +3,7 @@ import classes from "./Faq.module.sass";
 import { QuestionForm } from "../../UI/questionForm/QuestionForm.jsx";
 import { Accardion } from "../../UI/Accordion/Accordion";
 
+
 import {Typography} from "../../Typography/Typography.jsx";
 import {Breadcrumbs} from "../../modules/breadcrumbs/Breadcrumbs.jsx";
 

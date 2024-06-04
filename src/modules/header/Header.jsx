@@ -22,7 +22,7 @@ import { CrossIcon } from "../../assets/icons/CrossIcon";
 import { ArrowDown } from "../../assets/icons/ArrowDown";
 
 import { NavLink, useLocation } from "react-router-dom";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { HeaderLogoMobile } from "../../assets/logos/headerLogos/HeaderLogoMobile.jsx";
 
@@ -32,11 +32,17 @@ export const Header = () => {
    const [isInputVisible, setIsInputVisible] = useState(false);
    const [activeSubnav, setActiveSubnav] = useState(null);
    const [isDropMenuOpen, setIsDropMenuOpen] = useState(false);
+   const [isAccessibilityModeActive, setIsAccessibilityModeActive] = useState(false);
 
    const location = useLocation();
 
    const archiveRef = useRef(null);
    const mediaArchiveRef = useRef(null);
+   const headerRef = useRef(null);
+
+   useEffect(() => {
+      closeInput();
+   }, [location]);
 
    const activeLink = ({ isActive }) => (isActive ? classes.active : "");
 
@@ -66,8 +72,42 @@ export const Header = () => {
       return archivePages.some((page) => location.pathname.includes(page));
    };
 
+   const toggleAccessibilityMode = () => {
+      setIsAccessibilityModeActive(!isAccessibilityModeActive);
+   };
+
+   useEffect(() => {
+      const loadScript = (src) => {
+         return new Promise((resolve, reject) => {
+            const script = document.createElement("script");
+            script.src = src;
+            script.async = true;
+            script.onload = resolve;
+            script.onerror = reject;
+            document.body.appendChild(script);
+         });
+      };
+
+      // loadScript("https://lidrekon.ru/slep/js/jquery.js").then(() => {
+      //    return loadScript("https://lidrekon.ru/slep/js/uhpv-full.min.js");
+      // });
+
+      const observer = new MutationObserver(() => {
+         if (document.querySelector('#special')) {
+            headerRef.current.style.marginTop = "50px";
+         } else {
+            headerRef.current.style.marginTop = "0";
+         }
+      });
+
+      observer.observe(document.body, { attributes: true, childList: true, subtree: true });
+
+      return () => observer.disconnect();
+   }, []);
+
+
    return (
-      <header className={classes.header}>
+      <header className={classes.header} ref={headerRef}>
          <Container>
             <div className={classes.headerInner}>
                <div className={classes.headerLogo}>
@@ -187,8 +227,13 @@ export const Header = () => {
                   <div className={classes.headerSelect}>
                      <HeaderSelect />
                   </div>
-                  <button className={classes.eyeIcon}>
-                     <AccessibilitySvg />
+                  <button className={classes.eyeIcon} onClick={toggleAccessibilityMode}>
+                     <img
+                        id="specialButton"
+                        src="/src/assets/icons/eye.svg"
+                        alt="ВЕРСИЯ ДЛЯ СЛАБОВИДЯЩИХ"
+                        title="ВЕРСИЯ ДЛЯ СЛАБОВИДЯЩИХ"
+                     />
                   </button>
                   <button
                      className={classes.searchBtn}
