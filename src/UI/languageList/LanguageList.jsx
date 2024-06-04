@@ -1,15 +1,15 @@
 import { Typography } from "../../Typography/Typography";
 import classes from "./LanguageList.module.sass";
 import { useTranslation } from "react-i18next";
-import { useRegulationsStore } from "../../pages/npa/store/useRegulationsStore";
+import { useLanguageStore } from "../../utils/languageStore/UseLanguageStore";
 
 export const LanguageList = () => {
     const { i18n } = useTranslation();
-    const { setLanguage } = useRegulationsStore();
+    const { setChangeLanguage } = useLanguageStore();
 
     const changeLanguage = (lng) => {
         i18n.changeLanguage(lng);
-        setLanguage(lng);
+        setChangeLanguage(lng);
     };
 
     const languages = [

@@ -6,8 +6,7 @@ import { Typography } from "../../Typography/Typography.jsx";
 
 import { Container } from "../../components/container/Container.jsx";
 
-import { ResponsiveHeaderLogo } from "../../utils/responsiveHeaderLogo/ResponsiveHeaderLogo.jsx";
-import { ResponsiveHeaderLogoTitle } from "../../utils/responsiveHeaderLogo/ResponsiveHeaderLogoTitle.jsx";
+import { ResponsiveComponent } from "../../utils/responsiveComponent/ResponsiveComponent.jsx";
 
 import { HeaderSelect } from "../../UI";
 import { HeaderInput } from "../../UI/headerInput/HeaderInput.jsx";
@@ -88,9 +87,9 @@ export const Header = () => {
          });
       };
 
-      // loadScript("https://lidrekon.ru/slep/js/jquery.js").then(() => {
-      //    return loadScript("https://lidrekon.ru/slep/js/uhpv-full.min.js");
-      // });
+      loadScript("https://lidrekon.ru/slep/js/jquery.js").then(() => {
+         return loadScript("https://lidrekon.ru/slep/js/uhpv-full.min.js");
+      });
 
       const observer = new MutationObserver(() => {
          if (document.querySelector('#special')) {
@@ -105,15 +104,16 @@ export const Header = () => {
       return () => observer.disconnect();
    }, []);
 
-
    return (
       <header className={classes.header} ref={headerRef}>
          <Container>
             <div className={classes.headerInner}>
                <div className={classes.headerLogo}>
-                  <ResponsiveHeaderLogo />
+                  <ResponsiveComponent type="headerLogo" />
                   <div className={classes.headerLogoTitle}>
-                     <ResponsiveHeaderLogoTitle />
+                     <NavLink to={PATH.main}>
+                        <ResponsiveComponent type="headerTitle" />
+                     </NavLink>
                   </div>
                </div>
                <div className={classes.rightHeader}>
@@ -266,7 +266,7 @@ export const Header = () => {
                               </div>
                            </div>
                            <div className={classes.responsiveIcons}>
-                              <button className={classes.eyeIcon}>
+                              <button className={classes.eyeIcon} onClick={toggleAccessibilityMode}>
                                  <AccessibilitySvg />
                               </button>
                               <button className={classes.crossIcon} onClick={toggleDropdown}>

@@ -14,12 +14,11 @@ import { Errors } from "../../components/error/Errors";
 
 import { Breadcrumbs } from "../../modules/breadcrumbs/Breadcrumbs";
 
-import { SearchIcon } from "../../assets/icons/SearchIcon";
+import { ResponsiveComponent } from "../../utils/responsiveComponent/ResponsiveComponent";
 
 import { Typography } from "../../Typography/Typography";
 
 import { ResultsSections } from "./resultsSections/ResultsSections";
-
 
 const useQuery = () => {
     return new URLSearchParams(useLocation().search);
@@ -33,7 +32,7 @@ export const SearchResults = () => {
     const query = useQuery().get("search");
     const [inputValue, setInputValue] = useState(query || "");
     const defferedInputValue = useDeferredValue(inputValue);
-    
+
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -71,7 +70,6 @@ export const SearchResults = () => {
         setInputValue(newValue);
     };
 
-
     if (loading) return <Loader />;
     if (error) return <Errors />;
 
@@ -91,13 +89,13 @@ export const SearchResults = () => {
                         type="search"
                     />
                     <button className={classes.searchBtn} onClick={handleButtonClick} >
-                        <SearchIcon />
+                        <ResponsiveComponent type="searchIcon" />
                     </button>
                 </div>
                 <div className={classes.resultsContainer}>
                     {Object.keys(searchResults).length === 0 && <span>Резутальты не найдены</span>}
                     {!loading && !error && searchResults && (
-                        <ResultsSections query={defferedInputValue} />
+                        <ResultsSections />
                     )}
                 </div>
             </Container>

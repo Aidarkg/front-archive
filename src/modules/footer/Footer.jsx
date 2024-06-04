@@ -2,7 +2,7 @@ import classes from "./Footer.module.sass";
 import { NavLink } from "react-router-dom";
 import { Typography } from "../../Typography/Typography.jsx";
 import { useTranslation } from "react-i18next";
-import { ResponsiveHeaderLogo } from "../../utils/responsiveHeaderLogo/ResponsiveHeaderLogo.jsx";
+import { ResponsiveComponent } from "../../utils/responsiveComponent/ResponsiveComponent.jsx";
 import { Container } from "../../components/container/Container.jsx";
 import { useEffect } from "react";
 import { useCounter } from "./store/Store.jsx";
@@ -28,7 +28,7 @@ export const Footer = () => {
                 <div className={classes.footerContent}>
                     <div className={classes.footerLogo}>
                         <div>
-                            <ResponsiveHeaderLogo />
+                            <ResponsiveComponent type="headerLogo" />
                         </div>
                         <div className={classes.footerLogoText}>
                             <NavLink to={"/"}>

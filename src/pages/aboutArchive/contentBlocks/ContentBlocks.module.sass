@@ -7,16 +7,14 @@
     height: 52px
     font-family: "Merriweather", serif
     margin-bottom: 48px
-@media (max-width: 768px)
-
-    .main
+    @media (max-width: 768px)
+      .main
         margin-top: 30px
         h1
           width: 182px
           height: 44px
-@media (max-width: 360px)
-
-     .main
+    @media (max-width: 360px)
+      .main
         margin-top: 10px
         h1
           width: 180px
@@ -31,16 +29,14 @@
   flex-direction: column
   gap: 24px
 @media (max-width: 768px)
-
     .contentInner
             display: flex
             justify-content: center
-            gap: 24px
+            gap: 40px
 
 @media (max-width: 360px)
-
     .contentInner
-              gap: 12px
+          gap: 40px
 .contentBlock
   display: flex
   background-color: var(--main)
@@ -52,7 +48,6 @@
     gap: 16px
     padding: 77px 32px
 @media (max-width: 768px)
-
     .contentBlock
             width: 688px
             height: 590px
@@ -64,21 +59,23 @@
                 margin-bottom: 5px
 
 @media (max-width: 360px)
-
     .contentBlock
-            &Text
-                padding: 12px
+          //width: 328px                 
+          &Text
+             padding: 0px
 
 .heading
   width: 632px
   height: 78px
   font-family: "Merriweather", serif
 @media (max-width: 768px)
-
     .heading
           width: 100%
           height: auto
-
+@media (max-width: 360px)
+    .heading
+          width: 100%
+          height: auto
 .text
   width: 632px
   height: 126px
@@ -86,7 +83,10 @@
   color: var(--grey500)
   padding: 20px 0
 @media (max-width: 768px)
-
+    .text
+        width: 100%
+        height: auto
+@media (max-width: 360px)
     .text
         width: 100%
         height: auto
