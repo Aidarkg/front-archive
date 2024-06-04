@@ -1,7 +1,7 @@
 import { ContentBlocks } from "../../aboutArchive/contentBlocks/ContentBlocks";
 import img from "../../../assets/images/about-pic.png";
-import classes from "../mainAboutArchive/MainAboutArchive.module.sass";
 import { useTranslation } from "react-i18next";
+import { Container } from "../../../components/container/Container";
 
 
 export const MainAboutArchive = () => {
@@ -26,8 +26,10 @@ export const MainAboutArchive = () => {
    ];
    
    return (
-      <section className={classes.section}>
-          <ContentBlocks showTitle={false} blocks={blocks.slice(0, 1)} showButton={true} />
+      <section>
+         <Container>
+            <ContentBlocks showTitle={false} blocks={blocks.slice(0, 1)} showButton={true} />
+         </Container>
       </section>
    );
 };
