@@ -140,5 +140,11 @@
       },
       "number": "Number"
    },
-   "searchPage": "Search"
+   "searchPage": "Search",
+   "managementPage" : {
+      "education": "Education",
+      "dateOfBirth": "Date of birth",
+      "rank": "Class rank",
+      "experience": "Experience"
+   }
 }

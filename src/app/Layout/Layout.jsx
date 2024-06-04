@@ -16,7 +16,6 @@ export const  Layout = () => {
         error: state.error,
         getData: state.getData,
     }));
-    console.log(data);
     useEffect(() => {
         getData();
     }, [getData]);
@@ -30,7 +29,7 @@ export const  Layout = () => {
     return (
         <>
             <Header/>
-                { <Outlet /> }
+                <Outlet />
                 {location.pathname !== "/faq" && <ModalPage />}
             <Footer/>
         </>
