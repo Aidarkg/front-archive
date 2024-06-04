@@ -34,7 +34,8 @@ export const Video = () => {
                         {videoContent && videoContent.map((item, index) => (
                             <div className={classes.videoContentCard} key={item.id || index}>
                                 <CustomCard
-                                    video={item.video || item.video_link}
+                                    video={item.video}
+                                    video_link={item.video_link}
                                     date={item.public_date}
                                     title={item.title}
                                     isLargeCard={index === 0}

@@ -2,7 +2,7 @@ import {create} from "zustand";
 import axios from "axios";
 import {useLanguageStore} from "../../../utils/languageStore/UseLanguageStore.js";
 
-// const BASE_URL = "https://aidarzh.pythonanywhere.com/api/v1"; FIXME
+const BASE_URL = "http://34.173.93.49";
 
 export const usePhotos = create((set) => ({
     photosContent: [],
@@ -15,7 +15,7 @@ export const usePhotos = create((set) => ({
         set({loading: true});
         try {
             const { language } = useLanguageStore.getState();
-            const response = await axios.get(`https://aidarzh.pythonanywhere.com/${language}/api/v1/photos`);
+            const response = await axios.get(`${BASE_URL}/${language}/api/v1/photos/`);
             const data = response.data;
             set({
                 photosContent: response.data.results,
@@ -39,6 +39,7 @@ export const usePhotos = create((set) => ({
                 nextPage: data.next,
                 error: null,
             }));
+            console.log(data);
         } catch (error) {
             console.error('Failed fetch error', error);
             set({error: error.message});
@@ -50,7 +51,7 @@ export const usePhotos = create((set) => ({
         set({loading: true});
         try {
             const { language } = useLanguageStore.getState();
-            const response = await axios.get(`https://aidarzh.pythonanywhere.com/${language}/api/v1/photos/${id}`);
+            const response = await axios.get(`http://34.173.93.49/${language}/api/v1/photos/${id}`);
             const data = await response.data;
             set({images: data.photo, photoData: data});
         } catch (error) {

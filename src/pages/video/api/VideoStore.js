@@ -2,7 +2,7 @@ import { create } from "zustand";
 import axios from "axios";
 import {useLanguageStore} from "../../../utils/languageStore/UseLanguageStore.js";
 
-// const BASE_URL = "https://aidarzh.pythonanywhere.com/api/v1"; FIXME
+const BASE_URL = "http://34.173.93.49";
 
 export const useVideo = create(set => ({
     videoContent: [],
@@ -13,17 +13,9 @@ export const useVideo = create(set => ({
         set({ loading: true });
         try {
             const { language } = useLanguageStore.getState();
-            const [responseVideos, responseVideoLinks] = await Promise.all([
-                axios.get(`https://aidarzh.pythonanywhere.com/${language}/api/v1/video`),
-                axios.get(`https://aidarzh.pythonanywhere.com/${language}/api/v1/video_link`)
-            ]);
-
-            const videos = responseVideos.data.results.map(video => ({ ...video, type: 'video' }));
-            const videoLinks = responseVideoLinks.data.results.map(link => ({ ...link, type: 'youtube' }));
-
-            const combinedContent = [...videos, ...videoLinks];
-
-            set({ videoContent: combinedContent, nextPage: responseVideos.data.next });
+            const response=await axios.get(`${BASE_URL}/${language}/api/v1/video`);
+            const data=response.data;
+            set({ videoContent: data.results, nextPage: data.next });
         } catch (error) {
             console.error(error.message);
             set({ error: error.message });
