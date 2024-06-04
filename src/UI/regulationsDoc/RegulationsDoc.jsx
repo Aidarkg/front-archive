@@ -8,6 +8,7 @@ import { OpenDocRegulationsSvg } from "../Svg/OpenDocRegulationsSvg";
 import { DownloadDocRegulationsSvg } from "../Svg/DownloadDocRegulationsSvg";
 
 import { CustomButton } from "../customButton/CustomButton";
+import { ResponsiveComponent } from "../../utils/responsiveComponent/ResponsiveComponent";
 
 export const RegulationsDoc = ({ date, documentNumber, name, linkOpen, linkDownload }) => {
     const { t } = useTranslation();
@@ -22,9 +23,7 @@ export const RegulationsDoc = ({ date, documentNumber, name, linkOpen, linkDownl
                     {documentNumber}
                 </Typography>
             </div>
-            <Typography className={classes.name} variant="body" color="black">
-                {name}
-            </Typography>
+            <ResponsiveComponent type="truncatedRegulations" className={classes.name} name={name} />
             <div className={classes.btnsDoc}>
                 {linkOpen && (
                     <CustomButton

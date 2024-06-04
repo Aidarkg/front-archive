@@ -208,10 +208,11 @@ export const ResultsSections = () => {
                             </li>
                         </ul>
                         <ul className={classes.documentsContainer}>
-                            {codexesResults?.map(({ id, title, pdf_file, date_file, document_number }) => (
+                            {codexesResults?.map(({ id, title, pdf_file, document_number }) => (
                                 <RegulationsDoc
                                     key={id}
-                                    date={date_file}
+                                    // date={doc.date_file} FIX_ME неверный формат символов 26-04-2024
+                                    date={"26.04.2024"}
                                     documentNumber={document_number}
                                     name={title}
                                     linkOpen={pdf_file}

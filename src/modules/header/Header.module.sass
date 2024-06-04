@@ -23,7 +23,6 @@
 
         .headerLogo
             display: flex
-            align-items: center
             gap: 16px
 
             @media (max-width: 800px)
@@ -107,6 +106,8 @@
                             border-bottom-right-radius: 8px
 
             .searchBtn, .crossIcon
+                max-height: 40px
+                max-width: 40px
                 border-radius: 4px
                 padding: 11px
                 background-color: var(--grey100)
@@ -116,13 +117,15 @@
                 border: none
 
             .eyeIcon
+                display: flex
                 border-radius: 4px
                 max-height: 40px
+                max-width: 40px
 
             .searchBtn
                 position: relative
 
-            @media ( max-width: 480px )
+            @media ( max-width: 500px )
                 .eyeIcon
                     display: none
 
@@ -194,7 +197,13 @@
                             gap: 8px
 
                             .eyeIcon
+                                border-radius: 4px
+                                padding: 11px
+                                background-color: var(--grey100)
                                 display: flex
+                                align-items: center
+                                cursor: pointer
+                                border: none
 
                     .responsiveNav
                         width: 328px
