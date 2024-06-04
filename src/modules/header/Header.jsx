@@ -1,6 +1,6 @@
 import classes from "./Header.module.sass";
 
-import { PATH } from "../../app/Routes/index.js";
+import { PATH } from "../../app/Router/index.js";
 
 import { Typography } from "../../Typography/Typography.jsx";
 
@@ -87,9 +87,9 @@ export const Header = () => {
          });
       };
 
-      loadScript("https://lidrekon.ru/slep/js/jquery.js").then(() => {
-         return loadScript("https://lidrekon.ru/slep/js/uhpv-full.min.js");
-      });
+      // loadScript("https://lidrekon.ru/slep/js/jquery.js").then(() => {
+      //    return loadScript("https://lidrekon.ru/slep/js/uhpv-full.min.js");
+      // });
 
       const observer = new MutationObserver(() => {
          if (document.querySelector('#special')) {

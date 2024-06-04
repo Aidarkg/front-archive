@@ -1,7 +1,6 @@
 import { create } from "zustand";
 import axios from "axios";
-
-const API_URL = "https://aidarzh.pythonanywhere.com/ru/api/v1/management/";
+import { useLanguageStore } from "../../../utils/languageStore/UseLanguageStore.js";
 
 export const useDataMore = create((set) => ({
     data: [],
@@ -10,6 +9,8 @@ export const useDataMore = create((set) => ({
     getData: async (id = null) => {
         set({ loading: true, error: null });
         try {
+            const { language } = useLanguageStore.getState(); // Get the current language from the store
+            const API_URL = `https://aidarzh.pythonanywhere.com/${language}/api/v1/management/`; // Dynamically include language in the URL
             const url = id ? `${API_URL}${id}/` : API_URL;
             const response = await axios.get(url);
             set({ data: response.data });
@@ -19,5 +20,4 @@ export const useDataMore = create((set) => ({
             set({ loading: false });
         }
     },
-
 }));

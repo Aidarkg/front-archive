@@ -141,5 +141,12 @@
       "number": "Номер"
    },
    
-   "searchPage": "Поиск"
+   "searchPage": "Поиск",
+
+   "managementPage" : {
+      "education": "Образование",
+      "dateOfBirth": "Дата рождения",
+      "rank": "Классный чин",
+      "experience": "Опыт работы"
+   }
 }

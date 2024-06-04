@@ -3,13 +3,13 @@ import * as LayoutPages from "../../pages/index.js";
 import { Layout } from "../Layout/Layout.jsx";
 import {PATH} from "./index.js";
 
-const LayoutRoutes = () => {
+export const Router = () => {
    return (
       <>
          <Routes>
-            <Route path={PATH.main} element={<Layout />}>
+            <Route path={PATH.main} element={<Layout />} >
                <Route index element={<LayoutPages.Main />} />
-               <Route path={PATH.aboutArchive} element={<LayoutPages.AboutArchive />}/>
+               <Route path={PATH.aboutArchive} element={<LayoutPages.AboutArchive />} />
                <Route path={PATH.management} element={<LayoutPages.Management />} />
                <Route path={PATH.managementMore} element={<LayoutPages.ManagementMore />} />
                <Route path={PATH.npa} element={<LayoutPages.Npa />} />
@@ -29,4 +29,4 @@ const LayoutRoutes = () => {
       </>
    );
 };
-export default LayoutRoutes;
+

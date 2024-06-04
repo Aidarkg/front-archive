@@ -7,7 +7,6 @@ const buttonStyles = {
     lightBlue: classes.customButtonLightBlue,
     withBorder: classes.customButtonWithBorder
 };
-
 export const CustomButton = ({ text, icon, to, onClick, actionType, buttonStyle, type, style, disabled, className, target, rel}) => {
     const ButtonComponent = actionType === "link" ? Link : "button";
     const buttonClassName = `${classes.customButton} ${buttonStyles[buttonStyle] || classes.customButtonGrey} ${className}`;

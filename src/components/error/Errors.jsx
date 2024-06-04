@@ -4,7 +4,7 @@ import notFoundImage from '../../assets/images/404 Page Not Found 1 (1) 1.png';
 import {Container} from "../container/Container.jsx";
 import {Typography} from "../../Typography/Typography.jsx";
 import {CustomButton} from "../../UI/customButton/CustomButton.jsx";
-import {PATH} from "../../app/Routes/index.js";
+import {PATH} from "../../app/Router/index.js";
 import {ArrowLeft} from "../../assets/icons/ArrowLeft.jsx";
 export const Errors = () => {
     return (

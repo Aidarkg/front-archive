@@ -140,5 +140,11 @@
       },
       "number": "Номер"
     },
-    "searchPage": "Издөө"
+    "searchPage": "Издөө",
+    "managementPage" : {
+        "education": "Билим берүү",
+        "dateOfBirth": "Туулган күнү",
+        "rank": "Класстык даража",
+        "experience": "Тажрыйба"
+    }
 }

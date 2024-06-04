@@ -2,15 +2,18 @@ import classes from "./Managment.module.sass";
 import { Typography } from "../../Typography/Typography.jsx";
 
 import { Container } from "../../components/container/Container.jsx";
-import { Loader } from "../../components/loader/Loader.jsx";
 
 import { useEffect } from "react";
-import { useData } from "./store/Store.jsx";
 import { useNavigate } from "react-router-dom";
 
 import { Breadcrumbs } from "../../modules/breadcrumbs/Breadcrumbs.jsx";
 import {useTranslation} from "react-i18next";
+import {useLanguageStore} from "../../utils/languageStore/UseLanguageStore.js";
+import {Loader} from "../../components/loader/Loader.jsx";
+import {useData} from "./store/store.js";
+
 export const Management = () => {
+    const { language } = useLanguageStore();
     const { t } = useTranslation();
     const { data, loading, error, getData } = useData();
     const navigate = useNavigate();
@@ -21,20 +24,21 @@ export const Management = () => {
 
     useEffect(() => {
         getData();
-    }, [getData]);
+    }, [getData, language]);
     if (loading) {
         return <Loader />;
     }
     if (error) {
-        return <div>Error: {error.message}</div>;
+        return <div>Error: {error}</div>;
     }
+
 
     return (
         <section>
             <Container>
-                <Breadcrumbs currentPage={"руководство"} />
+                <Breadcrumbs currentPage={t("header&footer.subnav.management")} />
                 <Typography className={classes.heading} variant="h1" color="blue500">
-                    Руководство
+                    {t("header&footer.subnav.management")}
                 </Typography>
                 <div className={classes.management}>
                     {data?.results && data?.results.map((item) => (
