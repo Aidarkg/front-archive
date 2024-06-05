@@ -12,7 +12,6 @@ import { useInView } from "react-intersection-observer";
 export const Footer = () => {
     const { t } = useTranslation();
     const { data, getData } = useCounter();
-
     useEffect(() => {
         getData();
     }, [getData]);
