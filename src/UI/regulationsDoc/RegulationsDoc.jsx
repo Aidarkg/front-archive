@@ -4,8 +4,8 @@ import { useTranslation } from "react-i18next";
 
 import { Typography } from "../../Typography/Typography";
 
-import { OpenDocRegulationsSvg } from "../Svg/OpenDocRegulationsSvg";
-import { DownloadDocRegulationsSvg } from "../Svg/DownloadDocRegulationsSvg";
+import { OpenDocRegulationsSvg } from "../svgComponents/OpenDocRegulationsSvg";
+import { DownloadDocRegulationsSvg } from "../svgComponents/DownloadDocRegulationsSvg";
 
 import { CustomButton } from "../customButton/CustomButton";
 import { ResponsiveComponent } from "../../utils/responsiveComponent/ResponsiveComponent";

@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 import classes from "./HeaderSelect.module.sass";
 import { useState } from "react";
 import { ArrowDownSvg } from "../Svg/ArrowDownSvg";
-import { useLanguageStore } from "../../utils/languageStore/UseLanguageStore";
+import { useLanguageStore } from "../../../utils/languageStore/UseLanguageStore";
 
 export const HeaderSelect = () => {
     const { i18n } = useTranslation();

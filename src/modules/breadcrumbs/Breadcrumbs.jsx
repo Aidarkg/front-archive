@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 
 import { Typography } from "../../Typography/Typography.jsx";
 
-import { ArrowRightSvg } from "../../UI/Svg/ArrowRightSvg.jsx";
+import { ArrowRightSvg } from "../../UI/svgComponents/ArrowRightSvg.jsx";
 
 
 export const Breadcrumbs = ({ currentPage, parentPageLink, currentPageId, className }) => {

@@ -4,7 +4,7 @@ import { useDeferredValue, useState } from "react";
 
 import { CloseSvg } from "../Svg/CloseSvg";
 
-import { useSearchStore } from "../../pages/searchResults/store/useSearchStore";
+import { useSearchStore } from "../../../pages/searchResults/store/useSearchStore";
 
 import { useNavigate } from "react-router-dom";
 
@@ -37,10 +37,15 @@ export const HeaderInput = (props) => {
         }
     };
 
-    const handleKeyDown = (e) => {
-        if (e.key === "Enter") {
+    const handleKeyDown = async () => {
+        if (defferedInputValue.trim() === "") {
+            return;
+        }
+        try {
             navigate(`search?search=${encodeURIComponent(defferedInputValue)}`);
-            fetchResults(defferedInputValue);
+            await fetchResults(defferedInputValue);
+        } catch (error) {
+            console.error("Error during search:", error);
         }
     };
 
@@ -53,7 +58,7 @@ export const HeaderInput = (props) => {
                 onChange={handleValueChange}
                 onBlur={handleBlur}
                 onFocus={handleFocus}
-                onKeyDown={handleKeyDown}
+                onKeyDown={(e) => { if(e.key === "Enter") handleKeyDown(); }}
                 placeholder={focused ? "" : placeholder}
             />
             {defferedInputValue === "" && (
