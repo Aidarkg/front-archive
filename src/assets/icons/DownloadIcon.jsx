@@ -13,7 +13,7 @@ export const DownloadIcon = () => {
             <clipPath id="clip574_620">
                <rect
                   id="download"
-                  rx="-0.500000"
+                  rx="0"
                   width="23.000000"
                   height="23.000000"
                   transform="translate(0.500000 0.500000)"
@@ -24,7 +24,7 @@ export const DownloadIcon = () => {
          </defs>
          <rect
             id="download"
-            rx="-0.500000"
+            rx="0"
             width="23.000000"
             height="23.000000"
             transform="translate(0.500000 0.500000)"

@@ -1,13 +1,12 @@
 import { create } from "zustand";
 import axios from "axios";
-
-const API_URL = "https://aidarzh.pythonanywhere.com/ru/api/v1/visitors/";
+import {BASE_URL} from "../../../utils/constants/Constants.js";
 
 export const useCounter = create((set) => ({
     data: [],
     getData: async () => {
         try {
-            const response = await axios.get(API_URL);
+            const response = await axios.get(`${BASE_URL}ru/api/v1/visitors`);
             set({ data: response.data });
         } catch (error) {
             console.error("Error fetching data:", error);
