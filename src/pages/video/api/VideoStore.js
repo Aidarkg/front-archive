@@ -13,7 +13,7 @@ export const useVideo = create(set => ({
         set({ loading: true });
         try {
             const { language } = useLanguageStore.getState();
-            const response=await axios.get(`${BASE_URL}/${language}/api/v1/video`);
+            const response=await axios.get(`${BASE_URL}/${language}/api/v1/news`);
             const data=response.data;
             set({ videoContent: data.results, nextPage: data.next });
         } catch (error) {

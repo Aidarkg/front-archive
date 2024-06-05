@@ -2,6 +2,7 @@ import {create} from "zustand";
 import axios from "axios";
 import {useLanguageStore} from "../../../utils/languageStore/UseLanguageStore.js";
 
+
 const BASE_URL = "http://34.173.93.49";
 
 export const usePhotos = create((set) => ({
@@ -18,11 +19,11 @@ export const usePhotos = create((set) => ({
             const response = await axios.get(`${BASE_URL}/${language}/api/v1/photos/`);
             const data = response.data;
             set({
-                photosContent: response.data.results,
+                photosContent: data.results,
                 nextPage: data.next,
             });
         } catch (error) {
-            console.error('Failed fetch error', error);
+            // console.error('Failed fetch error', error);
             set({error: error.message});
         } finally {
             set({loading: false});

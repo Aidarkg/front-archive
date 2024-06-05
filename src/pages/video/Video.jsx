@@ -1,19 +1,19 @@
 import classes from "./Video.module.sass";
-import { Typography } from "../../Typography/Typography.jsx";
-import { CustomCard } from "../../UI/customCard/CustomCard.jsx";
-import { useVideo } from "./api/VideoStore.js";
-import { useEffect } from "react";
-import { Breadcrumbs } from "../../modules/breadcrumbs/Breadcrumbs.jsx";
-import { Container } from "../../components/container/Container.jsx";
-import { Loader } from "../../components/loader/Loader.jsx";
-import { useTranslation } from "react-i18next";
-import { CustomButton } from "../../UI/customButton/CustomButton.jsx";
+import {Typography} from "../../Typography/Typography.jsx";
+import {CustomCard} from "../../UI/customCard/CustomCard.jsx";
+import {useVideo} from "./api/VideoStore.js";
+import {useEffect} from "react";
+import {Breadcrumbs} from "../../modules/breadcrumbs/Breadcrumbs.jsx";
+import {Container} from "../../components/container/Container.jsx";
+import {Loader} from "../../components/loader/Loader.jsx";
+import {useTranslation} from "react-i18next";
+import {CustomButton} from "../../UI/customButton/CustomButton.jsx";
 import {useLanguageStore} from "../../utils/languageStore/UseLanguageStore.js";
 
 export const Video = () => {
-    const { videoContent, getVideoContent, loading, loadMoreVideoContent, nextPage } = useVideo();
-    const { t } = useTranslation();
-    const { language } = useLanguageStore();
+    const {videoContent, getVideoContent, loading, loadMoreVideoContent, nextPage} = useVideo();
+    const {t} = useTranslation();
+    const {language} = useLanguageStore();
 
     useEffect(() => {
         getVideoContent();
@@ -26,15 +26,15 @@ export const Video = () => {
     return (
         <section className={classes.video}>
             <Container>
-                <Breadcrumbs currentPage={t("mainPage.videoGallery.title")} />
+                <Breadcrumbs currentPage={t("mainPage.videoGallery.title")}/>
                 <div className={classes.videoInner}>
-                    {loading && <Loader />}
+                    {loading && <Loader/>}
                     <Typography variant="h1">{t("mainPage.videoGallery.title")}</Typography>
                     <div className={classes.videoContent}>
                         {videoContent && videoContent.map((item, index) => (
-                            <div className={classes.videoContentCard} key={item.id || index}>
+                            <div className={classes.videoContentCard} key={index}>
                                 <CustomCard
-                                    video={item.video}
+                                    video={item.video[index-1]}
                                     video_link={item.video_link}
                                     date={item.public_date}
                                     title={item.title}
@@ -43,9 +43,9 @@ export const Video = () => {
                             </div>
                         ))}
                     </div>
-                    {loading && <Loader />}
+                    {loading && <Loader/>}
                     {nextPage && (
-                        <CustomButton onClick={getMoreVideos} text={"Еще"} />
+                        <CustomButton onClick={getMoreVideos} text={"Еще"}/>
                     )}
                 </div>
             </Container>

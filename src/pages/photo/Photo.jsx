@@ -51,7 +51,7 @@ export const Photo = () => {
                     </div>
                     <ArchivePhotoSlider className={classes.slider}/>
                     <div className={classes.photoContent}>
-                        {photosContent?.map((item) => (
+                        {photosContent&& photosContent?.map((item) => (
                             <CustomCard
                                 key={item.id}
                                 date={item.public_date}
