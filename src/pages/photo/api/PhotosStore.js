@@ -3,10 +3,11 @@ import axios from "axios";
 import {useLanguageStore} from "../../../utils/languageStore/UseLanguageStore.js";
 
 
-const BASE_URL = "http://34.173.93.49";
+const BASE_URL = "http://209.38.228.54:82";
 
 export const usePhotos = create((set) => ({
     photosContent: [],
+    archivePhoto: [],
     nextPage: null,
     images: [],
     error: null,
@@ -18,8 +19,10 @@ export const usePhotos = create((set) => ({
             const { language } = useLanguageStore.getState();
             const response = await axios.get(`${BASE_URL}/${language}/api/v1/photos/`);
             const data = response.data;
+            console.log(data)
             set({
-                photosContent: data.results,
+                photosContent: data.results.gallery,
+                archivePhoto: data.results.photo_home,
                 nextPage: data.next,
             });
         } catch (error) {

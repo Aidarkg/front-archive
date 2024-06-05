@@ -31,10 +31,10 @@ export const Video = () => {
                     {loading && <Loader/>}
                     <Typography variant="h1">{t("mainPage.videoGallery.title")}</Typography>
                     <div className={classes.videoContent}>
-                        {videoContent && videoContent.map((item, index) => (
+                        {videoContent && videoContent?.map((item, index) => (
                             <div className={classes.videoContentCard} key={index}>
                                 <CustomCard
-                                    video={item.video[index-1]}
+                                    video={item.video}
                                     video_link={item.video_link}
                                     date={item.public_date}
                                     title={item.title}
