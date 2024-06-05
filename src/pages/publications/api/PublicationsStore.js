@@ -2,6 +2,7 @@ import { create } from "zustand";
 import axios from "axios";
 import {useLanguageStore} from "../../../utils/languageStore/UseLanguageStore.js";
 
+const BASE_URL = "http://34.173.93.49";
 export const usePublications = create((set, get) => ({
     publications: [],
     nextPage: null,
@@ -12,9 +13,8 @@ export const usePublications = create((set, get) => ({
         set({ loading: true, error: null });
         try {
             const { language } = useLanguageStore.getState();
-            const response = await axios.get(`https://aidarzh.pythonanywhere.com/${language}/api/v1/news`);
+            const response = await axios.get(`${BASE_URL}/${language}/api/v1/news`);
             const data = response.data;
-            console.log(data)
             set({ publications: data.results, nextPage: data.next});
         } catch (error) {
             console.error('Failed fetch error', error);
@@ -49,7 +49,6 @@ export const usePublications = create((set, get) => ({
             const { language } = useLanguageStore.getState();
             const response = await axios.get(`https://aidarzh.pythonanywhere.com/${language}/api/v1/news/${id}`);
             const data = response.data;
-            console.log(data)
             set({ detailPublicationInfo: data });
         } catch (error) {
             console.error(error.message);
