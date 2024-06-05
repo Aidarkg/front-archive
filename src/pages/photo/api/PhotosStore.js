@@ -10,6 +10,7 @@ export const usePhotos = create((set) => ({
     archivePhoto: [],
     nextPage: null,
     images: [],
+    archiveContent: [],
     error: null,
     photoData: [],
     loading: false,
@@ -55,7 +56,7 @@ export const usePhotos = create((set) => ({
         set({loading: true});
         try {
             const { language } = useLanguageStore.getState();
-            const response = await axios.get(`http://34.173.93.49/${language}/api/v1/photos/${id}`);
+            const response = await axios.get(`${BASE_URL}/${language}/api/v1/photos/${id}`);
             const data = await response.data;
             set({images: data.photo, photoData: data});
         } catch (error) {
@@ -64,5 +65,21 @@ export const usePhotos = create((set) => ({
         } finally {
             set({loading: false});
         }
-    }
+    },
+    getArchiveImages: async (id) => {
+        set({loading: true});
+        try {
+            const { language } = useLanguageStore.getState();
+            const response = await axios.get(`${BASE_URL}/${language}/api/v1/photo_home/${id}`);
+            const data = await response.data;
+            console.log(data);
+            set({archiveContent: data});
+        } catch (error) {
+            console.error(error.message);
+            set({error: error.message});
+        } finally {
+            set({loading: false});
+        }
+    },
+
 }));

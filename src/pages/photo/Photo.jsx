@@ -22,7 +22,7 @@ const archiveImages = [
 ];
 
 export const Photo = () => {
-    const { photosContent, getPhotosContent, loading, loadMorePhotosContent, nextPage } = usePhotos();
+    const { photosContent, archivePhoto, getPhotosContent, loading, loadMorePhotosContent, nextPage } = usePhotos();
     const { language } = useLanguageStore();
 
     useEffect(() => {
@@ -42,10 +42,14 @@ export const Photo = () => {
                 <Breadcrumbs currentPage={t("mainPage.photoGallery.title")} />
                 <div className={classes.photo}>
                     <Typography variant="h1">{t("mainPage.photoGallery.title")}</Typography>
-                    <div className={classes.photoArchive}>
-                        {archiveImages?.map((image, index) => (
-                            <div className={classes.photoArchiveImage} key={index}>
-                                <img src={image.image} alt="img" />
+                    {loading && <Loader />}
+                    <div className={classes.photoArchive} >
+                        {archivePhoto?.map((archiveImage) => (
+                            <div className={classes.photoArchiveImage}
+                                 key={archiveImage.id}
+                                 onClick={() => navigate(`/photo/archive/${archiveImage.id}`)}
+                            >
+                                <img src={archiveImage.photo} alt="img" />
                             </div>
                         ))}
                     </div>
@@ -62,7 +66,6 @@ export const Photo = () => {
                             />
                         ))}
                     </div>
-                    {loading && <Loader />}
                     {nextPage && (
                         <CustomButton onClick={getMorePhotos} text={"еще"} />
                     )}
