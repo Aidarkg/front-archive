@@ -28,6 +28,13 @@ import { HeaderLogoMobile } from "../../assets/logos/headerLogos/HeaderLogoMobil
 export const Header = () => {
    const { t } = useTranslation();
 
+   const navItems = [
+      { id: 1, path: PATH.npa, label: "header&footer.nav.regulations" },
+      { id: 2, path: PATH.services, label: "header&footer.nav.services" },
+      { id: 3, path: PATH.faq, label: "header&footer.nav.q&a" },
+      { id: 4, path: PATH.contacts, label: "header&footer.nav.contacts" },
+   ];
+
    const [isInputVisible, setIsInputVisible] = useState(false);
    const [activeSubnav, setActiveSubnav] = useState(null);
    const [isDropMenuOpen, setIsDropMenuOpen] = useState(false);
@@ -75,34 +82,34 @@ export const Header = () => {
       setIsAccessibilityModeActive(!isAccessibilityModeActive);
    };
 
-   useEffect(() => {
-      const loadScript = (src) => {
-         return new Promise((resolve, reject) => {
-            const script = document.createElement("script");
-            script.src = src;
-            script.async = true;
-            script.onload = resolve;
-            script.onerror = reject;
-            document.body.appendChild(script);
-         });
-      };
+   // useEffect(() => {
+   //    const loadScript = (src) => {
+   //       return new Promise((resolve, reject) => {
+   //          const script = document.createElement("script");
+   //          script.src = src;
+   //          script.async = true;
+   //          script.onload = resolve;
+   //          script.onerror = reject;
+   //          document.body.appendChild(script);
+   //       });
+   //    };
 
-      // loadScript("https://lidrekon.ru/slep/js/jquery.js").then(() => {
-      //    return loadScript("https://lidrekon.ru/slep/js/uhpv-full.min.js");
-      // });
+   //    loadScript("https://lidrekon.ru/slep/js/jquery.js").then(() => {
+   //       return loadScript("https://lidrekon.ru/slep/js/uhpv-full.min.js");
+   //    });
 
-      const observer = new MutationObserver(() => {
-         if (document.querySelector('#special')) {
-            headerRef.current.style.marginTop = "50px";
-         } else {
-            headerRef.current.style.marginTop = "0";
-         }
-      });
+   //    const observer = new MutationObserver(() => {
+   //       if (document.querySelector('#special')) {
+   //          headerRef.current.style.marginTop = "50px";
+   //       } else {
+   //          headerRef.current.style.marginTop = "0";
+   //       }
+   //    });
 
-      observer.observe(document.body, { attributes: true, childList: true, subtree: true });
+   //    observer.observe(document.body, { attributes: true, childList: true, subtree: true });
 
-      return () => observer.disconnect();
-   }, []);
+   //    return () => observer.disconnect();
+   // }, []);
 
    return (
       <header className={classes.header} ref={headerRef}>
@@ -120,10 +127,7 @@ export const Header = () => {
                   <nav className={classes.nav}>
                      <ul className={classes.navList}>
                         <li
-                           className={`
-                              ${classes.archiveList} 
-                              ${isArchiveActive() ? classes.active : ""}
-                           `}
+                           className={`${classes.archiveList} ${isArchiveActive() ? classes.active : ""}`}
                            onClick={() => toggleSubnav("archive")}
                            ref={archiveRef}
                         >
@@ -133,7 +137,10 @@ export const Header = () => {
                            >
                               {t("header&footer.nav.archive")}
                            </Typography>
-                           <ArrowDownSvg />
+                           <ArrowDownSvg
+                              className={`${classes.arrowDownIcon} ${isArchiveActive() ? classes.active : ""}`}
+                              fill={`${isArchiveActive() ? "var(--blue400)" : "var(--black)"}`}
+                           />
                            <ul
                               className={`${classes.subnav} ${activeSubnav === "archive" ? classes.open : ""}`}
                            >
@@ -154,10 +161,7 @@ export const Header = () => {
                            </ul>
                         </li>
                         <li
-                           className={`
-                                 ${classes.mediaArchiveList} 
-                                 ${isMediaArchiveActive() ? classes.active : ""}
-                              `}
+                           className={`${classes.mediaArchiveList} ${isMediaArchiveActive() ? classes.active : ""}`}
                            onClick={() => toggleSubnav("mediaArchive")}
                            ref={mediaArchiveRef}
                         >
@@ -167,7 +171,10 @@ export const Header = () => {
                            >
                               {t("header&footer.nav.mediaArchive")}
                            </Typography>
-                           <ArrowDownSvg />
+                           <ArrowDownSvg
+                              className={`${classes.arrowDownIcon} ${isMediaArchiveActive() ? classes.active : ""}`}
+                              fill={`${isMediaArchiveActive() ? "var(--blue400)" : "var(--black)"}`}
+                           />
                            <ul
                               className={`${classes.subnav} ${activeSubnav === "mediaArchive" ? classes.open : ""}`}
                            >
@@ -194,34 +201,15 @@ export const Header = () => {
                               </li>
                            </ul>
                         </li>
-                        <li>
-                           <NavLink className={activeLink} to={PATH.npa}>
-                              <Typography variant="h6">
-                                 {t("header&footer.nav.regulations")}
-                              </Typography>
-                           </NavLink>
-                        </li>
-                        <li>
-                           <NavLink className={activeLink} to={PATH.services}>
-                              <Typography variant="h6">
-                                 {t("header&footer.nav.services")}
-                              </Typography>
-                           </NavLink>
-                        </li>
-                        <li>
-                           <NavLink className={activeLink} to={PATH.faq}>
-                              <Typography variant="h6">
-                                 {t("header&footer.nav.q&a")}
-                              </Typography>
-                           </NavLink>
-                        </li>
-                        <li>
-                           <NavLink className={activeLink} to={PATH.contacts}>
-                              <Typography variant="h6">
-                                 {t("header&footer.nav.contacts")}
-                              </Typography>
-                           </NavLink>
-                        </li>
+                        {navItems?.map((item) => (
+                           <li key={item.id}>
+                              <NavLink className={activeLink} to={item.path}>
+                                 <Typography variant="h6">
+                                    {t(item.label)}
+                                 </Typography>
+                              </NavLink>
+                           </li>
+                        ))}
                      </ul>
                   </nav>
                   <div className={classes.headerSelect}>
@@ -341,34 +329,15 @@ export const Header = () => {
                                     </li>
                                  </ul>
                               )}
-                              <li>
-                                 <NavLink to={PATH.npa}>
-                                    <Typography variant="h6" color="black">
-                                       {t("header&footer.nav.regulations")}
-                                    </Typography>
-                                 </NavLink>
-                              </li>
-                              <li>
-                                 <NavLink to={PATH.services}>
-                                    <Typography variant="h6" color="black">
-                                       {t("header&footer.nav.services")}
-                                    </Typography>
-                                 </NavLink>
-                              </li>
-                              <li>
-                                 <NavLink to={PATH.services}>
-                                    <Typography variant="h6" color="black">
-                                       {t("header&footer.nav.q&a")}
-                                    </Typography>
-                                 </NavLink>
-                              </li>
-                              <li>
-                                 <NavLink to={PATH.contacts}>
-                                    <Typography variant="h6" color="black">
-                                       {t("header&footer.nav.contacts")}
-                                    </Typography>
-                                 </NavLink>
-                              </li>
+                              {navItems?.map((item) => (
+                                 <li key={item.id}>
+                                    <NavLink className={activeLink} to={item.path}>
+                                       <Typography variant="h6" color="black">
+                                          {t(item.label)}
+                                       </Typography>
+                                    </NavLink>
+                                 </li>
+                              ))}
                               <div className={classes.languageList}>
                                  <LanguageList />
                               </div>
