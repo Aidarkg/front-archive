@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { create } from 'zustand';
 
-const BASE_URL = "https://aidarzh.pythonanywhere.com/";
+const BASE_URL = "http://209.38.228.54:82";
 
 const detectLanguage = (input) => {
     const kyrgyzChars = /[үөң]/i;

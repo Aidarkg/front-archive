@@ -11,6 +11,7 @@ import { useLanguageStore } from "../../utils/languageStore/UseLanguageStore";
 import { Typography } from "../../Typography/Typography";
 
 import { RegulationsDoc } from "../../UI/regulationsDoc/RegulationsDoc";
+import { CustomButton } from "../../UI/customButton/CustomButton";
 
 import { Container } from "../../components/container/Container";
 import { Loader } from "../../components/loader/Loader";
@@ -19,7 +20,7 @@ import { Breadcrumbs } from "../../modules/breadcrumbs/Breadcrumbs";
 
 export const Npa = () => {
    const { t } = useTranslation();
-   const { regulationsList, fetchRegulations, loading } = useRegulationsStore();
+   const { regulationsList, fetchRegulations, fetchMoreRegulations, next, loading } = useRegulationsStore();
    const { language } = useLanguageStore();
 
    useEffect(() => {
@@ -82,6 +83,13 @@ export const Npa = () => {
                      />
                   ))}
                </ul>
+               {next && !loading && (
+                  <CustomButton
+                     text={"Ещё"}
+                     buttonStyle="withBorder"
+                     onClick={fetchMoreRegulations}
+                  />
+               )}
             </div>
          </Container>
       </section>

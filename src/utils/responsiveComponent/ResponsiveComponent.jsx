@@ -9,8 +9,8 @@ import { HeaderLogoMobile } from "../../assets/logos/headerLogos/HeaderLogoMobil
 import { HeaderLogoTablet } from "../../assets/logos/headerLogos/HeaderLogoTablet";
 
 import { SearchIcon } from "../../assets/icons/SearchIcon";
-import { SearchSvg } from "../../UI/Svg/SearchSvg";
-import { SearchTabletSvg } from "../../UI/Svg/SearchTabletSvg";
+import { SearchSvg } from "../../UI/svgComponents/SearchSvg";
+import { SearchTabletSvg } from "../../UI/svgComponents/SearchTabletSvg";
 
 export const ResponsiveComponent = ({ type, name, className }) => {
     const [width] = useWindowSize();

@@ -8,14 +8,14 @@ import { Container } from "../../components/container/Container.jsx";
 
 import { ResponsiveComponent } from "../../utils/responsiveComponent/ResponsiveComponent.jsx";
 
-import { HeaderSelect } from "../../UI";
-import { HeaderInput } from "../../UI/headerInput/HeaderInput.jsx";
-import { LanguageList } from "../../UI/languageList/LanguageList.jsx";
+import { HeaderSelect } from "./headerSelect/HeaderSelect.jsx";
+import { HeaderInput } from "./headerInput/HeaderInput.jsx";
+import { LanguageList } from "./languageList/LanguageList.jsx";
 
-import { ArrowDownSvg } from "../../UI/Svg/ArrowDownSvg.jsx";
-import { AccessibilitySvg } from "../../UI/Svg/AccessibilitySvg.jsx";
-import { SearchSvg } from "../../UI/Svg/SearchSvg.jsx";
-import { MenuSvg } from "../../UI/Svg/MenuSvg.jsx";
+import { ArrowDownSvg } from "../../UI/svgComponents/ArrowDownSvg.jsx";
+import { AccessibilitySvg } from "../../UI/svgComponents/AccessibilitySvg.jsx";
+import { SearchSvg } from "../../UI/svgComponents/SearchSvg.jsx";
+import { MenuSvg } from "../../UI/svgComponents/MenuSvg.jsx";
 
 import { CrossIcon } from "../../assets/icons/CrossIcon";
 import { ArrowDown } from "../../assets/icons/ArrowDown";
@@ -23,6 +23,7 @@ import { ArrowDown } from "../../assets/icons/ArrowDown";
 import { NavLink, useLocation } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
+
 import { HeaderLogoMobile } from "../../assets/logos/headerLogos/HeaderLogoMobile.jsx";
 
 export const Header = () => {
