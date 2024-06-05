@@ -1,8 +1,8 @@
 import classes from "./Header.module.sass";
 
-import { PATH } from "../../app/Router/index.js";
+import {PATH} from "../../utils/constants/Constants.js";
 
-import { Typography } from "../../Typography/Typography.jsx";
+import { Typography } from "../../UI/Typography/Typography.jsx";
 
 import { Container } from "../../components/container/Container.jsx";
 

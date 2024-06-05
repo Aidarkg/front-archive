@@ -1,6 +1,6 @@
 import classes from "./Footer.module.sass";
 import { NavLink } from "react-router-dom";
-import { Typography } from "../../Typography/Typography.jsx";
+import { Typography } from "../../UI/Typography/Typography.jsx";
 import { useTranslation } from "react-i18next";
 import { ResponsiveComponent } from "../../utils/responsiveComponent/ResponsiveComponent.jsx";
 import { Container } from "../../components/container/Container.jsx";

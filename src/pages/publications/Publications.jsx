@@ -1,5 +1,5 @@
 import classes from "./Publications.module.sass";
-import { Typography } from "../../Typography/Typography.jsx";
+import { Typography } from "../../UI/Typography/Typography.jsx";
 import { CustomCard } from "../../UI/customCard/CustomCard.jsx";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";

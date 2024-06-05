@@ -2,7 +2,7 @@ import { useWindowSize } from "../../hooks/useWindowSize";
 
 import { useTranslation } from "react-i18next";
 
-import { Typography } from "../../Typography/Typography";
+import { Typography } from "../../UI/Typography/Typography";
 
 import { HeaderLogo } from "../../assets/logos/headerLogos/HeaderLogo";
 import { HeaderLogoMobile } from "../../assets/logos/headerLogos/HeaderLogoMobile";

@@ -1,6 +1,6 @@
 import {Breadcrumbs} from "../../modules/breadcrumbs/Breadcrumbs.jsx";
 
-import { Typography } from "../../Typography/Typography.jsx";
+import { Typography } from "../../UI/Typography/Typography.jsx";
 import classes from "./Services.module.sass";
 import { CustomButton } from "../../UI/customButton/CustomButton.jsx";
 import { DownloadIcon } from "../../assets/icons/DownloadIcon.jsx";

@@ -1,6 +1,6 @@
 import {useRef} from 'react';
 import classes from "./CustomCard.module.sass";
-import {Typography} from "../../Typography/Typography.jsx";
+import {Typography} from "../Typography/Typography.jsx";
 import {CustomDate} from "../customDate/CustomDate.jsx";
 import {ImageCount} from "../imageCount/ImageCount.jsx";
 import ReactPlayer from "react-player";

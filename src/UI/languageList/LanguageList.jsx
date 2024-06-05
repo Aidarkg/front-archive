@@ -1,4 +1,4 @@
-import { Typography } from "../../Typography/Typography";
+import { Typography } from "../Typography/Typography";
 import classes from "./LanguageList.module.sass";
 import { useTranslation } from "react-i18next";
 import { useLanguageStore } from "../../utils/languageStore/UseLanguageStore";

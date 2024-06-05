@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 
 import { useNavigate } from "react-router-dom";
 
-import { Typography } from "../../../Typography/Typography";
+import { Typography } from "../../../UI/Typography/Typography";
 
 import { PublicationBlock } from "../../../pages/main/publicationBlock/PublicationBlock";
 

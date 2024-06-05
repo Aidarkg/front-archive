@@ -1,5 +1,5 @@
 import classes from "./Managment.module.sass";
-import { Typography } from "../../Typography/Typography.jsx";
+import { Typography } from "../../UI/Typography/Typography.jsx";
 
 import { Container } from "../../components/container/Container.jsx";
 
@@ -31,7 +31,6 @@ export const Management = () => {
     if (error) {
         return <div>Error: {error}</div>;
     }
-
 
     return (
         <section>

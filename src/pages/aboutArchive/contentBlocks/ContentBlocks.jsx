@@ -1,6 +1,6 @@
 
 import { useTranslation } from "react-i18next";
-import { Typography } from "../../../Typography/Typography";
+import { Typography } from "../../../UI/Typography/Typography";
 import { Btn } from "../../main/mainAboutArchive/btn/Btn";
 import classes from "./ContentBlocks.module.sass";
 

@@ -10,13 +10,13 @@ import { useSearchStore } from "./store/useSearchStore";
 
 import { Container } from "../../components/container/Container";
 import { Loader } from "../../components/loader/Loader";
-import { Errors } from "../../components/error/Errors";
+import { Errors } from "../../UI/error/Errors";
 
 import { Breadcrumbs } from "../../modules/breadcrumbs/Breadcrumbs";
 
 import { ResponsiveComponent } from "../../utils/responsiveComponent/ResponsiveComponent";
 
-import { Typography } from "../../Typography/Typography";
+import { Typography } from "../../UI/Typography/Typography";
 
 import { ResultsSections } from "./resultsSections/ResultsSections";
 

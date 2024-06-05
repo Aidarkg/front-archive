@@ -1,18 +1,15 @@
-import {useLanguageStore} from "../../../utils/languageStore/UseLanguageStore.js";
 import axios from "axios";
 import {create} from "zustand";
+import {BASE_URL} from "../../../utils/constants/Constants.js";
 
 export const useData = create((set) => ({
     data: [],
     loading: false,
     error: null,
-    getData: async (id = null) => {
-        set({ loading: true, error: null });
+    getData: async () => {
+        set({ loading: true, });
         try {
-            const { language } = useLanguageStore.getState(); // Get the current language from the store
-            const API_URL = `https://aidarzh.pythonanywhere.com/${language}/api/v1/management/`; // Dynamically include language in the URL
-            const url = id ? `${API_URL}${id}/` : API_URL;
-            const response = await axios.get(url);
+            const response = await axios.get(`${BASE_URL}ru/api/v1/management/`);
             set({ data: response.data });
         } catch (error) {
             set({ error: error.message });

@@ -8,7 +8,7 @@ import { useRegulationsStore } from "./store/useRegulationsStore";
 
 import { useLanguageStore } from "../../utils/languageStore/UseLanguageStore";
 
-import { Typography } from "../../Typography/Typography";
+import { Typography } from "../../UI/Typography/Typography";
 
 import { RegulationsDoc } from "../../UI/regulationsDoc/RegulationsDoc";
 

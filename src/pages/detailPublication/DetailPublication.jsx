@@ -1,5 +1,5 @@
 import classes from "./DetailPublication.module.sass";
-import {Typography} from "../../Typography/Typography.jsx";
+import {Typography} from "../../UI/Typography/Typography.jsx";
 import {useParams} from "react-router-dom";
 import {useEffect} from "react";
 import {usePublications} from "../publications/api/PublicationsStore.js";

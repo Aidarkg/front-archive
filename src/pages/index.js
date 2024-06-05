@@ -13,7 +13,7 @@ import {DetailVideo} from "./detailVideo/DetailVideo.jsx";
 import {Management} from "./management/Management.jsx";
 import {ManagementMore} from "./managementMore/ManagementMore.jsx";
 import {SearchResults} from "./searchResults/SearchResults.jsx";
-import {Errors} from "../components/error/Errors.jsx";
+import {Errors} from "../UI/error/Errors.jsx";
 
 export {
     Errors,

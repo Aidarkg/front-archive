@@ -1,5 +1,5 @@
 import classes from "./Video.module.sass";
-import {Typography} from "../../Typography/Typography.jsx";
+import {Typography} from "../../UI/Typography/Typography.jsx";
 import {CustomCard} from "../../UI/customCard/CustomCard.jsx";
 import {useVideo} from "./api/VideoStore.js";
 import {useEffect} from "react";
@@ -21,7 +21,7 @@ export const Video = () => {
 
     const getMoreVideos = () => {
         loadMoreVideoContent(nextPage);
-    }
+    };
 
     return (
         <section className={classes.video}>

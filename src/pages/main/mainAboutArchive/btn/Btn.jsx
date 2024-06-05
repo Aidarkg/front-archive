@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Typography } from "../../../../Typography/Typography";
+import { Typography } from "../../../../UI/Typography/Typography";
 import { ArrowRight } from "../../../../assets/icons/ArrowRight";
 import classes from "./Btn.module.sass";
 import { useTranslation } from "react-i18next";
