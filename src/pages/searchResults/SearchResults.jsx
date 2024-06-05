@@ -32,6 +32,7 @@ export const SearchResults = () => {
     const query = useQuery().get("search");
     const [inputValue, setInputValue] = useState(query || "");
     const defferedInputValue = useDeferredValue(inputValue);
+    const [lastQuery, setLastQuery] = useState(query || "");
 
     const navigate = useNavigate();
 
@@ -43,14 +44,16 @@ export const SearchResults = () => {
         }
     }, [query, fetchResults, clearResults]);
 
-    const handleSearch = async (e) => {
-        if (e.key === "Enter" || e.key === "click") {
-            try {
-                navigate(`?search=${encodeURIComponent(defferedInputValue)}`);
-                await fetchResults(defferedInputValue);
-            } catch (error) {
-                console.error("Error during search:", error);
-            }
+    const handleSearch = async () => {
+        if (defferedInputValue.trim() === "") {
+            return;
+        }
+        try {
+            navigate(`?search=${encodeURIComponent(defferedInputValue)}`);
+            await fetchResults(defferedInputValue);
+            setLastQuery(defferedInputValue);
+        } catch (error) {
+            console.error("Error during search:", error);
         }
     };
 
@@ -59,6 +62,7 @@ export const SearchResults = () => {
             try {
                 navigate(`?search=${encodeURIComponent(defferedInputValue)}`);
                 await fetchResults(defferedInputValue);
+                setLastQuery(defferedInputValue);
             } catch (error) {
                 console.error("Error during search:", error);
             }
@@ -85,15 +89,21 @@ export const SearchResults = () => {
                         className={classes.searchInput}
                         value={defferedInputValue}
                         onChange={handleValueChange}
-                        onKeyDown={handleSearch}
+                        onKeyDown={(e) => { if(e.key === "Enter") handleSearch(); }}
                         type="search"
                     />
-                    <button className={classes.searchBtn} onClick={handleButtonClick} >
+                    <button
+                        className={classes.searchBtn}
+                        onClick={handleButtonClick}
+                        disabled={inputValue.trim() === ""}
+                    >
                         <ResponsiveComponent type="searchIcon" />
                     </button>
                 </div>
                 <div className={classes.resultsContainer}>
-                    {Object.keys(searchResults).length === 0 && <span>Резутальты не найдены</span>}
+                    {Object.keys(searchResults).length === 0 && (
+                        <span>По запросу {lastQuery} ничего не найдено</span>
+                    )}
                     {!loading && !error && searchResults && (
                         <ResultsSections />
                     )}

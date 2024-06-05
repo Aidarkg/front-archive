@@ -1,7 +1,10 @@
-import { Typography } from "../Typography/Typography";
 import classes from "./LanguageList.module.sass";
+
+import {Typography} from "../../../UI/Typography/Typography.jsx";
+
 import { useTranslation } from "react-i18next";
-import { useLanguageStore } from "../../utils/languageStore/UseLanguageStore";
+
+import { useLanguageStore } from "../../../utils/languageStore/UseLanguageStore";
 
 export const LanguageList = () => {
     const { i18n } = useTranslation();
