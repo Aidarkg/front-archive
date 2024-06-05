@@ -2,7 +2,7 @@ import classes from "./HeaderInput.module.sass";
 
 import { useDeferredValue, useState } from "react";
 
-import { CloseSvg } from "../Svg/CloseSvg";
+import { CloseSvg } from "../../../UI/svgComponents/CloseSvg";
 
 import { useSearchStore } from "../../../pages/searchResults/store/useSearchStore";
 

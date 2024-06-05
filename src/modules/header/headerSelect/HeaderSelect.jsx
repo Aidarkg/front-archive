@@ -1,7 +1,11 @@
-import { useTranslation } from "react-i18next";
 import classes from "./HeaderSelect.module.sass";
+
+import { useTranslation } from "react-i18next";
+
 import { useState } from "react";
-import { ArrowDownSvg } from "../Svg/ArrowDownSvg";
+
+import { ArrowDownSvg } from "../../../UI/svgComponents/ArrowDownSvg";
+
 import { useLanguageStore } from "../../../utils/languageStore/UseLanguageStore";
 
 export const HeaderSelect = () => {
