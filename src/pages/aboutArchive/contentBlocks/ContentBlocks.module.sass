@@ -7,19 +7,19 @@
     height: 52px
     font-family: "Merriweather", serif
     margin-bottom: 48px
-    @media (max-width: 768px)
+@media (max-width: 768px)
       .main
-        margin-top: 30px
+        //margin-top: 0px
         h1
-          width: 182px
+          width: 188px
           height: 44px
-    @media (max-width: 360px)
+@media (max-width: 360px)
       .main
         margin-top: 10px
         h1
-          width: 180px
-          height: auto
-          margin-bottom: 30px
+          width: 155px
+          height: auto          
+          margin: 0 16px
 .container
   width: 1360px
   margin-left: auto
@@ -108,10 +108,12 @@
 @media (max-width: 768px)
 
     .contentBlock
-              flex-direction: column
-
+        flex-direction: column
+        //margin: 0 40px
     .contentBlockText, .heading, .text
-              width: 100%
+        width: 100%
+        display: flex
+        justify-content: center
 
     .image, .leftImage
         width: 688px
@@ -119,3 +121,18 @@
         float: none
         //order: -1
         border-radius: 16px 16px 0 0
+@media (max-width: 360px)
+    .contentBlock
+        display: flex
+        flex-direction: column
+        justify-content: center
+        margin: 0 16px
+        
+    .contentBlockText       
+        width: 328px
+        
+    .image, .leftImage
+        width: 328px
+        height: auto
+        float: none
+        border-radius: 8px 8px 8px 8px
