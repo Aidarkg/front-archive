@@ -1,5 +1,4 @@
 import {useParams} from "react-router-dom";
-import {Typography} from "../../Typography/Typography.jsx";
 import classes from "./DetailArchivePhoto.module.sass";
 import {Container} from "../../components/container/Container.jsx";
 import {Breadcrumbs} from "../../modules/breadcrumbs/Breadcrumbs.jsx";
@@ -8,6 +7,7 @@ import {usePhotos} from "../photo/api/PhotosStore.js";
 import {useLanguageStore} from "../../utils/languageStore/UseLanguageStore.js";
 import {Loader} from "../../components/loader/Loader.jsx";
 import {useEffect} from "react";
+import {Typography} from "../../UI/Typography/Typography.jsx";
 export const DetailArchivePhoto = () => {
     const {id}=useParams();
     const {t}=useTranslation();
