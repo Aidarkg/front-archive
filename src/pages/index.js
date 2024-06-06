@@ -14,6 +14,8 @@ import {Management} from "./management/Management.jsx";
 import {ManagementMore} from "./managementMore/ManagementMore.jsx";
 import {SearchResults} from "./searchResults/SearchResults.jsx";
 import {Errors} from "../UI/error/Errors.jsx";
+import {DetailArchivePhoto} from "./detailArchivePhoto/DetailArchivePhoto.jsx";
+
 
 export {
     Errors,
@@ -31,5 +33,6 @@ export {
     DetailVideo,
     Management,
     ManagementMore,
-    SearchResults
+    SearchResults,
+    DetailArchivePhoto
 };

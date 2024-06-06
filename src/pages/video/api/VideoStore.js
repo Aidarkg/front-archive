@@ -2,7 +2,8 @@ import { create } from "zustand";
 import axios from "axios";
 import {useLanguageStore} from "../../../utils/languageStore/UseLanguageStore.js";
 
-const BASE_URL = "http://34.173.93.49";
+
+const BASE_URL = "http://209.38.228.54:82";
 
 export const useVideo = create(set => ({
     videoContent: [],
@@ -13,8 +14,9 @@ export const useVideo = create(set => ({
         set({ loading: true });
         try {
             const { language } = useLanguageStore.getState();
-            const response=await axios.get(`${BASE_URL}/${language}/api/v1/news`);
-            const data=response.data;
+            const response=await axios.get(`${BASE_URL}/${language}/api/v1/video`);
+            const data=response.data
+            console.log(data)
             set({ videoContent: data.results, nextPage: data.next });
         } catch (error) {
             console.error(error.message);
