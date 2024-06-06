@@ -80,16 +80,16 @@ export const SearchResults = () => {
     return (
         <section className={classes.SearchResults}>
             <Container>
-                <Breadcrumbs className={classes.breadcrumbs} currentPage={t("searchPage")} />
+                <Breadcrumbs className={classes.breadcrumbs} currentPage={t("searchPage.search")} />
                 <Typography className={classes.heading} variant="h1" color="blue500" >
-                    {t("searchPage")}
+                    {t("searchPage.search")}
                 </Typography>
                 <div className={classes.inputWrapper}>
                     <input
                         className={classes.searchInput}
                         value={defferedInputValue}
                         onChange={handleValueChange}
-                        onKeyDown={(e) => { if(e.key === "Enter") handleSearch(); }}
+                        onKeyDown={(e) => { if (e.key === "Enter") handleSearch(); }}
                         type="search"
                     />
                     <button
@@ -102,7 +102,9 @@ export const SearchResults = () => {
                 </div>
                 <div className={classes.resultsContainer}>
                     {Object.keys(searchResults).length === 0 && (
-                        <span>По запросу {lastQuery} ничего не найдено</span>
+                        <Typography variant="span">
+                            {t("searchPage.noResults.searchFor")} {lastQuery} {t("searchPage.noResults.nothingFound")}
+                        </Typography>
                     )}
                     {!loading && !error && searchResults && (
                         <ResultsSections />

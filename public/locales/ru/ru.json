@@ -1,6 +1,7 @@
 {
    "main": "Главная",
    "modalButton": "Задать вопрос",
+   "loadMore": "Еще",
    "header&footer": {
       "logo": {
          "archivePresidentKR": "АРХИВ ПРЕЗИДЕНТА",
@@ -140,13 +141,23 @@
       },
       "number": "Номер"
    },
-   
-   "searchPage": "Поиск",
-
-   "managementPage" : {
+   "searchPage": {
+      "search": "Поиск",
+      "noResults": {
+         "searchFor": "По запросу",
+         "nothingFound": "ничего не найдено"
+     }
+   },
+   "managementPage": {
       "education": "Образование",
       "dateOfBirth": "Дата рождения",
       "rank": "Классный чин",
-      "experience": "Опыт работы"
+      "experience": "Опыт работы",
+      "startActivityDate": "с",
+      "currentActivityDate": "по"
+   },
+   "errorPage": {
+      "toMain": "На главную",
+      "back": "Назад"
    }
 }

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { create } from 'zustand';
 
-const BASE_URL = "http://209.38.228.54:82";
+import { BASE_URL } from '../../../utils/constants/Constants';
 
 const detectLanguage = (input) => {
     const kyrgyzChars = /[үөң]/i;
@@ -26,7 +26,7 @@ export const useSearchStore = create((set, get) => ({
             set({ loading: true, error: null });
             try {
                 const language = detectLanguage(query);
-                const response = await axios.get(`${BASE_URL}/${language}/api/v1/search/?search=${encodeURIComponent(query)}`);
+                const response = await axios.get(`${BASE_URL}${language}/api/v1/search/?search=${encodeURIComponent(query)}`);
 
                 const newsResults = response.data.news_results?.map((item) => ({ ...item, type: "news" })) || [];
                 const photosResults = response.data.photos_results?.map((item) => ({ ...item, type: "photos" })) || [];

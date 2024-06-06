@@ -1,6 +1,7 @@
 {
    "main": "Main",
    "modalButton": "Ask a question",
+   "loadMore": "More",
    "header&footer": {
       "logo": {
          "archivePresidentKR": "ARCHIVE OF THE PRESIDENT",
@@ -140,11 +141,23 @@
       },
       "number": "Number"
    },
-   "searchPage": "Search",
-   "managementPage" : {
+   "searchPage": {
+      "search": "Search",
+      "noResults": {
+         "searchFor": "Your search -",
+         "nothingFound": "- did not match any documents."
+      }
+   },
+   "managementPage": {
       "education": "Education",
       "dateOfBirth": "Date of birth",
       "rank": "Class rank",
-      "experience": "Experience"
+      "experience": "Experience",
+      "startActivityDate": "from",
+      "currentActivityDate": "to"
+   },  
+   "errorPage": {
+      "toMain": "To main",
+      "back": "back"
    }
 }
