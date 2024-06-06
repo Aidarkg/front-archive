@@ -49,7 +49,7 @@ export const ResultsSections = () => {
                     />
                     {nextResults.news && (
                         <CustomButton
-                            text={"Ещё"}
+                            text={t("loadMore")}
                             actionType="button"
                             icon={<ArrowRight />}
                             onClick={() => loadMoreResults("news")}
@@ -73,7 +73,7 @@ export const ResultsSections = () => {
                     />
                     {nextResults.photos && (
                         <CustomButton
-                            text={"Ещё"}
+                            text={t("loadMore")}
                             actionType="button"
                             icon={<ArrowRight />}
                             onClick={() => loadMoreResults("photos")}
@@ -97,7 +97,7 @@ export const ResultsSections = () => {
                     />
                     {nextResults.videos && (
                         <CustomButton
-                            text={"Ещё"}
+                            text={t("loadMore")}
                             actionType="button"
                             icon={<ArrowRight />}
                             onClick={() => loadMoreResults("videos")}
@@ -128,6 +128,8 @@ export const ResultsSections = () => {
                                     </Typography>
                                     <CustomButton
                                         className={classes.btnCardService}
+                                        actionType="button"
+                                        disabled
                                         text={status}
                                     />
                                 </div>
@@ -135,7 +137,7 @@ export const ResultsSections = () => {
                         ))}
                         {nextResults.services && (
                             <CustomButton
-                                text={"Ещё"}
+                                text={t("loadMore")}
                                 actionType="button"
                                 icon={<ArrowRight />}
                                 onClick={() => loadMoreResults("services")}
@@ -167,14 +169,14 @@ export const ResultsSections = () => {
                                     <Typography variant="h6">{full_name}</Typography>
                                     <Typography variant="smallBody" color="grey500">{position}</Typography>
                                     <Typography variant="extraSmallBody" color="grey400">
-                                        {`с ${start_year} по ${end_year}`}
+                                        {`${t("managementPage.startActivityDate")} ${start_year} ${t("managementPage.currentActivityDate")} ${end_year}`}
                                     </Typography>
                                 </div>
                             </div>
                         ))}
                         {nextResults.managements && (
                             <CustomButton
-                                text={"Ещё"}
+                                text={t("loadMore")}
                                 actionType="button"
                                 icon={<ArrowRight />}
                                 onClick={() => loadMoreResults("managements")}
@@ -211,7 +213,7 @@ export const ResultsSections = () => {
                             {codexesResults?.map(({ id, title, pdf_file, document_number }) => (
                                 <RegulationsDoc
                                     key={id}
-                                    // date={doc.date_file} FIX_ME неверный формат символов 26-04-2024
+                                    // date={doc.date_file} FIX_ME неверный формат символов *26-04-2024*
                                     date={"26.04.2024"}
                                     documentNumber={document_number}
                                     name={title}
@@ -222,7 +224,7 @@ export const ResultsSections = () => {
                         </ul>
                         {nextResults.codexes && (
                             <CustomButton
-                                text={"Ещё"}
+                                text={t("loadMore")}
                                 actionType="button"
                                 icon={<ArrowRight />}
                                 onClick={() => loadMoreResults("codexes")}
