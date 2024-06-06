@@ -1,9 +1,9 @@
 import { useRef } from 'react';
 import classes from "./CustomCard.module.sass";
-import { Typography } from "../../Typography/Typography.jsx";
 import { CustomDate } from "../customDate/CustomDate.jsx";
 import { ImageCount } from "../imageCount/ImageCount.jsx";
 import ReactPlayer from "react-player";
+import {Typography} from "../Typography/Typography.jsx";
 
 export const CustomCard = ({ onClick, image, video, video_link, date, title, imageCount, isLargeCard }) => {
     const videoRef = useRef(null);

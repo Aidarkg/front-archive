@@ -1,4 +1,4 @@
-import { Typography } from "../../../Typography/Typography";
+import { Typography } from "../../../UI/Typography/Typography";
 import { SwiperOrganizations } from "./swiperOrganization/SwiperOrganizations";
 import classes from "./swiperOrganization/SwiperOrganization.module.sass";
 import { useTranslation } from "react-i18next";

@@ -1,6 +1,6 @@
 import {ImageCount} from "../../UI/imageCount/ImageCount.jsx";
 import {CustomDate} from "../../UI/customDate/CustomDate.jsx";
-import {Typography} from "../../Typography/Typography.jsx";
+import {Typography} from "../../UI/Typography/Typography.jsx";
 import classes from "./DetailPhoto.module.sass";
 import {useParams} from "react-router-dom";
 import {useEffect} from "react";

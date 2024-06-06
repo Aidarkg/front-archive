@@ -12,7 +12,7 @@ export const EyeIcon = () => {
             <clipPath id="clip840_3342">
                <rect
                   id="eye"
-                  rx="-0.500000"
+                  rx="0"
                   width="23.000000"
                   height="23.000000"
                   transform="translate(0.500000 0.500000)"
@@ -23,7 +23,7 @@ export const EyeIcon = () => {
          </defs>
          <rect
             id="eye"
-            rx="-0.500000"
+            rx="0"
             width="23.000000"
             height="23.000000"
             transform="translate(0.500000 0.500000)"

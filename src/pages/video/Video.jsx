@@ -1,5 +1,4 @@
 import classes from "./Video.module.sass";
-import { Typography } from "../../Typography/Typography.jsx";
 import { CustomCard } from "../../UI/customCard/CustomCard.jsx";
 import { useVideo } from "./api/VideoStore.js";
 import { useEffect } from "react";
@@ -9,6 +8,8 @@ import { Loader } from "../../components/loader/Loader.jsx";
 import { useTranslation } from "react-i18next";
 import { CustomButton } from "../../UI/customButton/CustomButton.jsx";
 import { useLanguageStore } from "../../utils/languageStore/UseLanguageStore.js";
+import {Typography} from "../../UI/Typography/Typography.jsx";
+
 
 export const Video = () => {
     const { videoContent, getVideoContent, loading, loadMoreVideoContent, nextPage } = useVideo();

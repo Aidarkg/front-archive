@@ -1,5 +1,5 @@
 import classes from "./ManagementMore.module.sass";
-import {Typography} from "../../Typography/Typography.jsx";
+import {Typography} from "../../UI/Typography/Typography.jsx";
 
 import {Container} from "../../components/container/Container.jsx";
 import { Loader } from "../../components/loader/Loader.jsx";
@@ -26,7 +26,7 @@ export const ManagementMore = () => {
     const { id } = useParams();
     const { data, loading, error, getData } = useDataMore();
     const { t } = useTranslation();
-
+    console.log(data, "MORE");
     useEffect(() => {
         getData(id);
     }, [id, getData, language ]);

@@ -1,6 +1,6 @@
 import classes from "./CustomDate.module.sass";
 import {CalendarIcon} from "../../assets/icons/CalendarIcon.jsx";
-import {Typography} from "../../Typography/Typography.jsx";
+import {Typography} from "../Typography/Typography.jsx";
 
 export const CustomDate = ({date, isWhite}) => {
     const formatDate = (dateString) => {

@@ -1,10 +1,10 @@
 import classes from "./Faq.module.sass";
 
 import { QuestionForm } from "../../UI/questionForm/QuestionForm.jsx";
-import { Accardion } from "../../UI/Accordion/Accordion";
+import { Accardion } from "../../modules/Accordion/Accordion";
 
 
-import {Typography} from "../../Typography/Typography.jsx";
+import {Typography} from "../../UI/Typography/Typography.jsx";
 import {Breadcrumbs} from "../../modules/breadcrumbs/Breadcrumbs.jsx";
 
 import {Container} from "../../components/container/Container.jsx";

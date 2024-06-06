@@ -1,4 +1,4 @@
-import { Typography } from "../../Typography/Typography.jsx";
+import { Typography } from "../../UI/Typography/Typography.jsx";
 import classes from "./Photo.module.sass";
 import akaev from "../../assets/images/akaev.png";
 import { CustomCard } from "../../UI/customCard/CustomCard.jsx";

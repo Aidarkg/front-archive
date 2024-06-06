@@ -1,7 +1,7 @@
 import { useRef, useState, useEffect } from "react";
 import classes from "./Accordion.module.sass";
 import arrow from "../../pages/FAQ/img/arrow.svg";
-import { Typography } from "../../Typography/Typography";
+import { Typography } from "../../UI/Typography/Typography.jsx";
 
 export const AccordionItem = ({ faqItem, onClick, isOpen }) => {
    const itemRef = useRef(null);

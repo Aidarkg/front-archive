@@ -1,10 +1,10 @@
 import classes from "./Errors.module.sass";
 
 import notFoundImage from '../../assets/images/404 Page Not Found 1 (1) 1.png';
-import {Container} from "../container/Container.jsx";
-import {Typography} from "../../Typography/Typography.jsx";
-import {CustomButton} from "../../UI/customButton/CustomButton.jsx";
-import {PATH} from "../../app/Router/index.js";
+import {Container} from "../../components/container/Container.jsx";
+import {Typography} from "../Typography/Typography.jsx";
+import {CustomButton} from "../customButton/CustomButton.jsx";
+import {PATH} from "../../utils/constants/Constants.js";
 import {ArrowLeft} from "../../assets/icons/ArrowLeft.jsx";
 export const Errors = () => {
     return (

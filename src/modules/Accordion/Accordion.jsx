@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import classes from "./Accordion.module.sass";
-import { Typography } from "../../Typography/Typography";
-import { AccordionItem } from "./AccordionItem";
+import { Typography } from "../../UI/Typography/Typography.jsx";
+import { AccordionItem } from "./AccordionItem.jsx";
 import { useTranslation } from "react-i18next";
-import useFaqStore from "../../pages/FAQ/store/useFaqStore";
+import useFaqStore from "../../pages/FAQ/store/useFaqStore.jsx";
 
 export const Accardion = () => {
    const {faqs, fetchFaqs} = useFaqStore();

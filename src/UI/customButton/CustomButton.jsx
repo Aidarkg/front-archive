@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import classes from "./CustomButton.module.sass";
-import { Typography } from "../../Typography/Typography.jsx";
+import { Typography } from "../Typography/Typography.jsx";
 
 const buttonStyles = {
     blue: classes.customButtonBlue,

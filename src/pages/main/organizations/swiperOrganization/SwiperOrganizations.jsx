@@ -9,7 +9,7 @@ import { OrganizationLogo3 } from "../../../../assets/logos/OrganizationLogo3";
 import { OrganizationLogo4 } from "../../../../assets/logos/OrganizationLogo4";
 import { OrganizationLogo5 } from "../../../../assets/logos/OrganizationLogo5";
 import { OrganizationLogo6 } from "../../../../assets/logos/OrganizationLogo6";
-import { Typography } from "../../../../Typography/Typography";
+import { Typography } from "../../../../UI/Typography/Typography";
 
 const menuImgSwiper = [
    {

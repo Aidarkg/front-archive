@@ -12,7 +12,7 @@ export const ArrowRight = () => {
             <clipPath id="clip574_616">
                <rect
                   id="arrow-right"
-                  rx="-0.500000"
+                  rx="0"
                   width="23.000000"
                   height="23.000000"
                   transform="translate(0.500000 0.500000)"
@@ -23,7 +23,7 @@ export const ArrowRight = () => {
          </defs>
          <rect
             id="arrow-right"
-            rx="-0.500000"
+            rx="0"
             width="23.000000"
             height="23.000000"
             transform="translate(0.500000 0.500000)"
