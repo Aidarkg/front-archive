@@ -1,6 +1,6 @@
 import classes from "./HeaderInput.module.sass";
 
-import { useDeferredValue, useState } from "react";
+import { forwardRef, useDeferredValue, useState } from "react";
 
 import { CloseSvg } from "../../../UI/svgComponents/CloseSvg";
 
@@ -8,22 +8,20 @@ import { useSearchStore } from "../../../pages/searchResults/store/useSearchStor
 
 import { useNavigate } from "react-router-dom";
 
-export const HeaderInput = (props) => {
+export const HeaderInput = forwardRef((props, ref) => {
     const {
         type,
         value,
         onChange,
         placeholder,
-        onClose
+        onCleanUp,
     } = props;
 
     const [inputValue, setInputValue] = useState(value || "");
     const defferedInputValue = useDeferredValue(inputValue);
     const [focused, setFocused] = useState(false);
-
-    const navigate = useNavigate();
-
     const { fetchResults } = useSearchStore();
+    const navigate = useNavigate();
 
     const handleFocus = () => setFocused(true);
 
@@ -50,7 +48,7 @@ export const HeaderInput = (props) => {
     };
 
     return (
-        <div className={classes.inputWrapper}>
+        <div className={classes.inputWrapper} ref={ref}>
             <input
                 className={classes.headerInput}
                 type={type}
@@ -58,14 +56,12 @@ export const HeaderInput = (props) => {
                 onChange={handleValueChange}
                 onBlur={handleBlur}
                 onFocus={handleFocus}
-                onKeyDown={(e) => { if(e.key === "Enter") handleKeyDown(); }}
+                onKeyDown={(e) => { if (e.key === "Enter") handleKeyDown(); }}
                 placeholder={focused ? "" : placeholder}
             />
-            {defferedInputValue === "" && (
-                <button className={classes.closeButton} onClick={onClose}>
-                    <CloseSvg />
-                </button>
-            )}
+            <CloseSvg className={classes.closeButton} onClick={() => { setInputValue(""), onCleanUp(); }} />
         </div>
     );
-};
+});
+
+HeaderInput.displayName = "HeaderInput";

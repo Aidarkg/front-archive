@@ -1,6 +1,6 @@
 import classes from "./Header.module.sass";
 
-import {PATH} from "../../utils/constants/Constants.js";
+import { PATH } from "../../utils/constants/Constants.js";
 
 import { Typography } from "../../UI/Typography/Typography.jsx";
 
@@ -8,12 +8,14 @@ import { Container } from "../../components/container/Container.jsx";
 
 import { ResponsiveComponent } from "../../utils/responsiveComponent/ResponsiveComponent.jsx";
 
+import { useOutsideClick } from "../../hooks/useOutsideClick.js";
+
 import { HeaderSelect } from "./headerSelect/HeaderSelect.jsx";
 import { HeaderInput } from "./headerInput/HeaderInput.jsx";
 import { LanguageList } from "./languageList/LanguageList.jsx";
 
 import { ArrowDownSvg } from "../../UI/svgComponents/ArrowDownSvg.jsx";
-import { AccessibilitySvg } from "../../UI/svgComponents/AccessibilitySvg.jsx";
+import { AccessibilitySvg } from "../../UI/svgComponents/accessibilitySvg/AccessibilitySvg.jsx";
 import { SearchSvg } from "../../UI/svgComponents/SearchSvg.jsx";
 import { MenuSvg } from "../../UI/svgComponents/MenuSvg.jsx";
 
@@ -43,22 +45,24 @@ export const Header = () => {
 
    const location = useLocation();
 
-   const archiveRef = useRef(null);
-   const mediaArchiveRef = useRef(null);
+   const subnavRef = useRef(null);
    const headerRef = useRef(null);
+   const inputRef = useRef(null);
+   const dropdownRef = useRef(null);
+
+   useOutsideClick(inputRef, () => setIsInputVisible(false));
+   useOutsideClick(dropdownRef, () => setIsDropMenuOpen(false));
+   useOutsideClick(subnavRef, () => setActiveSubnav(null));
 
    useEffect(() => {
-      closeInput();
+      setIsInputVisible(false);
    }, [location]);
 
    const activeLink = ({ isActive }) => (isActive ? classes.active : "");
 
-   const toggleInputVisibility = () => {
+   const toggleInputVisibility = (e) => {
+      e.stopPropagation();
       setIsInputVisible((prev) => !prev);
-   };
-
-   const closeInput = () => {
-      setIsInputVisible(false);
    };
 
    const toggleSubnav = (menu) => {
@@ -110,7 +114,7 @@ export const Header = () => {
    //    observer.observe(document.body, { attributes: true, childList: true, subtree: true });
 
    //    return () => observer.disconnect();
-   // }, []);
+   // }, []); FIX_ME
 
    return (
       <header className={classes.header} ref={headerRef}>
@@ -126,11 +130,10 @@ export const Header = () => {
                </div>
                <div className={classes.rightHeader}>
                   <nav className={classes.nav}>
-                     <ul className={classes.navList}>
+                     <ul className={classes.navList} ref={subnavRef}>
                         <li
                            className={`${classes.archiveList} ${isArchiveActive() ? classes.active : ""}`}
                            onClick={() => toggleSubnav("archive")}
-                           ref={archiveRef}
                         >
                            <Typography
                               className={classes.parentNav}
@@ -164,7 +167,6 @@ export const Header = () => {
                         <li
                            className={`${classes.mediaArchiveList} ${isMediaArchiveActive() ? classes.active : ""}`}
                            onClick={() => toggleSubnav("mediaArchive")}
-                           ref={mediaArchiveRef}
                         >
                            <Typography
                               className={classes.parentNav}
@@ -223,16 +225,23 @@ export const Header = () => {
                         alt="ВЕРСИЯ ДЛЯ СЛАБОВИДЯЩИХ"
                         title="ВЕРСИЯ ДЛЯ СЛАБОВИДЯЩИХ"
                      />
+                     {/* <AccessibilitySvg
+                        id="specialButton"
+                        alt={t("header&footer.eyeIcon")}
+                     />
+                      FIX_ME Можно использовать svg-компонент */}
                   </button>
                   <button
                      className={classes.searchBtn}
                      onClick={toggleInputVisibility}
+                     disabled={location.pathname === "/search"}
                   >
                      <SearchSvg />
                   </button>
                   {isInputVisible && (
                      <HeaderInput
-                        onClose={closeInput}
+                        ref={inputRef}
+                        onCleanUp
                         type="search"
                         placeholder={t("header&footer.search")}
                      />
@@ -241,7 +250,7 @@ export const Header = () => {
                      <MenuSvg />
                   </button>
                   {isDropMenuOpen && (
-                     <div className={`${classes.headerInnerResponsive} ${isDropMenuOpen ? classes.open : ""}`}>
+                     <div ref={dropdownRef} className={`${classes.headerInnerResponsive} ${isDropMenuOpen ? classes.open : ""}`}>
                         <div className={classes.responsiveHigh}>
                            <div className={classes.headerLogoResponsive}>
                               <HeaderLogoMobile />
@@ -257,6 +266,11 @@ export const Header = () => {
                            <div className={classes.responsiveIcons}>
                               <button className={classes.eyeIcon} onClick={toggleAccessibilityMode}>
                                  <AccessibilitySvg />
+                                 {/* <AccessibilitySvg
+                                    id="specialButton"
+                                    alt={t("header&footer.eyeIcon")}
+                                 />
+                                 FIX_ME Можно использовать svg-компонент */}
                               </button>
                               <button className={classes.crossIcon} onClick={toggleDropdown}>
                                  <CrossIcon />
