@@ -16,14 +16,14 @@ import {ArchivePhotoSlider} from "./archivePhotoSlider/ArchivePhotoSlider.jsx";
 export const Photo = () => {
     const { photosContent, archivePhoto, getPhotosContent, loading, loadMorePhotosContent, nextPage } = usePhotos();
     const navigate = useNavigate();
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
     const getMorePhotos = () => {
-        loadMorePhotosContent(nextPage);
+        loadMorePhotosContent(nextPage, i18n.language);
     };
 
     useEffect(() => {
-        getPhotosContent();
-    }, []);
+        getPhotosContent(i18n.language);
+    }, [i18n.language]);
 
     return (
         <section>

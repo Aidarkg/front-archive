@@ -7,18 +7,16 @@ import { Container } from "../../components/container/Container.jsx";
 import { Loader } from "../../components/loader/Loader.jsx";
 import { useTranslation } from "react-i18next";
 import { CustomButton } from "../../UI/customButton/CustomButton.jsx";
-import { useLanguageStore } from "../../utils/languageStore/UseLanguageStore.js";
 import {Typography} from "../../UI/Typography/Typography.jsx";
 
 
 export const Video = () => {
     const { videoContent, getVideoContent, loading, loadMoreVideoContent, nextPage } = useVideo();
-    const { t } = useTranslation();
-    const { language } = useLanguageStore();
+    const { t, i18n } = useTranslation();
 
     useEffect(() => {
-        getVideoContent();
-    }, [language]);
+        getVideoContent(i18n.language);
+    }, [i18n.language]);
 
     const getMoreVideos = () => {
         loadMoreVideoContent(nextPage);

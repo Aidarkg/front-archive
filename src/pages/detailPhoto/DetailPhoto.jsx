@@ -15,12 +15,12 @@ export const DetailPhoto = () => {
 
     const {id} = useParams();
     const {images, getImages, photoData, loading}=usePhotos();
-    const {t}=useTranslation();
+    const {t, i18n}=useTranslation();
     const { language } = useLanguageStore();
 
     useEffect(() => {
-        getImages(id);
-    }, [id, language]);
+        getImages(id, i18n.language);
+    }, [id, i18n.language]);
 
     return (
         <section className={classes.detailPhoto}>

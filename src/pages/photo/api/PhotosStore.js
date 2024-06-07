@@ -13,10 +13,13 @@ export const usePhotos = create((set, get) => ({
     error: null,
     photoData: [],
     loading: false,
-    getPhotosContent: async () => {
+    getPhotosContent: async (language) => {
         set({loading: true});
         try {
-            const response = await axios.get(`${BASE_URL}/api/v1/photos/`);
+            const response = await axios.get(`${BASE_URL}/api/v1/photos/`, {
+                headers: {
+                        'Accept-Language': language
+                    }});
             const data = response.data;
             set({
                 photosContent: data.results.gallery,
@@ -30,12 +33,16 @@ export const usePhotos = create((set, get) => ({
             set({loading: false});
         }
     },
-    loadMorePhotosContent: async () => {
+    loadMorePhotosContent: async (language) => {
         const { nextPage } = get();
         if (!nextPage) return;
         set({loading: true});
         try {
-            const response = await axios.get(nextPage);
+            const response = await axios.get(nextPage, {
+                headers: {
+                    'Accept-Language': language
+                }
+            });
             const data = response.data;
             set((state) => ({
                 photosContent: [...state.photosContent, ...data.results],
@@ -49,10 +56,14 @@ export const usePhotos = create((set, get) => ({
             set({loading: false});
         }
     },
-    getImages: async (id) => {
+    getImages: async (id, language) => {
         set({loading: true});
         try {
-            const response = await axios.get(`${BASE_URL}/api/v1/photos/${id}`);
+            const response = await axios.get(`${BASE_URL}/api/v1/photos/${id}`, {
+                headers: {
+                    'Accept-Language': language
+                }
+            });
             const data = await response.data;
             set({images: data.photo, photoData: data});
         } catch (error) {
@@ -62,10 +73,14 @@ export const usePhotos = create((set, get) => ({
             set({loading: false});
         }
     },
-    getArchiveImages: async (id) => {
+    getArchiveImages: async (id, language) => {
         set({loading: true});
         try {
-            const response = await axios.get(`${BASE_URL}/api/v1/photo_home/${id}`);
+            const response = await axios.get(`${BASE_URL}/api/v1/photo_home/${id}`, {
+                headers: {
+                    'Accept-Language': language
+                }
+            });
             const data = await response.data;
             set({archiveContent: data});
         } catch (error) {

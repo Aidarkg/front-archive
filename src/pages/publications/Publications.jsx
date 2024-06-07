@@ -12,16 +12,16 @@ import { CustomButton } from "../../UI/customButton/CustomButton.jsx";
 
 export const Publications = () => {
     const navigate = useNavigate();
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
     const { publications, getPublications, loading, loadMorePublications, nextPage } = usePublications();
-    const getMorePublications = () => {
-        loadMorePublications();
-    };
 
     useEffect(() => {
-        getPublications();
-    }, [language]);
+        getPublications(i18n.language);
+    }, [i18n.language]);
 
+    const getMorePublications = () => {
+        loadMorePublications((i18n.language));
+    };
 
     return (
         <section>
