@@ -49,11 +49,11 @@ export const Services = () => {
                      >
                         {text}
                      </Typography>
-                     <CustomButton
-                        className={classes.btnCardService}
-                        text={"платно"}
-                        type="submit"
-                     />
+                     <div className={classes.btnCardService}>
+                        <Typography  variant="span">
+                           платно
+                        </Typography>
+                     </div>
                   </div>
                ))}
             </div>

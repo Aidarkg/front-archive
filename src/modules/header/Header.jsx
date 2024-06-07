@@ -94,11 +94,11 @@ export const Header = () => {
    //          document.body.appendChild(script);
    //       });
    //    };
-
+   //
    //    loadScript("https://lidrekon.ru/slep/js/jquery.js").then(() => {
    //       return loadScript("https://lidrekon.ru/slep/js/uhpv-full.min.js");
    //    });
-
+   //
    //    const observer = new MutationObserver(() => {
    //       if (document.querySelector('#special')) {
    //          headerRef.current.style.marginTop = "50px";
@@ -106,9 +106,9 @@ export const Header = () => {
    //          headerRef.current.style.marginTop = "0";
    //       }
    //    });
-
+   //
    //    observer.observe(document.body, { attributes: true, childList: true, subtree: true });
-
+   //
    //    return () => observer.disconnect();
    // }, []);
 

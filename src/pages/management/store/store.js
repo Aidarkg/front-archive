@@ -9,7 +9,7 @@ export const useData = create((set) => ({
     getData: async () => {
         set({ loading: true, });
         try {
-            const response = await axios.get(`${BASE_URL}ru/api/v1/management/`);
+            const response = await axios.get(`${BASE_URL}api/v1/management/`);
             set({ data: response.data });
         } catch (error) {
             set({ error: error.message });

@@ -11,7 +11,8 @@ import RestaurantIcon from "../../assets/icons/RestaurantIcon";
 import BookIcon from "../../assets/icons/BookIcon";
 import {Container} from "../../components/container/Container.jsx";
 
-const ContactCard = ({ title, items }) => (
+const ContactCard = ({ title,
+                       items }) => (
   <div className={styles.card}>
     <h3 className={styles.card_title}>
       {title === "Общая информация" && <CapIcon className={styles.icon} />}
