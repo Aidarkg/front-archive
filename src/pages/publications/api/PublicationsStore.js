@@ -1,6 +1,5 @@
 import { create } from "zustand";
 import axios from "axios";
-// import {useLanguageStore} from "../../../utils/languageStore/UseLanguageStore.js"; FIXME
 
 
 const BASE_URL = "http://34.173.93.49";
@@ -12,7 +11,6 @@ export const usePublications = create((set, get) => ({
     getPublications: async () => {
         set({ loading: true, error: null });
         try {
-            // const { language } = useLanguageStore.getState(); FIXME
             const response = await axios.get(`${BASE_URL}/api/v1/news`);
             const data = response.data;
             set({ publications: data.results, nextPage: data.next});
@@ -46,7 +44,6 @@ export const usePublications = create((set, get) => ({
     getPublicationFromId: async (id) => {
         set({ loading: true, error: null });
         try {
-            // const { language } = useLanguageStore.getState(); FIXME
             const response = await axios.get(`${BASE_URL}/api/v1/news/${id}`);
             const data = response.data;
             set({ detailPublicationInfo: data });

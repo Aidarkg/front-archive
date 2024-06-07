@@ -27,7 +27,7 @@ export const CustomCard = ({ onClick, image, video, video_link, date, title, ima
             <div className={classes.customCardInfo}>
                 <div className={classes.customCardExtraInfo}>
                     {date && <CustomDate date={date} />}
-                    {imageCount && <ImageCount imageCount={imageCount} />}
+                    {imageCount>0?? <ImageCount imageCount={imageCount} />}
                 </div>
                 <Typography variant="smallBody" truncate={68}>{title}</Typography>
             </div>

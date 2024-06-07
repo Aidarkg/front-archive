@@ -10,24 +10,20 @@ import { Loader } from "../../components/loader/Loader.jsx";
 import { useTranslation } from "react-i18next";
 import { CustomButton } from "../../UI/customButton/CustomButton.jsx";
 import {ArchivePhotoSlider} from "./archivePhotoSlider/ArchivePhotoSlider.jsx";
-import {useLanguageStore} from "../../utils/languageStore/UseLanguageStore.js";
 
 
 
 export const Photo = () => {
     const { photosContent, archivePhoto, getPhotosContent, loading, loadMorePhotosContent, nextPage } = usePhotos();
-    const { language } = useLanguageStore();
-
-    useEffect(() => {
-        getPhotosContent();
-    }, [language]);
-
     const navigate = useNavigate();
     const { t } = useTranslation();
-
     const getMorePhotos = () => {
         loadMorePhotosContent(nextPage);
     };
+
+    useEffect(() => {
+        getPhotosContent();
+    }, []);
 
     return (
         <section>
@@ -60,7 +56,7 @@ export const Photo = () => {
                         ))}
                     </div>
                     {nextPage && (
-                        <CustomButton onClick={getMorePhotos} text={"еще"} />
+                        <CustomButton onClick={getMorePhotos} text={t("mainPage.publications.loadMore")} />
                     )}
                 </div>
             </Container>

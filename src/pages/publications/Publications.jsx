@@ -9,21 +9,19 @@ import { Container } from "../../components/container/Container.jsx";
 import { Loader } from "../../components/loader/Loader.jsx";
 import { useTranslation } from "react-i18next";
 import { CustomButton } from "../../UI/customButton/CustomButton.jsx";
-import {useLanguageStore} from "../../utils/languageStore/UseLanguageStore.js";
 
 export const Publications = () => {
     const navigate = useNavigate();
     const { t } = useTranslation();
     const { publications, getPublications, loading, loadMorePublications, nextPage } = usePublications();
-    const { language } = useLanguageStore();
+    const getMorePublications = () => {
+        loadMorePublications();
+    };
 
     useEffect(() => {
         getPublications();
     }, [language]);
 
-    const getMorePublications = () => {
-        loadMorePublications();
-    };
 
     return (
         <section>
