@@ -1,6 +1,5 @@
 import { Typography } from "../../UI/Typography/Typography.jsx";
 import classes from "./Photo.module.sass";
-import akaev from "../../assets/images/akaev.png";
 import { CustomCard } from "../../UI/customCard/CustomCard.jsx";
 import { useNavigate } from "react-router-dom";
 import { usePhotos } from "./api/PhotosStore.js";
@@ -13,13 +12,7 @@ import { CustomButton } from "../../UI/customButton/CustomButton.jsx";
 import {ArchivePhotoSlider} from "./archivePhotoSlider/ArchivePhotoSlider.jsx";
 import {useLanguageStore} from "../../utils/languageStore/UseLanguageStore.js";
 
-const archiveImages = [
-    { image: akaev },
-    { image: akaev },
-    { image: akaev },
-    { image: akaev },
-    { image: akaev },
-];
+
 
 export const Photo = () => {
     const { photosContent, archivePhoto, getPhotosContent, loading, loadMorePhotosContent, nextPage } = usePhotos();
