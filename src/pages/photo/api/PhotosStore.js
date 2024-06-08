@@ -1,9 +1,8 @@
 import {create} from "zustand";
 import axios from "axios";
-import {useLanguageStore} from "../../../utils/languageStore/UseLanguageStore.js";
 
 
-const BASE_URL = "http://209.38.228.54:82";
+const BASE_URL = "http://34.173.93.49";
 
 export const usePhotos = create((set) => ({
     photosContent: [],
@@ -14,37 +13,18 @@ export const usePhotos = create((set) => ({
     error: null,
     photoData: [],
     loading: false,
-    getPhotosContent: async () => {
+    getPhotosContent: async (language) => {
         set({loading: true});
         try {
-            const { language } = useLanguageStore.getState();
-            const response = await axios.get(`${BASE_URL}/${language}/api/v1/photos/`);
+            const response = await axios.get(`${BASE_URL}/api/v1/photos/`, {
+                headers: {
+                        'Accept-Language': language
+                    }});
             const data = response.data;
-            console.log(data)
             set({
-                photosContent: data.results.gallery,
-                archivePhoto: data.results.photo_home,
+                photosContent: data.results,
                 nextPage: data.next,
             });
-        } catch (error) {
-            // console.error('Failed fetch error', error);
-            set({error: error.message});
-        } finally {
-            set({loading: false});
-        }
-    },
-    loadMorePhotosContent: async (nextPage) => {
-        if (!nextPage) return;
-        set({loading: true});
-        try {
-            const response = await axios.get(nextPage);
-            const data = response.data;
-            set((state) => ({
-                photosContent: [...state.photosContent, ...data.results],
-                nextPage: data.next,
-                error: null,
-            }));
-            console.log(data);
         } catch (error) {
             console.error('Failed fetch error', error);
             set({error: error.message});
@@ -52,11 +32,37 @@ export const usePhotos = create((set) => ({
             set({loading: false});
         }
     },
-    getImages: async (id) => {
+    loadMorePhotosContent: async (language) => {
+        const { nextPage } = get();
+        if (!nextPage) return;
         set({loading: true});
         try {
-            const { language } = useLanguageStore.getState();
-            const response = await axios.get(`${BASE_URL}/${language}/api/v1/photos/${id}`);
+            const response = await axios.get(nextPage, {
+                headers: {
+                    'Accept-Language': language
+                }
+            });
+            const data = response.data;
+            set((state) => ({
+                photosContent: [...state.photosContent, ...data.results],
+                nextPage: data.next,
+                error: null,
+            }));
+        } catch (error) {
+            console.error('Failed fetch error', error);
+            set({error: error.message});
+        } finally {
+            set({loading: false});
+        }
+    },
+    getImages: async (id, language) => {
+        set({loading: true});
+        try {
+            const response = await axios.get(`${BASE_URL}/api/v1/photos/${id}`, {
+                headers: {
+                    'Accept-Language': language
+                }
+            });
             const data = await response.data;
             set({images: data.photo, photoData: data});
         } catch (error) {
@@ -66,20 +72,39 @@ export const usePhotos = create((set) => ({
             set({loading: false});
         }
     },
-    getArchiveImages: async (id) => {
+    getArchiveContent:async (language)=>{
         set({loading: true});
         try {
-            const { language } = useLanguageStore.getState();
-            const response = await axios.get(`${BASE_URL}/${language}/api/v1/photo_home/${id}`);
-            const data = await response.data;
-            console.log(data);
-            set({archiveContent: data});
+            const response = await axios.get(`${BASE_URL}/api/v1/photo_home`, {
+                headers: {
+                    'Accept-Language': language
+                }});
+            const data = response.data;
+            set({
+                archivePhoto: data.results,
+            });
         } catch (error) {
-            console.error(error.message);
+            console.error('Failed fetch error', error);
             set({error: error.message});
         } finally {
             set({loading: false});
         }
     },
-
+    getArchiveImages: async (id, language) => {
+        set({loading: true});
+        try {
+            const response = await axios.get(`${BASE_URL}/api/v1/photo_home/${id}`, {
+                headers: {
+                    'Accept-Language': language
+                }
+            });
+            const data = await response.data;
+            set({archiveContent: data});
+        } catch (error) {
+            console.error('Failed fetch error', error);
+            set({error: error.message});
+        } finally {
+            set({loading: false});
+        }
+    },
 }));

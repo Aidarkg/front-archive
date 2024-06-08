@@ -1,17 +1,20 @@
-import akaev from "../../../assets/images/akaev.png";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import "swiper/swiper-bundle.css";
 import classes from "./ArchivePhotoSlider.module.sass";
+import {usePhotos} from "../api/PhotosStore.js";
+import {useEffect} from "react";
+import {useNavigate} from "react-router-dom";
 
 export const ArchivePhotoSlider = () => {
-    const archiveImages = [
-        { image: akaev },
-        { image: akaev },
-        { image: akaev },
-        { image: akaev },
-        { image: akaev },
-    ];
+
+    const {archivePhoto, getArchiveImages, getPhotosContent}=usePhotos();
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        getArchiveImages();
+        getPhotosContent();
+    }, []);
 
     return (
         <div className={classes.swiper}>
@@ -29,10 +32,14 @@ export const ArchivePhotoSlider = () => {
                 }}
                 spaceBetween={15}
             >
-                {archiveImages.map((item, index) => (
-                    <SwiperSlide key={index} className={classes.swiperSlide}>
+                {archivePhoto?.map((item) => (
+                    <SwiperSlide
+                        key={item.id}
+                        className={classes.swiperSlide}
+                        onClick={() => navigate(`/photo/archive/${item.id}`)}
+                    >
                         <div className={classes.swiperImage}>
-                            <img src={item.image} alt="archive photo" />
+                            <img src={item.photo} alt="archive photo" />
                         </div>
                     </SwiperSlide>
                 ))}

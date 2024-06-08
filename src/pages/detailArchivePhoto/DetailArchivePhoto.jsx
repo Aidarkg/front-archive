@@ -4,19 +4,17 @@ import {Container} from "../../components/container/Container.jsx";
 import {Breadcrumbs} from "../../modules/breadcrumbs/Breadcrumbs.jsx";
 import {useTranslation} from "react-i18next";
 import {usePhotos} from "../photo/api/PhotosStore.js";
-import {useLanguageStore} from "../../utils/languageStore/UseLanguageStore.js";
 import {Loader} from "../../components/loader/Loader.jsx";
 import {useEffect} from "react";
 import {Typography} from "../../UI/Typography/Typography.jsx";
 export const DetailArchivePhoto = () => {
     const {id}=useParams();
-    const {t}=useTranslation();
+    const {t, i18n}=useTranslation();
     const { getArchiveImages, archiveContent, loading } = usePhotos();
-    const { language } = useLanguageStore();
 
     useEffect(() => {
-        getArchiveImages(id);
-    }, [id, language]);
+        getArchiveImages(id, i18n.language);
+    }, [id, i18n.language]);
     return (
         <section className={classes.archivePhoto}>
             <Container>
