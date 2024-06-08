@@ -27,7 +27,7 @@ const useQuery = () => {
 export const SearchResults = () => {
     const { searchResults, fetchResults, loading, error, clearResults } = useSearchStore();
 
-    const { t } = useTranslation();
+    const { t, i18n} = useTranslation();
 
     const query = useQuery().get("search");
     const [inputValue, setInputValue] = useState(query || "");
@@ -42,7 +42,7 @@ export const SearchResults = () => {
         } else {
             clearResults();
         }
-    }, [query, fetchResults, clearResults]);
+    }, [query, fetchResults, clearResults, i18n.language]);
 
     const handleSearch = async () => {
         if (defferedInputValue.trim() === "") {

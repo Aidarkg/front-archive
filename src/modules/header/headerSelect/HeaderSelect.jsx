@@ -6,21 +6,17 @@ import { useRef, useState } from "react";
 
 import { ArrowDownSvg } from "../../../UI/svgComponents/ArrowDownSvg";
 
-import { useLanguageStore } from "../../../utils/languageStore/UseLanguageStore";
-
 import { useOutsideClick } from "../../../hooks/useOutsideClick";
 
 export const HeaderSelect = () => {
     const { i18n } = useTranslation();
     const [activeList, setActiveList] = useState(null);
-    const { setChangeLanguage } = useLanguageStore();
     const ref = useRef();
 
     useOutsideClick(ref, () => setActiveList(null));
 
     const changeLanguage = (lng) => {
         i18n.changeLanguage(lng);
-        setChangeLanguage(lng);
         setActiveList(null);
     };
 
