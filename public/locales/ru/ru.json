@@ -23,7 +23,8 @@
          "video": "Видео"
       },
       "search": "Поиск по сайту",
-      "attendanceCounter": "Счетчик посещений"
+      "attendanceCounter": "Счетчик посещений",
+      "eyeIcon": "ВЕРСИЯ ДЛЯ СЛАБОВИДЯЩИХ"
    },
    "mainPage": {
       "hero": {
