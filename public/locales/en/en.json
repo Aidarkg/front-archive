@@ -23,7 +23,8 @@
          "video": "video"
       },
       "search": "Site search",
-      "attendanceCounter": "Attendance counter"
+      "attendanceCounter": "Attendance counter",
+      "eyeIcon": "VERSION FOR LOW VISUAL"
    },
    "mainPage": {
       "hero": {
@@ -155,7 +156,7 @@
       "experience": "Experience",
       "startActivityDate": "from",
       "currentActivityDate": "to"
-   },  
+   },
    "errorPage": {
       "toMain": "To main",
       "back": "back"

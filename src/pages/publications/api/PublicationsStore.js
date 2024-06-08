@@ -28,7 +28,7 @@ export const usePublications = create((set, get) => ({
     loadMorePublications: async (language) => {
         const { nextPage } = get();
         if (!nextPage) return;
-        set({ loading: true });
+        set({ loading: true, error: null });
         try {
             const response = await axios.get(nextPage, {
                 headers: {

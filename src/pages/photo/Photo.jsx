@@ -12,7 +12,6 @@ import { CustomButton } from "../../UI/customButton/CustomButton.jsx";
 import {ArchivePhotoSlider} from "./archivePhotoSlider/ArchivePhotoSlider.jsx";
 
 
-
 export const Photo = () => {
     const { photosContent, archivePhoto, getPhotosContent, getArchiveContent,loading, loadMorePhotosContent, nextPage } = usePhotos();
     const navigate = useNavigate();

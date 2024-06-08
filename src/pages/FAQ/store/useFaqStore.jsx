@@ -1,11 +1,12 @@
 import { create } from "zustand";
 import axios from "axios";
+import {BASE_URL} from "../../../utils/constants/Constants.js";
 
 const useFaqStore = create((set) => ({
     faqs: [],
     fetchFaqs: async() => {
         try {
-            const response = await axios.get("https://aidarzh.pythonanywhere.com/ru/api/v1/faq/");
+            const response = await axios.get(`${BASE_URL}api/v1/faq`);
             set({faqs: response.data.results});
         } catch (error) {
             console.error("Ошибка при получении данных:", error);

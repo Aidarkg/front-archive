@@ -23,7 +23,8 @@
             "video": "Видео"
         },
         "search": "Сайт издөө",
-        "attendanceCounter": "Хит эсептегич"
+        "attendanceCounter": "Хит эсептегич",
+        "eyeIcon": "КӨРҮҮСҮ НАЧАРЛАР ҮЧҮН ВЕРСИЯ"
     },
     "mainPage": {
         "hero": {
@@ -159,5 +160,5 @@
     "errorPage": {
         "toMain": "Башкы",
         "back": "Артка"
-     }
+    }
 }

@@ -8,7 +8,7 @@ export const useDataMore = create((set) => ({
     getData: async (id = null) => {
         set({ loading: true, error: null });
         try {
-            const url = id ? `${BASE_URL}ru/api/v1/management/${id}` : `${BASE_URL}ru/api/v1/management/`;
+            const url = id ? `${BASE_URL}api/v1/management/${id}` : `${BASE_URL}ru/api/v1/management/`;
             const response = await axios.get(url);
             set({ data: response.data });
         } catch (error) {
