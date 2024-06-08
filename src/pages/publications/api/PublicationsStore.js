@@ -1,9 +1,9 @@
 import { create } from "zustand";
 import axios from "axios";
-// import {useLanguageStore} from "../../../utils/languageStore/UseLanguageStore.js"; FIXME
+import {useLanguageStore} from "../../../utils/languageStore/UseLanguageStore.js";
 
 
-const BASE_URL = "http://34.173.93.49";
+const BASE_URL = "http://209.38.228.54:82";
 export const usePublications = create((set, get) => ({
     publications: [],
     nextPage: null,
@@ -12,9 +12,10 @@ export const usePublications = create((set, get) => ({
     getPublications: async () => {
         set({ loading: true, error: null });
         try {
-            // const { language } = useLanguageStore.getState(); FIXME
-            const response = await axios.get(`${BASE_URL}/api/v1/news`);
+            const { language } = useLanguageStore.getState();
+            const response = await axios.get(`${BASE_URL}/${language}/api/v1/news`);
             const data = response.data;
+            console.log(data)
             set({ publications: data.results, nextPage: data.next});
         } catch (error) {
             console.error('Failed fetch error', error);
@@ -27,7 +28,7 @@ export const usePublications = create((set, get) => ({
     loadMorePublications: async () => {
         const { nextPage } = get();
         if (!nextPage) return;
-        set({ loading: true });
+        set({ loading: true, error: null });
         try {
             const response = await axios.get(nextPage);
             const data = response.data;
@@ -46,8 +47,8 @@ export const usePublications = create((set, get) => ({
     getPublicationFromId: async (id) => {
         set({ loading: true, error: null });
         try {
-            // const { language } = useLanguageStore.getState(); FIXME
-            const response = await axios.get(`${BASE_URL}/api/v1/news/${id}`);
+            const { language } = useLanguageStore.getState();
+            const response = await axios.get(`${BASE_URL}/${language}/api/v1/news/${id}`);
             const data = response.data;
             set({ detailPublicationInfo: data });
         } catch (error) {

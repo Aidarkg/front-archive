@@ -1,11 +1,11 @@
 import {create} from "zustand";
 import axios from "axios";
-// import {useLanguageStore} from "../../../utils/languageStore/UseLanguageStore.js"; FIXME
+import {useLanguageStore} from "../../../utils/languageStore/UseLanguageStore.js";
 
 
-const BASE_URL = "http://34.173.93.49";
+const BASE_URL = "http://209.38.228.54:82";
 
-export const usePhotos = create((set, get) => ({
+export const usePhotos = create((set) => ({
     photosContent: [],
     archivePhoto: [],
     nextPage: null,
@@ -17,8 +17,8 @@ export const usePhotos = create((set, get) => ({
     getPhotosContent: async () => {
         set({loading: true});
         try {
-            // const { language } = useLanguageStore.getState(); FIXME
-            const response = await axios.get(`${BASE_URL}/api/v1/photos/`);
+            const { language } = useLanguageStore.getState();
+            const response = await axios.get(`${BASE_URL}/${language}/api/v1/photos/`);
             const data = response.data;
             console.log(data)
             set({
@@ -27,14 +27,13 @@ export const usePhotos = create((set, get) => ({
                 nextPage: data.next,
             });
         } catch (error) {
-            console.error('Failed fetch error', error);
+            // console.error('Failed fetch error', error);
             set({error: error.message});
         } finally {
             set({loading: false});
         }
     },
-    loadMorePhotosContent: async () => {
-        const { nextPage } = get();
+    loadMorePhotosContent: async (nextPage) => {
         if (!nextPage) return;
         set({loading: true});
         try {
@@ -56,8 +55,8 @@ export const usePhotos = create((set, get) => ({
     getImages: async (id) => {
         set({loading: true});
         try {
-            // const { language } = useLanguageStore.getState(); FIXME
-            const response = await axios.get(`${BASE_URL}/api/v1/photos/${id}`);
+            const { language } = useLanguageStore.getState();
+            const response = await axios.get(`${BASE_URL}/${language}/api/v1/photos/${id}`);
             const data = await response.data;
             set({images: data.photo, photoData: data});
         } catch (error) {
@@ -70,8 +69,8 @@ export const usePhotos = create((set, get) => ({
     getArchiveImages: async (id) => {
         set({loading: true});
         try {
-            // const { language } = useLanguageStore.getState(); FIXME
-            const response = await axios.get(`${BASE_URL}/api/v1/photo_home/${id}`);
+            const { language } = useLanguageStore.getState();
+            const response = await axios.get(`${BASE_URL}/${language}/api/v1/photo_home/${id}`);
             const data = await response.data;
             console.log(data);
             set({archiveContent: data});
