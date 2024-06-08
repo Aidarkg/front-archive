@@ -21,9 +21,9 @@ export const usePhotos = create((set, get) => ({
                         'Accept-Language': language
                     }});
             const data = response.data;
+            console.log(data)
             set({
-                photosContent: data.results.gallery,
-                archivePhoto: data.results.photo_home,
+                photosContent: data.results,
                 nextPage: data.next,
             });
         } catch (error) {
@@ -68,6 +68,24 @@ export const usePhotos = create((set, get) => ({
             set({images: data.photo, photoData: data});
         } catch (error) {
             console.error(error.message);
+            set({error: error.message});
+        } finally {
+            set({loading: false});
+        }
+    },
+    getArchiveContent:async (language)=>{
+        set({loading: true});
+        try {
+            const response = await axios.get(`${BASE_URL}/api/v1/photo_home`, {
+                headers: {
+                    'Accept-Language': language
+                }});
+            const data = response.data;
+            set({
+                archivePhoto: data.results,
+            });
+        } catch (error) {
+            console.error('Failed fetch error', error);
             set({error: error.message});
         } finally {
             set({loading: false});

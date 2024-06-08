@@ -31,7 +31,7 @@ export const DetailPhoto = () => {
                    <div className={classes.detailPhotoHead}>
                        <div className={classes.detailPhotoHeadInfo}>
                            <CustomDate date={photoData.public_date} isWhite={true}/>
-                           <ImageCount imageCount={images.length} isWhite={true}/>
+                           {images.length>0&&<ImageCount imageCount={images.length} isWhite={true}/>}
                        </div>
                        <Typography variant="h2">{photoData.title}</Typography>
                    </div>
