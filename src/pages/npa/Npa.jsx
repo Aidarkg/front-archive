@@ -6,8 +6,6 @@ import { useEffect } from "react";
 
 import { useRegulationsStore } from "./store/useRegulationsStore";
 
-import { useLanguageStore } from "../../utils/languageStore/UseLanguageStore";
-
 import { Typography } from "../../UI/Typography/Typography";
 
 import { RegulationsDoc } from "../../UI/regulationsDoc/RegulationsDoc";
@@ -19,13 +17,12 @@ import { Loader } from "../../components/loader/Loader";
 import { Breadcrumbs } from "../../modules/breadcrumbs/Breadcrumbs";
 
 export const Npa = () => {
-   const { t } = useTranslation();
+   const { t, i18n } = useTranslation();
    const { regulationsList, fetchRegulations, fetchMoreRegulations, next, loading } = useRegulationsStore();
-   const { language } = useLanguageStore();
 
    useEffect(() => {
       fetchRegulations();
-   }, [fetchRegulations, language]);
+   }, [fetchRegulations, i18n.language]);
 
    return (
       <section className={classes.regulations}>
@@ -85,7 +82,7 @@ export const Npa = () => {
                </ul>
                {next && !loading && (
                   <CustomButton
-                     text={"Ещё"}
+                     text={t("loadMore")}
                      buttonStyle="withBorder"
                      onClick={fetchMoreRegulations}
                   />
