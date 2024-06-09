@@ -1,9 +1,8 @@
 import axios from "../../../axiosConfig";
 import { create } from "zustand";
+import {BASE_URL} from "../../../utils/constants/Constants.js";
 
-// import { BASE_URL } from "../../../utils/constants/Constants"; // FIX_ME Не загружает данные 
-
-const BASE_URL = "http://34.173.93.49";
+// const BASE_URL = "http://34.173.93.49";
 
 export const useRegulationsStore = create((set, get) => ({
     regulationsList: [],
@@ -14,7 +13,7 @@ export const useRegulationsStore = create((set, get) => ({
     fetchRegulations: async () => {
         set({ loading: true, error: null });
         try {
-            const response = await axios.get(`${BASE_URL}/api/v1/kodeks`);
+            const response = await axios.get(`${BASE_URL}api/v1/kodeks`);
             set({ regulationsList: response.data.results, loading: false, error: null });
         } catch (error) {
             set({ regulationsList: [], loading: false, error: error.message });

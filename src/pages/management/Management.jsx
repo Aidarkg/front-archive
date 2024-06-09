@@ -14,7 +14,7 @@ import {useData} from "./store/store.js";
 
 export const Management = () => {
     const { language } = useLanguageStore();
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
     const { data, loading, error, getData } = useData();
     const navigate = useNavigate();
 
@@ -24,7 +24,7 @@ export const Management = () => {
 
     useEffect(() => {
         getData();
-    }, [getData, language]);
+    }, [getData, i18n.language]);
     if (loading) {
         return <Loader />;
     }

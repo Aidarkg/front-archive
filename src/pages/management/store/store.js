@@ -1,6 +1,6 @@
-import axios from "axios";
 import {create} from "zustand";
 import {BASE_URL} from "../../../utils/constants/Constants.js";
+import axios from "../../../axiosConfig";
 
 export const useData = create((set) => ({
     data: [],
