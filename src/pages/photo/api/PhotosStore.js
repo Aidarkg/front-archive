@@ -1,8 +1,7 @@
 import {create} from "zustand";
 import axios from "axios";
+import {BASE_URL} from "../../../utils/constants/Constants.js";
 
-
-const BASE_URL = "http://34.173.93.49";
 
 export const usePhotos = create((set) => ({
     photosContent: [],
@@ -16,7 +15,7 @@ export const usePhotos = create((set) => ({
     getPhotosContent: async (language) => {
         set({loading: true});
         try {
-            const response = await axios.get(`${BASE_URL}/api/v1/photos/`, {
+            const response = await axios.get(`${BASE_URL}api/v1/photos/`, {
                 headers: {
                         'Accept-Language': language
                     }});
@@ -32,17 +31,15 @@ export const usePhotos = create((set) => ({
             set({loading: false});
         }
     },
-    loadMorePhotosContent: async (language) => {
-        const { nextPage } = get();
+    loadMorePhotosContent: async (nextPage, language) => {
         if (!nextPage) return;
         set({loading: true});
         try {
-            const response = await axios.get(nextPage, {
+            const {data} = await axios.get(nextPage, {
                 headers: {
                     'Accept-Language': language
                 }
             });
-            const data = response.data;
             set((state) => ({
                 photosContent: [...state.photosContent, ...data.results],
                 nextPage: data.next,
@@ -58,7 +55,7 @@ export const usePhotos = create((set) => ({
     getImages: async (id, language) => {
         set({loading: true});
         try {
-            const response = await axios.get(`${BASE_URL}/api/v1/photos/${id}`, {
+            const response = await axios.get(`${BASE_URL}api/v1/photos/${id}`, {
                 headers: {
                     'Accept-Language': language
                 }
@@ -75,7 +72,7 @@ export const usePhotos = create((set) => ({
     getArchiveContent:async (language)=>{
         set({loading: true});
         try {
-            const response = await axios.get(`${BASE_URL}/api/v1/photo_home`, {
+            const response = await axios.get(`${BASE_URL}api/v1/photo_home`, {
                 headers: {
                     'Accept-Language': language
                 }});
@@ -93,7 +90,7 @@ export const usePhotos = create((set) => ({
     getArchiveImages: async (id, language) => {
         set({loading: true});
         try {
-            const response = await axios.get(`${BASE_URL}/api/v1/photo_home/${id}`, {
+            const response = await axios.get(`${BASE_URL}api/v1/photo_home/${id}`, {
                 headers: {
                     'Accept-Language': language
                 }
