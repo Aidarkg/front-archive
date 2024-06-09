@@ -1,7 +1,7 @@
-import axios from 'axios';
+import axios from '../../../axiosConfig';
 import { create } from 'zustand';
 
-// import { BASE_URL } from '../../../utils/constants/Constants'; FIX_ME Нужно сменить URL
+// import { BASE_URL } from '../../../utils/constants/Constants'; // FIX_ME Не загружает данные 
 
 const BASE_URL = "http://34.173.93.49";
 

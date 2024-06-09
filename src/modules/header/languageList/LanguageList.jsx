@@ -4,15 +4,11 @@ import {Typography} from "../../../UI/Typography/Typography.jsx";
 
 import { useTranslation } from "react-i18next";
 
-import { useLanguageStore } from "../../../utils/languageStore/UseLanguageStore";
-
 export const LanguageList = () => {
     const { i18n } = useTranslation();
-    const { setChangeLanguage } = useLanguageStore();
 
     const changeLanguage = (lng) => {
         i18n.changeLanguage(lng);
-        setChangeLanguage(lng);
     };
 
     const languages = [
