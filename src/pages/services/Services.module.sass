@@ -6,12 +6,13 @@
     gap: 6px
 .mapCards
     margin-top: 24px
-    display: flex
-    gap: 24px 
-    flex-wrap: wrap
+    margin-bottom: 88px
+    display: grid
+    gap: 24px
+    grid-template-columns: repeat(3, 2fr) 
 .serviceCards
     padding: 16px 24px
-    width: 432px
+    width: auto
     background-color: #fff
     border-radius: 8px
     .textServiceCards
@@ -19,3 +20,15 @@
 .btnCardService
     height: 25px
     margin-top: 16px
+
+@media (max-width: 1280px)
+    .serviceCards
+        width: auto
+    .mapCards
+        grid-template-columns: repeat(2, 2fr)
+
+@media (max-width: 790px)
+    .serviceCards
+        width: auto
+    .mapCards
+        grid-template-columns: repeat(1, 2fr)
