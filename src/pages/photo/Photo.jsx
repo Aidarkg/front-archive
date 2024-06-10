@@ -55,6 +55,7 @@ export const Photo = () => {
                             />
                         ))}
                     </div>
+                    {loading && <Loader />}
                     {nextPage && (
                         <CustomButton onClick={getMorePhotos} text={t("mainPage.publications.loadMore")} />
                     )}

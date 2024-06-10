@@ -1,7 +1,8 @@
 import { create } from "zustand";
 import axios from "axios";
+import {BASE_URL} from "../../../utils/constants/Constants.js";
 
-const BASE_URL = "http://34.173.93.49";
+
 export const usePublications = create((set, get) => ({
     publications: [],
     nextPage: null,
@@ -10,7 +11,7 @@ export const usePublications = create((set, get) => ({
     getPublications: async (language) => {
         set({ loading: true, error: null });
         try {
-            const response = await axios.get(`${BASE_URL}/api/v1/news`, {
+            const response = await axios.get(`${BASE_URL}api/v1/news`, {
                 headers: {
                     'Accept-Language': language
                 }
@@ -51,7 +52,7 @@ export const usePublications = create((set, get) => ({
     getPublicationFromId: async (id, language) => {
         set({ loading: true, error: null });
         try {
-            const response = await axios.get(`${BASE_URL}/api/v1/news/${id}`, {
+            const response = await axios.get(`${BASE_URL}api/v1/news/${id}`, {
                 headers: {
                     'Accept-Language': language
                 }

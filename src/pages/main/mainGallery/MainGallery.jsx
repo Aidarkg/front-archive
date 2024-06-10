@@ -13,7 +13,7 @@ export const MainGallery = () => {
     const {publications, getPublications} = usePublications();
     const {photosContent, getPhotosContent} = usePhotos();
     const {videoContent, getVideoContent} = useVideo();
-    const {t}=useTranslation();
+    const {t, i18n}=useTranslation();
     const {language}=useLanguageStore();
     const getFirstFourItems = (array) => array.slice(0, 4);
     const sections = [
@@ -40,10 +40,10 @@ export const MainGallery = () => {
         }
     ];
     useEffect(() => {
-        getPublications();
-        getPhotosContent();
-        getVideoContent();
-    }, [language]);
+        getPublications(i18n.language);
+        getPhotosContent(i18n.language);
+        getVideoContent(i18n.language);
+    }, [i18n.language]);
     return (
         <section className={classes.gallery}>
             <Container>

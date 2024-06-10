@@ -7,11 +7,10 @@ import { Container } from "../../components/container/Container.jsx";
 import { Loader } from "../../components/loader/Loader.jsx";
 import { useTranslation } from "react-i18next";
 import { CustomButton } from "../../UI/customButton/CustomButton.jsx";
-import {Typography} from "../../UI/Typography/Typography.jsx";
-
+import { Typography } from "../../UI/Typography/Typography.jsx";
 
 export const Video = () => {
-    const { videoContent, getVideoContent, loading, loadMoreVideoContent, nextPage } = useVideo();
+    const { videoContent, getVideoContent, loading, loadMoreVideoContent, nextPage, error } = useVideo();
     const { t, i18n } = useTranslation();
 
     useEffect(() => {
@@ -19,7 +18,7 @@ export const Video = () => {
     }, [i18n.language]);
 
     const getMoreVideos = () => {
-        loadMoreVideoContent(nextPage);
+        loadMoreVideoContent(nextPage, i18n.language);
     };
 
     return (
@@ -27,11 +26,12 @@ export const Video = () => {
             <Container>
                 <Breadcrumbs currentPage={t("mainPage.videoGallery.title")} />
                 <div className={classes.videoInner}>
-                    {loading && <Loader />}
                     <Typography variant="h1">{t("mainPage.videoGallery.title")}</Typography>
+                    {loading && !videoContent.length && <Loader />}
+                    {error && <Typography variant="body" color="red">{error}</Typography>}
                     <div className={classes.videoContent}>
-                        {videoContent && videoContent?.map((item, index) => (
-                            <div className={classes.videoContentCard} key={index}>
+                        {videoContent.map((item, index) => (
+                            <div className={classes.videoContentCard} key={item.id || index}>
                                 <CustomCard
                                     video={item.video || item.video_link}
                                     date={item.public_date}
@@ -42,8 +42,8 @@ export const Video = () => {
                         ))}
                     </div>
                     {loading && <Loader />}
-                    {nextPage && (
-                        <CustomButton onClick={getMoreVideos} text={"Еще"} />
+                    {nextPage && !loading && (
+                        <CustomButton onClick={getMoreVideos} text={t("mainPage.videoGallery.loadMore")} />
                     )}
                 </div>
             </Container>

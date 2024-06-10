@@ -15,7 +15,7 @@ export const PublicationBlock = ({title, contentArray, path, linkText, type, hav
                     <CustomCard
                         key={item.id}
                         image={item.picture || item.image}
-                        video={item.video}
+                        video={item.video || item.video_link}
                         title={item.title}
                         imageCount={item.count_photo}
                         date={item.public_date}
