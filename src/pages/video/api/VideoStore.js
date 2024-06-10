@@ -2,7 +2,6 @@ import { create } from "zustand";
 import axios from "axios";
 import {useLanguageStore} from "../../../utils/languageStore/UseLanguageStore.js";
 
-
 const BASE_URL = "http://34.173.93.49";
 
 export const useVideo = create(set => ({
@@ -19,7 +18,7 @@ export const useVideo = create(set => ({
                     'Accept-Language': language
                 }
             });
-            const data=response.data
+            const data=response.data;
             set({ videoContent: data.results, nextPage: data.next });
         } catch (error) {
             console.error(error.message);
