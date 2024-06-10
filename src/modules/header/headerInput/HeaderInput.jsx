@@ -14,7 +14,7 @@ export const HeaderInput = forwardRef((props, ref) => {
         value,
         onChange,
         placeholder,
-        onCleanUp,
+        onClose,
     } = props;
 
     const [inputValue, setInputValue] = useState(value || "");
@@ -59,7 +59,7 @@ export const HeaderInput = forwardRef((props, ref) => {
                 onKeyDown={(e) => { if (e.key === "Enter") handleKeyDown(); }}
                 placeholder={focused ? "" : placeholder}
             />
-            <CloseSvg className={classes.closeButton} onClick={() => { setInputValue(""), onCleanUp(); }} />
+            <CloseSvg className={classes.closeButton} onClick={onClose} />
         </div>
     );
 });
