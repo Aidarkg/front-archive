@@ -1,9 +1,9 @@
 import axios from '../../../axiosConfig';
 import { create } from 'zustand';
 
-// import { BASE_URL } from '../../../utils/constants/Constants'; // FIX_ME Не загружает данные 
+import { BASE_URL } from "../../../utils/constants/Constants"; 
 
-const BASE_URL = "http://34.173.93.49";
+// const BASE_URL = "http://34.173.93.49/"; // FIX_ME Для проверки наличия данных в массивах
 
 export const useSearchStore = create((set, get) => ({
     searchResults: [],
@@ -14,7 +14,7 @@ export const useSearchStore = create((set, get) => ({
         if (query.trim() !== "") {
             set({ loading: true, error: null });
             try {
-                const response = await axios.get(`${BASE_URL}/api/v1/search/?search=${encodeURIComponent(query)}`);
+                const response = await axios.get(`${BASE_URL}api/v1/search/?search=${encodeURIComponent(query)}`);
 
                 const newsResults = response.data.news_results?.map((item) => ({ ...item, type: "news" })) || [];
                 const photosResults = response.data.photos_results?.map((item) => ({ ...item, type: "photos" })) || [];
