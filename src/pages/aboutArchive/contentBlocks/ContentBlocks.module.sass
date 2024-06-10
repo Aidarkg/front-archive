@@ -1,42 +1,49 @@
-
-.main
-  background-color: var(--grey100)
-  padding: 40px 0
+.main  
   h1
-    width: 350px
-    height: 52px
+    width: 350px    
     font-family: "Merriweather", serif
-    margin-bottom: 48px
+    margin: 40px 40px 48px 0
 @media (max-width: 768px)
-      .main
-        //margin-top: 0px
-        h1
-          width: 188px
-          height: 44px
-@media (max-width: 360px)
-      .main
-        margin-top: 10px
-        h1
-          width: 155px
-          height: auto          
-          margin: 0 16px
-.container
-  width: 1360px
-  margin-left: auto
-  margin-right: auto
-.contentInner
-  display: flex
-  flex-direction: column
-  gap: 24px
-@media (max-width: 768px)
-    .contentInner
-            display: flex
-            justify-content: center
-            gap: 40px
+    .h1
+      width: 188px
+      height: 44px
+@media (max-width: 360px)      
+    .h1
+      width: 155px
+      height: auto          
+      margin: 0 16px
 
+.contentInner
+    display: flex
+    flex-direction: column
+    gap: 24px    
+    margin-bottom: 80px
+@media (max-width: 1300px)
+    .contentInner
+        display: flex
+        flex-wrap: wrap
+        gap: 40px
+@media (max-width: 1200px)
+    .contentInner
+        display: flex
+        flex-wrap: wrap
+        gap: 40px
+@media (max-width: 1000px)
+    .contentInner
+        display: flex
+        flex-wrap: wrap
+        gap: 40px
+@media (max-width: 768px)
+    .contentInner    
+        display: flex
+        flex-wrap: wrap    
+        gap: 40px
 @media (max-width: 360px)
     .contentInner
+          //display: flex
+          //flex-wrap: wrap
           gap: 40px
+
 .contentBlock
   display: flex
   background-color: var(--main)
@@ -49,49 +56,47 @@
     padding: 77px 32px
 @media (max-width: 768px)
     .contentBlock
-            width: 688px
-            height: 590px
-            display: flex
-            flex-direction: column
-            justify-content: center
-            &Text
-                padding: 0px
-                margin-bottom: 5px
-
+        width: 688px
+        height: auto
+        display: flex
+        flex-wrap: wrap
+        justify-content: center            
+        &Text
+          padding: 10px
+          margin-bottom: 5px
 @media (max-width: 360px)
-    .contentBlock
-          //width: 328px                 
-          &Text
-             padding: 0px
-
+    .contentBlock    
+        width: 328px    
+        height: auto        
+        display: flex
+        flex-wrap:  wrap
+        justify-content: center
+        &Text
+          padding: 0px
+          margin-bottom: 5px
+          
 .heading
   width: 632px
   height: 78px
   font-family: "Merriweather", serif
-@media (max-width: 768px)
-    .heading
-          width: 100%
-          height: auto
 @media (max-width: 360px)
-    .heading
-          width: 100%
-          height: auto
+    .heading       
+        width: 328px
+        height: 80px
+        margin-bottom: 25px
 .text
   width: 632px
   height: 126px
   font-family: "Inter", sans-serif
   color: var(--grey500)
   padding: 20px 0
-@media (max-width: 768px)
-    .text
-        width: 100%
-        height: auto
 @media (max-width: 360px)
     .text
-        width: 100%
-        height: auto
+        height: 285px
+        //margin: 10px 0
 .left
   flex-direction: row-reverse
+
 .image
   width: 664px
   height: 374px
@@ -106,30 +111,20 @@
   border: none
   border-radius: 16px 0px 0px 16px
 @media (max-width: 768px)
-
-    .contentBlock
-        flex-direction: column
-        //margin: 0 40px
     .contentBlockText, .heading, .text
         width: 100%
-        display: flex
-        justify-content: center
+        //display: flex      
+        //flex-wrap: wrap  
+        //justify-content: center
 
     .image, .leftImage
         width: 688px
         height: auto
-        float: none
-        //order: -1
+        float: none        
         border-radius: 16px 16px 0 0
-@media (max-width: 360px)
-    .contentBlock
-        display: flex
-        flex-direction: column
-        justify-content: center
-        margin: 0 16px
-        
+@media (max-width: 360px)            
     .contentBlockText       
-        width: 328px
+        gap: 30px
         
     .image, .leftImage
         width: 328px
