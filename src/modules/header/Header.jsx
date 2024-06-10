@@ -23,7 +23,7 @@ import { CrossIcon } from "../../assets/icons/CrossIcon";
 import { ArrowDown } from "../../assets/icons/ArrowDown";
 
 import { NavLink, useLocation } from "react-router-dom";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { HeaderLogoMobile } from "../../assets/logos/headerLogos/HeaderLogoMobile.jsx";
@@ -31,12 +31,12 @@ import { HeaderLogoMobile } from "../../assets/logos/headerLogos/HeaderLogoMobil
 export const Header = () => {
    const { t } = useTranslation();
 
-   const navItems = [
+   const navItems = useMemo(() => [
       { id: 1, path: PATH.npa, label: "header&footer.nav.regulations" },
       { id: 2, path: PATH.services, label: "header&footer.nav.services" },
       { id: 3, path: PATH.faq, label: "header&footer.nav.q&a" },
       { id: 4, path: PATH.contacts, label: "header&footer.nav.contacts" },
-   ];
+   ], [PATH]);
 
    const [isInputVisible, setIsInputVisible] = useState(false);
    const [activeSubnav, setActiveSubnav] = useState(null);
@@ -73,39 +73,39 @@ export const Header = () => {
 
    const activeLink = ({ isActive }) => (isActive ? classes.active : "");
 
-   const toggleInputVisibility = () => {
+   const toggleInputVisibility = useCallback(() => {
       setIsInputVisible((prev) => !prev);
-   };
+   }, []);
 
-   const closeInput = () => {
+   const closeInput = useCallback(() => {
       setIsInputVisible(((prev) => !prev));
-   };
+   }, []);
 
-   const toggleSubnav = (menu) => {
+   const toggleSubnav = useCallback((menu) => {
       setActiveSubnav((prev) => prev === menu ? null : menu);
-   };
+   }, []);
 
-   const toggleArchiveOpenResponsive = () => {
+   const toggleArchiveOpenResponsive = useCallback(() => {
       setIsArchiveOpenResponsive((prev) => !prev);
-   };
+   }, []);
 
-   const toggleMediaArchiveOpenResponsive = () => {
+   const toggleMediaArchiveOpenResponsive = useCallback(() => {
       setIsMediaArchiveOpenResponsive((prev) => !prev);
-   };
+   }, []);
 
-   const toggleDropdown = () => {
+   const toggleDropdown = useCallback(() => {
       setIsDropMenuOpen((prev) => !prev);
-   };
+   }, []);
 
-   const isArchiveActive = () => {
+   const isArchiveActive = useCallback(() => {
       const archivePages = [PATH.aboutArchive, PATH.management];
       return archivePages.some((page) => location.pathname.includes(page));
-   };
+   }, [location.pathname, PATH.aboutArchive, PATH.management]);
 
-   const isMediaArchiveActive = () => {
+   const isMediaArchiveActive = useCallback(() => {
       const archivePages = [PATH.publications, PATH.photo, PATH.video];
       return archivePages.some((page) => location.pathname.includes(page));
-   };
+   }, [location.pathname, PATH.publications, PATH.photo, PATH.video]);
 
    const toggleAccessibilityMode = () => {
       setIsAccessibilityModeActive(!isAccessibilityModeActive);

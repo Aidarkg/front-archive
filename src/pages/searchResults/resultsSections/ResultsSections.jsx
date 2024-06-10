@@ -2,6 +2,8 @@ import classes from "./ResultsSections.module.sass";
 
 import { useTranslation } from "react-i18next";
 
+import { useCallback } from "react";
+
 import { useNavigate } from "react-router-dom";
 
 import { Typography } from "../../../UI/Typography/Typography";
@@ -14,6 +16,7 @@ import { useSearchStore } from "../store/useSearchStore";
 
 import { ArrowRight } from "../../../assets/icons/ArrowRight";
 
+
 export const ResultsSections = () => {
     const { searchResults, nextResults, loadMoreResults } = useSearchStore();
 
@@ -21,13 +24,13 @@ export const ResultsSections = () => {
 
     const { t } = useTranslation();
 
-    const filteredResults = (type) => {
+    const filteredResults = useCallback((type) => {
         return searchResults?.filter((result) => result.type === type);
-    };
+    }, [searchResults]);
 
-    const handleCardClick = (id) => {
+    const handleCardClick = useCallback((id) => {
         navigate(`/managementMore/${id}`);
-    };
+    }, [navigate]);
 
     return (
         <>
