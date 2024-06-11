@@ -11,7 +11,7 @@ import { Loader } from "../../components/loader/Loader.jsx";
 
 export const Services = () => {
    const { t, i18n } = useTranslation();
-   const { service, loading, fetchData, error } = useServiceStore();
+   const { service, loading, fetchData, downloadDocument, error } = useServiceStore();
 
    useEffect(() => {
       fetchData();
@@ -22,6 +22,7 @@ export const Services = () => {
    if (error) {
       return <div>error: {error}</div>;
    }
+
 
    return (
       <section>
@@ -40,6 +41,7 @@ export const Services = () => {
                text={t("servicePage.button")}
                className={classes.downloadPreiList}
                icon={<DownloadIcon />}
+               onClick={downloadDocument}
             />
             {loading && <Loader />}
             <div className={classes.mapCards}>

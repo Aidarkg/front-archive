@@ -64,12 +64,12 @@ export const SwiperOrganizations = () => {
                   <SwiperSlide key={idx}>
                      <a
                         style={{ color: "black" }}
-                        // FIX ME будет исползоватся в будушем  href={Organization.aHrefOrganization}
+                        href={Organization.link}
                         target="_blank"
                         rel="noopener noreferrer"
                      >
                         <div className={css.mapOrganization}>
-                           {Organization.logo}
+                           <img src={Organization.logo} alt="logo" />
                         </div>
                         <Typography
                            className={css.nameOrganizations}
