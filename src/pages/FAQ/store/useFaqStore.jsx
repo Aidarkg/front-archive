@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import axios from "axios";
+import axios from "../../../axiosConfig";
 import {BASE_URL} from "../../../utils/constants/Constants.js";
 
 const useFaqStore = create((set) => ({

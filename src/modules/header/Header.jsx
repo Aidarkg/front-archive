@@ -23,7 +23,7 @@ import { CrossIcon } from "../../assets/icons/CrossIcon";
 import { ArrowDown } from "../../assets/icons/ArrowDown";
 
 import { NavLink, useLocation } from "react-router-dom";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { HeaderLogoMobile } from "../../assets/logos/headerLogos/HeaderLogoMobile.jsx";
@@ -31,15 +31,17 @@ import { HeaderLogoMobile } from "../../assets/logos/headerLogos/HeaderLogoMobil
 export const Header = () => {
    const { t } = useTranslation();
 
-   const navItems = [
+   const navItems = useMemo(() => [
       { id: 1, path: PATH.npa, label: "header&footer.nav.regulations" },
       { id: 2, path: PATH.services, label: "header&footer.nav.services" },
       { id: 3, path: PATH.faq, label: "header&footer.nav.q&a" },
       { id: 4, path: PATH.contacts, label: "header&footer.nav.contacts" },
-   ];
+   ], [PATH]);
 
    const [isInputVisible, setIsInputVisible] = useState(false);
    const [activeSubnav, setActiveSubnav] = useState(null);
+   const [isArchiveOpenResponsive, setIsArchiveOpenResponsive] = useState(false);
+   const [isMediaArchiveOpenResponsive, setIsMediaArchiveOpenResponsive] = useState(false);
    const [isDropMenuOpen, setIsDropMenuOpen] = useState(false);
    const [isAccessibilityModeActive, setIsAccessibilityModeActive] = useState(false);
 
@@ -56,32 +58,54 @@ export const Header = () => {
 
    useEffect(() => {
       setIsInputVisible(false);
+      setIsDropMenuOpen(false);
+      setIsArchiveOpenResponsive(false);
+      setIsMediaArchiveOpenResponsive(false);
    }, [location]);
+
+   useEffect(() => {
+      if (isDropMenuOpen) {
+         document.body.style.overflow = "hidden";
+      } else {
+         document.body.style.overflow = "";
+      }
+   }, [isDropMenuOpen]);
 
    const activeLink = ({ isActive }) => (isActive ? classes.active : "");
 
-   const toggleInputVisibility = (e) => {
-      e.stopPropagation();
+   const toggleInputVisibility = useCallback(() => {
       setIsInputVisible((prev) => !prev);
-   };
+   }, []);
 
-   const toggleSubnav = (menu) => {
+   const closeInput = useCallback(() => {
+      setIsInputVisible(((prev) => !prev));
+   }, []);
+
+   const toggleSubnav = useCallback((menu) => {
       setActiveSubnav((prev) => prev === menu ? null : menu);
-   };
+   }, []);
 
-   const toggleDropdown = () => {
+   const toggleArchiveOpenResponsive = useCallback(() => {
+      setIsArchiveOpenResponsive((prev) => !prev);
+   }, []);
+
+   const toggleMediaArchiveOpenResponsive = useCallback(() => {
+      setIsMediaArchiveOpenResponsive((prev) => !prev);
+   }, []);
+
+   const toggleDropdown = useCallback(() => {
       setIsDropMenuOpen((prev) => !prev);
-   };
+   }, []);
 
-   const isArchiveActive = () => {
+   const isArchiveActive = useCallback(() => {
       const archivePages = [PATH.aboutArchive, PATH.management];
       return archivePages.some((page) => location.pathname.includes(page));
-   };
+   }, [location.pathname, PATH.aboutArchive, PATH.management]);
 
-   const isMediaArchiveActive = () => {
+   const isMediaArchiveActive = useCallback(() => {
       const archivePages = [PATH.publications, PATH.photo, PATH.video];
       return archivePages.some((page) => location.pathname.includes(page));
-   };
+   }, [location.pathname, PATH.publications, PATH.photo, PATH.video]);
 
    const toggleAccessibilityMode = () => {
       setIsAccessibilityModeActive(!isAccessibilityModeActive);
@@ -241,7 +265,7 @@ export const Header = () => {
                   {isInputVisible && (
                      <HeaderInput
                         ref={inputRef}
-                        onCleanUp
+                        onClose={closeInput}
                         type="search"
                         placeholder={t("header&footer.search")}
                      />
@@ -280,18 +304,18 @@ export const Header = () => {
                         <nav className={classes.responsiveNav}>
                            <ul className={classes.responsiveList}>
                               <li
-                                 className={`${classes.accordionItem} ${activeSubnav === "archive" ? classes.active : ""}`}
-                                 onClick={() => toggleSubnav("archive")}
+                                 className={`${classes.accordionItem} ${isArchiveOpenResponsive ? classes.active : ""}`}
+                                 onClick={() => toggleArchiveOpenResponsive()}
                               >
                                  <Typography className={classes.parentNav} variant="h6">
                                     {t("header&footer.nav.archive")}
                                  </Typography>
-                                 {activeSubnav === "archive"
+                                 {isArchiveOpenResponsive
                                     ? <ArrowDown className={classes.ArrowUpSvg} />
                                     : <ArrowDown className={classes.ArrowDownSvg} />}
                               </li>
-                              {activeSubnav === "archive" && (
-                                 <ul className={`${classes.subnav} ${activeSubnav === "archive" ? classes.open : ""}`}>
+                              {isArchiveOpenResponsive && (
+                                 <ul className={`${classes.subnav} ${isArchiveOpenResponsive ? classes.open : ""}`}>
                                     <li className={classes.subnavItem}>
                                        <NavLink to={PATH.aboutArchive}>
                                           <Typography variant="smallBody" color="black">
@@ -309,18 +333,18 @@ export const Header = () => {
                                  </ul>
                               )}
                               <li
-                                 className={`${classes.accordionItem} ${activeSubnav === "mediaArchive" ? classes.active : ""}`}
-                                 onClick={() => toggleSubnav("mediaArchive")}
+                                 className={`${classes.accordionItem} ${isMediaArchiveOpenResponsive ? classes.active : ""}`}
+                                 onClick={() => toggleMediaArchiveOpenResponsive()}
                               >
                                  <Typography className={classes.parentNav} variant="h6">
                                     {t("header&footer.nav.mediaArchive")}
                                  </Typography>
-                                 {activeSubnav === "mediaArchive"
+                                 {isMediaArchiveOpenResponsive
                                     ? <ArrowDown className={classes.ArrowUpSvg} />
                                     : <ArrowDown className={classes.ArrowDownSvg} />}
                               </li>
-                              {activeSubnav === "mediaArchive" && (
-                                 <ul className={`${classes.subnav} ${activeSubnav === "mediaArchive" ? classes.open : ""}`}>
+                              {isMediaArchiveOpenResponsive && (
+                                 <ul className={`${classes.subnav} ${isMediaArchiveOpenResponsive ? classes.open : ""}`}>
                                     <li className={classes.subnavItem}>
                                        <NavLink to={PATH.publications}>
                                           <Typography variant="smallBody" color="black">

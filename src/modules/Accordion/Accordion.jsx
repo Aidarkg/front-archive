@@ -8,11 +8,11 @@ import useFaqStore from "../../pages/FAQ/store/useFaqStore.jsx";
 export const Accardion = () => {
    const {faqs, fetchFaqs} = useFaqStore();
    const [openId, setId] = useState(null);
-   const {t} = useTranslation();
+   const {t, i18n} = useTranslation();
 
    useEffect(() => {
       fetchFaqs();
-   }, [fetchFaqs]);
+   }, [fetchFaqs, i18n.language]);
 
    return (
       <section>

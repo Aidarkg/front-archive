@@ -1,8 +1,7 @@
 import axios from "../../../axiosConfig";
 import { create } from "zustand";
-import {BASE_URL} from "../../../utils/constants/Constants.js";
 
-// const BASE_URL = "http://34.173.93.49";
+import { BASE_URL } from "../../../utils/constants/Constants.js";
 
 export const useRegulationsStore = create((set, get) => ({
     regulationsList: [],
