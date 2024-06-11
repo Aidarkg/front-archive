@@ -3,7 +3,23 @@
     width: 350px    
     font-family: "Merriweather", serif
     margin: 40px 40px 48px 0
+@media (max-width: 1200px)
+    .h1
+      width: 188px
+      height: 44px
+@media (max-width: 900px)
+    .h1
+      width: 188px
+      height: 44px
+@media (max-width: 800px)
+    .h1
+      width: 188px
+      height: 44px
 @media (max-width: 768px)
+    .h1
+      width: 188px
+      height: 44px
+@media (max-width: 650px)
     .h1
       width: 188px
       height: 44px
@@ -33,15 +49,23 @@
         display: flex
         flex-wrap: wrap
         gap: 40px
+@media (max-width: 900px)
+    .contentInner    
+        display: flex
+        flex-wrap: wrap    
+        gap: 40px
+@media (max-width: 800px)
+    .contentInner    
+        display: flex
+        flex-wrap: wrap    
+        gap: 40px
 @media (max-width: 768px)
     .contentInner    
         display: flex
         flex-wrap: wrap    
         gap: 40px
 @media (max-width: 360px)
-    .contentInner
-          //display: flex
-          //flex-wrap: wrap
+    .contentInner          
           gap: 40px
 
 .contentBlock
@@ -54,9 +78,69 @@
     flex-direction: column
     gap: 16px
     padding: 77px 32px
+@media (max-width: 1200px)
+    .contentBlock
+        width: 820px
+        height: auto
+        display: flex
+        flex-wrap: wrap
+        justify-content: center            
+        &Text
+          padding: 10px
+          margin-bottom: 5px
+@media (max-width: 1000px)
+    .contentBlock
+        width: 820px
+        height: auto
+        display: flex
+        flex-wrap: wrap
+        justify-content: center            
+        &Text
+          padding: 10px
+          margin-bottom: 5px
+@media (max-width: 900px)
+    .contentBlock
+        width: 820px
+        height: auto
+        display: flex
+        flex-wrap: wrap
+        justify-content: center            
+        &Text
+          padding: 10px
+          margin-bottom: 5px
+@media (max-width: 800px)
+    .contentBlock
+        width: 720px
+        height: auto
+        display: flex
+        flex-wrap: wrap
+        justify-content: center            
+        &Text
+          padding: 10px
+          margin-bottom: 5px
 @media (max-width: 768px)
     .contentBlock
         width: 688px
+        height: auto
+        display: flex
+        flex-wrap: wrap
+        justify-content: center            
+        &Text
+          padding: 10px
+          margin-bottom: 5px
+@media (max-width: 680px)
+    .contentBlock
+        width: 600px
+        height: auto
+        display: flex
+        flex-wrap: wrap
+        justify-content: center            
+        &Text
+          padding: 10px
+          margin-bottom: 5px
+@media (max-width: 460px)
+    .contentBlock
+        width: 380px
         height: auto
         display: flex
         flex-wrap: wrap
@@ -93,7 +177,7 @@
 @media (max-width: 360px)
     .text
         height: 285px
-        //margin: 10px 0
+        
 .left
   flex-direction: row-reverse
 
@@ -113,10 +197,7 @@
 @media (max-width: 768px)
     .contentBlockText, .heading, .text
         width: 100%
-        //display: flex      
-        //flex-wrap: wrap  
-        //justify-content: center
-
+        
     .image, .leftImage
         width: 688px
         height: auto
