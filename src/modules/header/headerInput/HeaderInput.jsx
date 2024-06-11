@@ -1,6 +1,6 @@
 import classes from "./HeaderInput.module.sass";
 
-import { forwardRef, useDeferredValue, useState } from "react";
+import { forwardRef, useCallback, useDeferredValue, useState } from "react";
 
 import { CloseSvg } from "../../../UI/svgComponents/CloseSvg";
 
@@ -23,19 +23,19 @@ export const HeaderInput = forwardRef((props, ref) => {
     const { fetchResults } = useSearchStore();
     const navigate = useNavigate();
 
-    const handleFocus = () => setFocused(true);
+    const handleFocus = useCallback(() => setFocused(true), []);
 
-    const handleBlur = () => setFocused(false);
+    const handleBlur = useCallback(() => setFocused(false), []);
 
-    const handleValueChange = (e) => {
+    const handleValueChange = useCallback((e) => {
         const newValue = e.target.value;
         setInputValue(newValue);
         if (onChange) {
             onChange(newValue);
         }
-    };
+    }, [onChange]);
 
-    const handleKeyDown = async () => {
+    const handleKeyDown = useCallback(async () => {
         if (defferedInputValue.trim() === "") {
             return;
         }
@@ -45,7 +45,7 @@ export const HeaderInput = forwardRef((props, ref) => {
         } catch (error) {
             console.error("Error during search:", error);
         }
-    };
+    }, [defferedInputValue, fetchResults, navigate]);
 
     return (
         <div className={classes.inputWrapper} ref={ref}>
