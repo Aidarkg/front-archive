@@ -54,7 +54,7 @@ export const ContentBlocks = ({
                            <Typography className={classes.heading} variant="h2">
                               {block.heading}
                            </Typography>
-                           <Typography className={classes.text} variant="p">
+                           <Typography className={classes.text} variant="body">
                               {block.text}
                            </Typography>
                            {showButton && index === 0 && (
