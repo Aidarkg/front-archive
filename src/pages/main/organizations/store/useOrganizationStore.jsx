@@ -4,6 +4,7 @@ import {BASE_URL} from "../../../../utils/constants/Constants";
 
 const useOrganizationsStore = create((set) => ({
   organizations: [],
+  contacts: [],
   loading: false,
   error: null,
   fetchOrganizations: async () => {

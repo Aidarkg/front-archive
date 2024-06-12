@@ -3,7 +3,7 @@ import personFaq from "../../pages/FAQ/img/personFaq.svg";
 import { Accardion } from "../../modules/Accordion/Accordion.jsx";
 import { MainGallery } from "./mainGallery/MainGallery.jsx";
 import { Organizations } from "./organizations/Organizations.jsx";
-import ContactSection from "../../modules/contactSection/ContactSection.jsx";
+import  ContactSection from "../../modules/contactSection/ContactSection.jsx";
 import { MainAboutArchive } from "./mainAboutArchive/MainAboutArchive.jsx";
 import classes from "../../modules/Accordion/AccardionItem.module.sass";
 

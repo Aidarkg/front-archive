@@ -1,26 +1,31 @@
-import {Container} from "../../components/container/Container.jsx";
 import classes from "./Contacts.module.sass";
+
+import {Container} from "../../components/container/Container.jsx";
 import {Breadcrumbs} from "../../modules/breadcrumbs/Breadcrumbs.jsx";
 import {Typography} from "../../UI/Typography/Typography.jsx";
 import {useTranslation} from "react-i18next";
+import {Loader} from "../../components/loader/Loader.jsx";
+
 import useStoreContacts from "./store/store.js";
 import {useEffect} from "react";
-import {Loader} from "../../components/loader/Loader.jsx";
+
 import {CapIconBlue} from "../../assets/icons/CapIconBlue.jsx";
 import LocationIcon from "../../assets/icons/LocationIcon.jsx";
 import PhoneStroke from "../../assets/icons/PhoneStroke.jsx";
 import MailIcon from "../../assets/icons/MailIcon.jsx";
-import {CalendarBlue} from "../../assets/icons/CalendarBlue.jsx";
 import CalendarIcon from "../../assets/icons/CalendarIcon.jsx";
 import RestaurantIcon from "../../assets/icons/RestaurantIcon.jsx";
 import {PeopleBlueIcon} from "../../assets/icons/PeopleBlueIcon.jsx";
 import {BookIcon} from "../../assets/icons/BookIcon.jsx";
 import {ContactsNumberIcon} from "../../assets/icons/ContactsNumberIcon.jsx";
+import {CalendarTimeBlue} from "../../assets/icons/CalendarTimeBlue.jsx";
 
 export const Contacts = () => {
+
     const {t, i18n} = useTranslation();
 
     const { contacts, loading, error, fetchContacts } = useStoreContacts();
+
     useEffect(() => {
         fetchContacts();
     }, [fetchContacts, i18n.language]);
@@ -66,7 +71,9 @@ export const Contacts = () => {
                                             {t("contactsPage.sections.generalInformation.phoneNumber")}
                                         </Typography>
                                         <Typography className={classes.text}>
-                                            {contacts?.archive[0]?.phone_number}
+                                            <a href={`tel:${contacts?.archive[0]?.phone_number}`}>
+                                                {contacts?.archive[0]?.phone_number}
+                                            </a>
                                         </Typography>
                                     </div>
                                     <div className={classes.archiveCardContent}>
@@ -75,15 +82,18 @@ export const Contacts = () => {
                                             {t("contactsPage.sections.generalInformation.email")}
                                         </Typography>
                                         <Typography className={classes.text}>
-                                            {contacts?.archive[0]?.email}
+                                            {contacts?.archive[0]?.email && (
+                                                <a href={`mailto:${contacts.archive[0].email}`}>
+                                                    {contacts.archive[0].email}
+                                                </a>
+                                            )}
                                         </Typography>
                                     </div>
                                 </div>
                             </div>
-
                             <div className={classes.contactsContent}>
                                 <Typography variant="h4" color="black" className={classes.archiveCardHeading}>
-                                    <CalendarBlue/>
+                                    <CalendarTimeBlue/>
                                     {t("contactsPage.sections.schedule.schedule")}
                                 </Typography>
                                 <div className={classes.archiveCardLine}>
@@ -155,8 +165,6 @@ export const Contacts = () => {
                         </div>
                     </div>
                 </div>
-
-
                 <div className={classes.contacts}>
                     <Typography variant="h2" color="black">
                         {t("contactsPage.headings.midHeading")}
@@ -184,7 +192,9 @@ export const Contacts = () => {
                                             {t("contactsPage.sections.generalInformation.phoneNumber")}
                                         </Typography>
                                         <Typography className={classes.text}>
-                                            {contacts?.anticor?.[0]?.phone_number}
+                                            <a href={`tel:${contacts?.anticor?.[0]?.phone_number}`}>
+                                                {contacts?.anticor?.[0]?.phone_number}
+                                            </a>
                                         </Typography>
                                     </div>
                                     <div className={classes.archiveCardContent}>
@@ -193,7 +203,9 @@ export const Contacts = () => {
                                             {t("contactsPage.sections.generalInformation.email")}
                                         </Typography>
                                         <Typography className={classes.text}>
-                                            {contacts?.anticor?.[0]?.email}
+                                            <a href={`mailto:${contacts?.anticor?.[0]?.email}`}>
+                                                {contacts?.anticor?.[0]?.email}
+                                            </a>
                                         </Typography>
                                     </div>
                                 </div>
@@ -201,7 +213,6 @@ export const Contacts = () => {
                         </div>
                     </div>
                 </div>
-
                 <div className={classes.contacts}>
                     <Typography variant="h2" color="black">
                         {t("contactsPage.headings.bottomHeading")}
@@ -220,7 +231,9 @@ export const Contacts = () => {
                                             {t("contactsPage.number")}
                                         </Typography>
                                         <Typography variant="body" color="grey500" className={classes.text}>
-                                            {contacts?.coll_center?.[0]?.number}
+                                            <a href={`tel:${contacts?.coll_center?.[0]?.number}`}>
+                                                {contacts?.coll_center?.[0]?.number}
+                                            </a>
                                         </Typography>
                                     </div>
                                 </div>
