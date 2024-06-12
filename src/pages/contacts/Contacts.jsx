@@ -21,7 +21,6 @@ export const Contacts = () => {
     const {t, i18n} = useTranslation();
 
     const { contacts, loading, error, fetchContacts } = useStoreContacts();
-    console.log(contacts?.archive[0]?.reception[0]?.weekdays, "asasa");
     useEffect(() => {
         fetchContacts();
     }, [fetchContacts, i18n.language]);

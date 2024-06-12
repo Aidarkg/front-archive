@@ -9,14 +9,12 @@ import {Breadcrumbs} from "../../modules/breadcrumbs/Breadcrumbs.jsx";
 import {Loader} from "../../components/loader/Loader.jsx";
 import {Container} from "../../components/container/Container.jsx";
 import {useTranslation} from "react-i18next";
-import {useLanguageStore} from "../../utils/languageStore/UseLanguageStore.js";
 
 export const DetailPhoto = () => {
-
     const {id} = useParams();
     const {images, getImages, photoData, loading}=usePhotos();
     const {t, i18n}=useTranslation();
-    const { language } = useLanguageStore();
+
 
     useEffect(() => {
         getImages(id, i18n.language);
