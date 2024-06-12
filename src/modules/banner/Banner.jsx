@@ -20,10 +20,7 @@ export const Banner = () => {
                      {t("mainPage.hero.heading")}
                   </Typography>
                   <DetailBtn />
-               </div>
-               {/* <Typography className={classes.p} variant="p">
-                  {t("mainPage.hero.subheading")}
-               </Typography> */}
+               </div>               
             </div>
          </Container>
       </section>
