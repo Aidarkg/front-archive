@@ -1,6 +1,5 @@
 import { Typography } from "../../UI/Typography/Typography.jsx";
 import classes from "./Photo.module.sass";
-import akaev from "../../assets/images/akaev.png";
 import { CustomCard } from "../../UI/customCard/CustomCard.jsx";
 import { useNavigate } from "react-router-dom";
 import { usePhotos } from "./api/PhotosStore.js";
@@ -11,30 +10,20 @@ import { Loader } from "../../components/loader/Loader.jsx";
 import { useTranslation } from "react-i18next";
 import { CustomButton } from "../../UI/customButton/CustomButton.jsx";
 import {ArchivePhotoSlider} from "./archivePhotoSlider/ArchivePhotoSlider.jsx";
-import {useLanguageStore} from "../../utils/languageStore/UseLanguageStore.js";
 
-const archiveImages = [
-    { image: akaev },
-    { image: akaev },
-    { image: akaev },
-    { image: akaev },
-    { image: akaev },
-];
 
 export const Photo = () => {
-    const { photosContent, getPhotosContent, loading, loadMorePhotosContent, nextPage } = usePhotos();
-    const { language } = useLanguageStore();
+    const { photosContent, archivePhoto, getPhotosContent, getArchiveContent,loading, loadMorePhotosContent, nextPage } = usePhotos();
+    const navigate = useNavigate();
+    const { t, i18n } = useTranslation();
+    const getMorePhotos = () => {
+        loadMorePhotosContent(nextPage, i18n.language);
+    };
 
     useEffect(() => {
-        getPhotosContent();
-    }, [language]);
-
-    const navigate = useNavigate();
-    const { t } = useTranslation();
-
-    const getMorePhotos = () => {
-        loadMorePhotosContent(nextPage);
-    };
+        getArchiveContent(i18n.language);
+        getPhotosContent(i18n.language);
+    }, [i18n.language]);
 
     return (
         <section>
@@ -42,10 +31,14 @@ export const Photo = () => {
                 <Breadcrumbs currentPage={t("mainPage.photoGallery.title")} />
                 <div className={classes.photo}>
                     <Typography variant="h1">{t("mainPage.photoGallery.title")}</Typography>
-                    <div className={classes.photoArchive}>
-                        {archiveImages?.map((image, index) => (
-                            <div className={classes.photoArchiveImage} key={index}>
-                                <img src={image.image} alt="img" />
+                    {loading && <Loader />}
+                    <div className={classes.photoArchive} >
+                        {archivePhoto?.map((archiveImage) => (
+                            <div className={classes.photoArchiveImage}
+                                 key={archiveImage.id}
+                                 onClick={() => navigate(`/photo/archive/${archiveImage.id}`)}
+                            >
+                                <img src={archiveImage.photo} alt="img" />
                             </div>
                         ))}
                     </div>
@@ -64,7 +57,7 @@ export const Photo = () => {
                     </div>
                     {loading && <Loader />}
                     {nextPage && (
-                        <CustomButton onClick={getMorePhotos} text={"еще"} />
+                        <CustomButton onClick={getMorePhotos} text={t("mainPage.publications.loadMore")} />
                     )}
                 </div>
             </Container>

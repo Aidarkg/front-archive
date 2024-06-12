@@ -9,11 +9,12 @@ import { Photo } from "./photo/Photo.jsx";
 import { Video } from "./video/Video.jsx";
 import { DetailPublication } from "./detailPublication/DetailPublication.jsx";
 import {DetailPhoto} from "./detailPhoto/DetailPhoto.jsx";
-import {DetailVideo} from "./detailVideo/DetailVideo.jsx";
 import {Management} from "./management/Management.jsx";
 import {ManagementMore} from "./managementMore/ManagementMore.jsx";
 import {SearchResults} from "./searchResults/SearchResults.jsx";
 import {Errors} from "../UI/error/Errors.jsx";
+import {DetailArchivePhoto} from "./detailArchivePhoto/DetailArchivePhoto.jsx";
+
 
 export {
     Errors,
@@ -28,8 +29,8 @@ export {
     Video,
     DetailPublication,
     DetailPhoto,
-    DetailVideo,
     Management,
     ManagementMore,
-    SearchResults
+    SearchResults,
+    DetailArchivePhoto
 };

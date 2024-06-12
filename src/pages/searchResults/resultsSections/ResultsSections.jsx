@@ -2,6 +2,8 @@ import classes from "./ResultsSections.module.sass";
 
 import { useTranslation } from "react-i18next";
 
+import { useCallback } from "react";
+
 import { useNavigate } from "react-router-dom";
 
 import { Typography } from "../../../UI/Typography/Typography";
@@ -14,6 +16,7 @@ import { useSearchStore } from "../store/useSearchStore";
 
 import { ArrowRight } from "../../../assets/icons/ArrowRight";
 
+
 export const ResultsSections = () => {
     const { searchResults, nextResults, loadMoreResults } = useSearchStore();
 
@@ -21,20 +24,17 @@ export const ResultsSections = () => {
 
     const { t } = useTranslation();
 
-    const newsResults = searchResults?.filter((result) => result.type === "news");
-    const photosResults = searchResults?.filter((result) => result.type === "photos");
-    const videosResults = searchResults?.filter((result) => result.type === "videos");
-    const servicesResults = searchResults?.filter((result) => result.type === "services");
-    const managementsResults = searchResults?.filter((result) => result.type === "managements");
-    const codexesResults = searchResults?.filter((result) => result.type === "codexes");
+    const filteredResults = useCallback((type) => {
+        return searchResults?.filter((result) => result.type === type);
+    }, [searchResults]);
 
-    const handleCardClick = (id) => {
+    const handleCardClick = useCallback((id) => {
         navigate(`/managementMore/${id}`);
-    };
+    }, [navigate]);
 
     return (
         <>
-            {newsResults.length > 0 && (
+            {filteredResults("news").length > 0 && (
                 <section className={classes.publications}>
                     <Typography
                         className={classes.headingManagement}
@@ -43,13 +43,13 @@ export const ResultsSections = () => {
                         {t("header&footer.subnav.publications")}
                     </Typography>
                     <PublicationBlock
-                        contentArray={newsResults}
+                        contentArray={filteredResults("news")}
                         type="publications"
                         haveBtn={false}
                     />
                     {nextResults.news && (
                         <CustomButton
-                            text={"Ещё"}
+                            text={t("loadMore")}
                             actionType="button"
                             icon={<ArrowRight />}
                             onClick={() => loadMoreResults("news")}
@@ -58,7 +58,7 @@ export const ResultsSections = () => {
                     )}
                 </section>
             )}
-            {photosResults.length > 0 && (
+            {filteredResults("photos").length > 0 && (
                 <section className={classes.photos}>
                     <Typography
                         className={classes.headingManagement}
@@ -67,13 +67,13 @@ export const ResultsSections = () => {
                         {t("header&footer.subnav.photo")}
                     </Typography>
                     <PublicationBlock
-                        contentArray={photosResults}
+                        contentArray={filteredResults("photos")}
                         type="photo"
                         haveBtn={false}
                     />
                     {nextResults.photos && (
                         <CustomButton
-                            text={"Ещё"}
+                            text={t("loadMore")}
                             actionType="button"
                             icon={<ArrowRight />}
                             onClick={() => loadMoreResults("photos")}
@@ -82,7 +82,7 @@ export const ResultsSections = () => {
                     )}
                 </section>
             )}
-            {videosResults.length > 0 && (
+            {filteredResults("videos").length > 0 && (
                 <section className={classes.videos}>
                     <Typography
                         className={classes.headingManagement}
@@ -91,13 +91,13 @@ export const ResultsSections = () => {
                         {t("header&footer.subnav.video")}
                     </Typography>
                     <PublicationBlock
-                        contentArray={videosResults}
+                        contentArray={filteredResults("videos")}
                         type="video"
                         haveBtn={false}
                     />
                     {nextResults.videos && (
                         <CustomButton
-                            text={"Ещё"}
+                            text={t("loadMore")}
                             actionType="button"
                             icon={<ArrowRight />}
                             onClick={() => loadMoreResults("videos")}
@@ -106,7 +106,7 @@ export const ResultsSections = () => {
                     )}
                 </section>
             )}
-            {servicesResults.length > 0 && (
+            {filteredResults("services").length > 0 && (
                 <section className={classes.services}>
                     <Typography
                         className={classes.headingService}
@@ -116,7 +116,7 @@ export const ResultsSections = () => {
                         {t("header&footer.nav.services")}
                     </Typography>
                     <div className={classes.serviceCardsContent}>
-                        {servicesResults?.map(({ id, title, status }) => (
+                        {filteredResults("services")?.map(({ id, title, status }) => (
                             <>
                                 <div className={classes.serviceCards} key={id}>
                                     <Typography
@@ -128,6 +128,8 @@ export const ResultsSections = () => {
                                     </Typography>
                                     <CustomButton
                                         className={classes.btnCardService}
+                                        actionType="button"
+                                        disabled
                                         text={status}
                                     />
                                 </div>
@@ -135,7 +137,7 @@ export const ResultsSections = () => {
                         ))}
                         {nextResults.services && (
                             <CustomButton
-                                text={"Ещё"}
+                                text={t("loadMore")}
                                 actionType="button"
                                 icon={<ArrowRight />}
                                 onClick={() => loadMoreResults("services")}
@@ -145,7 +147,7 @@ export const ResultsSections = () => {
                     </div>
                 </section>
             )}
-            {managementsResults.length > 0 && (
+            {filteredResults("managements").length > 0 && (
                 <section className={classes.managements}>
                     <Typography
                         className={classes.headingManagement}
@@ -154,7 +156,7 @@ export const ResultsSections = () => {
                         {t("header&footer.subnav.management")}
                     </Typography>
                     <div className={classes.management}>
-                        {managementsResults?.map(({ id, full_name, image, position, start_year, end_year }) => (
+                        {filteredResults("managements")?.map(({ id, full_name, image, position, start_year, end_year }) => (
                             <div
                                 className={classes.managementCard}
                                 key={id}
@@ -167,14 +169,14 @@ export const ResultsSections = () => {
                                     <Typography variant="h6">{full_name}</Typography>
                                     <Typography variant="smallBody" color="grey500">{position}</Typography>
                                     <Typography variant="extraSmallBody" color="grey400">
-                                        {`с ${start_year} по ${end_year}`}
+                                        {`${t("managementPage.startActivityDate")} ${start_year} ${t("managementPage.currentActivityDate")} ${end_year}`}
                                     </Typography>
                                 </div>
                             </div>
                         ))}
                         {nextResults.managements && (
                             <CustomButton
-                                text={"Ещё"}
+                                text={t("loadMore")}
                                 actionType="button"
                                 icon={<ArrowRight />}
                                 onClick={() => loadMoreResults("managements")}
@@ -184,7 +186,7 @@ export const ResultsSections = () => {
                     </div>
                 </section>
             )}
-            {codexesResults.length > 0 && (
+            {filteredResults("codexes").length > 0 && (
                 <section className={classes.regulations}>
                     <Typography className={classes.headingRegulations} variant="h1" color="grey500" >
                         {t("regulationsPage.currentPage")}
@@ -208,10 +210,10 @@ export const ResultsSections = () => {
                             </li>
                         </ul>
                         <ul className={classes.documentsContainer}>
-                            {codexesResults?.map(({ id, title, pdf_file, document_number }) => (
+                            {filteredResults("codexes")?.map(({ id, title, pdf_file, document_number }) => (
                                 <RegulationsDoc
                                     key={id}
-                                    // date={doc.date_file} FIX_ME неверный формат символов 26-04-2024
+                                    // date={doc.date_file} FIX_ME неверный формат символов *26-04-2024*
                                     date={"26.04.2024"}
                                     documentNumber={document_number}
                                     name={title}
@@ -222,7 +224,7 @@ export const ResultsSections = () => {
                         </ul>
                         {nextResults.codexes && (
                             <CustomButton
-                                text={"Ещё"}
+                                text={t("loadMore")}
                                 actionType="button"
                                 icon={<ArrowRight />}
                                 onClick={() => loadMoreResults("codexes")}

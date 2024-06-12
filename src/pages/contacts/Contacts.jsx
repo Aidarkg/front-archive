@@ -1,119 +1,235 @@
-import styles from "./Contacts.module.sass";
-import { Breadcrumbs } from "../../modules/breadcrumbs/Breadcrumbs.jsx";
-import CapIcon from "../../assets/icons/CapIcon";
-import PhoneStroke from "../../assets/icons/PhoneStroke";
-import LocationIcon from "../../assets/icons/LocationIcon";
-import MailIcon from "../../assets/icons/MailIcon";
-import CalendarIcon from "../../assets/icons/CalendarIcon";
-import TeamIcon from "../../assets/icons/TeamIcon";
-import CalendarTime from "../../assets/icons/CalendarTime";
-import RestaurantIcon from "../../assets/icons/RestaurantIcon";
-import BookIcon from "../../assets/icons/BookIcon";
 import {Container} from "../../components/container/Container.jsx";
-
-const ContactCard = ({ title, items }) => (
-  <div className={styles.card}>
-    <h3 className={styles.card_title}>
-      {title === "Общая информация" && <CapIcon className={styles.icon} />}
-      {title === "График работы" && <CalendarTime className={styles.icon} />}
-      {title === "Прием граждан" && <TeamIcon className={styles.icon} />}
-      {title === "Читальный зал" && <BookIcon className={styles.icon} />}
-      {title}
-    </h3>
-    <div className={styles.card_contact_wrapper}>
-      {items.map((item, index) => (
-        <div key={index} className={styles.item}>
-          <p className={styles.label}>
-            {item.label === "Местоположение" && <LocationIcon className={styles.icon} />}
-            {item.label === "Номер телефона" && <PhoneStroke className={styles.icon} />}
-            {item.label === "Электронная почта" && <MailIcon className={styles.icon} />}
-            {item.label === "В будние дни" && <CalendarIcon className={styles.icon} />}
-            {item.label === "Суббота и воскресенье" && <CalendarIcon className={styles.icon} />}
-            {item.label === "Перерыв" && <RestaurantIcon className={styles.icon} />}
-            {item.label === "Номер" && <PhoneStroke className={styles.icon} />}
-            {item.label}
-          </p>
-          <p className={item.value === "Выходной" ? styles.value_weekend : styles.value}>{item.value}</p>
-        </div>
-      ))}
-    </div>
-  </div>
-);
-
-const ContactSection = ({ title, cards }) => (
-  <div className={styles.section}>
-    <h2>{title}</h2>
-    <div className={styles.cardsContainer}>
-      {cards.map((card, index) => (
-        <ContactCard key={index} title={card.title} items={card.items} />
-      ))}
-    </div>
-  </div>
-);
+import classes from "./Contacts.module.sass";
+import {Breadcrumbs} from "../../modules/breadcrumbs/Breadcrumbs.jsx";
+import {Typography} from "../../UI/Typography/Typography.jsx";
+import {useTranslation} from "react-i18next";
+import useStoreContacts from "./store/store.js";
+import {useEffect} from "react";
+import {Loader} from "../../components/loader/Loader.jsx";
+import {CapIconBlue} from "../../assets/icons/CapIconBlue.jsx";
+import LocationIcon from "../../assets/icons/LocationIcon.jsx";
+import PhoneStroke from "../../assets/icons/PhoneStroke.jsx";
+import MailIcon from "../../assets/icons/MailIcon.jsx";
+import {CalendarBlue} from "../../assets/icons/CalendarBlue.jsx";
+import CalendarIcon from "../../assets/icons/CalendarIcon.jsx";
+import RestaurantIcon from "../../assets/icons/RestaurantIcon.jsx";
+import {PeopleBlueIcon} from "../../assets/icons/PeopleBlueIcon.jsx";
+import {BookIcon} from "../../assets/icons/BookIcon.jsx";
+import {ContactsNumberIcon} from "../../assets/icons/ContactsNumberIcon.jsx";
 
 export const Contacts = () => {
-  const archiveCards = [
-    {
-      title: "Общая информация",
-      items: [
-        { label: "Местоположение", value: "Кыргызская Республика, г. Бишкек, ул. Фрунзе, 477." },
-        { label: "Номер телефона", value: "0312 15 74 85" },
-        { label: "Электронная почта", value: "archivepresident@president.kg" },
-      ],
-    },
-    {
-      title: "График работы",
-      items: [
-        { label: "В будние дни", value: "с 8:30 до 17:30" },
-        { label: "Перерыв", value: "12:00-13:00" },
-        { label: "Суббота и воскресенье", value: "Выходной" },
-      ],
-    },
-    {
-      title: "Прием граждан",
-      items: [
-        { label: "В будние дни", value: "с 9:00 до 17:00" },
-      ],
-    },
-    {
-      title: "Читальный зал",
-      items: [
-        { label: "В будние дни", value: "с 9:30 до 16:30" },
-      ],
-    },
-  ];
+    const {t, i18n} = useTranslation();
 
-  const anticorruptionCards = [
-    {
-      title: "Общая информация",
-      items: [
-        { label: "Местоположение", value: "Кыргызская Республика, г. Бишкек, ул. Фрунзе, 477." },
-        { label: "Номер телефона", value: "0312 15 74 85" },
-        { label: "Электронная почта", value: "archivepresident@president.kg" },
-      ],
-    },
-  ];
+    const { contacts, loading, error, fetchContacts } = useStoreContacts();
+    console.log(contacts?.archive[0]?.reception[0]?.weekdays, "asasa");
+    useEffect(() => {
+        fetchContacts();
+    }, [fetchContacts, i18n.language]);
 
-  const callCenterCards = [
-    {
-      title: "Общая информация",
-      items: [
-        { label: "Номер", value: "0312 15 74 85" },
-      ],
-    },
-  ];
+    if (loading) {
+        return <Loader />;
+    }
 
-  return (
-    <Container>
-      <Breadcrumbs currentPage={"Контакты"} />
-      <div className={styles.contactsPage}>
-        <h1>Контактная информация</h1>
-        <ContactSection title="Архив" cards={archiveCards} />
-        <div className={styles.breadcrumbsContainer}>
-          <ContactSection title="Антикоррупционные дела" cards={anticorruptionCards} />
-          <ContactSection title="Колл-центр" cards={callCenterCards} />
-        </div>
-      </div>
-    </Container>
-  );
+    if (error) {
+        return <div>Error: {error}</div>;
+    }
+    return (
+        <section>
+            <Container>
+                <Breadcrumbs currentPage={t("contactsPage.headings.mainHeading")} />
+                <Typography className={classes.heading} variant="h1" color="blue500">
+                    {t("contactsPage.headings.mainHeading")}
+                </Typography>
+                <div className={classes.contacts}>
+                    <Typography variant="h2" color="black">
+                        {t("header&footer.nav.archive")}
+                    </Typography>
+                    <div className={classes.archive}>
+                        <div className={classes.archiveCard}>
+                            <div className={classes.contactsContent}>
+                                <Typography variant="h4" color="black" className={classes.archiveCardHeading}>
+                                    <CapIconBlue/>
+                                    {t("contactsPage.sections.generalInformation.generalInformation")}
+                                </Typography>
+                                <div className={classes.archiveCardLine}>
+                                    <div className={classes.archiveCardContent}>
+                                        <Typography variant="h6" color="black" className={classes.icons} >
+                                            <LocationIcon/>
+                                            {t("contactsPage.sections.generalInformation.location")}
+                                        </Typography>
+                                        <Typography variant="body" color="grey500" className={classes.text}>
+                                            {contacts?.archive?.[0]?.location}
+                                        </Typography>
+                                    </div>
+                                    <div className={classes.archiveCardContent}>
+                                        <Typography variant="h6" color="black" className={classes.icons}>
+                                            <PhoneStroke/>
+                                            {t("contactsPage.sections.generalInformation.phoneNumber")}
+                                        </Typography>
+                                        <Typography className={classes.text}>
+                                            {contacts?.archive[0]?.phone_number}
+                                        </Typography>
+                                    </div>
+                                    <div className={classes.archiveCardContent}>
+                                        <Typography variant="h6" color="black" className={classes.icons}>
+                                            <MailIcon/>
+                                            {t("contactsPage.sections.generalInformation.email")}
+                                        </Typography>
+                                        <Typography className={classes.text}>
+                                            {contacts?.archive[0]?.email}
+                                        </Typography>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className={classes.contactsContent}>
+                                <Typography variant="h4" color="black" className={classes.archiveCardHeading}>
+                                    <CalendarBlue/>
+                                    {t("contactsPage.sections.schedule.schedule")}
+                                </Typography>
+                                <div className={classes.archiveCardLine}>
+                                    <div className={classes.archiveCardContent}>
+                                        <Typography variant="h6" color="black" className={classes.icons} >
+                                            <CalendarIcon/>
+                                            {t("contactsPage.sections.duringWeekdays")}
+                                        </Typography>
+                                        <Typography variant="body" color="grey500" className={classes.text}>
+                                            {contacts?.archive[0]?.reception?.[0]?.weekdays}
+                                        </Typography>
+                                    </div>
+                                    <div className={classes.archiveCardContent}>
+                                        <Typography variant="h6" color="black" className={classes.icons}>
+                                            <RestaurantIcon/>
+                                            {t("contactsPage.sections.schedule.break")}
+                                        </Typography>
+                                        <Typography className={classes.text}>
+                                            {contacts?.archive[0]?.schedule?.[0]?._break}
+                                        </Typography>
+                                    </div>
+                                    <div className={classes.archiveCardContent}>
+                                        <Typography variant="h6" color="black" className={classes.icons}>
+                                            <CalendarIcon/>
+                                            {t("contactsPage.sections.schedule.saturdayAndSunday")}
+                                        </Typography>
+                                        <Typography className={classes.textColor}>
+                                            {contacts?.archive[0]?.schedule?.[0]?.weekend}
+                                        </Typography>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className={classes.archiveCard}>
+                            <div className={classes.contactsContent}>
+                                <Typography variant="h4" color="black" className={classes.archiveCardHeading}>
+                                    <PeopleBlueIcon/>
+                                    {t("contactsPage.sections.receptionOfCitizens.receptionOfCitizens")}
+                                </Typography>
+                                <div className={classes.archiveCardLine}>
+                                    <div className={classes.archiveCardContent}>
+                                        <Typography variant="h6" color="black" className={classes.icons} >
+                                            <CalendarIcon/>
+                                            {t("contactsPage.sections.duringWeekdays")}
+                                        </Typography>
+                                        <Typography variant="body" color="grey500" className={classes.text}>
+                                            {contacts?.archive[0]?.reception?.[0]?.weekdays}
+                                        </Typography>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className={classes.contactsContent}>
+                                <Typography variant="h4" color="black" className={classes.archiveCardHeading}>
+                                    <BookIcon/>
+                                    {t("contactsPage.sections.readingRoom.readingRoom")}
+                                </Typography>
+                                <div className={classes.archiveCardLine}>
+                                    <div className={classes.archiveCardContent}>
+                                        <Typography variant="h6" color="black" className={classes.icons} >
+                                            <CalendarIcon/>
+                                            {t("contactsPage.sections.duringWeekdays")}
+                                        </Typography>
+                                        <Typography variant="body" color="grey500" className={classes.text}>
+                                            {contacts?.archive[0]?.reading_room?.[0]?.weekdays}
+                                        </Typography>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div className={classes.contacts}>
+                    <Typography variant="h2" color="black">
+                        {t("contactsPage.headings.midHeading")}
+                    </Typography>
+                    <div className={classes.archive}>
+                        <div className={classes.archiveCard}>
+                            <div className={classes.contactsContent}>
+                                <Typography variant="h4" color="black" className={classes.archiveCardHeading}>
+                                    <CapIconBlue/>
+                                    {t("contactsPage.sections.generalInformation.generalInformation")}
+                                </Typography>
+                                <div className={classes.archiveCardLine}>
+                                    <div className={classes.archiveCardContent}>
+                                        <Typography variant="h6" color="black" className={classes.icons} >
+                                            <LocationIcon/>
+                                            {t("contactsPage.sections.generalInformation.location")}
+                                        </Typography>
+                                        <Typography variant="body" color="grey500" className={classes.text}>
+                                            {contacts?.anticor?.[0]?.location}
+                                        </Typography>
+                                    </div>
+                                    <div className={classes.archiveCardContent}>
+                                        <Typography variant="h6" color="black" className={classes.icons}>
+                                            <PhoneStroke/>
+                                            {t("contactsPage.sections.generalInformation.phoneNumber")}
+                                        </Typography>
+                                        <Typography className={classes.text}>
+                                            {contacts?.anticor?.[0]?.phone_number}
+                                        </Typography>
+                                    </div>
+                                    <div className={classes.archiveCardContent}>
+                                        <Typography variant="h6" color="black" className={classes.icons}>
+                                            <MailIcon/>
+                                            {t("contactsPage.sections.generalInformation.email")}
+                                        </Typography>
+                                        <Typography className={classes.text}>
+                                            {contacts?.anticor?.[0]?.email}
+                                        </Typography>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div className={classes.contacts}>
+                    <Typography variant="h2" color="black">
+                        {t("contactsPage.headings.bottomHeading")}
+                    </Typography>
+                    <div className={classes.archive}>
+                        <div className={classes.archiveCard}>
+                            <div className={classes.contactsContent}>
+                                <Typography variant="h4" color="black" className={classes.archiveCardHeading}>
+                                    <CapIconBlue/>
+                                    {t("contactsPage.sections.generalInformation.generalInformation")}
+                                </Typography>
+                                <div className={classes.archiveCardLine}>
+                                    <div className={classes.archiveCardContent}>
+                                        <Typography variant="h6" color="black" className={classes.icons} >
+                                            <ContactsNumberIcon/>
+                                            {t("contactsPage.number")}
+                                        </Typography>
+                                        <Typography variant="body" color="grey500" className={classes.text}>
+                                            {contacts?.coll_center?.[0]?.number}
+                                        </Typography>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </Container>
+        </section>
+    );
 };

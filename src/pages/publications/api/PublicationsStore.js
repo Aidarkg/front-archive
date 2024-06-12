@@ -1,21 +1,23 @@
 import { create } from "zustand";
 import axios from "axios";
-import {useLanguageStore} from "../../../utils/languageStore/UseLanguageStore.js";
+import {BASE_URL} from "../../../utils/constants/Constants.js";
 
-const BASE_URL = "http://34.173.93.49";
+
 export const usePublications = create((set, get) => ({
     publications: [],
     nextPage: null,
     error: null,
     loading: false,
-
-    getPublications: async () => {
+    getPublications: async (language) => {
         set({ loading: true, error: null });
         try {
-            const { language } = useLanguageStore.getState();
-            const response = await axios.get(`${BASE_URL}/${language}/api/v1/news`);
+            const response = await axios.get(`${BASE_URL}api/v1/news`, {
+                headers: {
+                    'Accept-Language': language
+                }
+            });
             const data = response.data;
-            set({ publications: data.results, nextPage: data.next});
+            set({ publications: data.results, nextPage: data.next });
         } catch (error) {
             console.error('Failed fetch error', error);
             set({ error: error.message });
@@ -24,12 +26,16 @@ export const usePublications = create((set, get) => ({
         }
     },
 
-    loadMorePublications: async () => {
+    loadMorePublications: async (language) => {
         const { nextPage } = get();
         if (!nextPage) return;
         set({ loading: true, error: null });
         try {
-            const response = await axios.get(nextPage);
+            const response = await axios.get(nextPage, {
+                headers: {
+                    'Accept-Language': language
+                }
+            });
             const data = response.data;
             set((state) => ({
                 publications: [...state.publications, ...data.results],
@@ -43,11 +49,14 @@ export const usePublications = create((set, get) => ({
         }
     },
 
-    getPublicationFromId: async (id) => {
+    getPublicationFromId: async (id, language) => {
         set({ loading: true, error: null });
         try {
-            const { language } = useLanguageStore.getState();
-            const response = await axios.get(`https://aidarzh.pythonanywhere.com/${language}/api/v1/news/${id}`);
+            const response = await axios.get(`${BASE_URL}api/v1/news/${id}`, {
+                headers: {
+                    'Accept-Language': language
+                }
+            });
             const data = response.data;
             set({ detailPublicationInfo: data });
         } catch (error) {

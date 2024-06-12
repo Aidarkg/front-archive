@@ -2,7 +2,7 @@ import classes from "./SearchResults.module.sass";
 
 import { useTranslation } from "react-i18next";
 
-import { useDeferredValue, useEffect, useState } from "react";
+import { useCallback, useDeferredValue, useEffect, useState } from "react";
 
 import { useLocation, useNavigate } from "react-router-dom";
 
@@ -27,7 +27,7 @@ const useQuery = () => {
 export const SearchResults = () => {
     const { searchResults, fetchResults, loading, error, clearResults } = useSearchStore();
 
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
 
     const query = useQuery().get("search");
     const [inputValue, setInputValue] = useState(query || "");
@@ -42,9 +42,9 @@ export const SearchResults = () => {
         } else {
             clearResults();
         }
-    }, [query, fetchResults, clearResults]);
+    }, [query, fetchResults, clearResults, i18n.language]);
 
-    const handleSearch = async () => {
+    const handleSearch = useCallback(async () => {
         if (defferedInputValue.trim() === "") {
             return;
         }
@@ -55,9 +55,9 @@ export const SearchResults = () => {
         } catch (error) {
             console.error("Error during search:", error);
         }
-    };
+    }, [defferedInputValue, fetchResults, navigate]);
 
-    const handleButtonClick = async () => {
+    const handleButtonClick = useCallback(async () => {
         if (defferedInputValue.trim() !== "") {
             try {
                 navigate(`?search=${encodeURIComponent(defferedInputValue)}`);
@@ -67,12 +67,12 @@ export const SearchResults = () => {
                 console.error("Error during search:", error);
             }
         }
-    };
+    }, [defferedInputValue, fetchResults, navigate]);
 
-    const handleValueChange = (e) => {
+    const handleValueChange = useCallback((e) => {
         const newValue = e.target.value;
         setInputValue(newValue);
-    };
+    }, []);
 
     if (loading) return <Loader />;
     if (error) return <Errors />;
@@ -80,16 +80,16 @@ export const SearchResults = () => {
     return (
         <section className={classes.SearchResults}>
             <Container>
-                <Breadcrumbs className={classes.breadcrumbs} currentPage={t("searchPage")} />
+                <Breadcrumbs className={classes.breadcrumbs} currentPage={t("searchPage.search")} />
                 <Typography className={classes.heading} variant="h1" color="blue500" >
-                    {t("searchPage")}
+                    {t("searchPage.search")}
                 </Typography>
                 <div className={classes.inputWrapper}>
                     <input
                         className={classes.searchInput}
                         value={defferedInputValue}
                         onChange={handleValueChange}
-                        onKeyDown={(e) => { if(e.key === "Enter") handleSearch(); }}
+                        onKeyDown={(e) => { if (e.key === "Enter") handleSearch(); }}
                         type="search"
                     />
                     <button
@@ -102,7 +102,9 @@ export const SearchResults = () => {
                 </div>
                 <div className={classes.resultsContainer}>
                     {Object.keys(searchResults).length === 0 && (
-                        <span>По запросу {lastQuery} ничего не найдено</span>
+                        <Typography variant="span">
+                            {t("searchPage.noResults.searchFor")} {lastQuery} {t("searchPage.noResults.nothingFound")}
+                        </Typography>
                     )}
                     {!loading && !error && searchResults && (
                         <ResultsSections />

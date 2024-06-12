@@ -18,18 +18,16 @@ import {FolderIconBlue} from "../../assets/icons/FolderIconBlue.jsx";
 
 import {Breadcrumbs} from "../../modules/breadcrumbs/Breadcrumbs.jsx";
 import {useTranslation} from "react-i18next";
-import {useLanguageStore} from "../../utils/languageStore/UseLanguageStore.js";
 
 
 export const ManagementMore = () => {
-    const { language } = useLanguageStore();
     const { id } = useParams();
     const { data, loading, error, getData } = useDataMore();
-    const { t } = useTranslation();
-    console.log(data, "MORE");
+    const { t, i18n } = useTranslation();
+
     useEffect(() => {
         getData(id);
-    }, [id, getData, language ]);
+    }, [id, getData, i18n.language ]);
     if (loading) {
         return <Loader />;
     }
