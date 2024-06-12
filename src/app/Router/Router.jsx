@@ -20,8 +20,8 @@ export const Router = () => {
                <Route path={PATH.detailPublication} element={<LayoutPages.DetailPublication />}/>
                <Route path={PATH.photo} element={<LayoutPages.Photo />} />
                <Route path={PATH.detailPhoto} element={<LayoutPages.DetailPhoto />} />
+               <Route path={PATH.detailArchivePhoto} element={<LayoutPages.DetailArchivePhoto />} />
                <Route path={PATH.video} element={<LayoutPages.Video />} />
-               <Route path={PATH.detailVideo} element={<LayoutPages.DetailVideo />} />
                <Route path={PATH.search} element={<LayoutPages.SearchResults />} />
                <Route path={PATH.notFound} element={<LayoutPages.Errors />} />
             </Route>

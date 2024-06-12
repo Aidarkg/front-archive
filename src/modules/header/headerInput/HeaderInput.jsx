@@ -1,6 +1,6 @@
 import classes from "./HeaderInput.module.sass";
 
-import { useDeferredValue, useState } from "react";
+import { forwardRef, useCallback, useDeferredValue, useState } from "react";
 
 import { CloseSvg } from "../../../UI/svgComponents/CloseSvg";
 
@@ -8,36 +8,34 @@ import { useSearchStore } from "../../../pages/searchResults/store/useSearchStor
 
 import { useNavigate } from "react-router-dom";
 
-export const HeaderInput = (props) => {
+export const HeaderInput = forwardRef((props, ref) => {
     const {
         type,
         value,
         onChange,
         placeholder,
-        onClose
+        onClose,
     } = props;
 
     const [inputValue, setInputValue] = useState(value || "");
     const defferedInputValue = useDeferredValue(inputValue);
     const [focused, setFocused] = useState(false);
-
+    const { fetchResults } = useSearchStore();
     const navigate = useNavigate();
 
-    const { fetchResults } = useSearchStore();
+    const handleFocus = useCallback(() => setFocused(true), []);
 
-    const handleFocus = () => setFocused(true);
+    const handleBlur = useCallback(() => setFocused(false), []);
 
-    const handleBlur = () => setFocused(false);
-
-    const handleValueChange = (e) => {
+    const handleValueChange = useCallback((e) => {
         const newValue = e.target.value;
         setInputValue(newValue);
         if (onChange) {
             onChange(newValue);
         }
-    };
+    }, [onChange]);
 
-    const handleKeyDown = async () => {
+    const handleKeyDown = useCallback(async () => {
         if (defferedInputValue.trim() === "") {
             return;
         }
@@ -47,10 +45,10 @@ export const HeaderInput = (props) => {
         } catch (error) {
             console.error("Error during search:", error);
         }
-    };
+    }, [defferedInputValue, fetchResults, navigate]);
 
     return (
-        <div className={classes.inputWrapper}>
+        <div className={classes.inputWrapper} ref={ref}>
             <input
                 className={classes.headerInput}
                 type={type}
@@ -58,14 +56,12 @@ export const HeaderInput = (props) => {
                 onChange={handleValueChange}
                 onBlur={handleBlur}
                 onFocus={handleFocus}
-                onKeyDown={(e) => { if(e.key === "Enter") handleKeyDown(); }}
+                onKeyDown={(e) => { if (e.key === "Enter") handleKeyDown(); }}
                 placeholder={focused ? "" : placeholder}
             />
-            {defferedInputValue === "" && (
-                <button className={classes.closeButton} onClick={onClose}>
-                    <CloseSvg />
-                </button>
-            )}
+            <CloseSvg className={classes.closeButton} onClick={onClose} />
         </div>
     );
-};
+});
+
+HeaderInput.displayName = "HeaderInput";

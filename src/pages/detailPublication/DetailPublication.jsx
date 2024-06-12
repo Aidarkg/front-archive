@@ -13,12 +13,11 @@ export const DetailPublication = () => {
 
     const {id} = useParams();
     const {detailPublicationInfo, getPublicationFromId, loading} = usePublications();
-    const {t} = useTranslation();
-    const {language}=useLanguageStore();
+    const {t, i18n} = useTranslation();
 
     useEffect(() => {
-        getPublicationFromId(id);
-    }, [id, language]);
+        getPublicationFromId(id, i18n.language);
+    }, [id, i18n.language]);
 
     return (
         <section className={classes.detailPublication}>

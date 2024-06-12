@@ -13,7 +13,7 @@ export const Main = () => {
       <section>
          <Banner />
          <MainAboutArchive />
-         {/*<MainGallery />*/}
+         <MainGallery />
          <div className="container">
             <div className={classes.accardionPage}>
                <Accardion  />

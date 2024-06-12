@@ -14,7 +14,7 @@ export const PATH = {
     photo: "photo",
     detailPhoto: "photo/:id",
     video: "video",
-    detailVideo: "video/:id",
+    detailArchivePhoto: "photo/archive/:id",
     search: "search",
     notFound: "*"
 };

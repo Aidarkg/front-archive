@@ -15,12 +15,12 @@ export const DetailPhoto = () => {
 
     const {id} = useParams();
     const {images, getImages, photoData, loading}=usePhotos();
-    const {t}=useTranslation();
+    const {t, i18n}=useTranslation();
     const { language } = useLanguageStore();
 
     useEffect(() => {
-        getImages(id);
-    }, [id, language]);
+        getImages(id, i18n.language);
+    }, [id, i18n.language]);
 
     return (
         <section className={classes.detailPhoto}>
@@ -31,7 +31,7 @@ export const DetailPhoto = () => {
                    <div className={classes.detailPhotoHead}>
                        <div className={classes.detailPhotoHeadInfo}>
                            <CustomDate date={photoData.public_date} isWhite={true}/>
-                           <ImageCount imageCount={images.length} isWhite={true}/>
+                           {images.length>0&&<ImageCount imageCount={images.length} isWhite={true}/>}
                        </div>
                        <Typography variant="h2">{photoData.title}</Typography>
                    </div>

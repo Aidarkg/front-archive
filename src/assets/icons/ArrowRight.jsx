@@ -34,7 +34,7 @@ export const ArrowRight = () => {
             <path
                id="Vector"
                d="M16 12L10 18L10 6L16 12Z"
-               fill="#000000"
+               fill="#484848"
                fillOpacity="1.000000"
                fillRule="nonzero"
             />

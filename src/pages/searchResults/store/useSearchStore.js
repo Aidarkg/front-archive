@@ -1,20 +1,9 @@
-import axios from 'axios';
+import axios from '../../../axiosConfig';
 import { create } from 'zustand';
 
-const BASE_URL = "http://209.38.228.54:82";
+import { BASE_URL } from "../../../utils/constants/Constants"; 
 
-const detectLanguage = (input) => {
-    const kyrgyzChars = /[үөң]/i;
-    const russianChars = /[а-яё]/i;
-
-    if (kyrgyzChars.test(input)) {
-        return "ky";
-    } else if (russianChars.test(input)) {
-        return "ru";
-    } else {
-        return "en";
-    }
-};
+// const BASE_URL = "http://34.173.93.49/"; // FIX_ME Для проверки наличия данных в массивах
 
 export const useSearchStore = create((set, get) => ({
     searchResults: [],
@@ -25,8 +14,7 @@ export const useSearchStore = create((set, get) => ({
         if (query.trim() !== "") {
             set({ loading: true, error: null });
             try {
-                const language = detectLanguage(query);
-                const response = await axios.get(`${BASE_URL}/${language}/api/v1/search/?search=${encodeURIComponent(query)}`);
+                const response = await axios.get(`${BASE_URL}api/v1/search/?search=${encodeURIComponent(query)}`);
 
                 const newsResults = response.data.news_results?.map((item) => ({ ...item, type: "news" })) || [];
                 const photosResults = response.data.photos_results?.map((item) => ({ ...item, type: "photos" })) || [];

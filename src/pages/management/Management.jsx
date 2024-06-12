@@ -8,13 +8,11 @@ import { useNavigate } from "react-router-dom";
 
 import { Breadcrumbs } from "../../modules/breadcrumbs/Breadcrumbs.jsx";
 import {useTranslation} from "react-i18next";
-import {useLanguageStore} from "../../utils/languageStore/UseLanguageStore.js";
 import {Loader} from "../../components/loader/Loader.jsx";
 import {useData} from "./store/store.js";
 
 export const Management = () => {
-    const { language } = useLanguageStore();
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
     const { data, loading, error, getData } = useData();
     const navigate = useNavigate();
 
@@ -24,7 +22,7 @@ export const Management = () => {
 
     useEffect(() => {
         getData();
-    }, [getData, language]);
+    }, [getData, i18n.language]);
     if (loading) {
         return <Loader />;
     }
