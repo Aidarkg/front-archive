@@ -8,7 +8,7 @@ import i18n from "./utils/i18n/i18n.js";
 import {Suspense} from "react";
 import {Loader} from "./components/loader/Loader.jsx";
 
-console.log(import.meta.env.VITE_API_URL);
+
 ReactDOM.createRoot(document.getElementById("root")).render(
    <BrowserRouter>
       <I18nextProvider i18n={i18n}>
@@ -18,3 +18,5 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       </I18nextProvider>
    </BrowserRouter>
 );
+
+App.displayName = "App";

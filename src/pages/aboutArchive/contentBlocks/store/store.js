@@ -1,25 +1,25 @@
-import axios from "axios";
+import axios from "../../../../axiosConfig";
 import { BASE_URL } from "../../../../utils/constants/Constants";
 import { create } from "zustand";
 
-export const useData = create((set, get) => ({
-    title: [],
-    description: [],
-    photo: [],
+export const useAboutArchive = create((set) => ({
+    aboutArchive: [],
     error: null,
     loading: false,
 
-    getData: async () => {
+    getData: async (language) => {
         set({ loading: true, error: null });
         try {
-            const response = await axios.get(`${BASE_URL}api/v1/about_archive_list`);            
-            set({
-                title: data.title,
-                description: data.description,
-                photo: data.results,
-            });
+            const response = await axios.get(`${BASE_URL}api/v1/about_archive/`, {
+                headers: {
+                    'Accept-Language': language
+                }
+            });            
+            set({ aboutArchive: response.data });
         } catch (error) {            
-            set({ error: error.message, loading: false });
+            set({ error: error.message });
+        } finally {
+            set({ loading: false });
         }
-    }    
-});
+    },    
+}));

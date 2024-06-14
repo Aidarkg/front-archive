@@ -5,7 +5,7 @@ import { ImageCount } from "../imageCount/ImageCount.jsx";
 import ReactPlayer from "react-player";
 import {Typography} from "../Typography/Typography.jsx";
 
-export const CustomCard = ({ onClick, image, video, video_link, date, title, imageCount, isLargeCard }) => {
+export const CustomCard = ({ onClick, image, video, date, title, imageCount, isLargeCard }) => {
     const videoRef = useRef(null);
 
     const handleVideoClick = () => {

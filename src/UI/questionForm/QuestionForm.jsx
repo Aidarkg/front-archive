@@ -35,7 +35,6 @@ export const QuestionForm = () => {
       reset();
       setTextAreaValue("");
       setPhoneNumber("");
-      console.log(data, "form");
    };
 
    const formValidate = (value) => {
