@@ -13,7 +13,12 @@ export const useRegulationsStore = create((set, get) => ({
         set({ loading: true, error: null });
         try {
             const response = await axios.get(`${BASE_URL}api/v1/kodeks`);
-            set({ regulationsList: response.data.results, loading: false, error: null });
+            set({
+                regulationsList: response.data.results,
+                next: response.data.next,
+                loading: false,
+                error: null
+            });
         } catch (error) {
             set({ regulationsList: [], loading: false, error: error.message });
         }
@@ -35,5 +40,23 @@ export const useRegulationsStore = create((set, get) => ({
         } catch (error) {
             set({ next: null, loading: false, error: error.message });
         }
-    }
+    },
+
+    downloadFile: async (url, filename) => {
+        set({ loading: true, error: null });
+        try {
+            const response = await axios.get(url, { responseType: "blob", });
+            const blob = new Blob([response.data], {type: "application/pdf"});
+            console.log("blob:", blob); // FIX_ME 
+            const link = document.createElement("a");
+            link.href = window.URL.createObjectURL(blob);
+            link.download = filename;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            set({ loading: false });
+        } catch (error) {
+            set({ loading: false, error: error.message });
+        }
+    } 
 }));
