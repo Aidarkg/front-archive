@@ -16,6 +16,8 @@ import { Loader } from "../../components/loader/Loader";
 
 import { Breadcrumbs } from "../../modules/breadcrumbs/Breadcrumbs";
 
+import { ArrowRight } from "../../assets/icons/ArrowRight";
+
 export const Npa = () => {
    const { t, i18n } = useTranslation();
    const { regulationsList, fetchRegulations, fetchMoreRegulations, next, loading } = useRegulationsStore();
@@ -71,8 +73,7 @@ export const Npa = () => {
                   {regulationsList?.map((doc) => (
                      <RegulationsDoc
                         key={doc.id}
-                        // date={doc.date_file} FIX_ME неверный формат символов 26-04-2024
-                        date={"26.04.2024"}
+                        date={doc.date_file}
                         documentNumber={doc.document_number}
                         name={doc.title}
                         linkOpen={doc.pdf_file}
@@ -80,14 +81,15 @@ export const Npa = () => {
                      />
                   ))}
                </ul>
-               {next && !loading && (
-                  <CustomButton
-                     text={t("loadMore")}
-                     buttonStyle="withBorder"
-                     onClick={fetchMoreRegulations}
-                  />
-               )}
             </div>
+            {next && !loading && (
+               <CustomButton
+                  text={t("loadMore")}
+                  icon={<ArrowRight />}
+                  className={classes.btnMoreLoadResults}
+                  onClick={fetchMoreRegulations}
+               />
+            )}
          </Container>
       </section>
    );
