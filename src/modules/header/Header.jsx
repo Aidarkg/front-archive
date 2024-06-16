@@ -26,7 +26,7 @@ import { NavLink, useLocation } from "react-router-dom";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 
-import { HeaderLogoMobile } from "../../assets/logos/headerLogos/HeaderLogoMobile.jsx";
+import { HeaderLogo } from "../../assets/logos/headerLogos/HeaderLogo.jsx";
 
 export const Header = () => {
    const { t } = useTranslation();
@@ -277,7 +277,7 @@ export const Header = () => {
                      <div ref={dropdownRef} className={`${classes.headerInnerResponsive} ${isDropMenuOpen ? classes.open : ""}`}>
                         <div className={classes.responsiveHigh}>
                            <div className={classes.headerLogoResponsive}>
-                              <HeaderLogoMobile />
+                              <HeaderLogo width={35} height={36} />
                               <div className={classes.headerLogoTitleResponsive}>
                                  <Typography className={classes.headerLogoTitleH5} variant="h5" color="grey500">
                                     {t("header&footer.logo.archivePresidentKR")}

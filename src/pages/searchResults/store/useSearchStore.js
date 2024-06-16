@@ -3,8 +3,6 @@ import { create } from 'zustand';
 
 import { BASE_URL } from "../../../utils/constants/Constants"; 
 
-// const BASE_URL = "http://34.173.93.49/"; // FIX_ME Для проверки наличия данных в массивах
-
 export const useSearchStore = create((set, get) => ({
     searchResults: [],
     nextResults: {},
