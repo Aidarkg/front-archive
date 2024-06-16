@@ -4,15 +4,24 @@ import { Btn } from "../../main/mainAboutArchive/btn/Btn";
 import classes from "./ContentBlocks.module.sass";
 import { Container } from "../../../components/container/Container";
 import { Breadcrumbs } from "../../../modules/breadcrumbs/Breadcrumbs";
+import { useAboutArchive } from "./store/store";
+import { useEffect } from "react";
 
-export const ContentBlocks = ({
-   blocks,
+export const ContentBlocks = ({   
    showTitle = true,
    showButton = false,
    showBreadcrumbs = true,
+   limit = null,
 }) => {
-   const { t } = useTranslation();
+   const { t, i18n } = useTranslation();
+   const { aboutArchive, getData } = useAboutArchive();
 
+   useEffect(() => {
+      getData();
+   }, [getData, i18n.language]);
+   
+   const blocksToShow = limit ? aboutArchive.slice(0, limit) : aboutArchive;
+   
    return (
       <section>
          <Container>
@@ -32,7 +41,7 @@ export const ContentBlocks = ({
                   </Typography>
                )}
                <div className={classes.contentInner}>
-                  {blocks.map((block, index) => (
+                  {blocksToShow?.map((data, index) => (
                      <div
                         key={index}
                         className={`${classes.contentBlock} ${
@@ -46,16 +55,16 @@ export const ContentBlocks = ({
                                     ? classes.leftImage
                                     : classes.image
                               }
-                              src={block.image}
+                              src={data.photo}
                               alt="Image"
                            />
                         </div>
                         <div className={classes.contentBlockText}>
                            <Typography className={classes.heading} variant="h2">
-                              {block.heading}
+                              {data.title}
                            </Typography>
                            <Typography className={classes.text} variant="body">
-                              {block.text}
+                              {data.description}
                            </Typography>
                            {showButton && index === 0 && (
                               <div className={classes.buttonContainer}>
