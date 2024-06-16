@@ -43,7 +43,7 @@ export const Video = () => {
                     </div>
                     {loading && <Loader />}
                     {nextPage && !loading && (
-                        <CustomButton onClick={getMoreVideos} text={t("mainPage.videoGallery.loadMore")} />
+                        <CustomButton onClick={getMoreVideos} text={t("loadMore")} />
                     )}
                 </div>
             </Container>

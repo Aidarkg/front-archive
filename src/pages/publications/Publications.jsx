@@ -44,7 +44,7 @@ export const Publications = () => {
                     </div>
                     {loading && <Loader />}
                     {nextPage && (
-                        <CustomButton onClick={getMorePublications} text={t("mainPage.publications.loadMore")} />
+                        <CustomButton onClick={getMorePublications} text={t("loadMore")} />
                     )}
                 </div>
             </Container>
