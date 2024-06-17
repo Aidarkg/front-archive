@@ -111,6 +111,17 @@ export const Header = () => {
       setIsAccessibilityModeActive(!isAccessibilityModeActive);
    };
 
+
+      const observer = new MutationObserver(() => {
+          if (document.querySelector('#special')) {
+             headerRef.current.style.marginTop = "50px";
+          } else {
+             headerRef.current.style.marginTop = "0";
+         }
+       });
+
+       observer.observe(document.body, { attributes: true, childList: true, subtree: true });
+
    return (
       <header className={classes.header} ref={headerRef}>
          <Container>
@@ -220,11 +231,6 @@ export const Header = () => {
                         alt="ВЕРСИЯ ДЛЯ СЛАБОВИДЯЩИХ"
                         title="ВЕРСИЯ ДЛЯ СЛАБОВИДЯЩИХ"
                      />
-                     {/* <AccessibilitySvg
-                        id="specialButton"
-                        alt={t("header&footer.eyeIcon")}
-                     />
-                      FIX_ME Можно использовать svg-компонент */}
                   </button>
                   <button
                      className={classes.searchBtn}
@@ -261,11 +267,6 @@ export const Header = () => {
                            <div className={classes.responsiveIcons}>
                               <button className={classes.eyeIcon} onClick={toggleAccessibilityMode}>
                                  <AccessibilitySvg />
-                                 {/* <AccessibilitySvg
-                                    id="specialButton"
-                                    alt={t("header&footer.eyeIcon")}
-                                 />
-                                 FIX_ME Можно использовать svg-компонент */}
                               </button>
                               <button className={classes.crossIcon} onClick={toggleDropdown}>
                                  <CrossIcon />
@@ -362,4 +363,3 @@ export const Header = () => {
    );
 };
 
-//FIX ME замапить все что можно
