@@ -47,7 +47,6 @@ export const useRegulationsStore = create((set, get) => ({
         try {
             const response = await axios.get(url, { responseType: "blob", });
             const blob = new Blob([response.data], {type: "application/pdf"});
-            console.log("blob:", blob); // FIX_ME 
             const link = document.createElement("a");
             link.href = window.URL.createObjectURL(blob);
             link.download = filename;
