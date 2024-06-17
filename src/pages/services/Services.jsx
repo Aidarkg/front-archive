@@ -11,7 +11,15 @@ import { Loader } from "../../components/loader/Loader.jsx";
 
 export const Services = () => {
    const { t, i18n } = useTranslation();
-   const { service, loading, fetchData, downloadDocument, error } = useServiceStore();
+   const {
+      service,
+      loading,
+      fetchData,
+      downloadDocument,
+      error,
+      loadMoreService,
+      nextPage,
+   } = useServiceStore();
 
    useEffect(() => {
       fetchData();
@@ -22,7 +30,9 @@ export const Services = () => {
    if (error) {
       return <div>error: {error}</div>;
    }
-
+   const getMoreService = () => {
+      loadMoreService(i18n.language);
+   };
 
    return (
       <section>
@@ -62,6 +72,13 @@ export const Services = () => {
                   </div>
                ))}
             </div>
+            {loading && <Loader />}
+            {nextPage && (
+               <CustomButton
+                  onClick={getMoreService}
+                  text={t("loadMore")}
+               />
+            )}
          </div>
       </section>
    );
