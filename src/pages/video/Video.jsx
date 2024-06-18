@@ -1,6 +1,6 @@
 import classes from "./Video.module.sass";
 import { CustomCard } from "../../UI/customCard/CustomCard.jsx";
-import { useVideo } from "./api/VideoStore.js";
+import { useVideo } from "./store/useVideoStore.js";
 import { useEffect } from "react";
 import { Breadcrumbs } from "../../modules/breadcrumbs/Breadcrumbs.jsx";
 import { Container } from "../../components/container/Container.jsx";
@@ -14,11 +14,11 @@ export const Video = () => {
     const { t, i18n } = useTranslation();
 
     useEffect(() => {
-        getVideoContent(i18n.language);
+        getVideoContent();
     }, [i18n.language]);
 
     const getMoreVideos = () => {
-        loadMoreVideoContent(nextPage, i18n.language);
+        loadMoreVideoContent(nextPage);
     };
 
     return (
