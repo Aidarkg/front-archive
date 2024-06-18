@@ -15,7 +15,6 @@ export const Management = () => {
     const { t, i18n } = useTranslation();
     const { data, loading, error, getData } = useData();
     const navigate = useNavigate();
-
     const handleCardClick = (id) => {
         navigate(`/managementMore/${id}`);
     };
