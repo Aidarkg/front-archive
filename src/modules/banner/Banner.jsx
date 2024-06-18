@@ -1,10 +1,11 @@
-import classes from "./Banner.module.sass";
-import { DetailBtn } from "./detailBtn/DetailBtn";
 import { Typography } from "../../UI/Typography/Typography";
 import { Container } from "../../components/container/Container";
 import { useTranslation } from "react-i18next";
 import { useBannerStore } from "./store/store";
 import { useEffect } from "react";
+import { CustomButton } from "../../UI/customButton/CustomButton";
+import { ArrowRight } from "../../assets/icons/ArrowRight";
+import classes from "./Banner.module.sass";
 
 export const Banner = () => {
    const { t } = useTranslation();
@@ -21,19 +22,25 @@ export const Banner = () => {
             <div className={classes.banner}>
                <img
                   className={classes.bannerImg}
-                  src={bannerPhoto?.[0]?.logo}
+                  src={bannerPhoto?.logo}
                   alt="banner"
                />
-               <div className={classes.main}>                  
+               <div className={classes.main}>
                   <img
                      className={classes.emblemImg}
                      src={emblem?.[0]?.emblem}
                      alt="emblem"
-                  />                  
+                  />
                   <Typography className={classes.h1} variant="h1">
                      {t("mainPage.hero.heading")}
                   </Typography>
-                  <DetailBtn />
+                  <CustomButton
+                     text={t("mainPage.hero.button")}
+                     actionType="link"
+                     to={"/aboutArchive"}
+                     icon={<ArrowRight />}
+                     className={classes.detailBtn}
+                  />
                </div>
             </div>
          </Container>
