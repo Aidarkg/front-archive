@@ -8,10 +8,18 @@ import { OpenDocRegulationsSvg } from "../svgComponents/OpenDocRegulationsSvg";
 import { DownloadDocRegulationsSvg } from "../svgComponents/DownloadDocRegulationsSvg";
 
 import { CustomButton } from "../customButton/CustomButton";
+
 import { ResponsiveComponent } from "../../utils/responsiveComponent/ResponsiveComponent";
+
+import { useRegulationsStore } from "../../pages/npa/store/useRegulationsStore";
 
 export const RegulationsDoc = ({ date, documentNumber, name, linkOpen, linkDownload }) => {
     const { t } = useTranslation();
+    const { downloadFile } = useRegulationsStore();
+
+    const handleDownload = () => {
+        downloadFile(linkDownload, `${name}.pdf`);
+    };
 
     return (
         <li className={classes.tableRow}>
@@ -43,10 +51,9 @@ export const RegulationsDoc = ({ date, documentNumber, name, linkOpen, linkDownl
                         icon={<DownloadDocRegulationsSvg />}
                         buttonStyle="Grey"
                         className={classes.btn}
-                        actionType="link"
-                        to={linkDownload}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        actionType="button"
+                        onClick={handleDownload}
+                        // FIX_ME 
                     />
                 )}
             </div>

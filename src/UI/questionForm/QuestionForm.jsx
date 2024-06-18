@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { TextInput } from "../textInput/TextInput.jsx";
 import { Typography } from "../Typography/Typography.jsx";
 import { regexForm } from "../../pages/FAQ/regexForm/regexForm.jsx";
-import useQuestionStore from "../../pages/FAQ/store/store.jsx";
+import useQuestionStore from "../../pages/FAQ/store/store.js";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import "react-toastify/dist/ReactToastify.css";
@@ -35,7 +35,6 @@ export const QuestionForm = () => {
       reset();
       setTextAreaValue("");
       setPhoneNumber("");
-      console.log(data, "form");
    };
 
    const formValidate = (value) => {

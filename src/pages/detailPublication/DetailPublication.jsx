@@ -7,7 +7,7 @@ import {Breadcrumbs} from "../../modules/breadcrumbs/Breadcrumbs.jsx";
 import {Container} from "../../components/container/Container.jsx";
 import {Loader} from "../../components/loader/Loader.jsx";
 import {useTranslation} from "react-i18next";
-import {useLanguageStore} from "../../utils/languageStore/UseLanguageStore.js";
+
 
 export const DetailPublication = () => {
 

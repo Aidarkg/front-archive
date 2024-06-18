@@ -57,18 +57,6 @@ export const SearchResults = () => {
         }
     }, [defferedInputValue, fetchResults, navigate]);
 
-    const handleButtonClick = useCallback(async () => {
-        if (defferedInputValue.trim() !== "") {
-            try {
-                navigate(`?search=${encodeURIComponent(defferedInputValue)}`);
-                await fetchResults(defferedInputValue);
-                setLastQuery(defferedInputValue);
-            } catch (error) {
-                console.error("Error during search:", error);
-            }
-        }
-    }, [defferedInputValue, fetchResults, navigate]);
-
     const handleValueChange = useCallback((e) => {
         const newValue = e.target.value;
         setInputValue(newValue);
@@ -94,7 +82,7 @@ export const SearchResults = () => {
                     />
                     <button
                         className={classes.searchBtn}
-                        onClick={handleButtonClick}
+                        onClick={handleSearch}
                         disabled={inputValue.trim() === ""}
                     >
                         <ResponsiveComponent type="searchIcon" />
