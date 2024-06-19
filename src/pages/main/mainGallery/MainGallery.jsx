@@ -1,9 +1,9 @@
 import classes from "./MainGallery.module.sass";
 import {PublicationBlock} from "../publicationBlock/PublicationBlock.jsx";
-import {usePublications} from "../../publications/api/PublicationsStore.js";
+import {usePublications} from "../../publications/store/usePublicationsStore.js";
 import {useEffect} from "react";
-import {usePhotos} from "../../photo/api/PhotosStore.js";
-import {useVideo} from "../../video/api/VideoStore.js";
+import {usePhotos} from "../../photo/store/usePhotosStore.js";
+import {useVideo} from "../../video/store/useVideoStore.js";
 import {Container} from "../../../components/container/Container.jsx";
 import {useTranslation} from "react-i18next";
 
@@ -38,9 +38,9 @@ export const MainGallery = () => {
         }
     ];
     useEffect(() => {
-        getPublications(i18n.language);
-        getPhotosContent(i18n.language);
-        getVideoContent(i18n.language);
+        getPublications();
+        getPhotosContent();
+        getVideoContent();
     }, [i18n.language]);
     return (
         <section className={classes.gallery}>

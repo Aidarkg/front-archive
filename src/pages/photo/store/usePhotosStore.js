@@ -1,5 +1,5 @@
 import {create} from "zustand";
-import axios from "axios";
+import axios from "../../../axiosConfig.js";
 import {BASE_URL} from "../../../utils/constants/Constants.js";
 
 
@@ -12,13 +12,10 @@ export const usePhotos = create((set) => ({
     error: null,
     photoData: [],
     loading: false,
-    getPhotosContent: async (language) => {
+    getPhotosContent: async () => {
         set({loading: true});
         try {
-            const response = await axios.get(`${BASE_URL}api/v1/photos/`, {
-                headers: {
-                        'Accept-Language': language
-                    }});
+            const response = await axios.get(`${BASE_URL}api/v1/photos/`);
             const data = response.data;
             set({
                 photosContent: data.results,
@@ -31,15 +28,11 @@ export const usePhotos = create((set) => ({
             set({loading: false});
         }
     },
-    loadMorePhotosContent: async (nextPage, language) => {
+    loadMorePhotosContent: async (nextPage) => {
         if (!nextPage) return;
         set({loading: true});
         try {
-            const {data} = await axios.get(nextPage, {
-                headers: {
-                    'Accept-Language': language
-                }
-            });
+            const {data} = await axios.get(nextPage);
             set((state) => ({
                 photosContent: [...state.photosContent, ...data.results],
                 nextPage: data.next,
@@ -52,14 +45,10 @@ export const usePhotos = create((set) => ({
             set({loading: false});
         }
     },
-    getImages: async (id, language) => {
+    getImages: async (id) => {
         set({loading: true});
         try {
-            const response = await axios.get(`${BASE_URL}api/v1/photos/${id}`, {
-                headers: {
-                    'Accept-Language': language
-                }
-            });
+            const response = await axios.get(`${BASE_URL}api/v1/photos/${id}`);
             const data = await response.data;
             set({images: data.photo, photoData: data});
         } catch (error) {
@@ -69,13 +58,10 @@ export const usePhotos = create((set) => ({
             set({loading: false});
         }
     },
-    getArchiveContent:async (language)=>{
+    getArchiveContent:async ()=>{
         set({loading: true});
         try {
-            const response = await axios.get(`${BASE_URL}api/v1/photo_home`, {
-                headers: {
-                    'Accept-Language': language
-                }});
+            const response = await axios.get(`${BASE_URL}api/v1/photo_home`);
             const data = response.data;
             set({
                 archivePhoto: data.results,
@@ -87,14 +73,10 @@ export const usePhotos = create((set) => ({
             set({loading: false});
         }
     },
-    getArchiveImages: async (id, language) => {
+    getArchiveImages: async (id) => {
         set({loading: true});
         try {
-            const response = await axios.get(`${BASE_URL}api/v1/photo_home/${id}`, {
-                headers: {
-                    'Accept-Language': language
-                }
-            });
+            const response = await axios.get(`${BASE_URL}api/v1/photo_home/${id}`);
             const data = await response.data;
             set({archiveContent: data});
         } catch (error) {

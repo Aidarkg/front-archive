@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import axios from "axios";
+import axios from "../../../axiosConfig.js";
 import {BASE_URL} from "../../../utils/constants/Constants.js";
 
 
@@ -8,14 +8,10 @@ export const usePublications = create((set, get) => ({
     nextPage: null,
     error: null,
     loading: false,
-    getPublications: async (language) => {
+    getPublications: async () => {
         set({ loading: true, error: null });
         try {
-            const response = await axios.get(`${BASE_URL}api/v1/news`, {
-                headers: {
-                    'Accept-Language': language
-                }
-            });
+            const response = await axios.get(`${BASE_URL}api/v1/news`);
             const data = response.data;
             set({ publications: data.results, nextPage: data.next });
         } catch (error) {
@@ -26,16 +22,12 @@ export const usePublications = create((set, get) => ({
         }
     },
 
-    loadMorePublications: async (language) => {
+    loadMorePublications: async () => {
         const { nextPage } = get();
         if (!nextPage) return;
         set({ loading: true, error: null });
         try {
-            const response = await axios.get(nextPage, {
-                headers: {
-                    'Accept-Language': language
-                }
-            });
+            const response = await axios.get(nextPage);
             const data = response.data;
             set((state) => ({
                 publications: [...state.publications, ...data.results],
@@ -49,14 +41,10 @@ export const usePublications = create((set, get) => ({
         }
     },
 
-    getPublicationFromId: async (id, language) => {
+    getPublicationFromId: async (id) => {
         set({ loading: true, error: null });
         try {
-            const response = await axios.get(`${BASE_URL}api/v1/news/${id}`, {
-                headers: {
-                    'Accept-Language': language
-                }
-            });
+            const response = await axios.get(`${BASE_URL}api/v1/news/${id}`);
             const data = response.data;
             set({ detailPublicationInfo: data });
         } catch (error) {

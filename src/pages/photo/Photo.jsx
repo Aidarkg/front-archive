@@ -2,7 +2,7 @@ import { Typography } from "../../UI/Typography/Typography.jsx";
 import classes from "./Photo.module.sass";
 import { CustomCard } from "../../UI/customCard/CustomCard.jsx";
 import { useNavigate } from "react-router-dom";
-import { usePhotos } from "./api/PhotosStore.js";
+import { usePhotos } from "./store/usePhotosStore.js";
 import { useEffect } from "react";
 import { Breadcrumbs } from "../../modules/breadcrumbs/Breadcrumbs.jsx";
 import { Container } from "../../components/container/Container.jsx";
@@ -17,12 +17,12 @@ export const Photo = () => {
     const navigate = useNavigate();
     const { t, i18n } = useTranslation();
     const getMorePhotos = () => {
-        loadMorePhotosContent(nextPage, i18n.language);
+        loadMorePhotosContent(nextPage);
     };
 
     useEffect(() => {
-        getArchiveContent(i18n.language);
-        getPhotosContent(i18n.language);
+        getArchiveContent();
+        getPhotosContent();
     }, [i18n.language]);
 
     return (
@@ -57,7 +57,7 @@ export const Photo = () => {
                     </div>
                     {loading && <Loader />}
                     {nextPage && (
-                        <CustomButton onClick={getMorePhotos} text={t("mainPage.publications.loadMore")} />
+                        <CustomButton onClick={getMorePhotos} text={t("loadMore")} />
                     )}
                 </div>
             </Container>
