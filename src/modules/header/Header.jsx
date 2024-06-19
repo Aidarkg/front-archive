@@ -23,7 +23,7 @@ import { CrossIcon } from "../../assets/icons/CrossIcon";
 import { ArrowDown } from "../../assets/icons/ArrowDown";
 
 import { NavLink, useLocation } from "react-router-dom";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { HeaderLogo } from "../../assets/logos/headerLogos/HeaderLogo.jsx";
@@ -31,12 +31,12 @@ import { HeaderLogo } from "../../assets/logos/headerLogos/HeaderLogo.jsx";
 export const Header = () => {
    const { t } = useTranslation();
 
-   const navItems = useMemo(() => [
+   const navItems = [
       { id: 1, path: PATH.npa, label: "header&footer.nav.regulations" },
       { id: 2, path: PATH.services, label: "header&footer.nav.services" },
       { id: 3, path: PATH.faq, label: "header&footer.nav.q&a" },
       { id: 4, path: PATH.contacts, label: "header&footer.nav.contacts" },
-   ], [PATH]);
+   ];
 
    const [isInputVisible, setIsInputVisible] = useState(false);
    const [activeSubnav, setActiveSubnav] = useState(null);
@@ -73,54 +73,53 @@ export const Header = () => {
 
    const activeLink = ({ isActive }) => (isActive ? classes.active : "");
 
-   const toggleInputVisibility = useCallback(() => {
+   const toggleInputVisibility = () => {
       setIsInputVisible((prev) => !prev);
-   }, []);
+   };
 
-   const closeInput = useCallback(() => {
+   const closeInput = () => {
       setIsInputVisible(((prev) => !prev));
-   }, []);
+   };
 
-   const toggleSubnav = useCallback((menu) => {
+   const toggleSubnav = (menu) => {
       setActiveSubnav((prev) => prev === menu ? null : menu);
-   }, []);
+   };
 
-   const toggleArchiveOpenResponsive = useCallback(() => {
+   const toggleArchiveOpenResponsive = () => {
       setIsArchiveOpenResponsive((prev) => !prev);
-   }, []);
+   };
 
-   const toggleMediaArchiveOpenResponsive = useCallback(() => {
+   const toggleMediaArchiveOpenResponsive = () => {
       setIsMediaArchiveOpenResponsive((prev) => !prev);
-   }, []);
+   };
 
-   const toggleDropdown = useCallback(() => {
+   const toggleDropdown = () => {
       setIsDropMenuOpen((prev) => !prev);
-   }, []);
+   };
 
-   const isArchiveActive = useCallback(() => {
+   const isArchiveActive = () => {
       const archivePages = [PATH.aboutArchive, PATH.management];
       return archivePages.some((page) => location.pathname.includes(page));
-   }, [location.pathname, PATH.aboutArchive, PATH.management]);
+   };
 
-   const isMediaArchiveActive = useCallback(() => {
+   const isMediaArchiveActive = () => {
       const archivePages = [PATH.publications, PATH.photo, PATH.video];
       return archivePages.some((page) => location.pathname.includes(page));
-   }, [location.pathname, PATH.publications, PATH.photo, PATH.video]);
+   };
 
    const toggleAccessibilityMode = () => {
       setIsAccessibilityModeActive(!isAccessibilityModeActive);
    };
 
+   const observer = new MutationObserver(() => {
+      if (document.querySelector('#special')) {
+         headerRef.current.style.marginTop = "50px";
+      } else {
+         headerRef.current.style.marginTop = "0";
+      }
+   });
 
-      const observer = new MutationObserver(() => {
-          if (document.querySelector('#special')) {
-             headerRef.current.style.marginTop = "50px";
-          } else {
-             headerRef.current.style.marginTop = "0";
-         }
-       });
-
-       observer.observe(document.body, { attributes: true, childList: true, subtree: true });
+   observer.observe(document.body, { attributes: true, childList: true, subtree: true });
 
    return (
       <header className={classes.header} ref={headerRef}>
