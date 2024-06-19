@@ -11,7 +11,7 @@ const useOrganizationsStore = create((set) => ({
     set({ loading: true, error: null });
     try {
       const response = await axios.get(`${BASE_URL}api/v1/organizations/`);
-      set({ organizations: response.data.results, loading: false });
+      set({ organizations: response.data, loading: false });
     } catch (error) {
       set({ error: error.message, loading: false });
     }
