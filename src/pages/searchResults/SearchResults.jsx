@@ -2,7 +2,7 @@ import classes from "./SearchResults.module.sass";
 
 import { useTranslation } from "react-i18next";
 
-import { useCallback, useDeferredValue, useEffect, useState } from "react";
+import { useDeferredValue, useEffect, useState } from "react";
 
 import { useLocation, useNavigate } from "react-router-dom";
 
@@ -44,7 +44,7 @@ export const SearchResults = () => {
         }
     }, [query, fetchResults, clearResults, i18n.language]);
 
-    const handleSearch = useCallback(async () => {
+    const handleSearch = async () => {
         if (defferedInputValue.trim() === "") {
             return;
         }
@@ -55,12 +55,12 @@ export const SearchResults = () => {
         } catch (error) {
             console.error("Error during search:", error);
         }
-    }, [defferedInputValue, fetchResults, navigate]);
+    };
 
-    const handleValueChange = useCallback((e) => {
+    const handleValueChange = (e) => {
         const newValue = e.target.value;
         setInputValue(newValue);
-    }, []);
+    };
 
     if (loading) return <Loader />;
     if (error) return <Errors />;
