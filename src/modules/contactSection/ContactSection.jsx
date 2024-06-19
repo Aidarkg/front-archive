@@ -24,32 +24,42 @@ const ContactSection = () => (
          <div className={styles.contactSectionBlock}>
             <div className={styles.contactSectionInner}>
                <h2>Кыргызская Республика, г. Бишкек</h2>
-               <ContactBlock
-                  label="Адрес"
-                  value="ул.Фрунзе, 477"
-                  icon={<AddressIcon />}
-               />
-               <ContactBlock
-                  label="Телефон"
-                  value="+996 505 39 28 63"
-                  icon={<PhoneIcon />}
-               />
-               <ContactBlock
-                  label="Индекс"
-                  value="720040"
-                  icon={<IndexIcon />}
-               />
-               <ContactBlock label="Факс" value="480263" icon={<FaxIcon />} />
-               <ContactBlock
-                  label="Электронная почта"
-                  value="archive.gov@gmail.com"
-                  icon={<EmailIcon />}
-               />
-               <ContactBlock
-                  label="Facebook"
-                  value="Архивная служба"
-                  icon={<FacebookIcon />}
-               />
+               <div className={styles.contactSectionKontak}>
+                  <div className={styles.contactSectionBlockGap1}>
+                     <ContactBlock
+                        label="Адрес"
+                        value="ул.Фрунзе, 477"
+                        icon={<AddressIcon />}
+                     />
+                     <ContactBlock
+                        label="Телефон"
+                        value="+996 505 39 28 63"
+                        icon={<PhoneIcon />}
+                     />
+                     <ContactBlock
+                        label="Индекс"
+                        value="720040"
+                        icon={<IndexIcon />}
+                     />
+                  </div>
+                  <div className={styles.contactSectionBlockGap2}>
+                     <ContactBlock
+                        label="Факс"
+                        value="480263"
+                        icon={<FaxIcon />}
+                     />
+                     <ContactBlock
+                        label="Электронная почта"
+                        value="archive.gov@gmail.com"
+                        icon={<EmailIcon />}
+                     />
+                     <ContactBlock
+                        label="Facebook"
+                        value="Архивная служба"
+                        icon={<FacebookIcon />}
+                     />
+                  </div>
+               </div>
             </div>
             <YandexMap />
          </div>

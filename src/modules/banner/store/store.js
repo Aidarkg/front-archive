@@ -12,8 +12,7 @@ export const useBannerStore = create((set) => ({
         set({ loading: true, error: null });
         try {
             const response = await axios.get(`${BASE_URL}api/v1/main/`);
-            set({ bannerPhoto: response.data.logo });
-            //console.log(response.data.logo[0]);
+            set({ bannerPhoto: response.data.logo });            
         } catch (error) {
             set({ error: error.message });
         } finally {

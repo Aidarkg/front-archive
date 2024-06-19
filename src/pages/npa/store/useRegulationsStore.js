@@ -1,7 +1,6 @@
 import axios from "../../../axiosConfig";
 import { create } from "zustand";
 
-import { BASE_URL } from "../../../utils/constants/Constants.js";
 
 export const useRegulationsStore = create((set, get) => ({
     regulationsList: [],
@@ -12,7 +11,7 @@ export const useRegulationsStore = create((set, get) => ({
     fetchRegulations: async () => {
         set({ loading: true, error: null });
         try {
-            const response = await axios.get(`${BASE_URL}api/v1/kodeks`);
+            const response = await axios.get("api/v1/kodeks");
             set({
                 regulationsList: response.data.results,
                 next: response.data.next,

@@ -2,7 +2,7 @@ import classes from "./DetailPublication.module.sass";
 import {Typography} from "../../UI/Typography/Typography.jsx";
 import {useParams} from "react-router-dom";
 import {useEffect} from "react";
-import {usePublications} from "../publications/api/PublicationsStore.js";
+import {usePublications} from "../publications/store/usePublicationsStore.js";
 import {Breadcrumbs} from "../../modules/breadcrumbs/Breadcrumbs.jsx";
 import {Container} from "../../components/container/Container.jsx";
 import {Loader} from "../../components/loader/Loader.jsx";

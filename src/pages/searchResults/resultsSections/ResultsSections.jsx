@@ -2,8 +2,6 @@ import classes from "./ResultsSections.module.sass";
 
 import { useTranslation } from "react-i18next";
 
-import { useCallback } from "react";
-
 import { useNavigate } from "react-router-dom";
 
 import { Typography } from "../../../UI/Typography/Typography";
@@ -24,13 +22,13 @@ export const ResultsSections = () => {
 
     const { t } = useTranslation();
 
-    const filteredResults = useCallback((type) => {
+    const filteredResults = (type) => {
         return searchResults?.filter((result) => result.type === type);
-    }, [searchResults]);
+    };
 
-    const handleCardClick = useCallback((id) => {
+    const handleCardClick = (id) => {
         navigate(`/managementMore/${id}`);
-    }, [navigate]);
+    };
 
     return (
         <>

@@ -7,14 +7,10 @@ export const useAboutArchive = create((set) => ({
     error: null,
     loading: false,
 
-    getData: async (language) => {
+    getData: async () => {
         set({ loading: true, error: null });
         try {
-            const response = await axios.get(`${BASE_URL}api/v1/about_archive/`, {
-                headers: {
-                    'Accept-Language': language
-                }
-            });            
+            const response = await axios.get(`${BASE_URL}api/v1/about_archive/`);            
             set({ aboutArchive: response.data });
         } catch (error) {            
             set({ error: error.message });

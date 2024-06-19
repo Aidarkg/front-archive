@@ -23,6 +23,10 @@
     gap: 24px    
     margin-bottom: 80px
 
+@media (max-width: 1200px)
+    .contentInner    
+        display: flex
+        flex-wrap: wrap    
 @media (max-width: 768px)
     .contentInner    
         display: flex
@@ -36,14 +40,24 @@
   display: flex
   background-color: var(--main)
   border-radius: 1rem
-  height: auto  
+  height: 23.375rem 
   &Text
     display: flex
     flex-wrap: wrap
-    height: 374px
-    overflow: auto
+    height: 100%
+    //overflow: auto
     gap: 16px
     padding: 70px 32px    
+@media (max-width: 1200px)
+    .contentBlock
+        width: 100%
+        height: auto
+        display: flex
+        flex-wrap: wrap
+        justify-content: center            
+        &Text
+          padding: 10px
+          margin-bottom: 5px
 @media (max-width: 768px)
     .contentBlock
         width: 100%
@@ -117,3 +131,12 @@
         height: auto
         float: none
         border-radius: 8px 8px 8px 8px
+
+.detailBtn         
+         display: inline-flex
+         align-items: center
+         justify-content: center           
+         background-color: var(--grey100) 
+         color: var(--grey500)
+         &:hover 
+              background-color: var(--main)
