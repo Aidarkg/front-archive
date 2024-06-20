@@ -68,7 +68,7 @@ export const ContentBlocks = ({
                            <Typography
                               className={classes.text}
                               variant="body"
-                              truncate={320}
+                              // truncate={320}
                            >
                               {data.description}
                            </Typography>
