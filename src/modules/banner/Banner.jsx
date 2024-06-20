@@ -31,16 +31,18 @@ export const Banner = () => {
                      src={emblem?.[0]?.emblem}
                      alt="emblem"
                   />
-                  <Typography className={classes.h1} variant="h1">
-                     {t("mainPage.hero.heading")}
-                  </Typography>
-                  <CustomButton
-                     text={t("mainPage.hero.button")}
-                     actionType="link"
-                     to={"/aboutArchive"}
-                     icon={<ArrowRight />}
-                     className={classes.detailBtn}
-                  />
+                  <div className={classes.wrapper}>
+                     <Typography className={classes.h1} variant="h1">
+                        {t("mainPage.hero.heading")}
+                     </Typography>
+                     <CustomButton
+                        text={t("mainPage.hero.button")}
+                        actionType="link"
+                        to={"/aboutArchive"}
+                        icon={<ArrowRight />}
+                        className={classes.detailBtn}
+                     />
+                  </div>
                </div>
             </div>
          </Container>
