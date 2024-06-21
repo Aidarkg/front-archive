@@ -27,7 +27,7 @@ export const PublicationBlock = ({title, contentArray, path, linkText, type, hav
                 text={linkText}
                 actionType="link"
                 to={path}
-                isMainGallery={true}
+                isBig={true}
                 icon={<ArrowRight/>}
             />}
         </div>
