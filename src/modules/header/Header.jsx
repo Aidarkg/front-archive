@@ -15,7 +15,6 @@ import { HeaderInput } from "./headerInput/HeaderInput.jsx";
 import { LanguageList } from "./languageList/LanguageList.jsx";
 
 import { ArrowDownSvg } from "../../UI/svgComponents/ArrowDownSvg.jsx";
-import { AccessibilitySvg } from "../../UI/svgComponents/accessibilitySvg/AccessibilitySvg.jsx";
 import { SearchSvg } from "../../UI/svgComponents/SearchSvg.jsx";
 import { MenuSvg } from "../../UI/svgComponents/MenuSvg.jsx";
 
@@ -263,14 +262,9 @@ export const Header = () => {
                                  </Typography>
                               </div>
                            </div>
-                           <div className={classes.responsiveIcons}>
-                              <button className={classes.eyeIcon} onClick={toggleAccessibilityMode}>
-                                 <AccessibilitySvg />
-                              </button>
-                              <button className={classes.crossIcon} onClick={toggleDropdown}>
-                                 <CrossIcon />
-                              </button>
-                           </div>
+                           <button className={classes.crossIcon} onClick={toggleDropdown}>
+                              <CrossIcon />
+                           </button>
                         </div>
                         <nav className={classes.responsiveNav}>
                            <ul className={classes.responsiveList}>
