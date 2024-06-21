@@ -26,7 +26,6 @@ const useQuery = () => {
 
 export const SearchResults = () => {
     const { searchResults, fetchResults, loading, error, clearResults } = useSearchStore();
-
     const { t, i18n } = useTranslation();
 
     const query = useQuery().get("search");
