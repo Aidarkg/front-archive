@@ -1,7 +1,7 @@
 import classes from "./Faq.module.sass";
 
 import { QuestionForm } from "../../UI/questionForm/QuestionForm.jsx";
-import { Accardion } from "../../modules/Accordion/Accordion";
+// import { Accardion } from "../../modules/Accordion/Accordion";
 
 
 import {Typography} from "../../UI/Typography/Typography.jsx";
@@ -18,7 +18,7 @@ export const Faq = () => {
               <Breadcrumbs currentPage={t("header&footer.nav.q&a")} />
               <div className={classes.faq}>
                   <div>
-                      <Accardion />
+                      {/*<Accardion />*/}
                   </div>
                   <div>
                       <Typography

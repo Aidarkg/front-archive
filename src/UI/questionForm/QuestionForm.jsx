@@ -1,16 +1,14 @@
 import classes from "./QuestionForm.module.sass";
-
 import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { TextInput } from "../textInput/TextInput.jsx";
 import { Typography } from "../Typography/Typography.jsx";
 import { regexForm } from "../../pages/FAQ/regexForm/regexForm.jsx";
-import useQuestionStore from "../../pages/FAQ/store/store.jsx";
+import useQuestionStore from "../../pages/FAQ/store/store.js";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
-import "react-toastify/dist/ReactToastify.css";
-import { toast, ToastContainer } from "react-toastify";
 import { useTranslation } from "react-i18next";
+import { SuccessModal } from "../../modules/modalPage/successModal/SuccessModal.jsx";
 
 export const QuestionForm = () => {
    const {
@@ -19,81 +17,53 @@ export const QuestionForm = () => {
       formState: { errors, isValid, isSubmitSuccessful },
       trigger,
       reset,
-      setValue, // add setValue to update phone number
+      setValue,
+      watch
    } = useForm({
       mode: "onBlur",
    });
 
-   const [textAreaValue, setTextAreaValue] = useState("");
    const [phoneNumber, setPhoneNumber] = useState("");
+   const [showModal, setShowModal] = useState(false);
 
    const submitQuestion = useQuestionStore((state) => state.submitQuestion);
 
    const onSubmit = (data) => {
-      data.phone_number = phoneNumber; // ensure phone number is included in the form data
+      data.phone_number = phoneNumber;
       submitQuestion(data);
       reset();
-      setTextAreaValue("");
+      setValue("question_text", "", { shouldValidate: false });
       setPhoneNumber("");
-      console.log(data, "form");
+      setShowModal(true);
    };
 
-   const formValidate = (value) => {
-      return {
-         required: "Это поле обязательное!",
-         pattern: {
-            value: value,
-            message: "Неправильный формат почты!",
-         },
-      };
-   };
+   const formValidate = (value) => ({
+      required: "Это поле обязательное!",
+      pattern: {
+         value: value,
+         message: "Неправильный формат почты!",
+      },
+   });
 
    useEffect(() => {
       if (isSubmitSuccessful) {
          trigger();
-         toast.success("Вопрос успешно отправлен", {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-         });
       }
    }, [isSubmitSuccessful, trigger]);
-
-   const handleTextAreaChange = (event) => {
-      const value = event.target.value;
-      setTextAreaValue(value);
-   };
 
    const { t } = useTranslation();
 
-   useEffect(() => {
-      if (isSubmitSuccessful) {
-         trigger();
-         toast.success("Вопрос успешно отправлен", {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-         });
-      }
-   }, [isSubmitSuccessful, trigger]);
-
-   // Update phone number in react-hook-form on change
    const handlePhoneNumberChange = (value) => {
       setPhoneNumber(value);
       setValue("phone_number", value, { shouldValidate: true });
    };
 
+   const closeModal = () => {
+      setShowModal(false);
+   };
+
    return (
        <section className={classes.faq}>
-          <ToastContainer />
           <form className={classes.faqForm} onSubmit={handleSubmit(onSubmit)}>
              <div>
                 <label htmlFor="phoneNumber">{t("q&aPage.form.phoneNumber")}</label>
@@ -113,11 +83,7 @@ export const QuestionForm = () => {
                    />
                 </div>
                 {!errors?.phone_number && (
-                    <Typography
-                        className={classes.note}
-                        variant="span"
-                        color="grey500"
-                    >
+                    <Typography className={classes.note} variant="span" color="grey500">
                        {t("q&aPage.form.notNecessary")}
                     </Typography>
                 )}
@@ -130,9 +96,7 @@ export const QuestionForm = () => {
                 <TextInput
                     id="name"
                     type="text"
-                    {...register("full_name", {
-                       required: "Это поле обязательное!",
-                    })}
+                    {...register("full_name", { required: "Это поле обязательное!" })}
                     placeholder="Иванов Иван Иванович"
                 />
                 <Typography className={classes.errors} variant="span">
@@ -156,7 +120,7 @@ export const QuestionForm = () => {
                 <label htmlFor="question">{t("q&aPage.form.yourQuestion")}</label>
                 <textarea
                     maxLength={300}
-                    id="text"
+                    id="question_text"
                     placeholder="Введите текст"
                     {...register("question_text", {
                        required: "Это поле обязательное!",
@@ -164,27 +128,27 @@ export const QuestionForm = () => {
                           value: 20,
                           message: "Не менее 20 символов",
                        },
+                       onChange: (e) => {
+                          setValue("question_text", e.target.value);
+                       },
                     })}
-                    value={textAreaValue}
-                    onChange={handleTextAreaChange}
                 />
                 <Typography className={classes.errors} variant="span">
                    {errors?.question_text && errors.question_text.message}
                 </Typography>
                 <Typography className={classes.counter} variant="span">
-                   {textAreaValue.length}/300
+                   {watch("question_text")?.length || 0}/300
                 </Typography>
              </div>
              <button
-                 className={`${
-                     !isValid ? classes.disabledBtn : classes.enabledBtn
-                 }`}
+                 className={`${!isValid ? classes.disabledBtn : classes.enabledBtn}`}
                  disabled={!isValid}
                  type="submit"
              >
                 {t("q&aPage.form.button")}
              </button>
           </form>
+          <SuccessModal show={showModal} onClose={closeModal} />
        </section>
    );
 };

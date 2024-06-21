@@ -3,7 +3,7 @@ import { Typography } from "../../UI/Typography/Typography.jsx";
 import { CustomCard } from "../../UI/customCard/CustomCard.jsx";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
-import { usePublications } from "./api/PublicationsStore.js";
+import { usePublications } from "./store/usePublicationsStore.js";
 import { Breadcrumbs } from "../../modules/breadcrumbs/Breadcrumbs.jsx";
 import { Container } from "../../components/container/Container.jsx";
 import { Loader } from "../../components/loader/Loader.jsx";
@@ -44,7 +44,7 @@ export const Publications = () => {
                     </div>
                     {loading && <Loader />}
                     {nextPage && (
-                        <CustomButton onClick={getMorePublications} text={t("mainPage.publications.loadMore")} />
+                        <CustomButton onClick={getMorePublications} text={t("loadMore")} />
                     )}
                 </div>
             </Container>

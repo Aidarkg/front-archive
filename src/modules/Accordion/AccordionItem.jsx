@@ -28,7 +28,9 @@ export const AccordionItem = ({ faqItem, onClick, isOpen }) => {
                handleRotate();
             }}
          >
-            <Typography className={`${classes.textFaq} ${isOpen ? classes.fullText : ""}`} variant="h5">{faqItem.question}</Typography>
+            <Typography className={`${classes.textFaq} ${isOpen ? classes.fullText : ""}`} variant="h5">
+               {faqItem.question}
+            </Typography>
             <img
                className={classes.accordion_arrow}
                src={arrow}

@@ -5,8 +5,6 @@ import { useTranslation } from "react-i18next";
 import { Typography } from "../../UI/Typography/Typography";
 
 import { HeaderLogo } from "../../assets/logos/headerLogos/HeaderLogo";
-import { HeaderLogoMobile } from "../../assets/logos/headerLogos/HeaderLogoMobile";
-import { HeaderLogoTablet } from "../../assets/logos/headerLogos/HeaderLogoTablet";
 
 import { SearchIcon } from "../../assets/icons/SearchIcon";
 import { SearchSvg } from "../../UI/svgComponents/SearchSvg";
@@ -18,13 +16,18 @@ export const ResponsiveComponent = ({ type, name, className }) => {
 
     const renderComponent = {
         headerLogo: () => {
+            let logoWidth, logoHeight;
             if (width <= 420) {
-                return <HeaderLogoMobile />;
+                logoWidth = 35;
+                logoHeight = 35;
             } else if (width <= 800) {
-                return <HeaderLogoTablet />;
+                logoWidth = 40;
+                logoHeight = 40;
             } else {
-                return <HeaderLogo />;
+                logoWidth = 64;
+                logoHeight = 64;  
             }
+            return <HeaderLogo width={logoWidth} height={logoHeight} />;
         },
 
         headerTitle: () => {
