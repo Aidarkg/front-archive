@@ -1,0 +1,50 @@
+.modalOverlay
+  position: fixed
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+  background-color: rgba(0, 0, 0, 0.5)
+  display: flex
+  justify-content: center
+  align-items: center
+
+.modalContent
+  width: 298px
+  height: 307px
+  background-color: #fff
+  border-radius: 10px
+  text-align: center
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2)
+  display: flex
+  flex-direction: column
+  align-items: center
+  justify-content: center
+
+.checkmarkWrapper
+  margin-bottom: 20px
+
+.checkmark
+  width: 150px
+  height: 150px
+  stroke: #4caf50
+  stroke-width: 6
+  stroke-linecap: round
+  fill: none
+
+.checkmarkCheck
+  stroke-dasharray: 36
+  stroke-dashoffset: 36
+  animation: draw-check 1s forwards
+
+@keyframes draw-check
+  to
+    stroke-dashoffset: 0
+
+.closeButton
+  text-transform: lowercase
+  margin-top: 24px
+  padding: 10px 16px
+  border: none
+  border-radius: 5px
+  cursor: pointer

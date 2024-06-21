@@ -23,20 +23,20 @@ import { CrossIcon } from "../../assets/icons/CrossIcon";
 import { ArrowDown } from "../../assets/icons/ArrowDown";
 
 import { NavLink, useLocation } from "react-router-dom";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 
-import { HeaderLogoMobile } from "../../assets/logos/headerLogos/HeaderLogoMobile.jsx";
+import { HeaderLogo } from "../../assets/logos/headerLogos/HeaderLogo.jsx";
 
 export const Header = () => {
    const { t } = useTranslation();
 
-   const navItems = useMemo(() => [
+   const navItems = [
       { id: 1, path: PATH.npa, label: "header&footer.nav.regulations" },
       { id: 2, path: PATH.services, label: "header&footer.nav.services" },
       { id: 3, path: PATH.faq, label: "header&footer.nav.q&a" },
       { id: 4, path: PATH.contacts, label: "header&footer.nav.contacts" },
-   ], [PATH]);
+   ];
 
    const [isInputVisible, setIsInputVisible] = useState(false);
    const [activeSubnav, setActiveSubnav] = useState(null);
@@ -73,72 +73,53 @@ export const Header = () => {
 
    const activeLink = ({ isActive }) => (isActive ? classes.active : "");
 
-   const toggleInputVisibility = useCallback(() => {
+   const toggleInputVisibility = () => {
       setIsInputVisible((prev) => !prev);
-   }, []);
+   };
 
-   const closeInput = useCallback(() => {
+   const closeInput = () => {
       setIsInputVisible(((prev) => !prev));
-   }, []);
+   };
 
-   const toggleSubnav = useCallback((menu) => {
+   const toggleSubnav = (menu) => {
       setActiveSubnav((prev) => prev === menu ? null : menu);
-   }, []);
+   };
 
-   const toggleArchiveOpenResponsive = useCallback(() => {
+   const toggleArchiveOpenResponsive = () => {
       setIsArchiveOpenResponsive((prev) => !prev);
-   }, []);
+   };
 
-   const toggleMediaArchiveOpenResponsive = useCallback(() => {
+   const toggleMediaArchiveOpenResponsive = () => {
       setIsMediaArchiveOpenResponsive((prev) => !prev);
-   }, []);
+   };
 
-   const toggleDropdown = useCallback(() => {
+   const toggleDropdown = () => {
       setIsDropMenuOpen((prev) => !prev);
-   }, []);
+   };
 
-   const isArchiveActive = useCallback(() => {
+   const isArchiveActive = () => {
       const archivePages = [PATH.aboutArchive, PATH.management];
       return archivePages.some((page) => location.pathname.includes(page));
-   }, [location.pathname, PATH.aboutArchive, PATH.management]);
+   };
 
-   const isMediaArchiveActive = useCallback(() => {
+   const isMediaArchiveActive = () => {
       const archivePages = [PATH.publications, PATH.photo, PATH.video];
       return archivePages.some((page) => location.pathname.includes(page));
-   }, [location.pathname, PATH.publications, PATH.photo, PATH.video]);
+   };
 
    const toggleAccessibilityMode = () => {
       setIsAccessibilityModeActive(!isAccessibilityModeActive);
    };
 
-   // useEffect(() => {
-   //    const loadScript = (src) => {
-   //       return new Promise((resolve, reject) => {
-   //          const script = document.createElement("script");
-   //          script.src = src;
-   //          script.async = true;
-   //          script.onload = resolve;
-   //          script.onerror = reject;
-   //          document.body.appendChild(script);
-   //       });
-   //    };
-   //
-   //    loadScript("https://lidrekon.ru/slep/js/jquery.js").then(() => {
-   //       return loadScript("https://lidrekon.ru/slep/js/uhpv-full.min.js");
-   //    });
-   //
-   //    const observer = new MutationObserver(() => {
-   //       if (document.querySelector('#special')) {
-   //          headerRef.current.style.marginTop = "50px";
-   //       } else {
-   //          headerRef.current.style.marginTop = "0";
-   //       }
-   //    });
-   //
-   //    observer.observe(document.body, { attributes: true, childList: true, subtree: true });
-   //
-   //    return () => observer.disconnect();
-   // }, []); FIX_ME
+   const observer = new MutationObserver(() => {
+      if (document.querySelector('#special')) {
+         headerRef.current.style.marginTop = "50px";
+      } else {
+         headerRef.current.style.marginTop = "0";
+      }
+   });
+
+   observer.observe(document.body, { attributes: true, childList: true, subtree: true });
 
    return (
       <header className={classes.header} ref={headerRef}>
@@ -249,11 +230,6 @@ export const Header = () => {
                         alt="ВЕРСИЯ ДЛЯ СЛАБОВИДЯЩИХ"
                         title="ВЕРСИЯ ДЛЯ СЛАБОВИДЯЩИХ"
                      />
-                     {/* <AccessibilitySvg
-                        id="specialButton"
-                        alt={t("header&footer.eyeIcon")}
-                     />
-                      FIX_ME Можно использовать svg-компонент */}
                   </button>
                   <button
                      className={classes.searchBtn}
@@ -277,7 +253,7 @@ export const Header = () => {
                      <div ref={dropdownRef} className={`${classes.headerInnerResponsive} ${isDropMenuOpen ? classes.open : ""}`}>
                         <div className={classes.responsiveHigh}>
                            <div className={classes.headerLogoResponsive}>
-                              <HeaderLogoMobile />
+                              <HeaderLogo width={35} height={36} />
                               <div className={classes.headerLogoTitleResponsive}>
                                  <Typography className={classes.headerLogoTitleH5} variant="h5" color="grey500">
                                     {t("header&footer.logo.archivePresidentKR")}
@@ -290,11 +266,6 @@ export const Header = () => {
                            <div className={classes.responsiveIcons}>
                               <button className={classes.eyeIcon} onClick={toggleAccessibilityMode}>
                                  <AccessibilitySvg />
-                                 {/* <AccessibilitySvg
-                                    id="specialButton"
-                                    alt={t("header&footer.eyeIcon")}
-                                 />
-                                 FIX_ME Можно использовать svg-компонент */}
                               </button>
                               <button className={classes.crossIcon} onClick={toggleDropdown}>
                                  <CrossIcon />
@@ -391,4 +362,3 @@ export const Header = () => {
    );
 };
 
-//FIX ME замапить все что можно

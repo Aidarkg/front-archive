@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import { ResponsiveComponent } from "../../utils/responsiveComponent/ResponsiveComponent.jsx";
 import { Container } from "../../components/container/Container.jsx";
 import { useEffect } from "react";
-import { useCounter } from "./store/Store.jsx";
+import { useCounter } from "./store/Store.js";
 import CountUp from "react-countup";
 import { useInView } from "react-intersection-observer";
 

@@ -2,8 +2,6 @@ import classes from "./ResultsSections.module.sass";
 
 import { useTranslation } from "react-i18next";
 
-import { useCallback } from "react";
-
 import { useNavigate } from "react-router-dom";
 
 import { Typography } from "../../../UI/Typography/Typography";
@@ -24,13 +22,13 @@ export const ResultsSections = () => {
 
     const { t } = useTranslation();
 
-    const filteredResults = useCallback((type) => {
+    const filteredResults = (type) => {
         return searchResults?.filter((result) => result.type === type);
-    }, [searchResults]);
+    };
 
-    const handleCardClick = useCallback((id) => {
+    const handleCardClick = (id) => {
         navigate(`/managementMore/${id}`);
-    }, [navigate]);
+    };
 
     return (
         <>
@@ -120,6 +118,7 @@ export const ResultsSections = () => {
                             <>
                                 <div className={classes.serviceCards} key={id}>
                                     <Typography
+                                        truncate={50}
                                         className={classes.textServiceCards}
                                         variant="h6"
                                         color="grey500"
@@ -135,16 +134,16 @@ export const ResultsSections = () => {
                                 </div>
                             </>
                         ))}
-                        {nextResults.services && (
-                            <CustomButton
-                                text={t("loadMore")}
-                                actionType="button"
-                                icon={<ArrowRight />}
-                                onClick={() => loadMoreResults("services")}
-                                className={classes.btnMoreLoadResults}
-                            />
-                        )}
                     </div>
+                    {nextResults.services && (
+                        <CustomButton
+                            text={t("loadMore")}
+                            actionType="button"
+                            icon={<ArrowRight />}
+                            onClick={() => loadMoreResults("services")}
+                            className={classes.btnMoreLoadResults}
+                        />
+                    )}
                 </section>
             )}
             {filteredResults("managements").length > 0 && (
@@ -174,16 +173,16 @@ export const ResultsSections = () => {
                                 </div>
                             </div>
                         ))}
-                        {nextResults.managements && (
-                            <CustomButton
-                                text={t("loadMore")}
-                                actionType="button"
-                                icon={<ArrowRight />}
-                                onClick={() => loadMoreResults("managements")}
-                                className={classes.btnMoreLoadResults}
-                            />
-                        )}
                     </div>
+                    {nextResults.managements && (
+                        <CustomButton
+                            text={t("loadMore")}
+                            actionType="button"
+                            icon={<ArrowRight />}
+                            onClick={() => loadMoreResults("managements")}
+                            className={classes.btnMoreLoadResults}
+                        />
+                    )}
                 </section>
             )}
             {filteredResults("codexes").length > 0 && (
@@ -210,11 +209,10 @@ export const ResultsSections = () => {
                             </li>
                         </ul>
                         <ul className={classes.documentsContainer}>
-                            {filteredResults("codexes")?.map(({ id, title, pdf_file, document_number }) => (
+                            {filteredResults("codexes")?.map(({ id, title, pdf_file, date_file, document_number }) => (
                                 <RegulationsDoc
                                     key={id}
-                                    // date={doc.date_file} FIX_ME неверный формат символов *26-04-2024*
-                                    date={"26.04.2024"}
+                                    date={date_file}
                                     documentNumber={document_number}
                                     name={title}
                                     linkOpen={pdf_file}
@@ -222,16 +220,16 @@ export const ResultsSections = () => {
                                 />
                             ))}
                         </ul>
-                        {nextResults.codexes && (
-                            <CustomButton
-                                text={t("loadMore")}
-                                actionType="button"
-                                icon={<ArrowRight />}
-                                onClick={() => loadMoreResults("codexes")}
-                                className={classes.btnMoreLoadResults}
-                            />
-                        )}
                     </div>
+                    {nextResults.codexes && (
+                        <CustomButton
+                            text={t("loadMore")}
+                            actionType="button"
+                            icon={<ArrowRight />}
+                            onClick={() => loadMoreResults("codexes")}
+                            className={classes.btnMoreLoadResults}
+                        />
+                    )}
                 </section>
             )}
         </>

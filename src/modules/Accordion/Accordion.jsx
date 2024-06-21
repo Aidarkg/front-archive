@@ -20,16 +20,14 @@ export const Accardion = () => {
             {t("header&footer.nav.q&a")}
          </Typography>
          <ul className={classes.accordion}>
-            {faqs.map((faqItem, id) => {
-               return (
-                  <AccordionItem
-                     onClick={() => (id === openId ? setId(null) : setId(id))}
-                     faqItem={faqItem}
-                     isOpen={id === openId}
-                     key={id}
-                  />
-               );
-            })}
+            {faqs?.map((faqItem, id) => (
+               <AccordionItem
+                  onClick={() => (id === openId ? setId(null) : setId(id))}
+                  faqItem={faqItem}
+                  isOpen={id === openId}
+                  key={id}
+               />
+            ))}
          </ul>
       </section>
    );

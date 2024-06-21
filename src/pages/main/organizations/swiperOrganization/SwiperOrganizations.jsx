@@ -59,7 +59,7 @@ export const SwiperOrganizations = () => {
             spaceBetween={50}
             className={css.mySwiper}
          >
-            {organizations.map((Organization, idx) => {
+            {organizations?.map((Organization, idx) => {
                return (
                   <SwiperSlide key={idx}>
                      <a

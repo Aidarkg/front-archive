@@ -2,7 +2,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import "swiper/swiper-bundle.css";
 import classes from "./ArchivePhotoSlider.module.sass";
-import {usePhotos} from "../api/PhotosStore.js";
+import {usePhotos} from "../store/usePhotosStore.js";
 import {useEffect} from "react";
 import {useNavigate} from "react-router-dom";
 
