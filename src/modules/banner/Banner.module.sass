@@ -1,20 +1,13 @@
 .banner    
     position: relative 
-    box-sizing: border-box
-    background-image: url()
-    //background-size: cover    
+    box-sizing: border-box        
     display: flex
     flex-direction: column
     align-items: center    
     justify-content: center    
     width: 100%    
     height: 100vh    
-    text-align: center   
-    //@media (max-width: 768px)
-        //.banner
-            //min-height: 100%
-            //max-width: 100%                                                                   
-            //margin: 0 auto
+    text-align: center       
     @media (max-width: 360px)
         .banner
             height: 100%
@@ -25,8 +18,7 @@
             background-position: center
             margin: 0px auto              
 
-.bannerImg 
-    //max-width: 100%     
+.bannerImg          
     width: 100%     
     height: 100%
     position: absolute    
@@ -34,42 +26,35 @@
     z-index: -1
     top: 0
     left: 0    
-    //@media (max-width: 768px)
-       //.bannerImg
-            //max-width: 31.25rem
-            //min-height: auto
-.main    
-    //max-width: 41.5rem
-    //width: 100%
+    
+.main        
     min-height: 20.5rem
     height: auto
     display: flex
     flex-direction: column
+    gap: 24px
     align-items: center
     justify-content: center 
     text-align: center  
-    z-index: 1
-    gap: 32px
-    //padding: 20px
-    //position: absolute
-    //top: 0 
-    h1          
-     //position: absolute
+    z-index: 1    
+    .wrapper
+        display: flex
+        flex-direction: column
+        align-items: center
+        gap: 32px
+    h1               
      text-align: center
-     max-width: 650px
-     margin-top: 30%
+     max-width: 650px     
      color: var(--main)
     @media (max-width: 768px)
        .main          
           width: 100%
-          height: auto
-          //height: 28.125rem 
+          height: auto           
           display: flex
           flex-wrap: wrap
           justify-content: center         
        .h1
-          max-width: 80%
-          margin-top: 40%
+          max-width: 80%          
     @media (max-width: 425px)
        .main
            width: 100%
@@ -80,13 +65,11 @@
        .main
            display: none
               
-.emblemImg
-    position: absolute
+.emblemImg    
     display: flex
     justify-content: center
     margin-left: auto
-    margin-right: auto
-    //max-width: 100%
+    margin-right: auto    
     max-width: 12.5rem
     height: auto
     top: 20%
@@ -104,11 +87,13 @@
            height: auto
 
 .detailBtn
-        width: 41.5rem
+        width: calc(100% - 90px)
         height: 40px
         display: flex
         align-items: center
-        justify-content: center   
+        justify-content: center  
+        gap: 20px 
+        padding: 0 auto        
         transition: 1s
         &:hover 
               background-color: var(--grey300)

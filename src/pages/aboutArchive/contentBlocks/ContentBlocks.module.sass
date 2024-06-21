@@ -1,7 +1,8 @@
 .main  
   h1
-    width: 350px        
-    margin: 40px 40px 48px 0
+    //width: 350px        
+    max-width: 100%
+    margin: 2.5rem 0 3rem
 
 @media (max-width: 768px)
     .h1
@@ -15,22 +16,24 @@
     .h1
       width: 100%
       height: auto          
-      margin: 0 16px
+      margin: 0 1rem
 
 .contentInner
     display: grid
-    grid-template-columns: repeat(auto-fit, minmax(1fr 1fr))
+    //grid-template-columns: repeat(auto-fit, minmax(1fr 1fr))
+    flex-direction: column
     gap: 24px    
     margin-bottom: 80px
 
 @media (max-width: 1200px)
     .contentInner    
         display: flex
-        flex-wrap: wrap    
+        flex-direction: column
+        gap: 40px    
 @media (max-width: 768px)
     .contentInner    
         display: flex
-        flex-wrap: wrap    
+        flex-direction: column    
         gap: 40px
 @media (max-width: 360px)
     .contentInner          
@@ -40,50 +43,39 @@
   display: flex
   background-color: var(--main)
   border-radius: 1rem
-  height: 23.375rem 
+  height: 31.6875rem   
   &Text
     display: flex
-    flex-wrap: wrap
-    height: 100%
-    //overflow: auto
+    flex-direction: column
+    min-height: 100%    
     gap: 16px
     padding: 70px 32px    
 @media (max-width: 1200px)
     .contentBlock
-        width: 100%
-        height: auto
+        //width: 100%
+        //height: auto
         display: flex
-        flex-wrap: wrap
-        justify-content: center            
+        flex-direction: column                    
         &Text
           padding: 10px
           margin-bottom: 5px
 @media (max-width: 768px)
-    .contentBlock
-        width: 100%
-        height: auto
-        display: flex
-        flex-wrap: wrap
-        justify-content: center            
+    .contentBlock        
+        flex-direction: column                    
         &Text
           padding: 10px
           margin-bottom: 5px
 
 @media (max-width: 360px)
-    .contentBlock    
-        width: 100%    
-        height: auto        
+    .contentBlock  
         display: flex
-        flex-wrap:  wrap
+        flex-direction: column
         justify-content: center
         &Text
           padding: 0px
           margin-bottom: 5px
-          
-.heading
-  width: 632px
-  height: 78px  
-  @media (max-width: 360px)
+
+@media (max-width: 360px)
     .heading       
         width: 100%
         height: auto
@@ -101,36 +93,30 @@
   flex-direction: row-reverse
 
 .image
-  width: 41.5rem
-  height: auto
-  float: right
-  border: none
-  border-radius: 0px 16px 16px 0px
+  max-width: 41.5rem
+  height: 23.375rem
+  float: right  
 
 .leftImage
+  max-width: 41.5rem
+  height: 23.375rem  
   float: left
-  width: 41.5rem
-  height: auto
-  border: none
-  border-radius: 16px 0px 0px 16px
 @media (max-width: 768px)
     .contentBlockText, .heading, .text
-        width: 100%
-        
+        width: 100%        
     .image, .leftImage
         width: 100%
         height: auto
         float: none        
-        border-radius: 16px 16px 0 0
+        border-radius: 1rem 1rem 0 0
 @media (max-width: 360px)            
     .contentBlockText       
-        gap: 30px
-        
+        gap: 30px        
     .image, .leftImage
         width: 100%
         height: auto
         float: none
-        border-radius: 8px 8px 8px 8px
+        border-radius: 0.5rem
 
 .detailBtn         
          display: inline-flex
