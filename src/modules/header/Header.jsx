@@ -42,6 +42,7 @@ export const Header = () => {
    const [isArchiveOpenResponsive, setIsArchiveOpenResponsive] = useState(false);
    const [isMediaArchiveOpenResponsive, setIsMediaArchiveOpenResponsive] = useState(false);
    const [isDropMenuOpen, setIsDropMenuOpen] = useState(false);
+   const [isAnimating, setIsAnimating] = useState(false);
    const [isAccessibilityModeActive, setIsAccessibilityModeActive] = useState(false);
 
    const location = useLocation();
@@ -93,7 +94,15 @@ export const Header = () => {
    };
 
    const toggleDropdown = () => {
-      setIsDropMenuOpen((prev) => !prev);
+      if (isDropMenuOpen) {
+         setIsAnimating((prev) => !prev);
+         setTimeout(() => {
+            setIsAnimating((prev) => !prev);
+            setIsDropMenuOpen((prev) => !prev);
+         }, 500);
+      } else {
+         setIsDropMenuOpen((prev) => !prev);
+      }
    };
 
    const isArchiveActive = () => {
@@ -249,7 +258,10 @@ export const Header = () => {
                      <MenuSvg />
                   </button>
                   {isDropMenuOpen && (
-                     <div ref={dropdownRef} className={`${classes.headerInnerResponsive} ${isDropMenuOpen ? classes.open : ""}`}>
+                     <div
+                        ref={dropdownRef}
+                        className={`${classes.headerInnerResponsive} ${isAnimating ? classes.close : ""} ${isDropMenuOpen ? classes.open : ""}`}
+                     >
                         <div className={classes.responsiveHigh}>
                            <div className={classes.headerLogoResponsive}>
                               <HeaderLogo width={35} height={36} />
