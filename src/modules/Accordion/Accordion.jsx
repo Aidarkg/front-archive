@@ -5,8 +5,8 @@ import { AccordionItem } from "./AccordionItem.jsx";
 import { useTranslation } from "react-i18next";
 import useFaqStore from "../../pages/FAQ/store/useFaqStore.jsx";
 
-export const Accardion = () => {
-   const {faqs, fetchFaqs} = useFaqStore();
+export const Accardion = ({useSlicedFaqs}) => {
+   const { faqs, slicedFaqs, fetchFaqs } = useFaqStore();
    const [openId, setId] = useState(null);
    const {t, i18n} = useTranslation();
 
@@ -14,13 +14,14 @@ export const Accardion = () => {
       fetchFaqs();
    }, [fetchFaqs, i18n.language]);
 
+   const dataFaqs = useSlicedFaqs ? slicedFaqs : faqs;
    return (
       <section>
          <Typography className={classes.nameFaq} variant="h1" color="blue500">
             {t("header&footer.nav.q&a")}
          </Typography>
          <ul className={classes.accordion}>
-            {faqs?.map((faqItem, id) => (
+            {dataFaqs?.map((faqItem, id) => (
                <AccordionItem
                   onClick={() => (id === openId ? setId(null) : setId(id))}
                   faqItem={faqItem}
