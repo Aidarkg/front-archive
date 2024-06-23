@@ -6,7 +6,7 @@ import {Typography} from "../../UI/Typography/Typography.jsx";
 import {useTranslation} from "react-i18next";
 import {Loader} from "../../components/loader/Loader.jsx";
 
-import useStoreContacts from "./store/store.js";
+
 import {useEffect} from "react";
 
 import {CapIconBlue} from "../../assets/icons/CapIconBlue.jsx";
@@ -20,6 +20,7 @@ import {BookIcon} from "../../assets/icons/BookIcon.jsx";
 import {ContactsNumberIcon} from "../../assets/icons/ContactsNumberIcon.jsx";
 import {CalendarTimeBlue} from "../../assets/icons/CalendarTimeBlue.jsx";
 import {ErrorPage} from "../errorPage/ErrorPage.jsx";
+import {useStoreContacts} from "./store/store.js";
 
 export const Contacts = () => {
 

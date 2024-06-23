@@ -6,6 +6,12 @@ import FaxIcon from "../../assets/icons/FolderIcon";
 import EmailIcon from "../../assets/icons/MailIcon";
 import FacebookIcon from "../../assets/icons/Facebook";
 import YandexMap from "./yandexMap/YandexMap.jsx";
+import {useEffect} from "react";
+import {Loader} from "../../components/loader/Loader.jsx";
+import {ErrorPage} from "../../pages/errorPage/ErrorPage.jsx";
+import {getContactsMain} from "./store/store.js";
+import {useTranslation} from "react-i18next";
+import {Container} from "../../components/container/Container.jsx";
 
 const ContactBlock = ({ label, value, icon }) => (
    <div className={styles.contactBlock}>
@@ -16,55 +22,70 @@ const ContactBlock = ({ label, value, icon }) => (
       </div>
    </div>
 );
-//FIX ME Вынести в отдельный компонент добавить перевод
-const ContactSection = () => (
-   <div className="container">
-      <div className={styles.contactSection}>
-         <h2>Контакты</h2>
-         <div className={styles.contactSectionBlock}>
-            <div className={styles.contactSectionInner}>
-               <h2>Кыргызская Республика, г. Бишкек</h2>
-               <div className={styles.contactSectionKontak}>
-                  <div className={styles.contactSectionBlockGap1}>
-                     <ContactBlock
-                        label="Адрес"
-                        value="ул.Фрунзе, 477"
-                        icon={<AddressIcon />}
-                     />
-                     <ContactBlock
-                        label="Телефон"
-                        value="+996 505 39 28 63"
-                        icon={<PhoneIcon />}
-                     />
-                     <ContactBlock
-                        label="Индекс"
-                        value="720040"
-                        icon={<IndexIcon />}
-                     />
-                  </div>
-                  <div className={styles.contactSectionBlockGap2}>
-                     <ContactBlock
-                        label="Факс"
-                        value="480263"
-                        icon={<FaxIcon />}
-                     />
-                     <ContactBlock
-                        label="Электронная почта"
-                        value="archive.gov@gmail.com"
-                        icon={<EmailIcon />}
-                     />
-                     <ContactBlock
-                        label="Facebook"
-                        value="Архивная служба"
-                        icon={<FacebookIcon />}
-                     />
-                  </div>
-               </div>
-            </div>
-            <YandexMap />
-         </div>
-      </div>
-   </div>
-);
+
+const ContactSection = () => {
+
+   const { contacts, loading, error, getData } = getContactsMain();
+   const {t, i18n} = useTranslation();
+   console.error(contacts.logo.contacts, "aaa");
+   useEffect(() => {
+      getData();
+   }, [getData, i18n.language]);
+   if (loading) {
+      return <Loader />;
+   }
+   if (error) {
+      return <ErrorPage/>;
+   }
+      return (
+          <Container>
+             <div className={styles.contactSection}>
+                <h2>Контакты</h2>
+                <div className={styles.contactSectionBlock}>
+                   <div className={styles.contactSectionInner}>
+                      <h2>Кыргызская Республика, г. Бишкек</h2>
+                      <div className={styles.contactSectionKontak}>
+                         <div className={styles.contactSectionBlockGap1}>
+                            <ContactBlock
+                                label={t("contactsPage.sections.generalInformation.location")}
+                                // value={contacts?.results?.address}
+                                icon={<AddressIcon />}
+                            />
+                            <ContactBlock
+                                label="Телефон"
+                                value="+996 505 39 28 63"
+                                icon={<PhoneIcon />}
+                            />
+                            <ContactBlock
+                                label="Индекс"
+                                value="720040"
+                                icon={<IndexIcon />}
+                            />
+                         </div>
+                         <div className={styles.contactSectionBlockGap2}>
+                            <ContactBlock
+                                label="Факс"
+                                value="480263"
+                                icon={<FaxIcon />}
+                            />
+                            <ContactBlock
+                                label="Электронная почта"
+                                value="archive.gov@gmail.com"
+                                icon={<EmailIcon />}
+                            />
+                            <ContactBlock
+                                label="Facebook"
+                                value="Архивная служба"
+                                icon={<FacebookIcon />}
+                            />
+                         </div>
+                      </div>
+                   </div>
+                   <YandexMap />
+                </div>
+             </div>
+          </Container>
+      );
+};
 
 export default ContactSection;

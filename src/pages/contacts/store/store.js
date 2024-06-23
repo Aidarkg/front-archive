@@ -1,7 +1,7 @@
 import create from "zustand";
 import axios from "../../../axiosConfig.js";
 import {BASE_URL} from "../../../utils/constants/Constants.js";
-const useStoreContacts = create((set) => ({
+export const useStoreContacts = create((set) => ({
     contacts: {
         archive: [],
         anticorruption: [],
@@ -20,4 +20,4 @@ const useStoreContacts = create((set) => ({
     }
 }));
 
-export default useStoreContacts;
+
