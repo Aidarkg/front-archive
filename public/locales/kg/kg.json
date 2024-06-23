@@ -106,7 +106,8 @@
             "fullName": "Толук аты",
             "mail": "Почта",
             "yourQuestion": "Сиздин суроо",
-            "button": "Суроо бериңиз"
+            "button": "Суроо бериңиз",
+            "requiredField": "Бул талаа талап кылынат"
         }
     },
     "contactsPage": {
@@ -159,6 +160,8 @@
     },
     "errorPage": {
         "toMain": "Башкы",
-        "back": "Артка"
+        "back": "Артка",
+        "pageNotFound": "Барак табылган жок",
+        "unavailablePortal": "Портал убактылуу жеткиликсиз"
     }
 }

@@ -6,7 +6,10 @@ import {Typography} from "../Typography/Typography.jsx";
 import {CustomButton} from "../customButton/CustomButton.jsx";
 import {PATH} from "../../utils/constants/Constants.js";
 import {ArrowLeft} from "../../assets/icons/ArrowLeft.jsx";
+import {useTranslation} from "react-i18next";
+
 export const Errors = () => {
+    const {t} = useTranslation();
     return (
         <section>
             <Container>
@@ -15,12 +18,12 @@ export const Errors = () => {
                         <img className={classes.errorIMG} src={notFoundImage} alt="404 Page Not Found"/>
                     </div>
                     <Typography variant="h1" color="blue500">
-                        Страница не найдена
+                        {t("errorPage.pageNotFound")}
                     </Typography>
                     <div className={classes.errorButtons}>
                         <CustomButton
                             className={classes.btn}
-                            text={"на главную"}
+                            text={t("errorPage.toMain")}
                             actionType="link"
                             to={PATH.main}
                             buttonStyle={"blue"}
@@ -28,7 +31,7 @@ export const Errors = () => {
                         <CustomButton
                             icon={<ArrowLeft/>}
                             className={classes.btn}
-                            text={"назад"}
+                            text={t("errorPage.back")}
                             actionType="link"
                             to={-1}
                         />

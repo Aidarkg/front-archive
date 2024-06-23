@@ -9,6 +9,8 @@ import { Breadcrumbs } from "../../modules/breadcrumbs/Breadcrumbs.jsx";
 import { Container } from "../../components/container/Container.jsx";
 import { useTranslation } from "react-i18next";
 
+
+
 export const Faq = () => {
    const { t } = useTranslation();
    return (

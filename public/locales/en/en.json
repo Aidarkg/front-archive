@@ -106,7 +106,8 @@
          "fullName": "Full Name",
          "mail": "Mail",
          "yourQuestion": "Your question",
-         "button": "Submit a question"
+         "button": "Submit a question",
+         "requiredField": "This field is required"
       }
    },
    "contactsPage": {
@@ -159,6 +160,8 @@
    },
    "errorPage": {
       "toMain": "To main",
-      "back": "back"
+      "back": "back",
+      "pageNotFound": "Page Not Found",
+      "unavailablePortal": "The portal is temporarily unavailable"
    }
 }

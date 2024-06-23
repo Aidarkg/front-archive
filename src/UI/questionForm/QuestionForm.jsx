@@ -38,18 +38,12 @@ export const QuestionForm = () => {
    };
 
    const formValidate = (value) => ({
-      required: "Это поле обязательное!",
+      required: (t("q&aPage.form.requiredField")),
       pattern: {
          value: value,
          message: "Неправильный формат почты!",
       },
    });
-
-   useEffect(() => {
-      if (isSubmitSuccessful) {
-         trigger();
-      }
-   }, [isSubmitSuccessful, trigger]);
 
    const { t } = useTranslation();
 
@@ -61,6 +55,12 @@ export const QuestionForm = () => {
    const closeModal = () => {
       setShowModal(false);
    };
+
+   useEffect(() => {
+      if (isSubmitSuccessful) {
+         trigger();
+      }
+   }, [isSubmitSuccessful, trigger]);
 
    return (
        <section className={classes.faq}>
@@ -96,7 +96,7 @@ export const QuestionForm = () => {
                 <TextInput
                     id="name"
                     type="text"
-                    {...register("full_name", { required: "Это поле обязательное!" })}
+                    {...register("full_name", { required: (t("q&aPage.form.requiredField")) })}
                     placeholder="Иванов Иван Иванович"
                 />
                 <Typography className={classes.errors} variant="span">
@@ -123,7 +123,7 @@ export const QuestionForm = () => {
                     id="question_text"
                     placeholder="Введите текст"
                     {...register("question_text", {
-                       required: "Это поле обязательное!",
+                       required: (t("q&aPage.form.requiredField")),
                        minLength: {
                           value: 20,
                           message: "Не менее 20 символов",
