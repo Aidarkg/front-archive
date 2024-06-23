@@ -15,11 +15,12 @@ export const Services = () => {
       service,
       loading,
       fetchData,
-      downloadDocument,
       error,
       loadMoreService,
       nextPage,
    } = useServiceStore();
+   const downloadPDF = useServiceStore((state) => state.downloadPDF);
+
 
    useEffect(() => {
       fetchData();
@@ -51,7 +52,7 @@ export const Services = () => {
                text={t("servicePage.button")}
                className={classes.downloadPreiList}
                icon={<DownloadIcon />}
-               onClick={downloadDocument}
+               onClick={downloadPDF}
             />
             {loading && <Loader />}
             <div className={classes.mapCards}>
