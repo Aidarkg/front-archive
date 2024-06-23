@@ -9,6 +9,8 @@ import {Breadcrumbs} from "../../modules/breadcrumbs/Breadcrumbs.jsx";
 
 import {Container} from "../../components/container/Container.jsx";
 import { useTranslation } from "react-i18next";
+import {ErrorPage} from "../errorPage/ErrorPage.jsx";
+
 
 export const Faq = () => {
     const {t} = useTranslation();
@@ -29,6 +31,7 @@ export const Faq = () => {
                           {t("q&aPage.heading")}
                       </Typography>
                       <QuestionForm />
+                      <ErrorPage/>
                   </div>
               </div>
           </Container>

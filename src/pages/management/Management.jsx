@@ -10,6 +10,7 @@ import { Breadcrumbs } from "../../modules/breadcrumbs/Breadcrumbs.jsx";
 import {useTranslation} from "react-i18next";
 import {Loader} from "../../components/loader/Loader.jsx";
 import {useData} from "./store/store.js";
+import {ErrorPage} from "../errorPage/ErrorPage.jsx";
 
 export const Management = () => {
     const { t, i18n } = useTranslation();
@@ -26,7 +27,7 @@ export const Management = () => {
         return <Loader />;
     }
     if (error) {
-        return <div>Error: {error}</div>;
+        return <ErrorPage/>;
     }
 
     return (
