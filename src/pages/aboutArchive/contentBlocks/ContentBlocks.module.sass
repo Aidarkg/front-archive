@@ -25,7 +25,6 @@
 .contentInner
     display: grid
     grid-template-columns: repeat(auto-fit, minmax(1fr 1fr))
-    //flex-direction: column
     justify-content: center
     gap: 24px    
     margin-bottom: 5rem
@@ -93,7 +92,7 @@
           margin-bottom: 5px
 @media (max-width: 768px)
     .contentBlock        
-        width: 100%
+        max-width: 100%
         display: flex
         flex-wrap: wrap 
         justify-content: center
@@ -122,11 +121,10 @@
     .heading       
         width: 100%
         height: 100%
-        //margin-bottom: 0px
+        
 .text
   //max-width: 39.5rem
-  width: calc(100% - 10px)
-  //width: 100%
+  width: calc(100% - 10px)  
   min-height: auto
   color: var(--grey500)
   padding: 20px 0
@@ -158,27 +156,19 @@
   height: 23.375rem  
   float: left
   border-radius: 1rem 0 0 1rem
-@media (max-width: 1200px)
-    .contentBlockText
-        //width: 100%        
-    .image, .leftImage
-        //width: 100%
-        //height: auto        
+@media (max-width: 1200px)          
+    .image, .leftImage                
         float: none        
         border-radius: 1rem 1rem 0 0  
-@media (max-width: 900px)
-    .contentBlockText
-        //width: 100%        
-    .image, .leftImage
-        //width: 100%
-        //height: auto        
+@media (max-width: 900px)            
+    .image, .leftImage                
         float: none        
         border-radius: 1rem 1rem 0 0
 @media (max-width: 768px)
     .contentBlockText
-        width: 100%        
+        max-width: 100%        
     .image, .leftImage
-        width: 100%
+        max-width: 100%
         height: auto        
         float: none        
         border-radius: 1rem 1rem 0 0
