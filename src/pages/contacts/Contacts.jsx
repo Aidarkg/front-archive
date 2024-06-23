@@ -19,6 +19,7 @@ import {PeopleBlueIcon} from "../../assets/icons/PeopleBlueIcon.jsx";
 import {BookIcon} from "../../assets/icons/BookIcon.jsx";
 import {ContactsNumberIcon} from "../../assets/icons/ContactsNumberIcon.jsx";
 import {CalendarTimeBlue} from "../../assets/icons/CalendarTimeBlue.jsx";
+import {ErrorPage} from "../errorPage/ErrorPage.jsx";
 
 export const Contacts = () => {
 
@@ -35,7 +36,7 @@ export const Contacts = () => {
     }
 
     if (error) {
-        return <div>Error: {error}</div>;
+        return <ErrorPage/>;
     }
     return (
         <section>

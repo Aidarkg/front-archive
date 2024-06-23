@@ -1,10 +1,14 @@
 .main  
-  h1
-    //width: 350px        
+  width: 100%
+  h1            
     max-width: 100%
     margin: 2.5rem 0 3rem
-
+@media (max-width: 1200px)
+    .main
+      width: 100%
 @media (max-width: 768px)
+    .main
+      width: 100%
     .h1
       width: 100%
       height: auto
@@ -20,57 +24,96 @@
 
 .contentInner
     display: grid
-    //grid-template-columns: repeat(auto-fit, minmax(1fr 1fr))
-    flex-direction: column
+    grid-template-columns: repeat(auto-fit, minmax(1fr 1fr))
+    //flex-direction: column
+    justify-content: center
     gap: 24px    
-    margin-bottom: 80px
-
+    margin-bottom: 5rem
+@media (max-width: 1300px)
+    .contentInner    
+        display: flex
+        flex-wrap: wrap
+        width: 100%
+        gap: 40px 
 @media (max-width: 1200px)
     .contentInner    
         display: flex
-        flex-direction: column
+        flex-wrap: wrap
         gap: 40px    
 @media (max-width: 768px)
     .contentInner    
         display: flex
-        flex-direction: column    
+        flex-wrap: wrap  
+        justify-content: center
+        align-items: center  
         gap: 40px
 @media (max-width: 360px)
     .contentInner          
           gap: 40px
 
 .contentBlock
-  display: flex
   background-color: var(--main)
   border-radius: 1rem
-  height: 31.6875rem   
+  height: 23.375rem  
+  max-width: 100%  
   &Text
     display: flex
-    flex-direction: column
-    min-height: 100%    
+    flex-wrap: wrap    
+    height: 100%  
+    max-width: 100%  
     gap: 16px
     padding: 70px 32px    
+@media (max-width: 1300px)
+    .contentBlock
+        //max-width: 100%
+        height: 100%
+        display: flex
+        flex-wrap: wrap  
+        justify-content: center                          
+        &Text
+          padding: 10px
+          margin-bottom: 5px
 @media (max-width: 1200px)
     .contentBlock
-        //width: 100%
-        //height: auto
+        width: 100%
+        height: 100%
         display: flex
-        flex-direction: column                    
+        flex-wrap: wrap  
+        justify-content: center                          
+        &Text
+          padding: 10px
+          margin-bottom: 5px
+@media (max-width: 900px)
+    .contentBlock        
+        display: flex
+        flex-wrap: wrap   
+        justify-content: center                        
         &Text
           padding: 10px
           margin-bottom: 5px
 @media (max-width: 768px)
     .contentBlock        
-        flex-direction: column                    
+        width: 100%
+        display: flex
+        flex-wrap: wrap 
+        justify-content: center
+        align-items: center                          
         &Text
           padding: 10px
           margin-bottom: 5px
-
+@media (max-width: 420px)
+    .contentBlock  
+        display: flex
+        flex-wrap: wrap 
+        justify-content: center       
+        &Text
+          padding: 0px
+          margin-bottom: 5px
 @media (max-width: 360px)
     .contentBlock  
         display: flex
-        flex-direction: column
-        justify-content: center
+        flex-wrap: wrap 
+        justify-content: center       
         &Text
           padding: 0px
           margin-bottom: 5px
@@ -78,35 +121,65 @@
 @media (max-width: 360px)
     .heading       
         width: 100%
-        height: auto
-        margin-bottom: 25px
+        height: 100%
+        //margin-bottom: 0px
 .text
-  width: 39.5rem
-  height: auto  
+  //max-width: 39.5rem
+  width: calc(100% - 10px)
+  //width: 100%
+  min-height: auto
   color: var(--grey500)
   padding: 20px 0
-  @media (max-width: 360px)
+@media (max-width: 1200px)
     .text
-        height: auto
+        width: 100%
+        margin: 0 15px
+@media (max-width: 768px)
+    .text
+        width: 100%
+        margin: 0 15px
+@media (max-width: 360px)
+    .text
+        height: 100%
         
 .left
   flex-direction: row-reverse
 
 .image
-  max-width: 41.5rem
-  height: 23.375rem
+  //max-width: 41.5rem
+  max-width: 100%  
+  height: 23.375rem  
   float: right  
+  border-radius: 0 1rem 1rem 0
 
 .leftImage
-  max-width: 41.5rem
+  //max-width: 41.5rem
+  max-width: 100%  
   height: 23.375rem  
   float: left
+  border-radius: 1rem 0 0 1rem
+@media (max-width: 1200px)
+    .contentBlockText
+        //width: 100%        
+    .image, .leftImage
+        //width: 100%
+        //height: auto        
+        float: none        
+        border-radius: 1rem 1rem 0 0  
+@media (max-width: 900px)
+    .contentBlockText
+        //width: 100%        
+    .image, .leftImage
+        //width: 100%
+        //height: auto        
+        float: none        
+        border-radius: 1rem 1rem 0 0
 @media (max-width: 768px)
-    .contentBlockText, .heading, .text
+    .contentBlockText
         width: 100%        
     .image, .leftImage
         width: 100%
-        height: auto
+        height: auto        
         float: none        
         border-radius: 1rem 1rem 0 0
 @media (max-width: 360px)            
@@ -119,10 +192,21 @@
         border-radius: 0.5rem
 
 .detailBtn         
-         display: inline-flex
-         align-items: center
-         justify-content: center           
-         background-color: var(--grey100) 
-         color: var(--grey500)
-         &:hover 
-              background-color: var(--main)
+        display: inline-flex
+        align-items: center
+        justify-content: center           
+        background-color: var(--grey100) 
+        color: var(--grey500)
+        &:hover 
+            background-color: var(--main)
+@media (max-width: 1300px)
+    .detailBtn
+          margin-left: 15px
+@media (max-width: 360px)
+    .detailBtn
+          width: 300px
+          display: flex
+          justify-content:  center
+          align-items: center
+          margin-left: 15px
+          

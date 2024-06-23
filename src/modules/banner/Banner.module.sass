@@ -42,10 +42,10 @@
         flex-direction: column
         align-items: center
         gap: 32px
-    h1               
+    .h1               
      text-align: center
-     max-width: 650px     
-     color: var(--main)
+     max-width: 40.625rem     
+     color: var(--main)     
     @media (max-width: 768px)
        .main          
           width: 100%
@@ -54,16 +54,43 @@
           flex-wrap: wrap
           justify-content: center         
        .h1
-          max-width: 80%          
-    @media (max-width: 425px)
-       .main
+          max-width: 90%   
+    @media (max-width: 650px)
+        .main
            width: 100%
            display: flex
            flex-wrap: wrap
            justify-content: center
+        .h1
+           max-width: 89%
+           font-size: 1.8rem
+    @media (max-width: 500px)
+        .main
+           width: 100%
+           display: flex
+           flex-wrap: wrap
+           justify-content: center
+        .h1
+           max-width: 89%
+           font-size: 1.8rem                               
+    @media (max-width: 425px)
+        .main
+           width: 100%
+           display: flex
+           flex-wrap: wrap
+           justify-content: center
+        .h1
+           max-width: 80%
+           font-size: 1.5rem
     @media (max-width: 360px)
-       .main
-           display: none
+        .main
+           width: 100%
+           display: flex
+           flex-wrap: wrap
+           justify-content: center
+        .h1
+           max-width: 80%
+           font-size: 1.25rem
               
 .emblemImg    
     display: flex
@@ -88,7 +115,7 @@
 
 .detailBtn
         width: calc(100% - 90px)
-        height: 40px
+        height: 2.5rem
         display: flex
         align-items: center
         justify-content: center  
@@ -101,3 +128,7 @@
 @media (max-width: 768px)    
     .btnDetail
         max-width: 100%
+@media (max-width: 360px)    
+    .btnDetail
+        max-width: 100%    
+           
