@@ -119,6 +119,35 @@ export const Header = () => {
       setIsAccessibilityModeActive(!isAccessibilityModeActive);
    };
 
+       useEffect(() => {
+       const loadScript = (src) => {
+          return new Promise((resolve, reject) => {
+             const script = document.createElement("script");
+             script.src = src;
+             script.async = true;
+             script.onload = resolve;
+             script.onerror = reject;
+             document.body.appendChild(script);
+          });
+       };
+   
+       loadScript("https:lidrekon.ru/slep/js/jquery.js").then(() => {
+          return loadScript("https:lidrekon.ru/slep/js/uhpv-full.min.js");
+       });
+   
+       const observer = new MutationObserver(() => {
+          if (document.querySelector('#special')) {
+             headerRef.current.style.marginTop = "50px";
+          } else {
+             headerRef.current.style.marginTop = "0";
+          }
+       });
+   
+       observer.observe(document.body, { attributes: true, childList: true, subtree: true });
+   
+       return () => observer.disconnect();
+    }, []);
+
    const observer = new MutationObserver(() => {
       if (document.querySelector('#special')) {
          headerRef.current.style.marginTop = "50px";
@@ -367,4 +396,3 @@ export const Header = () => {
       </header>
    );
 };
-
