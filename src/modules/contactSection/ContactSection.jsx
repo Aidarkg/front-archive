@@ -6,10 +6,10 @@ import FaxIcon from "../../assets/icons/FolderIcon";
 import EmailIcon from "../../assets/icons/MailIcon";
 import FacebookIcon from "../../assets/icons/Facebook";
 import YandexMap from "./yandexMap/YandexMap.jsx";
-import {useEffect} from "react";
-import {Loader} from "../../components/loader/Loader.jsx";
-import {ErrorPage} from "../../pages/errorPage/ErrorPage.jsx";
-import {getContactsMain} from "./store/store.js";
+// import {useEffect} from "react";
+// import {Loader} from "../../components/loader/Loader.jsx";
+// import {ErrorPage} from "../../pages/errorPage/ErrorPage.jsx";
+// import {getContactsMain} from "./store/store.js";
 import {useTranslation} from "react-i18next";
 import {Container} from "../../components/container/Container.jsx";
 
@@ -25,18 +25,18 @@ const ContactBlock = ({ label, value, icon }) => (
 
 const ContactSection = () => {
 
-   const { contacts, loading, error, getData } = getContactsMain();
-   const {t, i18n} = useTranslation();
-   console.error(contacts.logo.contacts, "aaa");
-   useEffect(() => {
-      getData();
-   }, [getData, i18n.language]);
-   if (loading) {
-      return <Loader />;
-   }
-   if (error) {
-      return <ErrorPage/>;
-   }
+   // const { contacts, loading, error, getData } = getContactsMain();
+   const {t} = useTranslation();
+   // console.error(contacts.logo.contacts, "aaa");
+   // useEffect(() => {
+   //    getData();
+   // }, [getData, i18n.language]);
+   // if (loading) {
+   //    return <Loader />;
+   // }
+   // if (error) {
+   //    return <ErrorPage/>;
+   // }
       return (
           <Container>
              <div className={styles.contactSection}>

@@ -18,7 +18,7 @@ export const SuccessModal = ({ show, onClose }) => {
                     text="Закрыть"
                     onClick={onClose}
                     buttonStyle="blue"
-                    type="submit"
+                    type="button"
                 />
             </div>
         </div>

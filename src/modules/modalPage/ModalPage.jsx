@@ -13,7 +13,7 @@ export const ModalPage = () => {
     return (
         <div>
             <Container>
-                <div className={classes.card}>
+                <div className={classes.card} >
                     <CustomButton
                         buttonStyle="blue"
                         type="submit"
