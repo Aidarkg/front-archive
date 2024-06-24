@@ -10,7 +10,7 @@ import { useSearchStore } from "./store/useSearchStore";
 
 import { Container } from "../../components/container/Container";
 import { Loader } from "../../components/loader/Loader";
-import { Errors } from "../../UI/error/Errors";
+import { ErrorPage } from "../errorPage/ErrorPage";
 
 import { Breadcrumbs } from "../../modules/breadcrumbs/Breadcrumbs";
 
@@ -62,7 +62,7 @@ export const SearchResults = () => {
     };
 
     if (loading) return <Loader />;
-    if (error) return <Errors />;
+    if (error) return < ErrorPage />;
 
     return (
         <section className={classes.SearchResults}>
