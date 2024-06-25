@@ -35,7 +35,7 @@ export const Header = () => {
     const [isDropMenuOpen, setIsDropMenuOpen] = useState(false);
     const [isAnimating, setIsAnimating] = useState(false);
     const [isAccessibilityModeActive, setIsAccessibilityModeActive] = useState(false);
-    const [isAccessibilityScriptsLoaded, setIsAccessibilityScriptsLoaded] = useState(false);
+    // const [isAccessibilityScriptsLoaded, setIsAccessibilityScriptsLoaded] = useState(false);
 
     const location = useLocation();
     const subnavRef = useRef(null);
@@ -107,51 +107,37 @@ export const Header = () => {
     };
 
     const toggleAccessibilityMode = () => {
-        if (!isAccessibilityScriptsLoaded) {
-            const loadScript = (src) => {
-                return new Promise((resolve, reject) => {
-                    const script = document.createElement("script");
-                    script.src = src;
-                    script.async = true;
-                    script.onload = resolve;
-                    script.onerror = reject;
-                    document.body.appendChild(script);
-                });
-            };
-
-            loadScript("https://lidrekon.ru/slep/js/jquery.js").then(() => {
-                return loadScript("https://lidrekon.ru/slep/js/uhpv-full.min.js");
-            }).then(() => {
-                if (window.UHPV) {
-                    window.UHPV.init();
-                }
-                setIsAccessibilityScriptsLoaded(true);
-                setIsAccessibilityModeActive(true);
-            }).catch((error) => {
-                console.error("Failed to load accessibility scripts", error);
-            });
-
-            const observer = new MutationObserver(() => {
-                if (document.querySelector('#special')) {
-                    headerRef.current.style.marginTop = "50px";
-                } else {
-                    headerRef.current.style.marginTop = "0";
-                }
-            });
-
-            observer.observe(document.body, { attributes: true, childList: true, subtree: true });
-
-            return () => observer.disconnect();
-        } else {
-            if (isAccessibilityModeActive && window.UHPV) {
-                window.UHPV.deactivate();
-                setIsAccessibilityModeActive(false);
-            } else if (!isAccessibilityModeActive && window.UHPV) {
-                window.UHPV.init();
-                setIsAccessibilityModeActive(true);
-            }
-        }
+        setIsAccessibilityModeActive(!isAccessibilityModeActive);
     };
+
+    useEffect(() => {
+        const loadScript = (src) => {
+            return new Promise((resolve, reject) => {
+                const script = document.createElement("script");
+                script.src = src;
+                script.async = true;
+                script.onload = resolve;
+                script.onerror = reject;
+                document.body.appendChild(script);
+            });
+        };
+
+        loadScript("https://lidrekon.ru/slep/js/jquery.js").then(() => {
+            return loadScript("https://lidrekon.ru/slep/js/uhpv-full.min.js");
+        });
+
+        const observer = new MutationObserver(() => {
+            if (document.querySelector('#special')) {
+                headerRef.current.style.marginTop = "50px";
+            } else {
+                headerRef.current.style.marginTop = "0";
+            }
+        });
+
+        observer.observe(document.body, { attributes: true, childList: true, subtree: true });
+
+        return () => observer.disconnect();
+    }, []);
 
     return (
         <header className={classes.header} ref={headerRef}>
