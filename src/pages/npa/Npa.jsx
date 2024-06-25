@@ -7,12 +7,13 @@ import { useEffect } from "react";
 import { useRegulationsStore } from "./store/useRegulationsStore";
 
 import { Typography } from "../../UI/Typography/Typography";
-
 import { RegulationsDoc } from "../../UI/regulationsDoc/RegulationsDoc";
 import { CustomButton } from "../../UI/customButton/CustomButton";
 
 import { Container } from "../../components/container/Container";
 import { Loader } from "../../components/loader/Loader";
+
+import { ErrorPage } from "../errorPage/ErrorPage";
 
 import { Breadcrumbs } from "../../modules/breadcrumbs/Breadcrumbs";
 
@@ -20,7 +21,7 @@ import { ArrowRight } from "../../assets/icons/ArrowRight";
 
 export const Npa = () => {
    const { t, i18n } = useTranslation();
-   const { regulationsList, fetchRegulations, fetchMoreRegulations, next, loading } = useRegulationsStore();
+   const { regulationsList, fetchRegulations, fetchMoreRegulations, next, loading, error } = useRegulationsStore();
 
    useEffect(() => {
       fetchRegulations();
@@ -69,7 +70,7 @@ export const Npa = () => {
                   </li>
                </ul>
                <ul className={classes.documentsContainer}>
-                  {loading && <Loader />}
+                  {loading && <Loader /> || error && <ErrorPage />}
                   {regulationsList?.map((doc) => (
                      <RegulationsDoc
                         key={doc.id}
