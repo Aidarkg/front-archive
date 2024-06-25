@@ -6,6 +6,7 @@ import { Organizations } from "./organizations/Organizations.jsx";
 import ContactSection from "../../modules/contactSection/ContactSection.jsx";
 import { MainAboutArchive } from "./mainAboutArchive/MainAboutArchive.jsx";
 import classes from "../../modules/Accordion/AccardionItem.module.sass";
+import {Container} from "../../components/container/Container.jsx";
 
 export const Main = () => {
    return (
@@ -13,14 +14,14 @@ export const Main = () => {
          <Banner />
          <MainAboutArchive />
          <MainGallery />
-         <div className="container">
-            <div className={classes.accardionPage}>
-               <Accardion useSlicedFaqs={true} />
-               <div className={classes.imgAccardion}>
-                  <img src={personFaq} alt="personFaq" />
-               </div>
-            </div>
-         </div>
+         <Container>
+             <div className={classes.accardionPage}>
+                 <Accardion useSlicedFaqs={true} />
+                 <div className={classes.imgAccardion}>
+                     <img src={personFaq} alt="personFaq" />
+                 </div>
+             </div>
+         </Container>
          <Organizations />
          <ContactSection />
       </section>

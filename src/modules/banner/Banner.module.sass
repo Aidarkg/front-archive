@@ -1,135 +1,51 @@
-.banner    
-    position: relative 
-    box-sizing: border-box        
-    display: flex
-    flex-direction: column
-    align-items: center    
-    justify-content: center    
-    width: 100%    
-    height: 100vh    
-    text-align: center       
-    @media (max-width: 360px)
-        .banner
-            height: 100%
-            width: 100%
-            display: flex
-            justify-content: center
-            background-size: cover
-            background-position: center
-            margin: 0px auto              
-
-.bannerImg          
-    width: 100%     
-    height: 100%
-    position: absolute    
-    object-fit: cover
-    z-index: -1
-    top: 0
-    left: 0    
-    
-.main        
-    min-height: 20.5rem
-    height: auto
-    display: flex
-    flex-direction: column
-    gap: 24px
-    align-items: center
-    justify-content: center 
-    text-align: center  
-    z-index: 1    
-    .wrapper
-        display: flex
-        flex-direction: column
-        align-items: center
-        gap: 32px
-    .h1               
-     text-align: center
-     max-width: 40.625rem     
-     color: var(--main)     
-    @media (max-width: 768px)
-       .main          
-          width: 100%
-          height: auto           
-          display: flex
-          flex-wrap: wrap
-          justify-content: center         
-       .h1
-          max-width: 90%   
-    @media (max-width: 650px)
-        .main
-           width: 100%
-           display: flex
-           flex-wrap: wrap
-           justify-content: center
-        .h1
-           max-width: 89%
-           font-size: 1.8rem
-    @media (max-width: 500px)
-        .main
-           width: 100%
-           display: flex
-           flex-wrap: wrap
-           justify-content: center
-        .h1
-           max-width: 89%
-           font-size: 1.8rem                               
-    @media (max-width: 425px)
-        .main
-           width: 100%
-           display: flex
-           flex-wrap: wrap
-           justify-content: center
-        .h1
-           max-width: 80%
-           font-size: 1.5rem
-    @media (max-width: 360px)
-        .main
-           width: 100%
-           display: flex
-           flex-wrap: wrap
-           justify-content: center
-        .h1
-           max-width: 80%
-           font-size: 1.25rem
-              
-.emblemImg    
+.banner
     display: flex
     justify-content: center
-    margin-left: auto
-    margin-right: auto    
-    max-width: 12.5rem
-    height: auto
-    top: 20%
-    @media (max-width: 768px)
-       .emblemImg
-           width: 10.625rem
-           height: 10.625rem
-    @media (max-width: 600px)
-       .emblemImg
-           width: 9.3rem
-           height: auto
-    @media (max-width: 420px)
-       .emblemImg
-           width: 8.75rem
-           height: auto
+    align-items: center
+    height: 100vh
+    width: 100%
 
-.detailBtn
-        width: calc(100% - 90px)
-        height: 2.5rem
+@media (max-width: 768px)
+    .banner
+        height: 700px
+@media (max-width: 425px)
+    .banner
+        height: 800px
+
+.main
+    width: 668px
+    height: 400px
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center
+    gap: 32px
+    @media (max-width: 1000px)
+        width: 550px
+        height: auto
+    @media (max-width: 800px)
+        width: 350px
+    @media (max-width: 425px)
+        width: 328px
+
+    &Content
         display: flex
+        flex-direction: column
+        justify-content: center
         align-items: center
-        justify-content: center  
-        gap: 20px 
-        padding: 0 auto    
-        background-color: var(--main)    
-        transition: 1s
-        &:hover 
-              background-color: var(--grey300)
+        gap: 24px
+        &Img
+            width: 200px
+            height: 200px
+            @media (max-width: 900px)
+                width: 170px
+                height: 170px
+            @media (max-width: 500px)
+                width: 140px
+                height: 140px
+            img
+                width: 100%
+                height: 100%
 
-@media (max-width: 768px)    
-    .btnDetail
-        max-width: 100%
-@media (max-width: 360px)    
-    .btnDetail
-        max-width: 100%    
-           
+.bannerText
+    text-align: center
