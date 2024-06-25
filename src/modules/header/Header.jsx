@@ -1,24 +1,47 @@
 import classes from "./Header.module.sass";
+
 import { PATH } from "../../utils/constants/Constants.js";
-import { Typography } from "../../UI/Typography/Typography.jsx";
+
 import { Container } from "../../components/container/Container.jsx";
+
 import { ResponsiveComponent } from "../../utils/responsiveComponent/ResponsiveComponent.jsx";
+
 import { useOutsideClick } from "../../hooks/useOutsideClick.js";
+
 import { HeaderSelect } from "./headerSelect/HeaderSelect.jsx";
 import { HeaderInput } from "./headerInput/HeaderInput.jsx";
 import { LanguageList } from "./languageList/LanguageList.jsx";
+
+import { Typography } from "../../UI/Typography/Typography.jsx";
 import { ArrowDownSvg } from "../../UI/svgComponents/ArrowDownSvg.jsx";
 import { SearchSvg } from "../../UI/svgComponents/SearchSvg.jsx";
 import { MenuSvg } from "../../UI/svgComponents/MenuSvg.jsx";
+
 import { CrossIcon } from "../../assets/icons/CrossIcon";
 import { ArrowDown } from "../../assets/icons/ArrowDown";
+import { HeaderLogo } from "../../assets/logos/headerLogos/HeaderLogo.jsx";
 
 import { NavLink, useLocation } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { HeaderLogo } from "../../assets/logos/headerLogos/HeaderLogo.jsx";
+
 
 export const Header = () => {
+    const [isInputVisible, setIsInputVisible] = useState(false);
+    const [activeSubnav, setActiveSubnav] = useState(null);
+    const [isArchiveOpenResponsive, setIsArchiveOpenResponsive] = useState(false);
+    const [isMediaArchiveOpenResponsive, setIsMediaArchiveOpenResponsive] = useState(false);
+    const [isDropMenuOpen, setIsDropMenuOpen] = useState(false);
+    const [isAnimating, setIsAnimating] = useState(false);
+    const [isAccessibilityModeActive, setIsAccessibilityModeActive] = useState(false);
+
+    const subnavRef = useRef(null);
+    const headerRef = useRef(null);
+    const inputRef = useRef(null);
+    const dropdownRef = useRef(null);
+    
+    const location = useLocation();
+
     const { t } = useTranslation();
 
     const navItems = [
@@ -27,21 +50,6 @@ export const Header = () => {
         { id: 3, path: PATH.faq, label: "header&footer.nav.q&a" },
         { id: 4, path: PATH.contacts, label: "header&footer.nav.contacts" },
     ];
-
-    const [isInputVisible, setIsInputVisible] = useState(false);
-    const [activeSubnav, setActiveSubnav] = useState(null);
-    const [isArchiveOpenResponsive, setIsArchiveOpenResponsive] = useState(false);
-    const [isMediaArchiveOpenResponsive, setIsMediaArchiveOpenResponsive] = useState(false);
-    const [isDropMenuOpen, setIsDropMenuOpen] = useState(false);
-    const [isAnimating, setIsAnimating] = useState(false);
-    const [isAccessibilityModeActive, setIsAccessibilityModeActive] = useState(false);
-    // const [isAccessibilityScriptsLoaded, setIsAccessibilityScriptsLoaded] = useState(false);
-
-    const location = useLocation();
-    const subnavRef = useRef(null);
-    const headerRef = useRef(null);
-    const inputRef = useRef(null);
-    const dropdownRef = useRef(null);
 
     useOutsideClick(inputRef, () => setIsInputVisible(false));
     useOutsideClick(dropdownRef, () => setIsDropMenuOpen(false));
@@ -61,6 +69,35 @@ export const Header = () => {
             document.body.style.overflow = "";
         }
     }, [isDropMenuOpen]);
+
+    useEffect(() => {
+        const loadScript = (src) => {
+            return new Promise((resolve, reject) => {
+                const script = document.createElement("script");
+                script.src = src;
+                script.async = true;
+                script.onload = resolve;
+                script.onerror = reject;
+                document.body.appendChild(script);
+            });
+        };
+
+        loadScript("https://lidrekon.ru/slep/js/jquery.js").then(() => {
+            return loadScript("https://lidrekon.ru/slep/js/uhpv-full.min.js");
+        });
+
+        const observer = new MutationObserver(() => {
+            if (document.querySelector('#special')) {
+                headerRef.current.style.marginTop = "50px";
+            } else {
+                headerRef.current.style.marginTop = "0";
+            }
+        });
+
+        observer.observe(document.body, { attributes: true, childList: true, subtree: true });
+
+        return () => observer.disconnect();
+    }, []);
 
     const activeLink = ({ isActive }) => (isActive ? classes.active : "");
 
@@ -110,34 +147,6 @@ export const Header = () => {
         setIsAccessibilityModeActive(!isAccessibilityModeActive);
     };
 
-    useEffect(() => {
-        const loadScript = (src) => {
-            return new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.src = src;
-                script.async = true;
-                script.onload = resolve;
-                script.onerror = reject;
-                document.body.appendChild(script);
-            });
-        };
-
-        loadScript("https://lidrekon.ru/slep/js/jquery.js").then(() => {
-            return loadScript("https://lidrekon.ru/slep/js/uhpv-full.min.js");
-        });
-
-        const observer = new MutationObserver(() => {
-            if (document.querySelector('#special')) {
-                headerRef.current.style.marginTop = "50px";
-            } else {
-                headerRef.current.style.marginTop = "0";
-            }
-        });
-
-        observer.observe(document.body, { attributes: true, childList: true, subtree: true });
-
-        return () => observer.disconnect();
-    }, []);
 
     return (
         <header className={classes.header} ref={headerRef}>
@@ -239,8 +248,8 @@ export const Header = () => {
                             <img
                                 id="specialButton"
                                 src="/src/assets/icons/eye.svg"
-                                alt="ВЕРСИЯ ДЛЯ СЛАБОВИДЯЩИХ"
-                                title="ВЕРСИЯ ДЛЯ СЛАБОВИДЯЩИХ"
+                                alt={t("header&footer.eyeIcon")}
+                                title={t("header&footer.eyeIcon")}
                             />
                         </button>
                         <button
