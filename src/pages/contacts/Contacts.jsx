@@ -60,7 +60,7 @@ export const Contacts = () => {
                                 <div className={classes.archiveCardLine}>
                                     <div className={classes.archiveCardContent}>
                                         <Typography variant="h6" color="black" className={classes.icons} >
-                                            <LocationIcon/>
+                                            <LocationIcon color="var(--black)" width="24" height="24"/>
                                             {t("contactsPage.sections.generalInformation.location")}
                                         </Typography>
                                         <Typography variant="body" color="grey500" className={classes.text}>
@@ -69,7 +69,7 @@ export const Contacts = () => {
                                     </div>
                                     <div className={classes.archiveCardContent}>
                                         <Typography variant="h6" color="black" className={classes.icons}>
-                                            <PhoneStroke/>
+                                            <PhoneStroke color="var(--black)" width="24" height="24"/>
                                             {t("contactsPage.sections.generalInformation.phoneNumber")}
                                         </Typography>
                                         <Typography className={classes.text}>
@@ -80,7 +80,7 @@ export const Contacts = () => {
                                     </div>
                                     <div className={classes.archiveCardContent}>
                                         <Typography variant="h6" color="black" className={classes.icons}>
-                                            <MailIcon/>
+                                            <MailIcon color="var(--black)" width="24" height="24"/>
                                             {t("contactsPage.sections.generalInformation.email")}
                                         </Typography>
                                         <Typography className={classes.text}>
@@ -181,7 +181,7 @@ export const Contacts = () => {
                                 <div className={classes.archiveCardLine}>
                                     <div className={classes.archiveCardContent}>
                                         <Typography variant="h6" color="black" className={classes.icons} >
-                                            <LocationIcon/>
+                                            <LocationIcon color="var(--black)" width="24" height="24"/>
                                             {t("contactsPage.sections.generalInformation.location")}
                                         </Typography>
                                         <Typography variant="body" color="grey500" className={classes.text}>
@@ -190,7 +190,7 @@ export const Contacts = () => {
                                     </div>
                                     <div className={classes.archiveCardContent}>
                                         <Typography variant="h6" color="black" className={classes.icons}>
-                                            <PhoneStroke/>
+                                            <PhoneStroke color="var(--black)" width="24" height="24"/>
                                             {t("contactsPage.sections.generalInformation.phoneNumber")}
                                         </Typography>
                                         <Typography className={classes.text}>
@@ -201,7 +201,7 @@ export const Contacts = () => {
                                     </div>
                                     <div className={classes.archiveCardContent}>
                                         <Typography variant="h6" color="black" className={classes.icons}>
-                                            <MailIcon/>
+                                            <MailIcon color="var(--black)" width="24" height="24"/>
                                             {t("contactsPage.sections.generalInformation.email")}
                                         </Typography>
                                         <Typography className={classes.text}>

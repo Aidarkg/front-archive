@@ -56,7 +56,7 @@ export const ManagementMore = () => {
                                     <CalendarBlue/>
                                     {t("managementPage.dateOfBirth")}
                                 </Typography>
-                                <Typography variant="h5">{data.birth_date}</Typography>
+                                <Typography variant="h5">{data?.birth_date}</Typography>
                             </div>
 
 
@@ -85,7 +85,7 @@ export const ManagementMore = () => {
                                         {education?.year}
                                     </Typography>
                                     <Typography className={classes.managementIconBlack} variant="body" color="black">
-                                        <LocationIcon/>
+                                        <LocationIcon height="24" width="24" color="var(--black)"/>
                                         {education?.place}
                                     </Typography>
                                     <Typography color="black" className={classes.managementIconBlack} variant="body">
@@ -107,7 +107,7 @@ export const ManagementMore = () => {
                                         {`${work?.year} гг`}
                                     </Typography>
                                     <Typography className={classes.managementIconBlack} variant="body" color="black">
-                                        <LocationIcon/>
+                                        <LocationIcon height="24" width="24" color="var(--black)"/>
                                         {work?.place}
                                     </Typography>
                                     <Typography className={classes.managementIconBlack} variant="body" color="black">
