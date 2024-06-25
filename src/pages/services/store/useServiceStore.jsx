@@ -13,7 +13,7 @@ export const useServiceStore = create((set, get) => ({
          const response = await axios.get(`${BASE_URL}api/v1/service`);
          const data = response.data;
          set({
-            service: data.results.slice(0, 9), 
+            service: data.results.slice(0, 9),
             loading: false,
             nextPage: data.next,
          });
@@ -21,25 +21,36 @@ export const useServiceStore = create((set, get) => ({
          set({ error: error.message, loading: false });
       }
    },
-   downloadDocument: async () => {
-      set({ isLoading: true });
+   downloadPDF: async () => {
       try {
-         const response = await axios.get(`${BASE_URL}api/v1/service_price/`, {
-            responseType: "blob",
-         });
-         const url = window.URL.createObjectURL(new Blob([response.data]));
-         const link = document.createElement("a");
-         link.href = url;
-         link.setAttribute("download", "service_price.pdf");
-         document.body.appendChild(link);
-         link.click();
-         link.remove();
+        const apiUrl = 'http://209.38.228.54:82/api/v1/service_price/';
+        const apiResponse = await fetch(apiUrl);
+        if (!apiResponse.ok) {
+          throw new Error('Ошибка при загрузке данных из API');
+        }
+        const apiData = await apiResponse.json();
+        if (!apiData[0].file) {
+          throw new Error('URL файла не найден в ответе API');
+        }
+        const fileUrl = apiData[0].file;
+        const response = await fetch(fileUrl);
+        if (!response.ok) {
+          throw new Error('Ошибка при загрузке файла');
+        }
+        const blob = await response.blob();
+        const downloadUrl = window.URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = downloadUrl;
+        link.setAttribute('download', 'Прайс-лист.pdf');
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        window.URL.revokeObjectURL(downloadUrl);
       } catch (error) {
-         console.error("Error downloading the document", error);
-      } finally {
-         set({ isLoading: false });
+        console.error('Ошибка при загрузке PDF:', error);
       }
-   },
+    },
+
    loadMoreService: async () => {
       const { nextPage } = get();
       if (!nextPage) return;
@@ -48,7 +59,7 @@ export const useServiceStore = create((set, get) => ({
          const response = await axios.get(nextPage);
          const data = response.data;
          set((state) => ({
-            service: [...state.service, ...data.results.slice(0, 9)], 
+            service: [...state.service, ...data.results.slice(0, 9)],
             nextPage: data.next,
          }));
       } catch (error) {

@@ -86,42 +86,42 @@
 
         .documentsContainer
             height: auto
-            max-height: 700px
-            overflow-y: auto
-            overflow-x: hidden
+
+            @media (max-width: 1381px)
+                background-color: var(--grey100)
 
     .headingsOutside
         display: none
 
     @media (max-width: 1381px)
-    .table
-        padding: 0
+        .table
+            padding: 0
 
-        .headings
-            display: none
+            .headings
+                display: none
 
-    .headingsOutside
-        display: flex
-        justify-content: space-between
-        text-transform: uppercase
-        margin-bottom: 20px
-
-        li
-            padding: 8px 12px
-            background-color: transparent
-
-        .headingDate
-            width: 98px
-
-        .headingNumberDoc
-            width: 168px
-
-        .headingName
-            width: 300px
-
-    @media (max-width: 620px)
         .headingsOutside
-            display: none
+            display: flex
+            justify-content: space-between
+            text-transform: uppercase
+            margin-bottom: 20px
+
+            li
+                padding: 8px 12px
+                background-color: transparent
+
+            .headingDate
+                width: 98px
+
+            .headingNumberDoc
+                width: 168px
+
+            .headingName
+                width: 300px
+
+        @media (max-width: 620px)
+            .headingsOutside
+                display: none
 
 .btnMoreLoadResults
     margin-top: 20px

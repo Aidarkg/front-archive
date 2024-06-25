@@ -10,7 +10,7 @@ import "react-phone-input-2/lib/style.css";
 import { useTranslation } from "react-i18next";
 import { SuccessModal } from "../../modules/modalPage/successModal/SuccessModal.jsx";
 
-export const QuestionForm = () => {
+export const QuestionForm = ({ setActive }) => {
    const {
       register,
       handleSubmit,
@@ -24,7 +24,7 @@ export const QuestionForm = () => {
    });
 
    const [phoneNumber, setPhoneNumber] = useState("");
-   const [showModal, setShowModal] = useState(false);
+   const [showSuccessModal, setShowSuccessModal] = useState(false);
 
    const submitQuestion = useQuestionStore((state) => state.submitQuestion);
 
@@ -34,22 +34,17 @@ export const QuestionForm = () => {
       reset();
       setValue("question_text", "", { shouldValidate: false });
       setPhoneNumber("");
-      setShowModal(true);
+      setShowSuccessModal(true);
+      setActive(false);
    };
 
    const formValidate = (value) => ({
-      required: "Это поле обязательное!",
+      required: t("q&aPage.form.requiredField"),
       pattern: {
          value: value,
          message: "Неправильный формат почты!",
       },
    });
-
-   useEffect(() => {
-      if (isSubmitSuccessful) {
-         trigger();
-      }
-   }, [isSubmitSuccessful, trigger]);
 
    const { t } = useTranslation();
 
@@ -58,9 +53,15 @@ export const QuestionForm = () => {
       setValue("phone_number", value, { shouldValidate: true });
    };
 
-   const closeModal = () => {
-      setShowModal(false);
+   const closeSuccessModal = () => {
+      setShowSuccessModal(false);
    };
+
+   useEffect(() => {
+      if (isSubmitSuccessful) {
+         trigger();
+      }
+   }, [isSubmitSuccessful, trigger]);
 
    return (
        <section className={classes.faq}>
@@ -96,7 +97,7 @@ export const QuestionForm = () => {
                 <TextInput
                     id="name"
                     type="text"
-                    {...register("full_name", { required: "Это поле обязательное!" })}
+                    {...register("full_name", { required: t("q&aPage.form.requiredField") })}
                     placeholder="Иванов Иван Иванович"
                 />
                 <Typography className={classes.errors} variant="span">
@@ -123,7 +124,7 @@ export const QuestionForm = () => {
                     id="question_text"
                     placeholder="Введите текст"
                     {...register("question_text", {
-                       required: "Это поле обязательное!",
+                       required: t("q&aPage.form.requiredField"),
                        minLength: {
                           value: 20,
                           message: "Не менее 20 символов",
@@ -148,7 +149,7 @@ export const QuestionForm = () => {
                 {t("q&aPage.form.button")}
              </button>
           </form>
-          <SuccessModal show={showModal} onClose={closeModal} />
+          <SuccessModal show={showSuccessModal} onClose={closeSuccessModal} />
        </section>
    );
 };

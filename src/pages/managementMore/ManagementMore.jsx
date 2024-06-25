@@ -24,7 +24,6 @@ export const ManagementMore = () => {
     const { id } = useParams();
     const { data, loading, error, getData } = useDataMore();
     const { t, i18n } = useTranslation();
-
     useEffect(() => {
         getData(id);
     }, [id, getData, i18n.language ]);
@@ -43,7 +42,7 @@ export const ManagementMore = () => {
 
                     <div className={classes.blocks}>
                         <div>
-                            <img src={data.image} alt="photo" />
+                            <img src={data?.image} alt="photo" />
                         </div>
                         <div className={classes.managementMoreContent}>
                             <div className={classes.managementMoreContentProfile}>
@@ -57,7 +56,7 @@ export const ManagementMore = () => {
                                     <CalendarBlue/>
                                     {t("managementPage.dateOfBirth")}
                                 </Typography>
-                                <Typography variant="h5">{data.birth_date}</Typography>
+                                <Typography variant="h5">{data?.birth_date}</Typography>
                             </div>
 
 
@@ -67,7 +66,7 @@ export const ManagementMore = () => {
                                     {t("managementPage.rank")}
                                 </Typography>
                                 <Typography className={classes.managementIconBlue} variant="body" color="grey500" >
-                                    {data.clas_chin}
+                                    {data?.clas_chin}
                                 </Typography>
                             </div>
                         </div>
@@ -83,15 +82,15 @@ export const ManagementMore = () => {
                                 <div className={classes.border} key={index}>
                                     <Typography color="black" className={classes.managementIconBlack} variant="body">
                                         <CalendarIcon/>
-                                        {education.year}
+                                        {education?.year}
                                     </Typography>
                                     <Typography className={classes.managementIconBlack} variant="body" color="black">
-                                        <LocationIcon/>
-                                        {education.place}
+                                        <LocationIcon height="24" width="24" color="var(--black)"/>
+                                        {education?.place}
                                     </Typography>
                                     <Typography color="black" className={classes.managementIconBlack} variant="body">
                                         <CaseIcon/>
-                                        {education.specialization}
+                                        {education?.specialization}
                                     </Typography>
                                 </div>
                             ))}
@@ -105,15 +104,15 @@ export const ManagementMore = () => {
                                 <div className={classes.border} key={index}>
                                     <Typography className={classes.managementIconBlack} variant="body" color="black">
                                         <CalendarIcon/>
-                                        {`${work.year} гг`}
+                                        {`${work?.year} гг`}
                                     </Typography>
                                     <Typography className={classes.managementIconBlack} variant="body" color="black">
-                                        <LocationIcon/>
-                                        {work.place}
+                                        <LocationIcon height="24" width="24" color="var(--black)"/>
+                                        {work?.place}
                                     </Typography>
                                     <Typography className={classes.managementIconBlack} variant="body" color="black">
                                         <CaseIcon/>
-                                        {work.position}
+                                        {work?.position}
                                     </Typography>
                                 </div>
                             ))}

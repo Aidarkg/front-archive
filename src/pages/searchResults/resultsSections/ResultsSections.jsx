@@ -190,6 +190,23 @@ export const ResultsSections = () => {
                     <Typography className={classes.headingRegulations} variant="h1" color="grey500" >
                         {t("regulationsPage.currentPage")}
                     </Typography>
+                    <ul className={classes.headingsOutside}>
+                        <li className={classes.headingDate} >
+                            <Typography variant="h6" color="grey500">
+                                {t("regulationsPage.tableHeadings.date")}
+                            </Typography>
+                        </li>
+                        <li className={classes.headingNumberDoc}>
+                            <Typography variant="h6" color="grey500">
+                                {t("regulationsPage.tableHeadings.documentNumber")}
+                            </Typography>
+                        </li>
+                        <li className={classes.headingName}>
+                            <Typography variant="h6" color="grey500">
+                                {t("regulationsPage.tableHeadings.name")}
+                            </Typography>
+                        </li>
+                    </ul>
                     <div className={classes.table}>
                         <ul className={classes.headings}>
                             <li className={classes.headingDate} >
