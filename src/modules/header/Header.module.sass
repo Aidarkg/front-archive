@@ -1,3 +1,19 @@
+@keyframes slideIn
+    0%
+        opacity: 0
+        transform: translateX(100%)
+    100%
+        opacity: 1
+        transform: translateX(0)
+
+@keyframes slideOut
+    0%
+        opacity: 1
+        transform: translateX(0)
+    100%
+        opacity: 0
+        transform: translateX(100%)
+
 .header
     background-color: var(--main)
     position: fixed
@@ -25,12 +41,14 @@
             display: flex
             align-items: center
             gap: 16px
+            width: auto
 
-            @media (max-width: 800px)
+            @media (max-width: 900px)
                 gap: 8px
+                width: auto
 
                 @media (max-width: 450px)
-                    align-items: flex-start
+                    width: auto
 
             .headerLogoTitle
                 display: flex
@@ -55,7 +73,7 @@
                 margin-right: 16px
                 cursor: pointer
 
-                @media (max-width: 1280px)
+                @media (max-width: 1320px)
                     display: none
 
                 a
@@ -134,12 +152,11 @@
                 align-items: center
                 justify-content: center
 
+                @media ( max-width: 800px )
+                    display: none
+
             .searchBtn
                 position: relative
-
-            @media ( max-width: 500px )
-                .eyeIcon
-                    display: none
 
             .dropdownBtn
                 display: none
@@ -147,7 +164,7 @@
             .headerInnerResponsive
                 display: none
 
-            @media (max-width: 1280px)
+            @media (max-width: 1320px)
                 .dropdownBtn
                     display: flex
                     align-items: center
@@ -159,7 +176,7 @@
                     position: relative
 
                 .headerInnerResponsive
-                    display: none
+                    display: flex
                     flex-direction: column
                     align-items: center
                     gap: 24px
@@ -171,22 +188,22 @@
                     top: -12px
                     right: -18px
                     background-color: var(--main)
+                    animation: slideOut 0.5s forwards
                     opacity: 0
-                    visibility: hidden
-                    transform: translateX(100%)
-                    transition: all 0.5s ease 0s
 
                     &.open
-                        display: flex
+                        animation: slideIn 0.5s forwards
                         opacity: 1
-                        visibility: visible
-                        transform: translateX(0)
+
+                    &.close
+                        animation: slideOut 0.5s forwards
+                        opacity: 0                      
 
                     .responsiveHigh
                         display: flex
                         align-items: center
-                        gap: 25px
                         width: 328px
+                        justify-content: space-between
 
                         .headerLogoResponsive
                             display: flex

@@ -6,7 +6,7 @@ import {Typography} from "../../UI/Typography/Typography.jsx";
 import {useTranslation} from "react-i18next";
 import {Loader} from "../../components/loader/Loader.jsx";
 
-import useStoreContacts from "./store/store.js";
+
 import {useEffect} from "react";
 
 import {CapIconBlue} from "../../assets/icons/CapIconBlue.jsx";
@@ -19,6 +19,8 @@ import {PeopleBlueIcon} from "../../assets/icons/PeopleBlueIcon.jsx";
 import {BookIcon} from "../../assets/icons/BookIcon.jsx";
 import {ContactsNumberIcon} from "../../assets/icons/ContactsNumberIcon.jsx";
 import {CalendarTimeBlue} from "../../assets/icons/CalendarTimeBlue.jsx";
+import {ErrorPage} from "../errorPage/ErrorPage.jsx";
+import {useStoreContacts} from "./store/store.js";
 
 export const Contacts = () => {
 
@@ -35,7 +37,7 @@ export const Contacts = () => {
     }
 
     if (error) {
-        return <div>Error: {error}</div>;
+        return <ErrorPage/>;
     }
     return (
         <section>
@@ -58,7 +60,7 @@ export const Contacts = () => {
                                 <div className={classes.archiveCardLine}>
                                     <div className={classes.archiveCardContent}>
                                         <Typography variant="h6" color="black" className={classes.icons} >
-                                            <LocationIcon/>
+                                            <LocationIcon color="var(--black)" width="24" height="24"/>
                                             {t("contactsPage.sections.generalInformation.location")}
                                         </Typography>
                                         <Typography variant="body" color="grey500" className={classes.text}>
@@ -67,7 +69,7 @@ export const Contacts = () => {
                                     </div>
                                     <div className={classes.archiveCardContent}>
                                         <Typography variant="h6" color="black" className={classes.icons}>
-                                            <PhoneStroke/>
+                                            <PhoneStroke color="var(--black)" width="24" height="24"/>
                                             {t("contactsPage.sections.generalInformation.phoneNumber")}
                                         </Typography>
                                         <Typography className={classes.text}>
@@ -78,7 +80,7 @@ export const Contacts = () => {
                                     </div>
                                     <div className={classes.archiveCardContent}>
                                         <Typography variant="h6" color="black" className={classes.icons}>
-                                            <MailIcon/>
+                                            <MailIcon color="var(--black)" width="24" height="24"/>
                                             {t("contactsPage.sections.generalInformation.email")}
                                         </Typography>
                                         <Typography className={classes.text}>
@@ -179,7 +181,7 @@ export const Contacts = () => {
                                 <div className={classes.archiveCardLine}>
                                     <div className={classes.archiveCardContent}>
                                         <Typography variant="h6" color="black" className={classes.icons} >
-                                            <LocationIcon/>
+                                            <LocationIcon color="var(--black)" width="24" height="24"/>
                                             {t("contactsPage.sections.generalInformation.location")}
                                         </Typography>
                                         <Typography variant="body" color="grey500" className={classes.text}>
@@ -188,7 +190,7 @@ export const Contacts = () => {
                                     </div>
                                     <div className={classes.archiveCardContent}>
                                         <Typography variant="h6" color="black" className={classes.icons}>
-                                            <PhoneStroke/>
+                                            <PhoneStroke color="var(--black)" width="24" height="24"/>
                                             {t("contactsPage.sections.generalInformation.phoneNumber")}
                                         </Typography>
                                         <Typography className={classes.text}>
@@ -199,7 +201,7 @@ export const Contacts = () => {
                                     </div>
                                     <div className={classes.archiveCardContent}>
                                         <Typography variant="h6" color="black" className={classes.icons}>
-                                            <MailIcon/>
+                                            <MailIcon color="var(--black)" width="24" height="24"/>
                                             {t("contactsPage.sections.generalInformation.email")}
                                         </Typography>
                                         <Typography className={classes.text}>

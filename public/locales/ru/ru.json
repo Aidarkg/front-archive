@@ -106,7 +106,8 @@
          "fullName": "ФИО",
          "mail": "Почта",
          "yourQuestion": "Ваш вопрос",
-         "button": "Отправить вопрос"
+         "button": "Отправить вопрос",
+         "requiredField": "Это поле обязательное"
       }
    },
    "contactsPage": {
@@ -159,6 +160,8 @@
    },
    "errorPage": {
       "toMain": "На главную",
-      "back": "Назад"
+      "back": "Назад",
+      "pageNotFound": "Страница не найдена",
+      "unavailablePortal": "Портал временно недоступен"
    }
 }

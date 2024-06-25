@@ -7,7 +7,7 @@ export const ImageCount = ({imageCount, isWhite}) => {
     const {t} =useTranslation();
     return (
         <div className={`${classes.imageCount} ${isWhite? classes.whiteBgc : ""}`}>
-            <ImageIcon/>
+            <ImageIcon height="16" width="16" color="var(--black)"/>
             <Typography
                 variant="extraSmallBody">{imageCount} {t("mainPage.photoGallery.photo")}</Typography>
         </div>
