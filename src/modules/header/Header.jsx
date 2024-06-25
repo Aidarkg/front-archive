@@ -25,6 +25,8 @@ import { NavLink, useLocation } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 
+import svg from "../../assets/icons/eye.svg";
+
 export const Header = () => {
    const [isInputVisible, setIsInputVisible] = useState(false);
    const [activeSubnav, setActiveSubnav] = useState(null);
@@ -283,7 +285,7 @@ export const Header = () => {
                   >
                      <img
                         id="specialButton"
-                        src="/src/assets/icons/eye.svg"
+                        src={svg}
                         alt={t("header&footer.eyeIcon")}
                         title={t("header&footer.eyeIcon")}
                      />
