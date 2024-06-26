@@ -8,6 +8,7 @@ import classes from "./Services.module.sass";
 import { useServiceStore } from "./store/useServiceStore.jsx";
 import { useEffect } from "react";
 import { Loader } from "../../components/loader/Loader.jsx";
+import { ErrorPage } from "../errorPage/ErrorPage.jsx";
 
 export const Services = () => {
    const { t, i18n } = useTranslation();
@@ -54,7 +55,7 @@ export const Services = () => {
                icon={<DownloadIcon />}
                onClick={downloadPDF}
             />
-            {loading && <Loader />}
+            {loading && <Loader /> || error && <ErrorPage />}
             <div className={classes.mapCards}>
                {service?.map(({ title, id, status }) => (
                   <div className={classes.serviceCards} key={id}>
