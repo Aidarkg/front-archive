@@ -6,6 +6,7 @@ export const useSearchStore = create((set, get) => ({
     searchResults: [],
     nextResults: {},
     loading: false,
+    loadingMore: false,
     error: null,
     fetchResults: async (query) => {
         if (query.trim() !== "") {
@@ -51,13 +52,13 @@ export const useSearchStore = create((set, get) => ({
         const state = get();
         const nextResult = state.nextResults[type];
         if (nextResult) {
-            set({ loading: true, error: null });
+            set({ loadingMore: true, error: null });
             try {
                 const response = await axios.get(nextResult);
 
                 const additionalResults = response.data[`${type}_results`]?.map((item) => ({ ...item, type })) || [];
 
-                set((state) => ({
+                set({
                     searchResults: [
                         ...state.searchResults,
                         ...additionalResults
@@ -66,11 +67,11 @@ export const useSearchStore = create((set, get) => ({
                         ...state.nextResults,
                         [type]: response.data[`${type}_next`]
                     },
-                    loading: false
+                    loadingMore: false
 
-                }));
+                });
             } catch (error) {
-                set({ loading: false, error: error.message });
+                set({ loadingMore: false, error: error.message });
             }
         }
     },

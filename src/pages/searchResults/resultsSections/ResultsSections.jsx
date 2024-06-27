@@ -9,14 +9,17 @@ import { Typography } from "../../../UI/Typography/Typography";
 import { PublicationBlock } from "../../../pages/main/publicationBlock/PublicationBlock";
 
 import { CustomButton } from "../../../UI/customButton/CustomButton";
-import { RegulationsDoc } from "../../../UI/regulationsDoc/RegulationsDoc";
 import { useSearchStore } from "../store/useSearchStore";
 
 import { ArrowRight } from "../../../assets/icons/ArrowRight";
 
+import { Loader } from "../../../components/loader/Loader";
+
+import { RegulationsSection } from "../../npa/regulationsSection/RegulationsSection";
+
 
 export const ResultsSections = () => {
-    const { searchResults, nextResults, loadMoreResults } = useSearchStore();
+    const { searchResults, nextResults, loadMoreResults, loadingMore } = useSearchStore();
 
     const navigate = useNavigate();
 
@@ -46,13 +49,16 @@ export const ResultsSections = () => {
                         haveBtn={false}
                     />
                     {nextResults.news && (
-                        <CustomButton
-                            text={t("loadMore")}
-                            actionType="button"
-                            icon={<ArrowRight />}
-                            onClick={() => loadMoreResults("news")}
-                            className={classes.btnMoreLoadResults}
-                        />
+                        <>
+                            {loadingMore && <Loader />}
+                            <CustomButton
+                                text={t("loadMore")}
+                                actionType="button"
+                                icon={<ArrowRight />}
+                                onClick={() => loadMoreResults("news")}
+                                className={classes.btnMoreLoadResults}
+                            />
+                        </>
                     )}
                 </section>
             )}
@@ -70,13 +76,16 @@ export const ResultsSections = () => {
                         haveBtn={false}
                     />
                     {nextResults.photos && (
-                        <CustomButton
-                            text={t("loadMore")}
-                            actionType="button"
-                            icon={<ArrowRight />}
-                            onClick={() => loadMoreResults("photos")}
-                            className={classes.btnMoreLoadResults}
-                        />
+                        <>
+                            {loadingMore && <Loader />}
+                            <CustomButton
+                                text={t("loadMore")}
+                                actionType="button"
+                                icon={<ArrowRight />}
+                                onClick={() => loadMoreResults("photos")}
+                                className={classes.btnMoreLoadResults}
+                            />
+                        </>
                     )}
                 </section>
             )}
@@ -94,13 +103,16 @@ export const ResultsSections = () => {
                         haveBtn={false}
                     />
                     {nextResults.videos && (
-                        <CustomButton
-                            text={t("loadMore")}
-                            actionType="button"
-                            icon={<ArrowRight />}
-                            onClick={() => loadMoreResults("videos")}
-                            className={classes.btnMoreLoadResults}
-                        />
+                        <>
+                            {loadingMore && <Loader />}
+                            <CustomButton
+                                text={t("loadMore")}
+                                actionType="button"
+                                icon={<ArrowRight />}
+                                onClick={() => loadMoreResults("videos")}
+                                className={classes.btnMoreLoadResults}
+                            />
+                        </>
                     )}
                 </section>
             )}
@@ -136,13 +148,16 @@ export const ResultsSections = () => {
                         ))}
                     </div>
                     {nextResults.services && (
-                        <CustomButton
-                            text={t("loadMore")}
-                            actionType="button"
-                            icon={<ArrowRight />}
-                            onClick={() => loadMoreResults("services")}
-                            className={classes.btnMoreLoadResults}
-                        />
+                        <>
+                            {loadingMore && <Loader />}
+                            <CustomButton
+                                text={t("loadMore")}
+                                actionType="button"
+                                icon={<ArrowRight />}
+                                onClick={() => loadMoreResults("services")}
+                                className={classes.btnMoreLoadResults}
+                            />
+                        </>
                     )}
                 </section>
             )}
@@ -175,13 +190,16 @@ export const ResultsSections = () => {
                         ))}
                     </div>
                     {nextResults.managements && (
-                        <CustomButton
-                            text={t("loadMore")}
-                            actionType="button"
-                            icon={<ArrowRight />}
-                            onClick={() => loadMoreResults("managements")}
-                            className={classes.btnMoreLoadResults}
-                        />
+                        <>
+                            {loadingMore && <Loader />}
+                            <CustomButton
+                                text={t("loadMore")}
+                                actionType="button"
+                                icon={<ArrowRight />}
+                                onClick={() => loadMoreResults("managements")}
+                                className={classes.btnMoreLoadResults}
+                            />
+                        </>
                     )}
                 </section>
             )}
@@ -190,63 +208,14 @@ export const ResultsSections = () => {
                     <Typography className={classes.headingRegulations} variant="h1" color="grey500" >
                         {t("regulationsPage.currentPage")}
                     </Typography>
-                    <ul className={classes.headingsOutside}>
-                        <li className={classes.headingDate} >
-                            <Typography variant="h6" color="grey500">
-                                {t("regulationsPage.tableHeadings.date")}
-                            </Typography>
-                        </li>
-                        <li className={classes.headingNumberDoc}>
-                            <Typography variant="h6" color="grey500">
-                                {t("regulationsPage.tableHeadings.documentNumber")}
-                            </Typography>
-                        </li>
-                        <li className={classes.headingName}>
-                            <Typography variant="h6" color="grey500">
-                                {t("regulationsPage.tableHeadings.name")}
-                            </Typography>
-                        </li>
-                    </ul>
-                    <div className={classes.table}>
-                        <ul className={classes.headings}>
-                            <li className={classes.headingDate} >
-                                <Typography variant="h6" color="grey500">
-                                    {t("regulationsPage.tableHeadings.date")}
-                                </Typography>
-                            </li>
-                            <li className={classes.headingNumberDoc}>
-                                <Typography variant="h6" color="grey500">
-                                    {t("regulationsPage.tableHeadings.documentNumber")}
-                                </Typography>
-                            </li>
-                            <li className={classes.headingName}>
-                                <Typography variant="h6" color="grey500">
-                                    {t("regulationsPage.tableHeadings.name")}
-                                </Typography>
-                            </li>
-                        </ul>
-                        <ul className={classes.documentsContainer}>
-                            {filteredResults("codexes")?.map(({ id, title, pdf_file, date_file, document_number }) => (
-                                <RegulationsDoc
-                                    key={id}
-                                    date={date_file}
-                                    documentNumber={document_number}
-                                    name={title}
-                                    linkOpen={pdf_file}
-                                    linkDownload={pdf_file}
-                                />
-                            ))}
-                        </ul>
-                    </div>
-                    {nextResults.codexes && (
-                        <CustomButton
-                            text={t("loadMore")}
-                            actionType="button"
-                            icon={<ArrowRight />}
-                            onClick={() => loadMoreResults("codexes")}
-                            className={classes.btnMoreLoadResults}
-                        />
-                    )}
+                    <RegulationsSection
+                        results={filteredResults("codexes")}
+                        nextResults={nextResults.codexes}
+                        loadMore={() => loadMoreResults("codexes")}
+                        loading={loadingMore}
+                        t={t}
+                        buttonClass={classes.btnMoreLoadResults}
+                    />
                 </section>
             )}
         </>
